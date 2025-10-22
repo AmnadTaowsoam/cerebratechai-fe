@@ -7,13 +7,13 @@
   "regions": ["sin1"],
   "env": {
     "CONTACT_SERVICE_URL": "https://contact-service-production.up.railway.app",
-    "NEXT_PUBLIC_SITE_URL": "https://cerebratechai.com",
+    "NEXT_PUBLIC_SITE_URL": "https://www.cerebratechai.com",
     "NEXT_TELEMETRY_DISABLED": "1",
     "NODE_ENV": "production"
   },
   "build": {
     "env": {
-      "NEXT_PUBLIC_SITE_URL": "https://cerebratechai.com"
+      "NEXT_PUBLIC_SITE_URL": "https://www.cerebratechai.com"
     }
   },
   "headers": [
