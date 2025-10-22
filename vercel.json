@@ -7,7 +7,7 @@
   "regions": ["sin1"],
   "env": {
     "CONTACT_SERVICE_URL": "https://contact-service-production.up.railway.app",
-    "CONTACT_API_KEY": "8f1beeed5f1e0d34ff36c74d0510198f68c68ecd6945221f0ecfcd9ec59121f7",
+    "CONTACT_API_KEY": "@contact_api_key",
     "NEXT_PUBLIC_SITE_URL": "https://cerebratechai.com",
     "NODE_ENV": "production",
     "NEXT_TELEMETRY_DISABLED": "1"
