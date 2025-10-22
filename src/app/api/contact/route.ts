@@ -8,8 +8,8 @@ export async function POST(request: NextRequest) {
     const validatedData = ContactFormSchema.parse(body);
 
     // Send to contact service
-    const contactServiceUrl = process.env.CONTACT_SERVICE_URL || 'http://localhost:7002';
-    const apiKey = process.env.CONTACT_API_KEY || 'cerebratechai-contact-api-key-2024';
+    const contactServiceUrl = process.env.CONTACT_SERVICE_URL || 'https://cerebratechai-production.up.railway.app';
+    const apiKey = process.env.CONTACT_API_KEY || '764d0f97752fe6df432ccd0e4bd81d54f83f86fed9e40e326a90c58de54cdf0b';
 
     const response = await fetch(`${contactServiceUrl}/api/contact`, {
       method: 'POST',
