@@ -1,8 +1,17 @@
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-});
-
 const createNextIntlPlugin = require('next-intl/plugin');
+
+let withBundleAnalyzer = (config) => config;
+
+if (process.env.ANALYZE === 'true') {
+  try {
+    const bundleAnalyzer = require('@next/bundle-analyzer');
+    withBundleAnalyzer = bundleAnalyzer({ enabled: true });
+  } catch (error) {
+    console.warn(
+      '[@next/bundle-analyzer] is not installed; skipping bundle analysis.'
+    );
+  }
+}
 
 const withNextIntl = createNextIntlPlugin('./src/i18n.ts');
 
