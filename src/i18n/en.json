@@ -1,0 +1,582 @@
+{
+  "nav": {
+    "solutions": "Solutions",
+    "packages": "Packages",
+    "cases": "Case Studies",
+    "contact": "Contact",
+    "home": "Home",
+    "company": "Company",
+    "resources": "Resources",
+    "pricing": "Pricing",
+    "all_solutions": "All Solutions",
+    "machine_learning": "Machine Learning",
+    "computer_vision": "Computer Vision",
+    "aiot": "AIoT",
+    "llm": "LLM",
+    "platform": "Platform",
+    "analytics": "Analytics",
+    "all_packages": "All Packages",
+    "kickstart": "Kickstart",
+    "poc_lab": "POC Lab",
+    "pilot_launch": "Pilot Launch",
+    "production_scale": "Production Scale",
+    "launch_assurance": "Launch Assurance",
+    "care_plan": "Care Plan",
+    "about_us": "About Us",
+    "team": "Team",
+    "careers": "Careers",
+    "partners": "Partners",
+    "news": "News",
+    "all_resources": "All Resources",
+    "blog": "Blog",
+    "whitepapers": "Whitepapers",
+    "webinars": "Webinars",
+    "templates": "Templates",
+    "support": "Support"
+  },
+  "cta": {
+    "book": "Book a 30-min consult",
+    "brief": "Request Solution Brief",
+    "get_started": "Get Started",
+    "watch_demo": "Watch Demo",
+    "demo": "Demo",
+    "contact": "Contact us",
+    "learn_more": "Learn more"
+  },
+  "form": {
+    "title": "Get in touch",
+    "description": "Tell us a bit about your project and we’ll reach out shortly.",
+    "name": "Name",
+    "email": "Email",
+    "company": "Company",
+    "phone": "Phone",
+    "goal": "Your Goal/Challenge",
+    "submit": "Submit and Book a Call",
+    "consent": "I consent to Cerebratechai contacting me",
+    "required": "This field is required",
+    "invalid_email": "Invalid email format",
+    "min_length": "Must be at least {min} characters",
+    "max_length": "Must be at most {max} characters"
+  },
+  "home": {
+    "hero_title": "Boutique AI Studio for Small to Mid-Size Projects",
+    "hero_subtitle": "We help SMEs build working POCs and Pilots to test AI ideas without huge commitments.",
+    "sections": {
+      "value_cards": {
+        "badge": "Why SMEs choose us",
+        "title": "Fast, affordable, right-sized",
+        "subtitle": "Run by a small experienced team focused on delivering POCs and Small Pilots that work—without enterprise complexity."
+      },
+      "social_proof": {
+        "badge": "Trusted delivery",
+        "title": "Working with SMEs and innovation teams",
+        "subtitle": "We help small-to-mid teams test AI ideas affordably, quickly, and simply. Focus on Quick Wins you can measure.",
+        "logos_caption": "Selected teams we've supported",
+        "metrics": {
+          "manufacturing": "POCs delivered for small-mid projects",
+          "ops": "Average Pilot delivery time (weeks)",
+          "logistics": "Starting POC Package price (THB)"
+        },
+        "metrics_caption": "* Estimated figures. Actual results depend on complexity and scope.",
+        "testimonial": {
+          "quote": "Small team but delivers. Helped us build a working POC fast and affordably. Perfect for companies that want to test before scaling.",
+          "author": "Innovation Manager",
+          "role": "Thai SME (Anonymized)"
+        }
+      },
+      "services": {
+        "title": "Solutions for small-mid projects",
+        "subtitle": "Test AI ideas as POCs or Pilots. Perfect for SMEs who want to start without huge investments.",
+        "filters": {
+          "all": "All"
+        },
+        "pricing_label": "Starting from",
+        "timeline_label": "Timeline",
+        "weeks": "weeks",
+        "view_solution": "View solution"
+      },
+      "process": {
+        "badge": "Delivery playbook"
+      },
+      "chatgpt_apps": {
+        "badge": "Preview",
+        "title": "Try in ChatGPT",
+        "subtitle": "Quick feasibility checks and readiness estimators. All demos use synthetic/public data only."
+      },
+      "case_showcase": {
+        "badge": "Case showcase",
+        "title": "See the outcomes while protecting client privacy",
+        "subtitle": "We combine lessons from production projects with anonymised and synthetic datasets so you can understand the process and impact.",
+        "cta": "Browse all case studies",
+        "challenge": "Challenge",
+        "solution": "Solution",
+        "view_story": "View full story",
+        "data_note_title": "Data & privacy note",
+        "data_note_body": "Stories follow our anonymization and synthetic data playbooks so you can learn from outcomes without exposing client data.",
+        "tags": {
+          "anonymized": "Anonymised",
+          "synthetic": "Synthetic data",
+          "public_data": "Public data"
+        }
+      }
+    }
+  },
+  "features": {
+    "title": "What We Deliver",
+    "subtitle": "Production-grade, maintainable solutions with measurable business impact",
+    "cta_text": "Need a deeper walkthrough? Our solution architects will tailor a demo to your use case within 48 hours."
+  },
+  "about": {
+    "eyebrow": "About Cerebratechai",
+    "title": "Building the future of AI, one solution at a time",
+    "description": "We're a boutique AI studio that combines deep technical expertise with practical business acumen to deliver AI solutions that actually work in production.",
+    "mission": {
+      "title": "Our Mission",
+      "description": "To democratize AI adoption by providing enterprise-grade solutions that are practical, scalable, and deliver measurable business value. We bridge the gap between cutting-edge AI research and real-world implementation."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "To be the leading boutique AI studio in Southeast Asia, known for our technical excellence, practical approach, and ability to deliver AI solutions that transform businesses and create lasting competitive advantages."
+    },
+    "values": {
+      "title": "Our Values",
+      "subtitle": "These core principles guide everything we do and shape how we work with our clients.",
+      "innovation": {
+        "title": "Innovation First",
+        "description": "We push the boundaries of what's possible with AI, always staying ahead of the curve."
+      },
+      "collaboration": {
+        "title": "Collaborative Partnership",
+        "description": "We work alongside your team, not just for you, ensuring knowledge transfer and sustainable success."
+      },
+      "excellence": {
+        "title": "Excellence in Delivery",
+        "description": "Every project is delivered with production-ready quality, comprehensive documentation, and measurable outcomes."
+      },
+      "impact": {
+        "title": "Positive Impact",
+        "description": "We believe AI should solve real-world problems and create meaningful value for businesses and society."
+      }
+    },
+    "team": {
+      "title": "Meet Our Team",
+      "subtitle": "Our diverse team of AI experts, engineers, and business strategists work together to deliver exceptional results."
+    },
+    "cta": {
+      "title": "Ready to work with us?",
+      "description": "Let's discuss how we can help transform your business with AI. Our team is ready to explore your challenges and design solutions that deliver real value.",
+      "contact": "Get in Touch",
+      "careers": "Join Our Team"
+    }
+  },
+  "blog": {
+    "eyebrow": "AI Insights & Knowledge",
+    "title": "Blog & Insights",
+    "description": "Stay updated with the latest trends, best practices, and technical insights from our AI experts. Learn from real-world implementations and industry case studies.",
+    "featured": {
+      "title": "Featured Articles"
+    },
+    "latest": {
+      "title": "Latest Articles"
+    },
+    "authors": {
+      "title": "Meet Our Expert Authors",
+      "subtitle": "Our blog content is written by leading AI industry experts with years of experience implementing AI across various industries."
+    },
+    "newsletter": {
+      "title": "Stay Updated",
+      "description": "Get the latest AI insights, case studies, and technical articles delivered to your inbox. No spam, just valuable content from our expert team.",
+      "placeholder": "Enter your email",
+      "subscribe": "Subscribe"
+    }
+  },
+  "resources": {
+    "eyebrow": "Knowledge Hub",
+    "title": "Resources & Downloads",
+    "description": "Access our comprehensive collection of whitepapers, webinars, templates, and guides to accelerate your AI journey. All resources are free and based on real-world experience.",
+    "newsletter": {
+      "title": "Get New Resources First",
+      "description": "Be the first to access our latest whitepapers, webinars, and templates. Subscribe to our newsletter for exclusive content and early access to new resources.",
+      "placeholder": "Enter your email",
+      "subscribe": "Subscribe"
+    },
+    "support": {
+      "title": "Need Help Getting Started?",
+      "description": "Our team of AI experts is here to help you implement these resources and accelerate your AI journey.",
+      "contact": "Get Support",
+      "consultation": "Schedule Consultation"
+    }
+  },
+  "careers": {
+    "eyebrow": "Join Our Team",
+    "title": "Build the Future of AI with Us",
+    "description": "Join a team of passionate AI experts who are transforming businesses through innovative technology. Work on cutting-edge projects, learn from industry leaders, and make a real impact.",
+    "culture": {
+      "title": "Our Culture",
+      "subtitle": "We believe that great AI solutions come from great teams. Here's what makes working at Cerebratechai special.",
+      "innovation": {
+        "title": "Innovation First",
+        "description": "We encourage experimentation and provide the freedom to explore new technologies and approaches."
+      },
+      "collaboration": {
+        "title": "Collaborative Environment",
+        "description": "Work with talented individuals from diverse backgrounds in a supportive, team-oriented culture."
+      },
+      "impact": {
+        "title": "Real Impact",
+        "description": "Your work directly contributes to solving real-world problems and transforming businesses."
+      },
+      "growth": {
+        "title": "Continuous Growth",
+        "description": "We invest in your professional development with training, mentorship, and growth opportunities."
+      }
+    },
+    "benefits": {
+      "title": "Benefits & Perks",
+      "subtitle": "We offer comprehensive benefits designed to support your well-being, growth, and success.",
+      "health": {
+        "title": "Health & Wellness",
+        "description": "Comprehensive health insurance, mental health support, and wellness programs."
+      },
+      "learning": {
+        "title": "Learning & Growth",
+        "description": "Annual learning budget, conference attendance, and access to cutting-edge AI tools."
+      },
+      "flexibility": {
+        "title": "Work Flexibility",
+        "description": "Hybrid work model, flexible hours, and remote work options for eligible positions."
+      },
+      "career": {
+        "title": "Career Development",
+        "description": "Clear career paths, mentorship programs, and opportunities to work on diverse projects."
+      }
+    },
+    "positions": {
+      "title": "Open Positions",
+      "subtitle": "Explore current opportunities to join our growing team of AI experts."
+    },
+    "cta": {
+      "title": "Don't See Your Role?",
+      "description": "We're always looking for talented individuals who share our passion for AI innovation. Send us your resume and let's explore opportunities together.",
+      "contact": "Send Your Resume",
+      "team": "Meet the Team"
+    }
+  },
+  "pricing": {
+    "eyebrow": "Transparent Pricing",
+    "title": "Choose Your AI Journey",
+    "description": "Our packages are designed to meet you where you are in your AI journey. From exploration to production, we have the right solution for your needs and budget.",
+    "packages": {
+      "title": "AI Implementation Packages",
+      "subtitle": "Choose the package that best fits your current needs and budget. All packages include our core expertise and proven methodologies."
+    },
+    "addons": {
+      "title": "Additional Services",
+      "subtitle": "Enhance your AI implementation with our additional services designed for ongoing success."
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Have questions about our pricing? Here are answers to the most common questions we receive."
+    },
+    "cta": {
+      "title": "Ready to Get Started?",
+      "description": "Not sure which package is right for you? Let's discuss your needs and find the perfect solution for your AI journey.",
+      "consultation": "Get Free Consultation",
+      "packages": "View All Packages"
+    },
+    "roi": {
+      "title": "ROI Calculator",
+      "subtitle": "Estimate expected returns from your AI project",
+      "calculate": "Calculate ROI"
+    }
+  },
+  "partners": {
+    "eyebrow": "Partnership Network",
+    "title": "Technology Partners & Integrations",
+    "description": "We work with leading technology providers to deliver comprehensive AI solutions. Our partnerships ensure access to cutting-edge tools, enterprise-grade support, and optimized implementations.",
+    "technology": {
+      "title": "Technology Partners",
+      "subtitle": "We partner with leading technology providers to deliver the best AI solutions using proven, enterprise-grade platforms."
+    },
+    "integration": {
+      "title": "Integration Partners",
+      "subtitle": "Seamlessly integrate our AI solutions with your existing enterprise systems and workflows."
+    },
+    "benefits": {
+      "title": "Why Partner With Us?",
+      "subtitle": "Our partnerships provide mutual value through technical expertise, market reach, and shared success.",
+      "certified": {
+        "title": "Certified Expertise",
+        "description": "Our team holds certifications from leading technology partners, ensuring best practices and optimal implementations."
+      },
+      "performance": {
+        "title": "Optimized Performance",
+        "description": "Leverage our deep integration knowledge to achieve maximum performance and efficiency from partner technologies."
+      },
+      "scalability": {
+        "title": "Enterprise Scale",
+        "description": "Access to enterprise-grade features and support through our partner relationships for large-scale deployments."
+      },
+      "support": {
+        "title": "Priority Support",
+        "description": "Benefit from priority support channels and direct access to partner engineering teams through our relationships."
+      }
+    },
+    "program": {
+      "title": "Partner Programs",
+      "subtitle": "Join our partner ecosystem and unlock new opportunities for growth and success.",
+      "reseller": {
+        "title": "Technology Reseller",
+        "description": "Partner with us to resell and implement AI solutions using our certified technologies."
+      },
+      "integration": {
+        "title": "Integration Partner",
+        "description": "Integrate your platform with our AI solutions to create powerful combined offerings."
+      },
+      "referral": {
+        "title": "Referral Partner",
+        "description": "Refer clients to us and earn commissions while helping them achieve their AI goals."
+      }
+    },
+    "cta": {
+      "title": "Interested in Partnering?",
+      "description": "Let's explore how we can work together to deliver exceptional AI solutions and create mutual value for our clients.",
+      "partnership": "Become a Partner",
+      "integration": "Discuss Integration"
+    }
+  },
+  "support": {
+    "eyebrow": "Help & Support",
+    "title": "We're Here to Help",
+    "description": "Get the support you need to succeed with your AI implementation. Our team of experts is ready to help you overcome challenges and maximize the value of your AI solutions.",
+    "channels": {
+      "title": "Get Support",
+      "subtitle": "Choose the support channel that works best for you. Our team is available through multiple channels to ensure you get the help you need.",
+      "chat": {
+        "title": "Live Chat",
+        "description": "Get instant help from our support team during business hours."
+      },
+      "email": {
+        "title": "Email Support",
+        "description": "Send us detailed questions and receive comprehensive responses within 24 hours."
+      },
+      "phone": {
+        "title": "Phone Support",
+        "description": "Speak directly with our technical experts for urgent issues."
+      },
+      "docs": {
+        "title": "Documentation",
+        "description": "Access comprehensive guides, API documentation, and troubleshooting resources."
+      }
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Find answers to common questions about our services, implementation process, and ongoing support."
+    },
+    "resources": {
+      "title": "Support Resources",
+      "subtitle": "Access our comprehensive library of guides, documentation, and resources to help you succeed with your AI implementation."
+    },
+    "cta": {
+      "title": "Still Need Help?",
+      "description": "Can't find what you're looking for? Our team is ready to provide personalized support for your specific needs.",
+      "contact": "Contact Support",
+      "consultation": "Schedule Consultation"
+    },
+    "team": {
+      "title": "Meet our Support Team",
+      "subtitle": "Dedicated experts to help you succeed",
+      "technical": {
+        "title": "Technical Support",
+        "subtitle": "Expert Engineers",
+        "description": "Certified AI engineers with deep ML/MLOps & production experience",
+        "response": "Response time: <2 hours"
+      },
+      "success": {
+        "title": "Customer Success",
+        "subtitle": "Success Managers",
+        "description": "Ensure ongoing value with optimization and strategic guidance",
+        "availability": "Availability: Mon–Fri, 9:00–18:00"
+      },
+      "documentation": {
+        "title": "Documentation",
+        "subtitle": "Technical Writers",
+        "description": "Comprehensive guides, API references, and troubleshooting resources",
+        "updated": "Updated: Weekly"
+      }
+    }
+  },
+  "news": {
+    "eyebrow": "Company News & Updates",
+    "title": "News & Media",
+    "description": "Stay updated with the latest news, announcements, and achievements from Cerebratechai. Follow our journey as we continue to innovate and transform businesses through AI.",
+    "featured": {
+      "title": "Featured News"
+    },
+    "latest": {
+      "title": "Latest News"
+    },
+    "media": {
+      "title": "Media Coverage",
+      "subtitle": "See what industry publications and media outlets are saying about Cerebratechai and our AI innovations."
+    },
+    "newsletter": {
+      "title": "Stay Updated",
+      "description": "Get the latest news, announcements, and insights from Cerebratechai delivered directly to your inbox.",
+      "placeholder": "Enter your email",
+      "subscribe": "Subscribe"
+    },
+    "cta": {
+      "title": "Media Inquiries",
+      "description": "For media inquiries, press releases, or interview requests, please contact our communications team.",
+      "media": "Contact Media Team",
+      "about": "Learn About Us"
+    }
+  },
+  "common": {
+    "locale_switcher": "Switch Language",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Try Again",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "read_more": "Read More",
+    "show_less": "Show Less",
+    "coming_soon": "Coming Soon",
+    "new": "New",
+    "featured": "Featured",
+    "popular": "Popular",
+    "best_seller": "Best Seller"
+  },
+  "seo": {
+    "title": {
+      "home": "Cerebratechai — Turn pain points into production-ready AI",
+      "solutions": "Solutions | Cerebratechai",
+      "packages": "Packages | Cerebratechai",
+      "cases": "Case Studies | Cerebratechai",
+      "contact": "Contact | Cerebratechai"
+    },
+    "description": {
+      "home": "Productized AI/ML solutions ready to ship from Edge → Cloud with anonymized cases and synthetic demos",
+      "solutions": "Productized solutions: Computer Vision, LLM/RAG, AIoT, and data platforms ready for real-world deployment",
+      "packages": "Service packages: Kickstart, POC, Pilot, Production, Care Plan with pricing and details",
+      "cases": "Anonymized cases and synthetic demos showcasing real-world problem-solving capabilities",
+      "contact": "Contact us for consultation and pricing"
+    }
+  },
+  "legal": {
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "disclaimer": "Disclaimer",
+    "nda": "Non-Disclosure Agreement",
+    "anonymized": "Anonymized",
+    "synthetic_data": "Synthetic Data",
+    "public_data": "Public Data"
+  },
+  "services": {
+    "title": "Solutions",
+    "subtitle": "Productized solutions ready to ship",
+    "view_all": "View All",
+    "filters": {
+      "all": "All"
+    },
+    "pricing_label": "Starting from",
+    "timeline_label": "Timeline",
+    "weeks": "weeks",
+    "view_solution": "View solution",
+    "categories": {
+      "machine_learning": "Machine Learning",
+      "computer_vision": "Computer Vision",
+      "aiot": "AIoT",
+      "llm_rag": "LLM & RAG",
+      "local_llm": "Local LLM",
+      "ocr_asr": "OCR & ASR",
+      "vector_db": "Vector DB",
+      "frontend_backend": "Frontend/Backend",
+      "devops": "DevOps",
+      "spc_quality": "SPC/Quality",
+      "edge_cloud": "Edge→Cloud Sync"
+    }
+  },
+  "packages": {
+    "title": "Packages",
+    "subtitle": "Service packages for every need",
+    "most_picked": "Most Picked",
+    "timeline": "Timeline",
+    "weeks": "weeks",
+    "starting_from": "Starting from",
+    "contact": "Contact",
+    "tiers": {
+      "kickstart": "Kickstart",
+      "poc": "POC",
+      "pilot": "Pilot",
+      "production": "Production",
+      "care_plan": "Care Plan"
+    }
+  },
+  "cases": {
+    "title": "Case Studies",
+    "subtitle": "Anonymized cases and synthetic demos",
+    "anonymized": "Anonymized",
+    "synthetic_demo": "Synthetic Demo",
+    "public_data": "Public Data",
+    "nda_required": "NDA Required",
+    "view_case": "View Case",
+    "request_nda": "Request NDA"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Ready to help solve problems and create the right solutions",
+    "form_title": "Fill out the form to request consultation",
+    "success_title": "Submission Successful!",
+    "success_message": "Thank you for reaching out. We'll get back to you within 24 hours",
+    "error_title": "An Error Occurred",
+    "error_message": "Unable to submit the form. Please try again",
+    "alternative": "Or contact us via",
+    "email": "Email",
+    "phone": "Phone"
+  },
+  "footer": {
+    "description": "Boutique AI Studio for small-mid projects. Helping SMEs test AI ideas affordably.",
+    "company_name": "Cerebratechai",
+    "company_tagline": "Boutique AI & Software Studio | Sole Proprietor (Not incorporated)",
+    "address": "Bangkok, Thailand",
+    "quick_links": "Quick Links",
+    "solutions": "Solutions",
+    "packages": "Packages",
+    "cases": "Case Studies",
+    "contact": "Contact",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "disclaimer": "Disclaimer",
+    "pdpa": "PDPA Notice",
+    "contact_heading": "Contact",
+    "email_label": "Email",
+    "phone_label": "Phone",
+    "hours_label": "Office hours",
+    "hours_value": "08:00-18:00 ICT",
+    "follow_us": "Follow us",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "youtube": "YouTube",
+    "all_rights_reserved": "All rights reserved",
+    "made_with": "Made with",
+    "in_thailand": "in Thailand"
+  },
+  "errors": {
+    "404": {
+      "title": "Page Not Found",
+      "message": "The page you're looking for may have been deleted, renamed, or temporarily unavailable",
+      "back_home": "Back to Home"
+    },
+    "500": {
+      "title": "Internal Server Error",
+      "message": "Sorry for the inconvenience. We're working to fix this issue",
+      "try_again": "Try Again",
+      "contact_support": "Contact Support"
+    }
+  }
+}
