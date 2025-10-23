@@ -11,6 +11,7 @@ const intlMiddleware = createIntlMiddleware({
 });
 
 const trustedScriptHosts = ['https://unpkg.com'];
+const inlineScriptHashes = ["'sha256-Ph/QwnQiwklgtr/n++X4WjXCJZg7LwOQMhFEhUOkmls='"];
 
 const baseConnectSources = ["'self'", 'https://vitals.vercel-analytics.com'];
 
@@ -42,10 +43,18 @@ export function middleware(request: NextRequest) {
   crypto.getRandomValues(array);
   const nonce = btoa(String.fromCharCode(...Array.from(array)));
 
+  const scriptSrc = [
+    "'self'",
+    `'nonce-${nonce}'`,
+    "'strict-dynamic'",
+    ...trustedScriptHosts,
+    ...inlineScriptHashes,
+  ].join(' ');
+
   const csp = [
     "default-src 'self'",
     "base-uri 'self'",
-    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic' ${trustedScriptHosts.join(' ')}`,
+    `script-src ${scriptSrc}`,
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "img-src 'self' data: blob: https:",
     "font-src 'self' data: https://fonts.gstatic.com",
