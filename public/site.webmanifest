@@ -1,0 +1,19 @@
+{
+  "name": "Cerebratechai",
+  "short_name": "Cerebratechai",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B1220",
+  "theme_color": "#0B1220",
+  "lang": "en",
+  "scope": "/",
+  "description": "Transform your pain points into production-ready AI systems with Cerebratechai.",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
