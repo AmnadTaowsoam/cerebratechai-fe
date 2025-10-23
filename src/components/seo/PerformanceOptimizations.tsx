@@ -8,7 +8,7 @@ export function PerformanceOptimizations() {
     const preloadCriticalResources = () => {
       const criticalImages = [
         '/cerebratechai_logo.png',
-        '/og-image.jpg',
+        '/cerebratechai_logo.png', // Using logo as og-image fallback
         '/favicon.png'
       ];
 
@@ -144,28 +144,28 @@ export function WebVitalsScript() {
 export function ResourceHints() {
   return (
     <>
-      {/* Preload critical fonts */}
-      <link
+      {/* Preload critical fonts - commented out until files are available */}
+      {/* <link
         rel="preload"
         href="/fonts/inter-var.woff2"
         as="font"
         type="font/woff2"
         crossOrigin="anonymous"
-      />
+      /> */}
       
-      {/* Preload critical CSS */}
-      <link
+      {/* Preload critical CSS - commented out until files are available */}
+      {/* <link
         rel="preload"
         href="/css/critical.css"
         as="style"
-      />
+      /> */}
       
-      {/* Preload critical JavaScript */}
-      <link
+      {/* Preload critical JavaScript - commented out until files are available */}
+      {/* <link
         rel="preload"
         href="/js/critical.js"
         as="script"
-      />
+      /> */}
       
       {/* Prefetch likely next pages */}
       <link rel="prefetch" href="/solutions" />

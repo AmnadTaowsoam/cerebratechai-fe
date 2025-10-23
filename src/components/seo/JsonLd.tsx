@@ -30,7 +30,7 @@ export function OrganizationJsonLd() {
       : 'Transform your pain points into production-ready AI systems. We build AI & full-stack solutions from Edge to Cloud that are ready for deployment.',
     url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
     logo: `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/cerebratechai_logo.png`,
-    image: `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/og-image.jpg`,
+    image: `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/cerebratechai_logo.png`,
     foundingDate: '2024',
     founder: {
       '@type': 'Person',

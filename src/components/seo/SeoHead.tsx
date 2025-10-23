@@ -18,7 +18,7 @@ export function SeoHead({
   title,
   description,
   keywords = [],
-  image = '/og-image.jpg',
+  image = '/cerebratechai_logo.png',
   url = '/',
   type = 'website',
   noindex = false,

@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     siteName: 'Cerebratechai',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/cerebratechai_logo.png',
         width: 1200,
         height: 630,
         alt: 'Cerebratechai - AI & Full-Stack Solutions',
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Turn pain points into production-ready AI | Cerebratechai',
     description: 'Transform your pain points into production-ready AI systems. We build AI & full-stack solutions from Edge to Cloud that are ready for deployment.',
-    images: ['/og-image.jpg'],
+    images: ['/cerebratechai_logo.png'],
   },
   robots: {
     index: true,

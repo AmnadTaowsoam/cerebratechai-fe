@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     siteName: 'Cerebratechai',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/cerebratechai_logo.png',
         width: 1200,
         height: 630,
         alt: 'Cerebratechai - AI Solutions Studio in Bangkok, Thailand',
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Cerebratechai - Turn Pain Points into Production-Ready AI Systems',
     description: 'Transform your pain points into production-ready AI systems. We build AI & full-stack solutions from Edge to Cloud with guardrails and playbooks.',
-    images: ['/og-image.jpg'],
+    images: ['/cerebratechai_logo.png'],
     creator: '@cerebratechai',
     site: '@cerebratechai',
   },

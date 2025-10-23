@@ -14,7 +14,7 @@ export function generateMetadata({
   title,
   description,
   keywords = [],
-  image = '/og-image.jpg',
+  image = '/cerebratechai_logo.png',
   url = '/',
   type = 'website',
   locale = 'en',
