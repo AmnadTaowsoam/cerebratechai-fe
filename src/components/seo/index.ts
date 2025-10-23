@@ -7,7 +7,7 @@ export { Hreflang, StaticHreflang } from './Hreflang';
 export { PricingSchema, ServiceSchema, FAQSchema } from './PricingSchema';
 
 // Analytics
-export { Analytics, GoogleTagManagerBody, trackEvent, trackPageView, trackConversion } from '../analytics/Analytics';
+export { Analytics } from '../analytics/Analytics';
 
 // Loading Components
 export { LoadingSpinner, LoadingDots, LoadingSkeleton, PageLoading, SectionLoading } from '../ui/loading';

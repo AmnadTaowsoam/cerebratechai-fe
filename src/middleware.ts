@@ -10,6 +10,27 @@ const intlMiddleware = createIntlMiddleware({
   localePrefix: 'always',
 });
 
+const trustedScriptHosts = ['https://unpkg.com'];
+
+const baseConnectSources = ["'self'", 'https://vitals.vercel-analytics.com'];
+
+const serviceUrls = [
+  process.env.NEXT_PUBLIC_CONTENT_API_URL,
+  process.env.CONTACT_SERVICE_URL,
+].filter(Boolean) as string[];
+
+const serviceOrigins = serviceUrls
+  .map((url) => {
+    try {
+      return new URL(url).origin;
+    } catch {
+      return url;
+    }
+  })
+  .filter(Boolean);
+
+const connectSrc = Array.from(new Set([...baseConnectSources, ...serviceOrigins]));
+
 export function middleware(request: NextRequest) {
   if (process.env.NODE_ENV !== 'production') {
     return intlMiddleware(request);
@@ -24,11 +45,11 @@ export function middleware(request: NextRequest) {
   const csp = [
     "default-src 'self'",
     "base-uri 'self'",
-    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net`,
+    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic' ${trustedScriptHosts.join(' ')}`,
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-    "img-src 'self' data: blob: https: https://www.google-analytics.com https://www.facebook.com",
+    "img-src 'self' data: blob: https:",
     "font-src 'self' data: https://fonts.gstatic.com",
-    `connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://connect.facebook.net https://umami.example.com`,
+    `connect-src ${connectSrc.join(' ')}`,
     "frame-ancestors 'none'",
     "form-action 'self'",
     "object-src 'none'",

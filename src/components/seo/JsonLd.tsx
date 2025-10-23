@@ -1,14 +1,18 @@
 'use client';
 
 import { useLocale } from 'next-intl';
+import { useNonce } from '@/components/providers/nonce-provider';
 
 interface JsonLdProps {
   data: Record<string, any>;
 }
 
 export function JsonLd({ data }: JsonLdProps) {
+  const nonce = useNonce();
+
   return (
     <script
+      nonce={nonce}
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
     />

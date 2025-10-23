@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
 import { ChevronRight, Home } from 'lucide-react';
+import { useNonce } from '@/components/providers/nonce-provider';
 
 interface BreadcrumbItem {
   label: string;
@@ -17,6 +18,7 @@ interface BreadcrumbsProps {
 export function Breadcrumbs({ items, className = '' }: BreadcrumbsProps) {
   const locale = useLocale();
   const basePath = `/${locale}`;
+  const nonce = useNonce();
 
   const breadcrumbData = {
     '@context': 'https://schema.org',
@@ -32,6 +34,7 @@ export function Breadcrumbs({ items, className = '' }: BreadcrumbsProps) {
   return (
     <>
       <script
+        nonce={nonce}
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbData) }}
       />

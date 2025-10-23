@@ -1,3 +1,4 @@
+import { headers } from 'next/headers';
 import type { CaseItem } from '@/data/cases';
 
 interface CaseSchemaProps {
@@ -8,6 +9,7 @@ interface CaseSchemaProps {
 export default function CaseSchema({ caseItem, locale = 'en' }: CaseSchemaProps) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://cerebratechai.com';
   const caseUrl = `${baseUrl}/${locale}/cases/${caseItem.slug}`;
+  const nonce = headers().get('x-nonce') ?? undefined;
 
   const schema = {
     "@context": "https://schema.org",
@@ -52,6 +54,7 @@ export default function CaseSchema({ caseItem, locale = 'en' }: CaseSchemaProps)
 
   return (
     <script
+      nonce={nonce}
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
     />

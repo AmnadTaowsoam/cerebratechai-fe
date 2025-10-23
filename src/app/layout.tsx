@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
+import { headers } from 'next/headers';
 import { Inter } from 'next/font/google';
 import { cn } from '@/lib/utils';
-import { ThemeProvider } from '@/components/providers/theme-provider';
 import { QueryProvider } from '@/components/providers/query-provider';
-// import { Analytics } from '@/components/analytics';
+import { NonceProvider } from '@/components/providers/nonce-provider';
+import { Analytics } from '@/components/analytics/Analytics';
 import { Toaster } from '@/components/ui/toaster';
 import { PerformanceOptimizations, WebVitalsScript, ResourceHints } from '@/components/seo';
 import './globals.css';
@@ -124,6 +125,8 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const nonce = headers().get('x-nonce');
+
   return (
     <html lang="en" dir="ltr" className={cn(inter.variable)} suppressHydrationWarning>
       <head>
@@ -133,8 +136,10 @@ export default async function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="mobile-web-app-capable" content="yes" />
         <meta name="msapplication-TileColor" content="#0B1220" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
+        {nonce ? <meta name="csp-nonce" content={nonce} /> : null}
         
         {/* Preconnect to external domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -145,6 +150,7 @@ export default async function RootLayout({
         <link rel="dns-prefetch" href="//www.googletagmanager.com" />
       </head>
       <body className={cn('min-h-screen bg-bg text-text antialiased')}>
+        <NonceProvider nonce={nonce}>
           <QueryProvider>
             {/* SEO and Performance Optimizations */}
             <PerformanceOptimizations />
@@ -162,8 +168,9 @@ export default async function RootLayout({
             {children}
             
             <Toaster />
-            {/* <Analytics /> */}
+            <Analytics />
           </QueryProvider>
+        </NonceProvider>
       </body>
     </html>
   );
