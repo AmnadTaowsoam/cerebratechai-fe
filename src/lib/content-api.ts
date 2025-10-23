@@ -9,7 +9,7 @@ import {
   caseStudies 
 } from '@/data/content';
 
-const CONTENT_API_URL = process.env.NEXT_PUBLIC_CONTENT_API_URL || 'http://localhost:3001/api/content';
+const CONTENT_API_URL = process.env.NEXT_PUBLIC_CONTENT_API_URL || 'https://contact-service-production.up.railway.app/api/content';
 
 // Types
 export type LocaleValue = {
