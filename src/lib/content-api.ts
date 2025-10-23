@@ -55,11 +55,20 @@ export type HeroStat = {
 };
 
 // API fetch with fallback
+const DISABLED_REMOTE_ENDPOINTS = new Set(['/value-cards', '/process-steps']);
+
 async function fetchWithFallback<T>(
   endpoint: string,
   fallbackData: T,
   options?: RequestInit
 ): Promise<T> {
+  if (DISABLED_REMOTE_ENDPOINTS.has(endpoint)) {
+    if (process.env.NODE_ENV !== 'production') {
+      console.log(`Skipping remote fetch for ${endpoint}; using bundled fallback data`);
+    }
+    return fallbackData;
+  }
+
   // In development mode, always use fallback data to avoid connection errors
   if (process.env.NODE_ENV === 'development') {
     console.log(`Using fallback data for ${endpoint} in development mode`);
