@@ -19,31 +19,9 @@ export async function POST(request: NextRequest) {
     // Generate request ID for tracking
     const requestId = `req_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 
-    // Check if service is available by testing health endpoint first
-    try {
-      const healthCheck = await fetch(`${contactServiceUrl}/health`, {
-        method: 'GET',
-        signal: AbortSignal.timeout(5000), // 5 second timeout
-      });
-      
-      if (!healthCheck.ok) {
-        throw new Error(`Service health check failed with status ${healthCheck.status}`);
-      }
-    } catch (healthError) {
-      console.error('Contact service health check failed:', {
-        url: `${contactServiceUrl}/health`,
-        error: healthError instanceof Error ? healthError.message : 'Unknown error',
-      });
-      
-      throw new Error(
-        `Contact service is not available. Please check Railway deployment. Service URL: ${contactServiceUrl}`
-      );
-    }
-
-    // Log for debugging (remove in production)
+    // Log for debugging
     console.log('Sending to contact service:', {
       url: `${contactServiceUrl}/api/contact`,
-      data: validatedData,
     });
 
     let response: Response;
