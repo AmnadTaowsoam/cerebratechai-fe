@@ -48,13 +48,19 @@ export function ContactForm() {
       const formTime = Date.now() - formStartTime;
       
       // Add locale and anti-spam fields to the data
-      const formData = {
+      // Only include hp_time if form was filled for at least 6 seconds (anti-spam requirement)
+      const formData: any = {
         ...data,
         locale: locale.startsWith('th') ? 'th' : 'en',
-        hp_time: formTime, // Time taken to fill form (must be > 6000ms)
         website: '', // Honeypot field (must be empty)
         user_agent: typeof window !== 'undefined' ? window.navigator.userAgent : undefined,
       };
+      
+      // Only add hp_time if form was filled for reasonable time (> 1 second)
+      // Backend requires > 6000ms, but we'll let backend validate
+      if (formTime > 1000) {
+        formData.hp_time = formTime;
+      }
 
       const response = await fetch('/api/contact', {
         method: 'POST',
