@@ -19,21 +19,55 @@ export async function POST(request: NextRequest) {
     // Generate request ID for tracking
     const requestId = `req_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 
+    // Check if service is available by testing health endpoint first
+    try {
+      const healthCheck = await fetch(`${contactServiceUrl}/health`, {
+        method: 'GET',
+        signal: AbortSignal.timeout(5000), // 5 second timeout
+      });
+      
+      if (!healthCheck.ok) {
+        throw new Error(`Service health check failed with status ${healthCheck.status}`);
+      }
+    } catch (healthError) {
+      console.error('Contact service health check failed:', {
+        url: `${contactServiceUrl}/health`,
+        error: healthError instanceof Error ? healthError.message : 'Unknown error',
+      });
+      
+      throw new Error(
+        `Contact service is not available. Please check Railway deployment. Service URL: ${contactServiceUrl}`
+      );
+    }
+
     // Log for debugging (remove in production)
     console.log('Sending to contact service:', {
       url: `${contactServiceUrl}/api/contact`,
       data: validatedData,
     });
 
-    const response = await fetch(`${contactServiceUrl}/api/contact`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-API-Key': apiKey,
-        'X-Request-ID': requestId,
-      },
-      body: JSON.stringify(validatedData),
-    });
+    let response: Response;
+    try {
+      response = await fetch(`${contactServiceUrl}/api/contact`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-API-Key': apiKey,
+          'X-Request-ID': requestId,
+        },
+        body: JSON.stringify(validatedData),
+      });
+    } catch (fetchError) {
+      // Handle network errors (e.g., Railway service down, wrong URL)
+      console.error('Failed to connect to contact service:', {
+        url: `${contactServiceUrl}/api/contact`,
+        error: fetchError instanceof Error ? fetchError.message : 'Unknown error',
+      });
+      
+      throw new Error(
+        `Cannot connect to contact service. Please check that the service is running at ${contactServiceUrl}`
+      );
+    }
 
     if (!response.ok) {
       const errorText = await response.text();
