@@ -8,7 +8,7 @@ export async function POST(request: NextRequest) {
     const validatedData = ContactFormSchema.parse(body);
 
     // Send to contact service
-    const contactServiceUrl = process.env.CONTACT_SERVICE_URL || 'https://cerebratechai-production.up.railway.app';
+    const contactServiceUrl = process.env.CONTACT_SERVICE_URL || 'https://contact-service-production.up.railway.app';
     const apiKey = process.env.CONTACT_API_KEY || '764d0f97752fe6df432ccd0e4bd81d54f83f86fed9e40e326a90c58de54cdf0b';
 
     const response = await fetch(`${contactServiceUrl}/api/contact`, {
@@ -21,7 +21,18 @@ export async function POST(request: NextRequest) {
     });
 
     if (!response.ok) {
-      throw new Error(`Contact service returned ${response.status}`);
+      const errorText = await response.text();
+      let errorMessage = `Contact service returned ${response.status}`;
+      try {
+        const errorJson = JSON.parse(errorText);
+        errorMessage = errorJson.message || errorJson.error || errorMessage;
+        if (errorJson.details) {
+          errorMessage += `: ${JSON.stringify(errorJson.details)}`;
+        }
+      } catch {
+        errorMessage = errorText || errorMessage;
+      }
+      throw new Error(errorMessage);
     }
 
     const result = await response.json();
