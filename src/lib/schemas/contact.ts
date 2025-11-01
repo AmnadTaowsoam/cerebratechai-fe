@@ -14,6 +14,9 @@ export const ContactFormSchema = z.object({
   // Honeypot field - should remain empty
   website: z.string().max(0).optional(),
   locale: z.enum(['th', 'en']).optional(),
+  // Anti-spam fields
+  hp_time: z.number().optional(),
+  user_agent: z.string().optional(),
 });
 
 export type ContactFormData = z.infer<typeof ContactFormSchema>;

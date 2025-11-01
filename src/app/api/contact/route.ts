@@ -5,17 +5,32 @@ import { apiClient } from '@/lib/api-client';
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const validatedData = ContactFormSchema.parse(body);
+    // Ensure website field is empty string if not provided (honeypot field)
+    const formData = {
+      ...body,
+      website: body.website || '',
+    };
+    const validatedData = ContactFormSchema.parse(formData);
 
     // Send to contact service
     const contactServiceUrl = process.env.CONTACT_SERVICE_URL || 'https://contact-service-production.up.railway.app';
     const apiKey = process.env.CONTACT_API_KEY || '764d0f97752fe6df432ccd0e4bd81d54f83f86fed9e40e326a90c58de54cdf0b';
+    
+    // Generate request ID for tracking
+    const requestId = `req_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+
+    // Log for debugging (remove in production)
+    console.log('Sending to contact service:', {
+      url: `${contactServiceUrl}/api/contact`,
+      data: validatedData,
+    });
 
     const response = await fetch(`${contactServiceUrl}/api/contact`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'X-API-Key': apiKey,
+        'X-Request-ID': requestId,
       },
       body: JSON.stringify(validatedData),
     });

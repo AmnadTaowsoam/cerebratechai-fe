@@ -19,6 +19,7 @@ import { budgetRanges, timelineTargets } from '@/data/home';
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [formStartTime] = useState(Date.now()); // Track form start time for anti-spam
   const locale = useLocale();
   const isThai = locale.startsWith('th');
   // const t = useTranslations('form');
@@ -43,10 +44,16 @@ export function ContactForm() {
     trackFormSubmit('contact-form', 'contact');
 
     try {
-      // Add locale to the data
+      // Calculate time taken to fill form (anti-spam)
+      const formTime = Date.now() - formStartTime;
+      
+      // Add locale and anti-spam fields to the data
       const formData = {
         ...data,
         locale: locale.startsWith('th') ? 'th' : 'en',
+        hp_time: formTime, // Time taken to fill form (must be > 6000ms)
+        website: '', // Honeypot field (must be empty)
+        user_agent: typeof window !== 'undefined' ? window.navigator.userAgent : undefined,
       };
 
       const response = await fetch('/api/contact', {
