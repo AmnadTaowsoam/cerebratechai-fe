@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
     const validatedData = ContactFormSchema.parse(formData);
 
     // Send to contact service
-    const contactServiceUrl = process.env.CONTACT_SERVICE_URL || 'https://contact-service-production.up.railway.app';
+    const contactServiceUrl = process.env.CONTACT_SERVICE_URL || 'https://cerebratechai-production.up.railway.app';
     const apiKey = process.env.CONTACT_API_KEY || '764d0f97752fe6df432ccd0e4bd81d54f83f86fed9e40e326a90c58de54cdf0b';
     
     // Generate request ID for tracking
