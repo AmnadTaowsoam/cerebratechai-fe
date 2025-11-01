@@ -43,12 +43,18 @@ export function ContactForm() {
     trackFormSubmit('contact-form', 'contact');
 
     try {
+      // Add locale to the data
+      const formData = {
+        ...data,
+        locale: locale.startsWith('th') ? 'th' : 'en',
+      };
+
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(formData),
       });
 
       const result = await response.json();
