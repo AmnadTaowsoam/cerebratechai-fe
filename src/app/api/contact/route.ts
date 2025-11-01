@@ -38,15 +38,30 @@ export async function POST(request: NextRequest) {
     if (!response.ok) {
       const errorText = await response.text();
       let errorMessage = `Contact service returned ${response.status}`;
+      let errorDetails: any = null;
+      
       try {
         const errorJson = JSON.parse(errorText);
         errorMessage = errorJson.message || errorJson.error || errorMessage;
+        errorDetails = errorJson.details || errorJson;
+        
+        // Log detailed error for debugging
+        console.error('Backend validation error:', {
+          status: response.status,
+          error: errorJson.error,
+          message: errorJson.message,
+          details: errorJson.details,
+          fullResponse: errorJson,
+        });
+        
         if (errorJson.details) {
           errorMessage += `: ${JSON.stringify(errorJson.details)}`;
         }
       } catch {
         errorMessage = errorText || errorMessage;
+        console.error('Backend error (non-JSON):', errorText);
       }
+      
       throw new Error(errorMessage);
     }
 

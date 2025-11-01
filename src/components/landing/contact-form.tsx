@@ -76,16 +76,24 @@ export function ContactForm() {
         setIsSuccess(true);
         reset();
         toast('success', {
-          title: 'Success!',
-          description: 'Your message has been sent successfully. We\u2019ll get back to you soon.',
+          title: isThai ? 'สำเร็จ!' : 'Success!',
+          description: isThai 
+            ? 'ข้อความของคุณถูกส่งเรียบร้อยแล้ว เราจะติดต่อกลับภายใน 24 ชั่วโมง'
+            : 'Your message has been sent successfully. We\'ll get back to you within 24 hours.',
         });
       } else {
         throw new Error(result.message || 'Failed to send message');
       }
     } catch (error) {
+      // Show detailed error message
+      const errorMessage = error instanceof Error ? error.message : 'Failed to send message. Please try again.';
+      console.error('Contact form submission error:', error);
+      
       toast('error', {
-        title: 'Error',
-        description: error instanceof Error ? error.message : 'Failed to send message. Please try again.',
+        title: isThai ? 'เกิดข้อผิดพลาด' : 'Error',
+        description: errorMessage.length > 150 
+          ? `${errorMessage.substring(0, 150)}...` 
+          : errorMessage,
       });
     } finally {
       setIsSubmitting(false);
