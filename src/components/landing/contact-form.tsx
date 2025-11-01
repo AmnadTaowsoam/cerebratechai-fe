@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useLocale, useTranslations } from 'next-intl';
 import { ContactFormSchema, ContactFormData } from '@/lib/schemas/contact';
@@ -28,10 +28,14 @@ export function ContactForm() {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
     reset,
   } = useForm<ContactFormData>({
     resolver: zodResolver(ContactFormSchema),
+    defaultValues: {
+      consent: false,
+    },
   });
 
   const onSubmit = async (data: ContactFormData) => {
@@ -174,15 +178,22 @@ export function ContactForm() {
           </div>
 
           <div className="flex items-start space-x-2">
-            <Checkbox
-              id="consent"
-              {...register('consent')}
-              className={errors.consent ? 'border-red-500' : ''}
+            <Controller
+              name="consent"
+              control={control}
+              render={({ field }) => (
+                <Checkbox
+                  id="consent"
+                  checked={field.value}
+                  onCheckedChange={(checked) => field.onChange(checked === true)}
+                  className={errors.consent ? 'border-red-500' : ''}
+                />
+              )}
             />
             <div className="space-y-1">
-                      <Label htmlFor="consent" className="text-sm text-text-muted">
-                        {isThai ? 'ยินยอมให้ติดต่อกลับ' : 'I consent to Cerebratechai contacting me'} *
-                      </Label>
+              <Label htmlFor="consent" className="text-sm text-text-muted">
+                {isThai ? 'ยินยอมให้ติดต่อกลับ' : 'I consent to Cerebratechai contacting me'} *
+              </Label>
               {errors.consent && (
                 <p className="text-sm text-red-500">{errors.consent.message}</p>
               )}
