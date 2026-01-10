@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, ArrowRight, Clock, Layers, Sparkles } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Clock, Layers, Sparkles, CheckCircle2 } from 'lucide-react';
 
 import { AnimatedGradientText, MagicHero, Particles, ShimmerButton } from '@/components/magicui';
 import { Card, CardContent } from '@/components/ui/card';
 import { services, getLocalized } from '@/data/content';
+import { CASES } from '@/data/cases';
 
 type ServicePageProps = {
   params: { locale: string; slug: string };
@@ -51,6 +52,22 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
   const featureLabel = locale === 'th' ? 'คุณสมบัติเด่น' : 'Highlights';
   const techLabel = locale === 'th' ? 'เทคโนโลยี' : 'Tech stack';
 
+  // Get solution family mapping for related cases
+  const solutionFamilyMap: Record<string, string[]> = {
+    llm: ['LLM & RAG', 'Knowledge Management'],
+    cv: ['Computer Vision', 'Quality Inspection'],
+    ml: ['Predictive Analytics', 'Machine Learning'],
+    aiot: ['Edge AI', 'IoT', 'AIoT'],
+    platform: ['MLOps', 'Data Platform'],
+    analytics: ['Analytics', 'Data Visualization']
+  };
+
+  const relatedCases = CASES.filter(caseItem =>
+    caseItem.solutionFamily.some(family =>
+      solutionFamilyMap[service.category]?.some(sf => family.includes(sf))
+    )
+  ).slice(0, 3);
+
   return (
     <div className="bg-bg">
       <MagicHero
@@ -71,8 +88,8 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
             label: timelineLabel,
           },
           {
-            value: `฿${service.pricing.starting.toLocaleString('en-US')}`,
-            label: locale === 'th' ? 'ราคาเริ่มต้น' : 'Starting at',
+            value: service.category === 'llm' || service.category === 'cv' || service.category === 'ml' || service.category === 'aiot' ? 'AI Core' : 'Accelerator',
+            label: locale === 'th' ? 'ประเภท' : 'Type',
           },
           {
             value: `${service.deliverables.length}`,
@@ -207,6 +224,223 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
               </CardContent>
             </Card>
           </div>
+
+          {/* Use Cases Section */}
+          <div className="mt-16">
+            <h2 className="text-2xl font-bold text-text mb-8 text-center">
+              {locale === 'th' ? 'กรณีการใช้งาน' : 'Common Use Cases'}
+            </h2>
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {service.category === 'llm' && (
+                <>
+                  <Card className="border border-white/10 bg-surface/80 backdrop-blur">
+                    <CardContent className="p-6">
+                      <h3 className="font-semibold text-text mb-3">
+                        {locale === 'th' ? 'ผู้ช่วยความรู้ภายในองค์กร' : 'Internal Knowledge Assistant'}
+                      </h3>
+                      <p className="text-sm text-text-muted mb-4">
+                        {locale === 'th'
+                          ? 'ช่วยพนักงานค้นหาข้อมูลและนโยบายภายในองค์กรได้รวดเร็ว'
+                          : 'Help employees quickly find internal information and policies'
+                        }
+                      </p>
+                      <div className="flex items-center gap-2 text-xs text-primary">
+                        <CheckCircle2 className="h-4 w-4" />
+                        <span>{locale === 'th' ? 'ลดเวลาค้นหาข้อมูล 70%' : '70% faster information retrieval'}</span>
+                      </div>
+                    </CardContent>
+                  </Card>
+                  <Card className="border border-white/10 bg-surface/80 backdrop-blur">
+                    <CardContent className="p-6">
+                      <h3 className="font-semibold text-text mb-3">
+                        {locale === 'th' ? 'Customer Support Chatbot' : 'Customer Support Chatbot'}
+                      </h3>
+                      <p className="text-sm text-text-muted mb-4">
+                        {locale === 'th'
+                          ? 'ตอบคำถามลูกค้าอัตโนมัติ 24/7 ด้วยความแม่นยำสูง'
+                          : 'Automatically answer customer questions 24/7 with high accuracy'
+                        }
+                      </p>
+                      <div className="flex items-center gap-2 text-xs text-primary">
+                        <CheckCircle2 className="h-4 w-4" />
+                        <span>{locale === 'th' ? 'ลดภาระ support 60%' : '60% reduction in support load'}</span>
+                      </div>
+                    </CardContent>
+                  </Card>
+                  <Card className="border border-white/10 bg-surface/80 backdrop-blur">
+                    <CardContent className="p-6">
+                      <h3 className="font-semibold text-text mb-3">
+                        {locale === 'th' ? 'Document Intelligence' : 'Document Intelligence'}
+                      </h3>
+                      <p className="text-sm text-text-muted mb-4">
+                        {locale === 'th'
+                          ? 'วิเคราะห์และสรุปเอกสารจำนวนมากได้อย่างรวดเร็ว'
+                          : 'Analyze and summarize large volumes of documents quickly'
+                        }
+                      </p>
+                      <div className="flex items-center gap-2 text-xs text-primary">
+                        <CheckCircle2 className="h-4 w-4" />
+                        <span>{locale === 'th' ? 'ประหยัดเวลา 80%' : '80% time savings'}</span>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </>
+              )}
+              {service.category === 'cv' && (
+                <>
+                  <Card className="border border-white/10 bg-surface/80 backdrop-blur">
+                    <CardContent className="p-6">
+                      <h3 className="font-semibold text-text mb-3">
+                        {locale === 'th' ? 'Quality Inspection' : 'Quality Inspection'}
+                      </h3>
+                      <p className="text-sm text-text-muted mb-4">
+                        {locale === 'th'
+                          ? 'ตรวจจับข้อบกพร่องในสายการผลิตอัตโนมัติ'
+                          : 'Automatically detect defects in production lines'
+                        }
+                      </p>
+                      <div className="flex items-center gap-2 text-xs text-primary">
+                        <CheckCircle2 className="h-4 w-4" />
+                        <span>{locale === 'th' ? 'ความแม่นยำ 99%+' : '99%+ accuracy'}</span>
+                      </div>
+                    </CardContent>
+                  </Card>
+                  <Card className="border border-white/10 bg-surface/80 backdrop-blur">
+                    <CardContent className="p-6">
+                      <h3 className="font-semibold text-text mb-3">
+                        {locale === 'th' ? 'Object Detection' : 'Object Detection'}
+                      </h3>
+                      <p className="text-sm text-text-muted mb-4">
+                        {locale === 'th'
+                          ? 'ตรวจจับและนับวัตถุอัตโนมัติจากภาพหรือวิดีโอ'
+                          : 'Detect and count objects automatically from images or videos'
+                        }
+                      </p>
+                      <div className="flex items-center gap-2 text-xs text-primary">
+                        <CheckCircle2 className="h-4 w-4" />
+                        <span>{locale === 'th' ? 'เรียลไทม์' : 'Real-time processing'}</span>
+                      </div>
+                    </CardContent>
+                  </Card>
+                  <Card className="border border-white/10 bg-surface/80 backdrop-blur">
+                    <CardContent className="p-6">
+                      <h3 className="font-semibold text-text mb-3">
+                        {locale === 'th' ? 'OCR & Document Processing' : 'OCR & Document Processing'}
+                      </h3>
+                      <p className="text-sm text-text-muted mb-4">
+                        {locale === 'th'
+                          ? 'แปลงเอกสารกระดาษเป็นข้อมูลดิจิทัล'
+                          : 'Convert paper documents to digital data'
+                        }
+                      </p>
+                      <div className="flex items-center gap-2 text-xs text-primary">
+                        <CheckCircle2 className="h-4 w-4" />
+                        <span>{locale === 'th' ? 'รองรับภาษาไทย' : 'Thai language support'}</span>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </>
+              )}
+              {(service.category === 'ml' || service.category === 'analytics') && (
+                <>
+                  <Card className="border border-white/10 bg-surface/80 backdrop-blur">
+                    <CardContent className="p-6">
+                      <h3 className="font-semibold text-text mb-3">
+                        {locale === 'th' ? 'Demand Forecasting' : 'Demand Forecasting'}
+                      </h3>
+                      <p className="text-sm text-text-muted mb-4">
+                        {locale === 'th'
+                          ? 'พยากรณ์ความต้องการสินค้าและบริการ'
+                          : 'Forecast product and service demand'
+                        }
+                      </p>
+                      <div className="flex items-center gap-2 text-xs text-primary">
+                        <CheckCircle2 className="h-4 w-4" />
+                        <span>{locale === 'th' ? 'ลด stockout 40%' : '40% reduction in stockouts'}</span>
+                      </div>
+                    </CardContent>
+                  </Card>
+                  <Card className="border border-white/10 bg-surface/80 backdrop-blur">
+                    <CardContent className="p-6">
+                      <h3 className="font-semibold text-text mb-3">
+                        {locale === 'th' ? 'Predictive Maintenance' : 'Predictive Maintenance'}
+                      </h3>
+                      <p className="text-sm text-text-muted mb-4">
+                        {locale === 'th'
+                          ? 'คาดการณ์การชำรุดของเครื่องจักรก่อนเกิด'
+                          : 'Predict equipment failures before they occur'
+                        }
+                      </p>
+                      <div className="flex items-center gap-2 text-xs text-primary">
+                        <CheckCircle2 className="h-4 w-4" />
+                        <span>{locale === 'th' ? 'ลดค่าบำรุง 30%' : '30% maintenance cost reduction'}</span>
+                      </div>
+                    </CardContent>
+                  </Card>
+                  <Card className="border border-white/10 bg-surface/80 backdrop-blur">
+                    <CardContent className="p-6">
+                      <h3 className="font-semibold text-text mb-3">
+                        {locale === 'th' ? 'Anomaly Detection' : 'Anomaly Detection'}
+                      </h3>
+                      <p className="text-sm text-text-muted mb-4">
+                        {locale === 'th'
+                          ? 'ตรวจจับความผิดปกติในข้อมูลและกระบวนการ'
+                          : 'Detect anomalies in data and processes'
+                        }
+                      </p>
+                      <div className="flex items-center gap-2 text-xs text-primary">
+                        <CheckCircle2 className="h-4 w-4" />
+                        <span>{locale === 'th' ? 'ตรวจจับเรียลไทม์' : 'Real-time detection'}</span>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </>
+              )}
+            </div>
+          </div>
+
+          {/* Related Case Studies */}
+          {relatedCases.length > 0 && (
+            <div className="mt-16">
+              <h2 className="text-2xl font-bold text-text mb-8 text-center">
+                {locale === 'th' ? 'กรณีศึกษาที่เกี่ยวข้อง' : 'Related Case Studies'}
+              </h2>
+              <div className="grid gap-6 md:grid-cols-3">
+                {relatedCases.map((caseItem) => (
+                  <Card key={caseItem.slug} className="border border-white/10 bg-surface/80 backdrop-blur hover:shadow-xl transition-all group">
+                    <CardContent className="p-6">
+                      <div className="mb-4">
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary/20 text-primary">
+                          {caseItem.sector}
+                        </span>
+                      </div>
+                      <h3 className="text-lg font-semibold text-text mb-2 group-hover:text-primary transition-colors">
+                        {caseItem.title}
+                      </h3>
+                      <p className="text-sm text-text-muted mb-4 line-clamp-2">
+                        {caseItem.subtitle}
+                      </p>
+                      <div className="grid grid-cols-2 gap-3 mb-4">
+                        {caseItem.outcomes.slice(0, 2).map((outcome, idx) => (
+                          <div key={idx} className="text-center p-2 rounded-lg bg-primary/10">
+                            <div className="text-lg font-bold text-primary">{outcome.value}</div>
+                            <div className="text-xs text-text-muted">{outcome.label}</div>
+                          </div>
+                        ))}
+                      </div>
+                      <Link
+                        href={`/${locale}/cases/${caseItem.slug}`}
+                        className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
+                      >
+                        {locale === 'th' ? 'อ่านเพิ่มเติม' : 'Read more'}
+                        <ArrowRight className="h-4 w-4" />
+                      </Link>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </section>
     </div>
