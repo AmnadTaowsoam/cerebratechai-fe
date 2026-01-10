@@ -81,6 +81,7 @@ export function Header() {
       dropdown: [
         { name: 'About Us', href: `${basePath}/about` },
         { name: 'How We Work', href: `${basePath}/how-we-work` },
+        { name: 'Trust & Security', href: `${basePath}/trust` },
         { name: 'Careers', href: `${basePath}/careers` },
         { name: 'Partners', href: `${basePath}/partners` },
       ]

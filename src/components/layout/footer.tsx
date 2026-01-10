@@ -34,29 +34,33 @@ export function Footer() {
   ];
 
   const legalLinks = [
-    { 
-      name: locale.startsWith('th') ? 'นโยบายความเป็นส่วนตัว' : 'Privacy Policy', 
-      href: `${basePath}/legal/privacy` 
+    {
+      name: locale.startsWith('th') ? 'ความปลอดภัย & ความน่าเชื่อถือ' : 'Trust & Security',
+      href: `${basePath}/trust`
     },
-    { 
-      name: locale.startsWith('th') ? 'เงื่อนไขการใช้งาน' : 'Terms of Service', 
-      href: `${basePath}/legal/terms` 
+    {
+      name: locale.startsWith('th') ? 'นโยบายความเป็นส่วนตัว' : 'Privacy Policy',
+      href: `${basePath}/legal/privacy`
     },
-    { 
-      name: locale.startsWith('th') ? 'นโยบายคุกกี้' : 'Cookie Policy', 
-      href: `${basePath}/legal/cookies` 
+    {
+      name: locale.startsWith('th') ? 'เงื่อนไขการใช้งาน' : 'Terms of Service',
+      href: `${basePath}/legal/terms`
     },
-    { 
-      name: locale.startsWith('th') ? 'นโยบายการคืนเงิน' : 'Refund Policy', 
-      href: `${basePath}/legal/refund` 
+    {
+      name: locale.startsWith('th') ? 'นโยบายคุกกี้' : 'Cookie Policy',
+      href: `${basePath}/legal/cookies`
     },
-    { 
-      name: locale.startsWith('th') ? 'ข้อจำกัดความรับผิดชอบ' : 'Disclaimer', 
-      href: `${basePath}/legal/disclaimer` 
+    {
+      name: locale.startsWith('th') ? 'นโยบายการคืนเงิน' : 'Refund Policy',
+      href: `${basePath}/legal/refund`
     },
-    { 
-      name: 'PDPA', 
-      href: `${basePath}/legal/pdpa` 
+    {
+      name: locale.startsWith('th') ? 'ข้อจำกัดความรับผิดชอบ' : 'Disclaimer',
+      href: `${basePath}/legal/disclaimer`
+    },
+    {
+      name: 'PDPA',
+      href: `${basePath}/legal/pdpa`
     },
   ];
 
