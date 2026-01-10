@@ -8,6 +8,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import TLDRBlock from '@/components/TLDRBlock';
 import KeyFactsBlock from '@/components/KeyFactsBlock';
 import { ArticleSchema } from '@/components/seo';
+import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { CASES, getCaseBySlug } from '@/data/cases';
 
 type CasePageProps = {
@@ -89,9 +90,19 @@ export default async function CaseDetailPage({ params }: CasePageProps) {
     item.solutionFamily.some(family => caseItem.solutionFamily.includes(family))
   ).slice(0, 3);
 
+  const breadcrumbItems = [
+    { label: t('กรณีศึกษา', 'Case Studies'), href: `${basePath}/cases` },
+    { label: caseItem.title },
+  ];
+
   return (
     <div className="bg-bg">
       <ArticleSchema headline={caseItem.title} articleBody={caseItem.subtitle || caseItem.challenge} author="CerebraTechAI" />
+
+      <div className="container mx-auto px-6 pt-6">
+        <Breadcrumbs items={breadcrumbItems} />
+      </div>
+
       <MagicHero
         eyebrow={
           <Link
