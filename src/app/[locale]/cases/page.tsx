@@ -109,6 +109,50 @@ export default function CasesPage({ params }: CasesPageProps) {
         align="center"
       />
 
+      {/* Similar Challenges Section */}
+      <section className="py-16 bg-surface/30">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto text-center mb-12">
+            <h2 className="text-2xl font-bold text-text mb-4">
+              {isThai ? 'เผชิญกับความท้าทายคล้ายกันหรือไม่?' : 'Facing Similar Challenges?'}
+            </h2>
+            <p className="text-text-muted">
+              {isThai
+                ? 'ดูว่าเราช่วยองค์กรอื่นๆ แก้ปัญหาที่คล้ายกับคุณอย่างไร ใช้ตัวกรองด้านล่างเพื่อค้นหากรณีศึกษาที่ตรงกับความต้องการของคุณ'
+                : 'See how we have helped other organizations solve challenges similar to yours. Use filters below to find case studies that match your needs.'
+              }
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3 max-w-5xl mx-auto">
+            <div className="rounded-2xl border border-white/10 bg-surface/80 p-6 text-center">
+              <div className="text-3xl font-bold text-primary mb-2">
+                {isThai ? 'ลดต้นทุน' : 'Cost Reduction'}
+              </div>
+              <p className="text-sm text-text-muted">
+                {isThai ? 'ค้นหากรณีที่ช่วยลดต้นทุนการดำเนินงาน' : 'Find cases that reduced operational costs'}
+              </p>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-surface/80 p-6 text-center">
+              <div className="text-3xl font-bold text-accent mb-2">
+                {isThai ? 'เพิ่มประสิทธิภาพ' : 'Efficiency Gains'}
+              </div>
+              <p className="text-sm text-text-muted">
+                {isThai ? 'ดูวิธีปรับปรุงกระบวนการทำงาน' : 'See how processes were improved'}
+              </p>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-surface/80 p-6 text-center">
+              <div className="text-3xl font-bold text-primary mb-2">
+                {isThai ? 'Scale ธุรกิจ' : 'Business Growth'}
+              </div>
+              <p className="text-sm text-text-muted">
+                {isThai ? 'เรียนรู้วิธี Scale ธุรกิจด้วย AI' : 'Learn how AI enabled growth'}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Filters */}
       <CaseFilters locale={locale} onFilterChange={handleFilterChange} />
 

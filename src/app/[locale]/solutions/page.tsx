@@ -64,7 +64,15 @@ export default function SolutionsPage({ params }: SolutionsPageProps) {
         align="center"
       />
 
-      <ServicesGrid showFilters />
+      {/* AI Core Solutions with Anchor Links */}
+      <div id="llm-rag" className="scroll-mt-20">
+        <ServicesGrid showFilters />
+      </div>
+
+      {/* Additional anchor points for navigation */}
+      <div id="computer-vision" className="scroll-mt-20" />
+      <div id="predictive-analytics" className="scroll-mt-20" />
+      <div id="edge-ai" className="scroll-mt-20" />
 
       <section className="relative py-16">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(79,70,229,0.12),_transparent_60%)]" />

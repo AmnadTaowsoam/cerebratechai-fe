@@ -94,11 +94,83 @@ export default function PricingPage() {
         }
         align="center"
         metrics={[
-          { value: '295+', label: locale.startsWith('th') ? 'โครงการ' : 'Projects' },
-          { value: '98%', label: locale.startsWith('th') ? 'อัตราความสำเร็จ' : 'Success Rate' },
-          { value: '450%', label: locale.startsWith('th') ? 'ROI เฉลี่ย' : 'Average ROI' }
+          { value: '฿95K-฿2.5M', label: locale.startsWith('th') ? 'ช่วงราคา' : 'Price Range' },
+          { value: '4-24', label: locale.startsWith('th') ? 'สัปดาห์' : 'Weeks' },
+          { value: 'Fixed', label: locale.startsWith('th') ? 'ราคาคงที่' : 'Fixed Price' }
         ]}
       />
+
+      {/* Pricing Model Explanation */}
+      <section className="py-16 bg-surface/30">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl font-bold text-text mb-6 text-center">
+              {locale.startsWith('th') ? 'โมเดลการกำหนดราคาของเรา' : 'Our Pricing Model'}
+            </h2>
+            <div className="grid gap-6 md:grid-cols-3 mb-8">
+              <div className="rounded-2xl border border-white/10 bg-surface/80 p-6 text-center">
+                <div className="text-3xl font-bold text-primary mb-2">Fixed Price</div>
+                <h3 className="font-semibold text-text mb-2">
+                  {locale.startsWith('th') ? 'ราคาคงที่' : 'Fixed Price'}
+                </h3>
+                <p className="text-sm text-text-muted">
+                  {locale.startsWith('th')
+                    ? 'ไม่มีค่าใช้จ่ายซ่อนเร้น ราคาที่เห็นคือราคาที่จ่าย'
+                    : 'No hidden costs. What you see is what you pay.'
+                  }
+                </p>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-surface/80 p-6 text-center">
+                <div className="text-3xl font-bold text-accent mb-2">Transparent</div>
+                <h3 className="font-semibold text-text mb-2">
+                  {locale.startsWith('th') ? 'โปร่งใส' : 'Transparent'}
+                </h3>
+                <p className="text-sm text-text-muted">
+                  {locale.startsWith('th')
+                    ? 'ทุกอย่างรวมอยู่ในราคา ไม่มีค่าเพิ่มเติม'
+                    : 'Everything included in the price. No add-ons required.'
+                  }
+                </p>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-surface/80 p-6 text-center">
+                <div className="text-3xl font-bold text-primary mb-2">Value-based</div>
+                <h3 className="font-semibold text-text mb-2">
+                  {locale.startsWith('th') ? 'มุ่งเน้นคุณค่า' : 'Value-based'}
+                </h3>
+                <p className="text-sm text-text-muted">
+                  {locale.startsWith('th')
+                    ? 'ราคาสะท้อนถึงคุณค่าที่คุณได้รับ ไม่ใช่แค่เวลาที่ใช้'
+                    : 'Pricing reflects the value you receive, not just time spent.'
+                  }
+                </p>
+              </div>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-surface/80 p-6">
+              <h3 className="font-semibold text-text mb-3">
+                {locale.startsWith('th') ? 'ราคารวมอะไรบ้าง?' : 'What\'s Included in the Price?'}
+              </h3>
+              <ul className="space-y-2 text-sm text-text-muted">
+                <li className="flex items-start gap-2">
+                  <span className="mt-1 h-2 w-2 rounded-full bg-primary flex-shrink-0" />
+                  <span>{locale.startsWith('th') ? 'ที่ปรึกษาผู้เชี่ยวชาญและนักวิทยาศาสตร์ข้อมูล' : 'Expert consultants and data scientists'}</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-1 h-2 w-2 rounded-full bg-primary flex-shrink-0" />
+                  <span>{locale.startsWith('th') ? 'การพัฒนาและการทดสอบ' : 'Development and testing'}</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-1 h-2 w-2 rounded-full bg-primary flex-shrink-0" />
+                  <span>{locale.startsWith('th') ? 'เอกสารและการฝึกอบรม' : 'Documentation and training'}</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-1 h-2 w-2 rounded-full bg-primary flex-shrink-0" />
+                  <span>{locale.startsWith('th') ? 'การ deploy และ handover' : 'Deployment and handover'}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Packages */}
       <section className="py-20">
@@ -108,7 +180,7 @@ export default function PricingPage() {
               {locale.startsWith('th') ? 'แพ็กเกจการใช้งาน AI' : 'AI Implementation Packages'}
             </h2>
             <p className="text-text-muted max-w-2xl mx-auto">
-              {locale.startsWith('th') 
+              {locale.startsWith('th')
                 ? 'เลือกแพ็กเกจที่เหมาะสมกับความต้องการและงบประมาณปัจจุบันของคุณ แพ็กเกจทั้งหมดรวมถึงความเชี่ยวชาญหลักและวิธีการที่ได้รับการพิสูจน์แล้ว'
                 : 'Choose the package that best fits your current needs and budget. All packages include our core expertise and proven methodologies.'
               }
@@ -136,27 +208,27 @@ export default function PricingPage() {
           
           <div className="grid gap-8 md:grid-cols-4">
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">295+</div>
+              <div className="text-3xl font-bold text-primary mb-2">9+</div>
               <div className="text-sm text-text-muted">
                 {locale.startsWith('th') ? 'โครงการที่ส่งมอบ' : 'Projects Delivered'}
               </div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-accent mb-2">98%</div>
+              <div className="text-3xl font-bold text-accent mb-2">4</div>
               <div className="text-sm text-text-muted">
-                {locale.startsWith('th') ? 'ความพึงพอใจของลูกค้า' : 'Client Satisfaction'}
+                {locale.startsWith('th') ? 'แพ็กเกจหลัก' : 'Core Packages'}
               </div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">450%</div>
+              <div className="text-3xl font-bold text-primary mb-2">100%</div>
               <div className="text-sm text-text-muted">
-                {locale.startsWith('th') ? 'ROI เฉลี่ย' : 'Average ROI'}
+                {locale.startsWith('th') ? 'ราคาคงที่' : 'Fixed Price'}
               </div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-accent mb-2">24/7</div>
+              <div className="text-3xl font-bold text-accent mb-2">Mon-Fri</div>
               <div className="text-sm text-text-muted">
-                {locale.startsWith('th') ? 'การสนับสนุนตลอด 24 ชั่วโมง' : 'Support Available'}
+                {locale.startsWith('th') ? '09:00-18:00' : '09:00-18:00'}
               </div>
             </div>
           </div>

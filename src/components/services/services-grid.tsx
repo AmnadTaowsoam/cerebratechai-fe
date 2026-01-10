@@ -64,7 +64,6 @@ export function ServicesGrid({ limit, showFilters = false }: ServicesGridProps) 
     ? 'โซลูชันแบบแพ็กเกจพร้อมส่งมอบ' 
     : 'Productized solutions ready to ship';
   const filterAllLabel = locale.startsWith('th') ? 'ทั้งหมด' : 'All';
-  const pricingLabel = locale.startsWith('th') ? 'เริ่มต้นที่' : 'Starting from';
   const timelineLabel = locale.startsWith('th') ? 'ระยะเวลา' : 'Timeline';
   const weeksLabel = locale.startsWith('th') ? 'สัปดาห์' : 'weeks';
   const viewSolutionLabel = locale.startsWith('th') ? 'ดูรายละเอียดโซลูชัน' : 'View solution';
@@ -163,10 +162,10 @@ export function ServicesGrid({ limit, showFilters = false }: ServicesGridProps) 
                   </ul>
                   <div className="mt-auto flex items-center justify-between rounded-2xl border border-white/5 bg-white/5 px-4 py-3 text-xs text-white/70">
                     <span>
-                      {pricingLabel} ฿{service.pricing.starting.toLocaleString('en-US')}
-                    </span>
-                    <span>
                       {timelineLabel} {service.timelineWeeks[0]}–{service.timelineWeeks[1]} {weeksLabel}
+                    </span>
+                    <span className="text-primary/80">
+                      {locale.startsWith('th') ? 'ดูรายละเอียด' : 'View details'}
                     </span>
                   </div>
                   <ShimmerButton asChild className="mt-4 justify-start gap-2 px-8 py-4 text-sm">

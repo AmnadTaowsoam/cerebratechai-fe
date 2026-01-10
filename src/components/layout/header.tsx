@@ -42,33 +42,47 @@ export function Header() {
   };
 
   const navigation = useMemo(() => [
-    { name: 'Home', href: `${basePath}` },
-    { name: 'Solutions', href: `${basePath}/solutions` },
-    { 
-      name: 'Packages', 
-      href: `${basePath}/packages`,
+    {
+      name: 'Solutions',
+      href: `${basePath}/solutions`,
       dropdown: [
-        { name: 'All Packages', href: `${basePath}/packages` },
-        { name: 'Pricing', href: `${basePath}/pricing` },
+        { name: 'All Solutions', href: `${basePath}/solutions` },
+        { name: 'LLM & RAG', href: `${basePath}/solutions#llm-rag` },
+        { name: 'Computer Vision', href: `${basePath}/solutions#computer-vision` },
+        { name: 'Predictive Analytics', href: `${basePath}/solutions#predictive-analytics` },
+        { name: 'Edge AI & IoT', href: `${basePath}/solutions#edge-ai` },
+      ]
+    },
+    {
+      name: 'Industries',
+      href: `${basePath}/industries`,
+      dropdown: [
+        { name: 'All Industries', href: `${basePath}/industries` },
+        { name: 'Manufacturing', href: `${basePath}/industries/manufacturing` },
+        { name: 'Healthcare', href: `${basePath}/industries/healthcare` },
+        { name: 'Logistics', href: `${basePath}/industries/logistics` },
+        { name: 'Enterprise', href: `${basePath}/industries/enterprise` },
       ]
     },
     { name: 'Case Studies', href: `${basePath}/cases` },
-    { 
-      name: 'Company', 
+    { name: 'Packages', href: `${basePath}/packages` },
+    {
+      name: 'Resources',
+      href: `${basePath}/resources`,
+      dropdown: [
+        { name: 'All Resources', href: `${basePath}/resources` },
+        { name: 'Blog', href: `${basePath}/blog` },
+        { name: 'Support', href: `${basePath}/support` },
+      ]
+    },
+    {
+      name: 'Company',
       href: `${basePath}/about`,
       dropdown: [
         { name: 'About Us', href: `${basePath}/about` },
+        { name: 'How We Work', href: `${basePath}/how-we-work` },
         { name: 'Careers', href: `${basePath}/careers` },
         { name: 'Partners', href: `${basePath}/partners` },
-        { name: 'News', href: `${basePath}/news` },
-      ]
-    },
-    { 
-      name: 'Resources', 
-      href: `${basePath}/resources`,
-      dropdown: [
-        { name: 'Blog', href: `${basePath}/blog` },
-        { name: 'Support', href: `${basePath}/support` },
       ]
     },
   ], [basePath]);

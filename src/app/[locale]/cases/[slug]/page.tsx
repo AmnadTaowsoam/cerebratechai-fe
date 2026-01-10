@@ -205,6 +205,43 @@ export default function CaseDetailPage({ params }: CaseDetailProps) {
                 </CardContent>
               </Card>
 
+              {/* Why This Matters */}
+              <Card className="border border-primary/30 bg-gradient-to-br from-primary/5 to-accent/5">
+                <CardContent className="p-8">
+                  <h2 className="text-xl font-semibold text-text mb-4">
+                    {isThai ? 'ทำไมเรื่องนี้ถึงสำคัญ' : 'Why This Matters'}
+                  </h2>
+                  <div className="space-y-4">
+                    <p className="text-text-muted leading-relaxed">
+                      {isThai
+                        ? 'ความท้าทายนี้เป็นปัญหาที่พบบ่อยในอุตสาหกรรม ' + caseItem.sector + ' หลายองค์กรเผชิญกับปัญหาคล้ายกันที่ส่งผลกระทบต่อ:'
+                        : 'This challenge is common in the ' + caseItem.sector + ' industry. Many organizations face similar issues that impact:'
+                      }
+                    </p>
+                    <ul className="space-y-3">
+                      <li className="flex items-start gap-3">
+                        <span className="mt-1 h-2 w-2 rounded-full bg-primary flex-shrink-0" />
+                        <span className="text-text-muted">
+                          {isThai ? 'ประสิทธิภาพการดำเนินงานและต้นทุน' : 'Operational efficiency and costs'}
+                        </span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="mt-1 h-2 w-2 rounded-full bg-primary flex-shrink-0" />
+                        <span className="text-text-muted">
+                          {isThai ? 'ความสามารถในการแข่งขันในตลาด' : 'Market competitiveness'}
+                        </span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="mt-1 h-2 w-2 rounded-full bg-primary flex-shrink-0" />
+                        <span className="text-text-muted">
+                          {isThai ? 'ความพึงพอใจของลูกค้าและคุณภาพการบริการ' : 'Customer satisfaction and service quality'}
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                </CardContent>
+              </Card>
+
               {/* Architecture */}
               <Card className="border border-hairline bg-surface">
                 <CardContent className="p-8">
@@ -247,19 +284,79 @@ export default function CaseDetailPage({ params }: CaseDetailProps) {
               <Card className="border border-hairline bg-surface">
                 <CardContent className="p-8">
                   <h2 className="text-xl font-semibold text-text mb-4">
-                    {isThai ? 'ผลกระทบ' : 'Impact'}
+                    {isThai ? 'ผลกระทบทางธุรกิจ' : 'Business Impact'}
                   </h2>
-                  <div className="grid gap-4 md:grid-cols-2">
-                    {caseItem.outcomes.map((outcome, index) => (
-                      <div key={index} className="p-4 rounded-lg bg-primary/10">
-                        <div className="text-2xl font-bold text-primary mb-1">
-                          {outcome.value}
+
+                  {/* Key Outcomes */}
+                  <div className="mb-6">
+                    <h3 className="text-sm font-semibold text-text mb-3 uppercase tracking-wider">
+                      {isThai ? 'ผลลัพธ์หลัก' : 'Key Outcomes'}
+                    </h3>
+                    <div className="grid gap-4 md:grid-cols-2">
+                      {caseItem.outcomes.map((outcome, index) => (
+                        <div key={index} className="p-4 rounded-lg bg-primary/10">
+                          <div className="text-2xl font-bold text-primary mb-1">
+                            {outcome.value}
+                          </div>
+                          <div className="text-sm text-text-muted">
+                            {outcome.label}
+                          </div>
                         </div>
-                        <div className="text-sm text-text-muted">
-                          {outcome.label}
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Business Benefits */}
+                  <div className="pt-6 border-t border-hairline">
+                    <h3 className="text-sm font-semibold text-text mb-4 uppercase tracking-wider">
+                      {isThai ? 'ประโยชน์ทางธุรกิจ' : 'Business Benefits'}
+                    </h3>
+                    <div className="grid gap-4 md:grid-cols-2">
+                      <div className="flex items-start gap-3">
+                        <span className="mt-1 h-2 w-2 rounded-full bg-accent flex-shrink-0" />
+                        <div>
+                          <div className="font-medium text-text text-sm mb-1">
+                            {isThai ? 'ลดต้นทุนการดำเนินงาน' : 'Reduced Operational Costs'}
+                          </div>
+                          <div className="text-xs text-text-muted">
+                            {isThai ? 'ประหยัดเวลาและทรัพยากร' : 'Time and resource savings'}
+                          </div>
                         </div>
                       </div>
-                    ))}
+                      <div className="flex items-start gap-3">
+                        <span className="mt-1 h-2 w-2 rounded-full bg-accent flex-shrink-0" />
+                        <div>
+                          <div className="font-medium text-text text-sm mb-1">
+                            {isThai ? 'เพิ่มความแม่นยำ' : 'Improved Accuracy'}
+                          </div>
+                          <div className="text-xs text-text-muted">
+                            {isThai ? 'ลดข้อผิดพลาดจากมนุษย์' : 'Reduced human errors'}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <span className="mt-1 h-2 w-2 rounded-full bg-accent flex-shrink-0" />
+                        <div>
+                          <div className="font-medium text-text text-sm mb-1">
+                            {isThai ? 'Scale ได้ง่าย' : 'Easy to Scale'}
+                          </div>
+                          <div className="text-xs text-text-muted">
+                            {isThai ? 'รองรับการเติบโตของธุรกิจ' : 'Supports business growth'}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <span className="mt-1 h-2 w-2 rounded-full bg-accent flex-shrink-0" />
+                        <div>
+                          <div className="font-medium text-text text-sm mb-1">
+                            {isThai ? 'ข้อมูลเชิงลึก' : 'Data-Driven Insights'}
+                          </div>
+                          <div className="text-xs text-text-muted">
+                            {isThai ? 'การตัดสินใจที่ดีขึ้น' : 'Better decision making'}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   
                   {caseItem.metricsFooter && (
