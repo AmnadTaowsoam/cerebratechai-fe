@@ -36,19 +36,28 @@ const copy = {
 } as const;
 
 type PackageParams = {
-  params: { locale: string; slug: string };
+  params: Promise<{ locale: string; slug: string }> | { locale: string; slug: string };
 };
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
   return Object.keys(packagesMap).flatMap((id) => [
     { locale: 'en', slug: id },
     { locale: 'th', slug: id },
   ]);
 }
 
-export function generateMetadata({ params }: PackageParams): Metadata {
-  const locale = params.locale?.startsWith('th') ? 'th' : 'en';
-  const pkg = packagesMap[params.slug];
+export async function generateMetadata({ params }: PackageParams): Promise<Metadata> {
+  const resolvedParams = await Promise.resolve(params);
+
+  if (!resolvedParams || !resolvedParams.locale || !resolvedParams.slug) {
+    return {
+      title: 'Package | CerebraTechAI',
+      description: 'AI package details',
+    };
+  }
+
+  const locale = resolvedParams.locale.startsWith('th') ? 'th' : 'en';
+  const pkg = packagesMap[resolvedParams.slug];
 
   if (!pkg) {
     return {};
@@ -63,9 +72,15 @@ export function generateMetadata({ params }: PackageParams): Metadata {
   };
 }
 
-export default function PackageDetailPage({ params }: PackageParams) {
-  const locale = params.locale?.startsWith('th') ? 'th' : 'en';
-  const pkg = packagesMap[params.slug];
+export default async function PackageDetailPage({ params }: PackageParams) {
+  const resolvedParams = await Promise.resolve(params);
+
+  if (!resolvedParams || !resolvedParams.locale || !resolvedParams.slug) {
+    notFound();
+  }
+
+  const locale = resolvedParams.locale.startsWith('th') ? 'th' : 'en';
+  const pkg = packagesMap[resolvedParams.slug];
 
   if (!pkg) {
     notFound();

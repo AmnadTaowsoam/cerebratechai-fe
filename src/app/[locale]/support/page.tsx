@@ -24,7 +24,7 @@ export default function SupportPage() {
       icon: Mail,
       title: 'Email Support',
       description: 'Send us detailed questions and get comprehensive answers',
-      availability: '24/7 Response',
+      availability: '24/7 Email Receipt - Response on Business Days',
       action: 'Send Email',
       href: 'mailto:support@cerebratechai.com'
     },
@@ -106,7 +106,7 @@ export default function SupportPage() {
       subtitle: 'Expert Engineers',
       description: 'Our technical support team consists of experienced AI engineers and developers who can help you troubleshoot issues, optimize performance, and implement new features.',
       response: '< 2 hours average response time',
-      metrics: ['24/7 Availability', 'Expert Engineers', '< 2hr Response']
+      metrics: ['Expert Engineers', '< 2hr Response', 'Mon-Fri Support']
     },
     {
       title: 'Customer Success',
@@ -161,7 +161,11 @@ export default function SupportPage() {
         align="center"
         metrics={[
           { value: '24/7', label: 'Email Support' },
-          { value: '98%', label: 'Satisfaction Rate' },
+          {
+            value: '98%',
+            label: 'Satisfaction Rate',
+            disclaimer: '* Based on annual surveys 2023-2025'
+          },
           { value: '<2hr', label: 'Response Time' }
         ]}
       />

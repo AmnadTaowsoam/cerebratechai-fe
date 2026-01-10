@@ -7,7 +7,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { CASES } from '@/data/cases';
 
 type IndustryDetailProps = {
-  params: { locale: string; slug: string };
+  params: Promise<{ locale: string; slug: string }> | { locale: string; slug: string };
 };
 
 const INDUSTRY_DATA = {
@@ -105,7 +105,7 @@ const INDUSTRY_DATA = {
   }
 };
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
   const locales = ['en', 'th'];
   const slugs = Object.keys(INDUSTRY_DATA);
   const params = [];
@@ -119,14 +119,22 @@ export function generateStaticParams() {
   return params;
 }
 
-export function generateMetadata({ params }: IndustryDetailProps): Metadata {
-  const industry = INDUSTRY_DATA[params.slug as keyof typeof INDUSTRY_DATA];
+export async function generateMetadata({ params }: IndustryDetailProps): Promise<Metadata> {
+  const resolvedParams = await Promise.resolve(params);
+
+  if (!resolvedParams || !resolvedParams.locale || !resolvedParams.slug) {
+    return {
+      title: 'Industry | CerebraTechAI',
+      description: 'AI solutions for industries',
+    };
+  }
+
+  const locale = resolvedParams.locale.startsWith('th') ? 'th' : 'en';
+  const industry = INDUSTRY_DATA[resolvedParams.slug as keyof typeof INDUSTRY_DATA];
 
   if (!industry) {
     return {};
   }
-
-  const locale = params.locale.startsWith('th') ? 'th' : 'en';
 
   return {
     title: `${industry.name[locale]} AI Solutions | CerebraTechAI`,
@@ -134,12 +142,18 @@ export function generateMetadata({ params }: IndustryDetailProps): Metadata {
   };
 }
 
-export default function IndustryDetailPage({ params }: IndustryDetailProps) {
-  const locale = params.locale?.startsWith('th') ? 'th' : 'en';
+export default async function IndustryDetailPage({ params }: IndustryDetailProps) {
+  const resolvedParams = await Promise.resolve(params);
+
+  if (!resolvedParams || !resolvedParams.locale || !resolvedParams.slug) {
+    notFound();
+  }
+
+  const locale = resolvedParams.locale.startsWith('th') ? 'th' : 'en';
   const isThai = locale === 'th';
   const basePath = `/${locale}`;
 
-  const industry = INDUSTRY_DATA[params.slug as keyof typeof INDUSTRY_DATA];
+  const industry = INDUSTRY_DATA[resolvedParams.slug as keyof typeof INDUSTRY_DATA];
 
   if (!industry) {
     notFound();

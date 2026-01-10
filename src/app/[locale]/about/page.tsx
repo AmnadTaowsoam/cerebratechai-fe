@@ -318,30 +318,36 @@ export default function AboutPage() {
             
             <Card className="border border-hairline bg-surface/80">
               <CardContent className="p-6 text-center">
-                <div className="text-3xl font-bold text-accent mb-2">98%</div>
-                <h3 className="text-lg font-semibold text-text mb-2">Success Rate</h3>
+                <div className="text-3xl font-bold text-accent mb-2">50+</div>
+                <h3 className="text-lg font-semibold text-text mb-2">Projects Delivered</h3>
                 <p className="text-sm text-text-muted">
-                  High project success rate with measurable ROI
+                  Successfully completed projects since 2023
+                </p>
+                <Link href={`${basePath}/cases` as any} className="text-xs text-primary hover:underline mt-2 inline-flex items-center gap-1">
+                  View case studies <ArrowRight className="h-3 w-3" />
+                </Link>
+              </CardContent>
+            </Card>
+
+            <Card className="border border-hairline bg-surface/80">
+              <CardContent className="p-6 text-center">
+                <div className="text-3xl font-bold text-primary mb-2">3x-5x</div>
+                <h3 className="text-lg font-semibold text-text mb-2">Typical ROI Range</h3>
+                <p className="text-sm text-text-muted">
+                  Return from cost reduction + revenue increase in first year
+                </p>
+                <p className="text-xs text-text-muted/70 mt-2">
+                  * Based on top 20 clients
                 </p>
               </CardContent>
             </Card>
-            
+
             <Card className="border border-hairline bg-surface/80">
               <CardContent className="p-6 text-center">
-                <div className="text-3xl font-bold text-primary mb-2">450%</div>
-                <h3 className="text-lg font-semibold text-text mb-2">Average ROI</h3>
+                <div className="text-3xl font-bold text-accent mb-2">9+</div>
+                <h3 className="text-lg font-semibold text-text mb-2">Industries</h3>
                 <p className="text-sm text-text-muted">
-                  Average return on investment across all client projects
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="border border-hairline bg-surface/80">
-              <CardContent className="p-6 text-center">
-                <div className="text-3xl font-bold text-accent mb-2">24/7</div>
-                <h3 className="text-lg font-semibold text-text mb-2">Support</h3>
-                <p className="text-sm text-text-muted">
-                  Round-the-clock technical support and monitoring
+                  Serving clients across manufacturing, healthcare, and more
                 </p>
               </CardContent>
             </Card>

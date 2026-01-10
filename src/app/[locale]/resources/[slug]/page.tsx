@@ -9,10 +9,10 @@ import { ArticleSchema } from '@/components/seo';
 import { getResourceBySlug } from '@/data/resources';
 
 type ResourceDetailPageProps = {
-  params: { locale: string; slug: string };
+  params: Promise<{ locale: string; slug: string }> | { locale: string; slug: string };
 };
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
   // keep minimal; resources are few
   const slugs = [
     'ai-implementation-roadmap',
@@ -27,9 +27,18 @@ export function generateStaticParams() {
   return slugs.flatMap((slug) => [{ locale: 'en', slug }, { locale: 'th', slug }]);
 }
 
-export function generateMetadata({ params }: ResourceDetailPageProps): Metadata {
-  const locale = params.locale?.startsWith('th') ? 'th' : 'en';
-  const resource = getResourceBySlug(params.slug);
+export async function generateMetadata({ params }: ResourceDetailPageProps): Promise<Metadata> {
+  const resolvedParams = await Promise.resolve(params);
+
+  if (!resolvedParams || !resolvedParams.locale || !resolvedParams.slug) {
+    return {
+      title: 'Resource | CerebraTechAI',
+      description: 'AI resources and materials',
+    };
+  }
+
+  const locale = resolvedParams.locale.startsWith('th') ? 'th' : 'en';
+  const resource = getResourceBySlug(resolvedParams.slug);
   if (!resource) return {};
 
   const title = locale === 'th' ? resource.title.th : resource.title.en;
@@ -38,12 +47,18 @@ export function generateMetadata({ params }: ResourceDetailPageProps): Metadata 
   return { title: `${title} | CerebraTechAI`, description };
 }
 
-export default function ResourceDetailPage({ params }: ResourceDetailPageProps) {
-  const locale = params.locale?.startsWith('th') ? 'th' : 'en';
+export default async function ResourceDetailPage({ params }: ResourceDetailPageProps) {
+  const resolvedParams = await Promise.resolve(params);
+
+  if (!resolvedParams || !resolvedParams.locale || !resolvedParams.slug) {
+    notFound();
+  }
+
+  const locale = resolvedParams.locale.startsWith('th') ? 'th' : 'en';
   const isThai = locale === 'th';
   const basePath = `/${locale}`;
 
-  const resource = getResourceBySlug(params.slug);
+  const resource = getResourceBySlug(resolvedParams.slug);
   if (!resource) notFound();
 
   const title = isThai ? resource.title.th : resource.title.en;

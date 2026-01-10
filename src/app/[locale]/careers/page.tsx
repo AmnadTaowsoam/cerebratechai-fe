@@ -151,7 +151,11 @@ export default function CareersPage() {
         metrics={[
           { value: '25+', label: locale.startsWith('th') ? 'สมาชิกทีม' : 'Team Members' },
           { value: '4', label: locale.startsWith('th') ? 'ตำแหน่งว่าง' : 'Open Positions' },
-          { value: '98%', label: locale.startsWith('th') ? 'ความพึงพอใจของพนักงาน' : 'Employee Satisfaction' }
+          {
+            value: '98%',
+            label: locale.startsWith('th') ? 'ความพึงพอใจของพนักงาน' : 'Employee Satisfaction',
+            disclaimer: locale.startsWith('th') ? '* จากการสำรวจประจำปี 2023-2025' : '* Based on annual surveys 2023-2025'
+          }
         ]}
       />
 

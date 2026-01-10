@@ -11,7 +11,7 @@ import { ArticleSchema } from '@/components/seo';
 import { CASES, getCaseBySlug } from '@/data/cases';
 
 type CasePageProps = {
-  params: { locale: string; slug: string };
+  params: Promise<{ locale: string; slug: string }> | { locale: string; slug: string };
 };
 
 const dataSensitivityLabels = {
@@ -20,18 +20,34 @@ const dataSensitivityLabels = {
   Synthetic: { th: 'ข้อมูลสังเคราะห์', en: 'Synthetic data' },
 };
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
   return CASES.flatMap((caseItem) => [
     { locale: 'en', slug: caseItem.slug },
     { locale: 'th', slug: caseItem.slug },
   ]);
 }
 
-export function generateMetadata({ params }: CasePageProps): Metadata {
-  const locale = params.locale?.startsWith('th') ? 'th' : 'en';
-  const caseItem = getCaseBySlug(params.slug);
+export async function generateMetadata({ params }: CasePageProps): Promise<Metadata> {
+  // Await params to ensure it's resolved
+  const resolvedParams = await Promise.resolve(params);
+
+  // Validate params
+  if (!resolvedParams || !resolvedParams.locale || !resolvedParams.slug) {
+    return {
+      title: 'Case Study | CerebraTechAI',
+      description: 'View our AI case studies and successful projects',
+    };
+  }
+
+  const locale = resolvedParams.locale.startsWith('th') ? 'th' : 'en';
+  const slug = resolvedParams.slug;
+
+  const caseItem = getCaseBySlug(slug);
   if (!caseItem) {
-    return {};
+    return {
+      title: locale === 'th' ? 'ไม่พบเคสตัวอย่าง | CerebraTechAI' : 'Case Study Not Found | CerebraTechAI',
+      description: locale === 'th' ? 'ไม่พบเคสตัวอย่างที่ค้นหา' : 'The case study you are looking for was not found',
+    };
   }
 
   const title = locale === 'th'
@@ -45,12 +61,22 @@ export function generateMetadata({ params }: CasePageProps): Metadata {
   };
 }
 
-export default function CaseDetailPage({ params }: CasePageProps) {
-  const locale = params.locale?.startsWith('th') ? 'th' : 'en';
+export default async function CaseDetailPage({ params }: CasePageProps) {
+  // Resolve params if it's a Promise
+  const resolvedParams = await Promise.resolve(params);
+
+  // Validate params exist
+  if (!resolvedParams || !resolvedParams.locale || !resolvedParams.slug) {
+    notFound();
+  }
+
+  const locale = resolvedParams.locale.startsWith('th') ? 'th' : 'en';
   const isThai = locale === 'th';
   const basePath = `/${locale}`;
   const schemaLocale: 'en' | 'th' = isThai ? 'th' : 'en';
-  const caseItem = getCaseBySlug(params.slug);
+  const slug = resolvedParams.slug;
+
+  const caseItem = getCaseBySlug(slug);
 
   if (!caseItem) {
     notFound();

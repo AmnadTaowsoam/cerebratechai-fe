@@ -2,6 +2,7 @@
 
 import { useLocale } from 'next-intl';
 import { OrganizationJsonLd, WebsiteJsonLd, ServiceJsonLd, LocalBusinessJsonLd } from './JsonLd';
+import { Hreflang } from './Hreflang';
 
 interface SeoHeadProps {
   title?: string;
@@ -110,6 +111,9 @@ export function SeoHead({
       <meta name="geo.placename" content="Bangkok" />
       <meta name="geo.position" content="13.7563;100.5018" />
       <meta name="ICBM" content="13.7563, 100.5018" />
+
+      {/* hreflang Tags */}
+      <Hreflang currentPath={url} />
 
       {/* Structured Data */}
       <OrganizationJsonLd />

@@ -9,6 +9,7 @@ import SparklesText from './sparkles-text';
 interface KeyMetric {
   value: string;
   label: string;
+  disclaimer?: string;
 }
 
 interface MagicHeroProps {
@@ -109,6 +110,11 @@ const MagicHero = ({
                     <div className="text-xs uppercase tracking-[0.3em] text-white/60">
                       {metric.label}
                     </div>
+                    {metric.disclaimer && (
+                      <div className="text-[0.65rem] text-white/40 mt-1 normal-case tracking-normal">
+                        {metric.disclaimer}
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>

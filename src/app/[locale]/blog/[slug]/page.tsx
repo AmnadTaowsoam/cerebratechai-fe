@@ -9,16 +9,25 @@ import { ArticleSchema } from '@/components/seo';
 import { BLOG_POSTS, getBlogPostBySlug } from '@/data/blog';
 
 type BlogDetailPageProps = {
-  params: { locale: string; slug: string };
+  params: Promise<{ locale: string; slug: string }> | { locale: string; slug: string };
 };
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
   return BLOG_POSTS.flatMap((post) => [{ locale: 'en', slug: post.slug }, { locale: 'th', slug: post.slug }]);
 }
 
-export function generateMetadata({ params }: BlogDetailPageProps): Metadata {
-  const locale = params.locale?.startsWith('th') ? 'th' : 'en';
-  const post = getBlogPostBySlug(params.slug);
+export async function generateMetadata({ params }: BlogDetailPageProps): Promise<Metadata> {
+  const resolvedParams = await Promise.resolve(params);
+
+  if (!resolvedParams || !resolvedParams.locale || !resolvedParams.slug) {
+    return {
+      title: 'Blog Post | CerebraTechAI',
+      description: 'Read our latest insights',
+    };
+  }
+
+  const locale = resolvedParams.locale.startsWith('th') ? 'th' : 'en';
+  const post = getBlogPostBySlug(resolvedParams.slug);
   if (!post) return {};
 
   const title = locale === 'th' ? post.title.th : post.title.en;
@@ -27,12 +36,18 @@ export function generateMetadata({ params }: BlogDetailPageProps): Metadata {
   return { title: `${title} | CerebraTechAI`, description };
 }
 
-export default function BlogDetailPage({ params }: BlogDetailPageProps) {
-  const locale = params.locale?.startsWith('th') ? 'th' : 'en';
+export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
+  const resolvedParams = await Promise.resolve(params);
+
+  if (!resolvedParams || !resolvedParams.locale || !resolvedParams.slug) {
+    notFound();
+  }
+
+  const locale = resolvedParams.locale.startsWith('th') ? 'th' : 'en';
   const isThai = locale === 'th';
   const basePath = `/${locale}`;
 
-  const post = getBlogPostBySlug(params.slug);
+  const post = getBlogPostBySlug(resolvedParams.slug);
   if (!post) notFound();
 
   const title = isThai ? post.title.th : post.title.en;

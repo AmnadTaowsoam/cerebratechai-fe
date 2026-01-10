@@ -274,7 +274,7 @@ export function Footer() {
                 {locale.startsWith('th') ? 'ในประเทศไทย' : 'in Thailand'}
               </p>
               <p className="text-xs text-text-muted/80">
-                {locale.startsWith('th') ? 'พร้อมให้บริการ 24/7' : 'Available 24/7'}
+                {locale.startsWith('th') ? 'พร้อมให้คำปรึกษา จ-ศ 9:00-18:00' : 'Ready to Help Mon-Fri 9:00-18:00'}
               </p>
             </div>
           </div>

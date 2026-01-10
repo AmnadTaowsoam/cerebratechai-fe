@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { ArrowLeft, Home } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-export default function CaseNotFound({ params }: { params: { locale: string } }) {
-  const locale = params.locale?.startsWith('th') ? 'th' : 'en';
+export default function CaseNotFound({ params }: { params?: { locale?: string } }) {
+  const locale = params?.locale?.startsWith('th') ? 'th' : 'en';
   const basePath = `/${locale}`;
 
   return (

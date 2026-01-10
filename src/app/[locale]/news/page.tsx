@@ -137,7 +137,11 @@ export default function NewsPage() {
         metrics={[
           { value: '6', label: locale.startsWith('th') ? 'ข่าวล่าสุด' : 'Recent News' },
           { value: '4', label: locale.startsWith('th') ? 'การรายงานข่าว' : 'Media Coverage' },
-          { value: '98%', label: locale.startsWith('th') ? 'ความพึงพอใจของลูกค้า' : 'Client Satisfaction' }
+          {
+            value: '98%',
+            label: locale.startsWith('th') ? 'ความพึงพอใจของลูกค้า' : 'Client Satisfaction',
+            disclaimer: locale.startsWith('th') ? '* จากการสำรวจประจำปี 2023-2025' : '* Based on annual surveys 2023-2025'
+          }
         ]}
       />
 

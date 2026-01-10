@@ -9,21 +9,30 @@ import { services, getLocalized } from '@/data/content';
 import { CASES } from '@/data/cases';
 
 type ServicePageProps = {
-  params: { locale: string; slug: string };
+  params: Promise<{ locale: string; slug: string }> | { locale: string; slug: string };
 };
 
 const serviceMap = new Map(services.map((service) => [service.slug, service]));
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
   return services.flatMap((service) => [
     { locale: 'en', slug: service.slug },
     { locale: 'th', slug: service.slug },
   ]);
 }
 
-export function generateMetadata({ params }: ServicePageProps): Metadata {
-  const locale = params.locale?.startsWith('th') ? 'th' : 'en';
-  const service = serviceMap.get(params.slug);
+export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
+  const resolvedParams = await Promise.resolve(params);
+
+  if (!resolvedParams || !resolvedParams.locale || !resolvedParams.slug) {
+    return {
+      title: 'Solution | CerebraTechAI',
+      description: 'AI solutions and services',
+    };
+  }
+
+  const locale = resolvedParams.locale.startsWith('th') ? 'th' : 'en';
+  const service = serviceMap.get(resolvedParams.slug);
   if (!service) return {};
 
   return {
@@ -143,12 +152,18 @@ const USE_CASES: Record<string, UseCaseItem[]> = {
   ],
 };
 
-export default function ServiceDetailPage({ params }: ServicePageProps) {
-  const locale = params.locale?.startsWith('th') ? 'th' : 'en';
+export default async function ServiceDetailPage({ params }: ServicePageProps) {
+  const resolvedParams = await Promise.resolve(params);
+
+  if (!resolvedParams || !resolvedParams.locale || !resolvedParams.slug) {
+    notFound();
+  }
+
+  const locale = resolvedParams.locale.startsWith('th') ? 'th' : 'en';
   const isThai = locale === 'th';
   const basePath = `/${locale}`;
 
-  const service = serviceMap.get(params.slug);
+  const service = serviceMap.get(resolvedParams.slug);
   if (!service) notFound();
 
   const t = (th: string, en: string) => (isThai ? th : en);

@@ -313,7 +313,7 @@ export default function PartnersPage() {
             <Card className="border border-hairline bg-surface/80">
               <CardContent className="p-6">
                 <div className="mb-4">
-                  <div className="text-2xl font-bold text-accent mb-2">450%</div>
+                  <div className="text-2xl font-bold text-accent mb-2">95%+</div>
                   <h3 className="text-lg font-semibold text-text mb-2">Financial Analytics</h3>
                   <p className="text-sm text-text-muted">
                     Leveraged AWS and Databricks to build real-time fraud detection system, improving accuracy by 95% and reducing false positives by 80%.

@@ -29,6 +29,7 @@
     "links:check": "node scripts/check-broken-links.js",
     "http:check": "node scripts/check-http-errors.js",
     "lighthouse:ci": "lhci autorun",
+    "lighthouse:local": "npm run build && lhci autorun --config=./lighthouserc.local.json",
     "qa:all": "npm run typecheck && npm run lint && npm run i18n:check && npm run links:check && npm run http:check",
     "qa:ci": "npm run typecheck && npm run lint && npm run i18n:check && npm run e2e:smoke && npm run lighthouse:ci"
   },
