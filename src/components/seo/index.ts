@@ -5,6 +5,7 @@ export { JsonLd, OrganizationJsonLd, WebsiteJsonLd, ServiceJsonLd, LocalBusiness
 export { PerformanceOptimizations, WebVitalsScript, ResourceHints } from './PerformanceOptimizations';
 export { Hreflang, StaticHreflang } from './Hreflang';
 export { PricingSchema, ServiceSchema, FAQSchema } from './PricingSchema';
+export { FAQSection, HomeFAQs, PricingFAQs, TrustFAQs } from './FAQ';
 
 // Analytics
 export { Analytics } from '../analytics/Analytics';

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Shield, Lock, Eye, FileCheck, Server, AlertCircle, CheckCircle } from 'lucide-react';
 import { MagicHero } from '@/components/magicui';
 import { Card, CardContent } from '@/components/ui/card';
-import { SeoHead } from '@/components/seo';
+import { SeoHead, FAQSection, TrustFAQs } from '@/components/seo';
 
 type TrustPageProps = {
   params: { locale: string };
@@ -301,6 +301,12 @@ export default function TrustPage({ params }: TrustPageProps) {
             </div>
           </div>
         </section>
+
+        {/* FAQ */}
+        <FAQSection
+          faqs={isThai ? TrustFAQs.th : TrustFAQs.en}
+          className="bg-surface/30"
+        />
 
         {/* Contact */}
         <section className="py-16 bg-surface/30">
