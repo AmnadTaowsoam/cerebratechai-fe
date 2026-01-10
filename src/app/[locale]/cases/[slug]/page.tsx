@@ -6,6 +6,8 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { ShimmerButton } from '@/components/magicui';
 import CaseSchema from '@/components/CaseSchema';
+import TLDRBlock from '@/components/TLDRBlock';
+import KeyFactsBlock from '@/components/KeyFactsBlock';
 import { getCaseBySlug, CASES } from '@/data/cases';
 
 type CaseDetailProps = {
@@ -13,9 +15,19 @@ type CaseDetailProps = {
 };
 
 export function generateStaticParams() {
-  return CASES.map((caseItem) => ({
-    slug: caseItem.slug,
-  }));
+  const locales = ['en', 'th'];
+  const params = [];
+
+  for (const locale of locales) {
+    for (const caseItem of CASES) {
+      params.push({
+        locale,
+        slug: caseItem.slug,
+      });
+    }
+  }
+
+  return params;
 }
 
 export function generateMetadata({ params }: CaseDetailProps): Metadata {
@@ -38,11 +50,15 @@ export function generateMetadata({ params }: CaseDetailProps): Metadata {
 
 export default function CaseDetailPage({ params }: CaseDetailProps) {
   const locale = params.locale?.startsWith('th') ? 'th' : 'en';
-  const caseItem = getCaseBySlug(params.slug);
   const isThai = locale === 'th';
   const basePath = `/${locale}`;
 
+  // Get case with slug validation
+  const caseItem = getCaseBySlug(params.slug);
+
+  // If case not found, show 404 instead of 500
   if (!caseItem) {
+    console.error(`[CaseDetailPage] Case not found for slug: ${params.slug}`);
     notFound();
   }
 
@@ -136,6 +152,35 @@ export default function CaseDetailPage({ params }: CaseDetailProps) {
         <div className="container mx-auto px-6">
           <div className="grid gap-8 lg:grid-cols-3">
             <div className="lg:col-span-2 space-y-8">
+              {/* TL;DR */}
+              <TLDRBlock
+                summary={`${caseItem.challenge.slice(0, 150)}... ${caseItem.solution.slice(0, 150)}...`}
+                locale={locale}
+              />
+
+              {/* Key Facts */}
+              <KeyFactsBlock
+                facts={[
+                  {
+                    label: isThai ? 'อุตสาหกรรม' : 'Sector',
+                    value: caseItem.sector
+                  },
+                  {
+                    label: isThai ? 'โซลูชัน' : 'Solution Family',
+                    value: caseItem.solutionFamily
+                  },
+                  {
+                    label: isThai ? 'ความละเอียดอ่อนของข้อมูล' : 'Data Sensitivity',
+                    value: caseItem.dataSensitivity
+                  },
+                  {
+                    label: isThai ? 'ผลลัพธ์หลัก' : 'Key Outcomes',
+                    value: caseItem.outcomes.map(o => `${o.value} ${o.label}`)
+                  }
+                ]}
+                locale={locale}
+              />
+
               {/* Summary */}
               <Card className="border border-hairline bg-surface">
                 <CardContent className="p-8">

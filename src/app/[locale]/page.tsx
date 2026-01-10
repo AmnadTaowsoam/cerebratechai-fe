@@ -43,14 +43,14 @@ export default function Home() {
   return (
     <>
       <SeoHead
-        title={isThai ? 'เปลี่ยนปัญหาเป็นระบบ AI พร้อมใช้งานจริง' : 'Turn Pain Points into Production-Ready AI Systems'}
-        description={isThai 
-          ? 'เปลี่ยนปัญหาเป็นระบบ AI พร้อมใช้งานจริง เราสร้างโซลูชัน AI และ full-stack จาก Edge ถึง Cloud ที่พร้อมปล่อยใช้งานจริง สตูดิโอ AI แบบบูติกในกรุงเทพฯ'
-          : 'Transform your pain points into production-ready AI systems. We build AI & full-stack solutions from Edge to Cloud with guardrails and playbooks, ready for production deployment. Boutique AI Studio in Bangkok, Thailand.'
+        title={isThai ? 'โซลูชัน AI สำหรับ SME - LLM, Computer Vision, Edge AI' : 'AI Solutions for SMEs - LLM, Computer Vision, Edge AI'}
+        description={isThai
+          ? 'โซลูชัน AI สำหรับ SME และโครงการขนาดกลาง: LLM & RAG, Computer Vision, Predictive Analytics, Edge AI พร้อม MLOps และบริการด้านวิศวกรรม สตูดิโอ AI ในกรุงเทพฯ'
+          : 'AI Solutions for SMEs and mid-size projects: LLM & RAG, Computer Vision, Predictive Analytics, Edge AI with MLOps and engineering services. Boutique AI Studio in Bangkok, Thailand.'
         }
-        keywords={isThai 
-          ? ['AI ประเทศไทย', 'Machine Learning', 'Computer Vision', 'การพัฒนา AI', 'ระบบ AI พร้อมใช้งาน', 'AI consulting', 'Bangkok AI', 'Thailand AI company']
-          : ['AI solutions Thailand', 'Machine Learning services', 'Computer Vision development', 'AI consulting Bangkok', 'Production-ready AI', 'Full-stack AI development', 'Edge Computing', 'AI system integration']
+        keywords={isThai
+          ? ['AI สำหรับ SME', 'LLM ไทย', 'Computer Vision', 'Edge AI', 'RAG', 'AI consulting Bangkok', 'โซลูชัน AI', 'Machine Learning']
+          : ['AI for SMEs', 'Thai LLM', 'Computer Vision', 'Edge AI', 'RAG solutions', 'AI consulting Bangkok', 'Machine Learning Thailand', 'Predictive Analytics']
         }
         url="/"
         type="website"

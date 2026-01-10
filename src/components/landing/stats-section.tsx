@@ -6,36 +6,38 @@ import { TrendingUp, Users, Zap, Award } from 'lucide-react';
 
 export function StatsSection() {
   const locale = useLocale();
+  const isThai = locale.startsWith('th');
+
   const stats = [
     {
       icon: TrendingUp,
-      value: '450%',
-      label: 'Average ROI',
-      description: 'Return on investment across all client projects',
+      value: '9+',
+      label: isThai ? 'โปรเจกต์' : 'Projects',
+      description: isThai ? 'โปรเจกต์ AI ที่ส่งมอบแล้ว' : 'AI projects delivered',
       color: 'text-primary',
       bgColor: 'bg-primary/10',
     },
     {
       icon: Users,
-      value: '1,200+',
-      label: 'Active Users',
-      description: 'Across malAI and DulaeDee platforms',
+      value: '3+',
+      label: isThai ? 'แพลตฟอร์ม' : 'Platforms',
+      description: isThai ? 'แพลตฟอร์มที่พัฒนาแล้ว (malAI, DulaeDee, CereBraKM)' : 'Platforms developed (malAI, DulaeDee, CereBraKM)',
       color: 'text-accent',
       bgColor: 'bg-accent/10',
     },
     {
       icon: Zap,
-      value: '70%',
-      label: 'Faster Retrieval',
-      description: 'Knowledge access time with CereBraKM',
+      value: '2025',
+      label: isThai ? 'ก่อตั้ง' : 'Founded',
+      description: isThai ? 'เริ่มต้นให้บริการ' : 'Started operations',
       color: 'text-primary',
       bgColor: 'bg-primary/10',
     },
     {
       icon: Award,
-      value: '98%',
-      label: 'Success Rate',
-      description: 'Project completion with measurable outcomes',
+      value: '100%',
+      label: isThai ? 'โฟกัส SME' : 'SME Focused',
+      description: isThai ? 'มุ่งเน้นโครงการขนาดเล็กถึงกลาง' : 'Small to mid-size projects',
       color: 'text-accent',
       bgColor: 'bg-accent/10',
     },
@@ -90,12 +92,18 @@ export function StatsSection() {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-text mb-4">
-            {locale.startsWith('th') ? 'ผลกระทบจริง ผลลัพธ์ที่วัดได้' : 'Real Impact, Measurable Results'}
+            {isThai ? 'โครงการและโซลูชันที่พัฒนา' : 'Projects & Solutions Developed'}
           </h2>
           <p className="text-text-muted max-w-2xl mx-auto">
-            {locale.startsWith('th') 
-              ? 'แอปพลิเคชันและโซลูชันของเราส่งมอบคุณค่าที่จับต้องได้ในทุกอุตสาหกรรม จากการจัดการอีเวนต์ไปจนถึงการประมวลผลแบบ Edge'
-              : 'Our applications and solutions deliver tangible value across industries, from event management to edge computing.'
+            {isThai
+              ? 'โซลูชัน AI ที่เราพัฒนาครอบคลุมหลายอุตสาหกรรม จากการจัดการอีเวนต์ไปจนถึง Edge Computing และ Knowledge Management'
+              : 'AI solutions we develop span multiple industries, from event management to edge computing and knowledge management.'
+            }
+          </p>
+          <p className="text-xs text-text-muted/70 mt-4 max-w-3xl mx-auto">
+            {isThai
+              ? '* ตัวเลขและผลลัพธ์ที่แสดงเป็นข้อมูลจากโครงการจริงและข้อมูลสังเคราะห์เพื่อการสาธิต ผลลัพธ์จริงขึ้นอยู่กับปัจจัยหลายประการ'
+              : '* Figures and outcomes shown are based on actual projects and synthetic data for demonstration. Actual results may vary based on multiple factors.'
             }
           </p>
         </div>

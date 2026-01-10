@@ -49,16 +49,16 @@ export default function SolutionsPage({ params }: SolutionsPageProps) {
       
       <div className="bg-bg">
       <MagicHero
-        eyebrow={isThai ? 'แคตตาล็อกโซลูชัน' : 'Solutions catalogue'}
+        eyebrow={isThai ? 'โซลูชัน AI' : 'AI Solutions'}
         title={
           isThai
-            ? 'โซลูชัน AI และซอฟต์แวร์พร้อมใช้งาน ผ่านงานจริงมาแล้ว'
-            : 'Production-ready AI & software solutions, road-tested'
+            ? 'โซลูชัน AI พร้อมใช้งาน สำหรับ SME และโครงการขนาดกลาง'
+            : 'Production-Ready AI Solutions for SMEs and Mid-Size Projects'
         }
         description={
           isThai
-            ? 'เลือกจากโซลูชันที่มาพร้อมเฟรมเวิร์กการทำงาน เอกสารส่งมอบ และทีมเชี่ยวชาญ ครอบคลุมแมชชีนเลิร์นนิง วิชัน AIoT แพลตฟอร์มข้อมูล และแอนะลิติกส์'
-            : 'Pick from solution building blocks that include delivery playbooks, documentation, and experienced squads across ML, vision, AIoT, platforms, and analytics.'
+            ? 'โซลูชัน AI หลักของเรา: LLM & RAG, Computer Vision, Predictive Analytics และ Edge AI พร้อมบริการสนับสนุนด้าน MLOps และ Engineering'
+            : 'Our AI Core Solutions: LLM & RAG, Computer Vision, Predictive Analytics, and Edge AI—with MLOps and Engineering support services.'
         }
         metrics={metrics}
         align="center"

@@ -88,9 +88,9 @@ export default function AboutPage() {
         description="We make AI accessible to everyone - from individuals to enterprises. Our solutions bridge the gap between cutting-edge AI research and real-world applications, delivering measurable business value and creating new opportunities."
         align="center"
         metrics={[
-          { value: '295+', label: 'Projects Delivered' },
-          { value: '98%', label: 'Success Rate' },
-          { value: '450%', label: 'Average ROI' }
+          { value: '9+', label: isThai ? 'โปรเจกต์ที่จัดส่ง' : 'Projects Delivered' },
+          { value: '2025', label: isThai ? 'ก่อตั้ง' : 'Founded' },
+          { value: '100%', label: isThai ? 'โฟกัสที่ SME' : 'SME Focused' }
         ]}
       />
 
