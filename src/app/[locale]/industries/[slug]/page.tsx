@@ -129,7 +129,7 @@ export function generateMetadata({ params }: IndustryDetailProps): Metadata {
   const locale = params.locale.startsWith('th') ? 'th' : 'en';
 
   return {
-    title: `${industry.name[locale]} AI Solutions | Cerebratechai`,
+    title: `${industry.name[locale]} AI Solutions | CerebraTechAI`,
     description: industry.description[locale],
   };
 }

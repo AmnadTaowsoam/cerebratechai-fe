@@ -17,7 +17,7 @@ export function PricingSchema() {
       : 'Various AI solution packages for businesses of all sizes',
     brand: {
       '@type': 'Brand',
-      name: 'Cerebratechai'
+      name: 'CerebraTechAI'
     },
     offers: [
       {
@@ -33,7 +33,7 @@ export function PricingSchema() {
         category: 'AI Consulting',
         seller: {
           '@type': 'Organization',
-          name: 'Cerebratechai',
+          name: 'CerebraTechAI',
           url: baseUrl
         }
       },
@@ -50,7 +50,7 @@ export function PricingSchema() {
         category: 'AI Development',
         seller: {
           '@type': 'Organization',
-          name: 'Cerebratechai',
+          name: 'CerebraTechAI',
           url: baseUrl
         }
       },
@@ -67,7 +67,7 @@ export function PricingSchema() {
         category: 'AI Production',
         seller: {
           '@type': 'Organization',
-          name: 'Cerebratechai',
+          name: 'CerebraTechAI',
           url: baseUrl
         }
       },
@@ -84,7 +84,7 @@ export function PricingSchema() {
         category: 'AI Enterprise',
         seller: {
           '@type': 'Organization',
-          name: 'Cerebratechai',
+          name: 'CerebraTechAI',
           url: baseUrl
         }
       }
@@ -121,7 +121,7 @@ export function ServiceSchema({
     description: description,
     provider: {
       '@type': 'Organization',
-      name: 'Cerebratechai',
+      name: 'CerebraTechAI',
       url: baseUrl,
       address: {
         '@type': 'PostalAddress',

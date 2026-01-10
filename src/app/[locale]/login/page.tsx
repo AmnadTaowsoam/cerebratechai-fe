@@ -3,17 +3,20 @@ import Link from 'next/link';
 import { LoginForm } from '@/components/auth/login-form';
 import { MagicHero, ShimmerButton } from '@/components/magicui';
 
-export default function LoginPage() {
+export default function LoginPage({ params }: { params: { locale: string } }) {
+  const locale = params.locale?.startsWith('th') ? 'th' : 'en';
+  const basePath = `/${locale}`;
+
   return (
     <div className="bg-bg">
       <MagicHero
         eyebrow="Secure access"
         title="Sign in to your account"
-        description="Use your Cerebratechai credentials to access dashboards, manage resources, and collaborate."
+        description="Use your CerebraTechAI credentials to access dashboards, manage resources, and collaborate."
         align="center"
         actions={
           <ShimmerButton asChild className="px-6 py-3 text-sm">
-            <Link href="/register">Need an account? Create one</Link>
+            <Link href={`${basePath}/register` as any}>Need an account? Create one</Link>
           </ShimmerButton>
         }
       >

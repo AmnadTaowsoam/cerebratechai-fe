@@ -19,7 +19,7 @@ export function generateMetadata({
   type = 'website',
   locale = 'en',
 }: SEOProps): Metadata {
-  const siteName = 'Cerebratechai';
+  const siteName = 'CerebraTechAI';
   const fullTitle = title ? `${title} | ${siteName}` : siteName;
   const fullDescription = description || 'Transform your pain points into production-ready AI systems. We build AI & full-stack solutions from Edge to Cloud that are ready for deployment.';
   const fullUrl = `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}${url}`;
@@ -28,7 +28,7 @@ export function generateMetadata({
     title: fullTitle,
     description: fullDescription,
     keywords: [...keywords, 'AI', 'Machine Learning', 'Computer Vision', 'Cloud Computing', 'Full-Stack Development', 'Edge Computing'],
-    authors: [{ name: 'Cerebratechai Team' }],
+    authors: [{ name: 'CerebraTechAI Team' }],
     creator: siteName,
     publisher: siteName,
     formatDetection: {
@@ -164,7 +164,7 @@ export function generateStructuredData({
         }),
         publisher: {
           '@type': 'Organization',
-          name: 'Cerebratechai',
+          name: 'CerebraTechAI',
           logo: {
             '@type': 'ImageObject',
             url: `${baseUrl}/logo.png`,
@@ -178,7 +178,7 @@ export function generateStructuredData({
         '@type': 'Service',
         provider: {
           '@type': 'Organization',
-          name: 'Cerebratechai',
+          name: 'CerebraTechAI',
         },
         serviceType: 'AI & Full-Stack Solutions',
         areaServed: {

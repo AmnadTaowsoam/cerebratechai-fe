@@ -6,12 +6,15 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight, Brain, BarChart3, Zap, Target, Users, Award } from 'lucide-react';
 import Link from 'next/link';
 import { SeoHead, ServiceSchema } from '@/components/seo';
+import TLDRBlock from '@/components/TLDRBlock';
+import KeyFactsBlock from '@/components/KeyFactsBlock';
 
 export default function MachineLearningPage() {
   const t = useTranslations('solutions');
   const locale = useLocale();
   const isThai = locale.startsWith('th');
   const basePath = `/${locale}`;
+  const schemaLocale: 'en' | 'th' = isThai ? 'th' : 'en';
 
   const mlSolutions = [
     {
@@ -121,6 +124,55 @@ export default function MachineLearningPage() {
       />
       
       <div className="bg-bg">
+      {/* TL;DR + Key Facts */}
+      <section className="py-12 bg-surface/30">
+        <div className="container mx-auto px-6">
+          <div className="grid gap-8 lg:grid-cols-2">
+            <TLDRBlock
+              summary={
+                isThai
+                  ? 'Machine Learning ช่วยเปลี่ยนข้อมูลเป็นการคาดการณ์/การตัดสินใจอัตโนมัติ เช่น พยากรณ์ความต้องการ ตรวจจับความผิดปกติ และคาดการณ์การซ่อมบำรุง โดยทำงานเป็นเฟสและวัดผลด้วย KPI ชัดเจน'
+                  : 'Machine Learning turns data into predictions and automated decisions—forecasting demand, detecting anomalies, and preventing downtime—with phased delivery and KPI-based evaluation.'
+              }
+              locale={schemaLocale}
+            />
+            <KeyFactsBlock
+              facts={[
+                {
+                  label: isThai ? 'Use Cases' : 'Use Cases',
+                  value: isThai
+                    ? 'พยากรณ์/คาดการณ์, ตรวจจับความผิดปกติ, Churn, Fraud, Optimization'
+                    : 'Forecasting, anomaly detection, churn, fraud, optimization',
+                },
+                {
+                  label: isThai ? 'Minimum Data Required' : 'Minimum Data Required',
+                  value: isThai ? 'เริ่มได้จากข้อมูลย้อนหลัง 3-12 เดือน + นิยาม KPI' : '3–12 months of historical data + KPI definition',
+                },
+                {
+                  label: isThai ? 'Deliverables' : 'Deliverables',
+                  value: isThai
+                    ? 'Model + pipeline + monitoring + รายงานผล/เอกสารส่งมอบ'
+                    : 'Model + pipeline + monitoring + handover docs',
+                },
+                {
+                  label: isThai ? 'KPI & Evaluation' : 'KPI & Evaluation',
+                  value: 'Accuracy, precision/recall, latency, business KPI uplift',
+                },
+                {
+                  label: isThai ? 'Timeline' : 'Timeline',
+                  value: isThai ? 'POC: 6-10 สัปดาห์ | Pilot: 8-14 สัปดาห์' : 'POC: 6-10 weeks | Pilot: 8-14 weeks',
+                },
+                {
+                  label: isThai ? 'Pricing' : 'Pricing',
+                  value: isThai ? 'เริ่มจาก Kickstart/POC เพื่อประเมินขอบเขต' : 'Start with Kickstart/POC to scope and estimate',
+                },
+              ]}
+              locale={schemaLocale}
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Hero Section */}
       <MagicHero
         eyebrow="Machine Learning Solutions"

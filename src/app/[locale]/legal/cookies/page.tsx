@@ -4,7 +4,7 @@ const content = {
   en: {
     title: 'Cookie Policy',
     description:
-      'This Cookie Policy explains how Cerebratechai uses cookies and similar technologies on our website.',
+      'This Cookie Policy explains how CerebraTechAI uses cookies and similar technologies on our website.',
     updated: 'Updated 18 Oct 2025',
     sections: [
       {
@@ -29,7 +29,7 @@ const content = {
         body: [
           '**Session Cookies:** Temporary cookies that expire when you close your browser.',
           '**Persistent Cookies:** Remain on your device for a set period or until manually deleted.',
-          '**First-party Cookies:** Set by Cerebratechai directly.',
+          '**First-party Cookies:** Set by CerebraTechAI directly.',
           '**Third-party Cookies:** Set by our service providers (e.g., analytics tools).',
         ],
       },
@@ -77,7 +77,7 @@ const content = {
   th: {
     title: 'นโยบายคุกกี้',
     description:
-      'นโยบายนี้อธิบายวิธีที่ Cerebratechai ใช้คุกกี้และเทคโนโลยีที่คล้ายกันบนเว็บไซต์ของเรา',
+      'นโยบายนี้อธิบายวิธีที่ CerebraTechAI ใช้คุกกี้และเทคโนโลยีที่คล้ายกันบนเว็บไซต์ของเรา',
     updated: 'ปรับปรุงล่าสุด 18 ต.ค. 2025',
     sections: [
       {
@@ -102,7 +102,7 @@ const content = {
         body: [
           '**คุกกี้เซสชัน (Session Cookies):** คุกกี้ชั่วคราวที่หมดอายุเมื่อคุณปิดเบราว์เซอร์',
           '**คุกกี้ถาวร (Persistent Cookies):** คงอยู่ในอุปกรณ์ของคุณเป็นระยะเวลาที่กำหนด หรือจนกว่าจะถูกลบด้วยตนเอง',
-          '**คุกกี้ฝ่ายที่หนึ่ง (First-party Cookies):** ตั้งค่าโดย Cerebratechai โดยตรง',
+          '**คุกกี้ฝ่ายที่หนึ่ง (First-party Cookies):** ตั้งค่าโดย CerebraTechAI โดยตรง',
           '**คุกกี้ฝ่ายที่สาม (Third-party Cookies):** ตั้งค่าโดยผู้ให้บริการของเรา (เช่น เครื่องมือวิเคราะห์)',
         ],
       },
@@ -150,8 +150,8 @@ const content = {
 };
 
 export const metadata: Metadata = {
-  title: 'Cookie Policy | Cerebratechai',
-  description: 'Learn how Cerebratechai uses cookies and similar technologies.',
+  title: 'Cookie Policy | CerebraTechAI',
+  description: 'Learn how CerebraTechAI uses cookies and similar technologies.',
 };
 
 export default function CookiePolicyPage({ params: { locale } }: { params: { locale: string } }) {

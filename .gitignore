@@ -234,6 +234,9 @@ playwright/.cache/
 # Jest
 coverage/
 
+# Lighthouse CI
+.lighthouseci/
+
 # Vercel
 .vercel
 

@@ -15,7 +15,7 @@ export default function NewsPage() {
   const newsItems = [
     {
       id: 'cerebratechai-series-a-funding',
-      title: 'Cerebratechai Secures Series A Funding to Accelerate AI Innovation',
+      title: 'CerebraTechAI Secures Series A Funding to Accelerate AI Innovation',
       excerpt: 'Leading AI studio raises $5M to expand team and accelerate development of enterprise AI solutions across Southeast Asia.',
       date: '2024-01-20',
       category: 'Company News',
@@ -26,7 +26,7 @@ export default function NewsPage() {
     },
     {
       id: 'ai-manufacturing-partnership',
-      title: 'Cerebratechai Partners with Leading Manufacturing Company for AI Implementation',
+      title: 'CerebraTechAI Partners with Leading Manufacturing Company for AI Implementation',
       excerpt: 'Strategic partnership to implement computer vision solutions for quality inspection, reducing defects by 60% in production lines.',
       date: '2024-01-15',
       category: 'Partnership',
@@ -37,7 +37,7 @@ export default function NewsPage() {
     },
     {
       id: 'award-best-ai-startup',
-      title: 'Cerebratechai Wins "Best AI Startup" at Southeast Asia Tech Awards',
+      title: 'CerebraTechAI Wins "Best AI Startup" at Southeast Asia Tech Awards',
       excerpt: 'Recognition for innovative AI solutions and exceptional client delivery in the competitive Southeast Asian market.',
       date: '2024-01-10',
       category: 'Awards',
@@ -48,7 +48,7 @@ export default function NewsPage() {
     },
     {
       id: 'team-expansion-announcement',
-      title: 'Cerebratechai Expands Team with Key AI Experts',
+      title: 'CerebraTechAI Expands Team with Key AI Experts',
       excerpt: 'Welcoming Dr. Sarah Chen as Chief AI Officer and James Rodriguez as Head of Engineering to strengthen our technical leadership.',
       date: '2024-01-05',
       category: 'Company News',
@@ -59,7 +59,7 @@ export default function NewsPage() {
     },
     {
       id: 'ai-ethics-initiative',
-      title: 'Cerebratechai Launches AI Ethics Initiative',
+      title: 'CerebraTechAI Launches AI Ethics Initiative',
       excerpt: 'New initiative focuses on responsible AI development and deployment, ensuring ethical considerations in all client projects.',
       date: '2023-12-28',
       category: 'Corporate Responsibility',
@@ -70,7 +70,7 @@ export default function NewsPage() {
     },
     {
       id: 'research-paper-publication',
-      title: 'Cerebratechai Research Team Publishes Paper on Edge AI Optimization',
+      title: 'CerebraTechAI Research Team Publishes Paper on Edge AI Optimization',
       excerpt: 'Technical paper on optimizing AI models for edge deployment published in leading AI research journal.',
       date: '2023-12-20',
       category: 'Research',
@@ -98,14 +98,14 @@ export default function NewsPage() {
     },
     {
       outlet: 'AI News',
-      title: 'Cerebratechai\'s Approach to Responsible AI Development',
+      title: 'CerebraTechAI\'s Approach to Responsible AI Development',
       date: '2023-12-28',
       url: 'https://ai-news.com/cerebratechai-ethics',
       logo: '/media/ai-news-logo.png'
     },
     {
       outlet: 'Southeast Asia Tech',
-      title: 'Rising AI Stars: Cerebratechai\'s Journey from Startup to Industry Leader',
+      title: 'Rising AI Stars: CerebraTechAI\'s Journey from Startup to Industry Leader',
       date: '2023-12-15',
       url: 'https://seatech.com/cerebratechai-profile',
       logo: '/media/seatech-logo.png'

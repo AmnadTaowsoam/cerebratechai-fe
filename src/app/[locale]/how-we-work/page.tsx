@@ -27,122 +27,121 @@ export default function HowWeWorkPage() {
     {
       step: 1,
       icon: Search,
-      title: isThai ? 'Discovery & Assessment' : 'Discovery & Assessment',
+      title: isThai ? 'สำรวจและประเมิน' : 'Discovery & Assessment',
       duration: isThai ? '1-2 สัปดาห์' : '1-2 weeks',
       description: isThai
-        ? 'เราเริ่มต้นด้วยการทำความเข้าใจความต้องการ ข้อจำกัด และโอกาสของคุณอย่างลึกซึ้ง'
+        ? 'ทำความเข้าใจเป้าหมาย ข้อจำกัด ข้อมูล และความเป็นไปได้ของโครงการอย่างละเอียด'
         : 'We start by deeply understanding your needs, constraints, and opportunities.',
       activities: [
-        isThai ? 'Stakeholder interviews' : 'Stakeholder interviews',
-        isThai ? 'Data assessment' : 'Data assessment',
-        isThai ? 'Technical feasibility study' : 'Technical feasibility study',
-        isThai ? 'Success criteria definition' : 'Success criteria definition'
+        isThai ? 'สัมภาษณ์ผู้เกี่ยวข้อง' : 'Stakeholder interviews',
+        isThai ? 'ประเมินข้อมูลที่มี' : 'Data assessment',
+        isThai ? 'วิเคราะห์ความเป็นไปได้เชิงเทคนิค' : 'Technical feasibility study',
+        isThai ? 'กำหนดเกณฑ์ความสำเร็จ' : 'Success criteria definition'
       ],
       deliverables: [
-        isThai ? 'Assessment report' : 'Assessment report',
-        isThai ? 'Feasibility analysis' : 'Feasibility analysis',
-        isThai ? 'Project scope & timeline' : 'Project scope & timeline'
+        isThai ? 'รายงานประเมิน' : 'Assessment report',
+        isThai ? 'บทวิเคราะห์ความเป็นไปได้' : 'Feasibility analysis',
+        isThai ? 'ขอบเขตและไทม์ไลน์' : 'Project scope & timeline'
       ]
     },
     {
       step: 2,
       icon: Lightbulb,
-      title: isThai ? 'Design & Planning' : 'Design & Planning',
+      title: isThai ? 'ออกแบบและวางแผน' : 'Design & Planning',
       duration: isThai ? '1-2 สัปดาห์' : '1-2 weeks',
       description: isThai
-        ? 'ออกแบบสถาปัตยกรรมและวางแผนการพัฒนาที่ตอบโจทย์ทางธุรกิจ'
+        ? 'ออกแบบสถาปัตยกรรมและแผนงานให้ตอบโจทย์ธุรกิจและใช้งานได้จริง'
         : 'Design architecture and plan development that addresses business needs.',
       activities: [
-        isThai ? 'Solution architecture design' : 'Solution architecture design',
-        isThai ? 'Data pipeline planning' : 'Data pipeline planning',
-        isThai ? 'Model selection' : 'Model selection',
-        isThai ? 'Integration strategy' : 'Integration strategy'
+        isThai ? 'ออกแบบสถาปัตยกรรมโซลูชัน' : 'Solution architecture design',
+        isThai ? 'วางแผน data pipeline' : 'Data pipeline planning',
+        isThai ? 'เลือกโมเดลและเทคนิค' : 'Model selection',
+        isThai ? 'วางแผนการเชื่อมต่อระบบ' : 'Integration strategy'
       ],
       deliverables: [
-        isThai ? 'Technical architecture' : 'Technical architecture',
-        isThai ? 'Implementation plan' : 'Implementation plan',
-        isThai ? 'Risk mitigation strategy' : 'Risk mitigation strategy'
+        isThai ? 'สถาปัตยกรรมเชิงเทคนิค' : 'Technical architecture',
+        isThai ? 'แผนดำเนินงาน' : 'Implementation plan',
+        isThai ? 'แผนลดความเสี่ยง' : 'Risk mitigation strategy'
       ]
     },
     {
       step: 3,
       icon: Code,
-      title: isThai ? 'Development & Training' : 'Development & Training',
+      title: isThai ? 'พัฒนาและฝึกโมเดล' : 'Development & Training',
       duration: isThai ? '4-12 สัปดาห์' : '4-12 weeks',
       description: isThai
-        ? 'พัฒนา train และปรับแต่งโมเดล AI ตามความต้องการเฉพาะของคุณ'
+        ? 'พัฒนาโซลูชันและฝึกโมเดลตามข้อมูลจริง พร้อมปรับปรุงแบบวนรอบ'
         : 'Develop, train, and fine-tune AI models according to your specific needs.',
       activities: [
-        isThai ? 'Data preparation & cleaning' : 'Data preparation & cleaning',
-        isThai ? 'Model development' : 'Model development',
-        isThai ? 'Feature engineering' : 'Feature engineering',
-        isThai ? 'Iterative improvement' : 'Iterative improvement'
+        isThai ? 'เตรียมข้อมูลและทำความสะอาด' : 'Data preparation & cleaning',
+        isThai ? 'พัฒนาโมเดล' : 'Model development',
+        isThai ? 'ทำ feature engineering' : 'Feature engineering',
+        isThai ? 'ปรับปรุงแบบวนรอบ' : 'Iterative improvement'
       ],
       deliverables: [
-        isThai ? 'Trained models' : 'Trained models',
-        isThai ? 'API/Integration code' : 'API/Integration code',
-        isThai ? 'Technical documentation' : 'Technical documentation'
+        isThai ? 'โมเดลที่ฝึกแล้ว' : 'Trained models',
+        isThai ? 'โค้ด API/Integration' : 'API/Integration code',
+        isThai ? 'เอกสารเทคนิค' : 'Technical documentation'
       ]
     },
     {
       step: 4,
       icon: TestTube,
-      title: isThai ? 'Testing & Validation' : 'Testing & Validation',
+      title: isThai ? 'ทดสอบและยืนยันผล' : 'Testing & Validation',
       duration: isThai ? '1-3 สัปดาห์' : '1-3 weeks',
       description: isThai
-        ? 'ทดสอบอย่างครอบคลุมเพื่อให้มั่นใจว่าระบบทำงานได้ตามที่คาดหวัง'
+        ? 'ทดสอบประสิทธิภาพและความถูกต้องก่อนนำขึ้นใช้งานจริง'
         : 'Comprehensive testing to ensure the system works as expected.',
       activities: [
-        isThai ? 'Model performance testing' : 'Model performance testing',
-        isThai ? 'Integration testing' : 'Integration testing',
-        isThai ? 'User acceptance testing' : 'User acceptance testing',
-        isThai ? 'Load & stress testing' : 'Load & stress testing'
+        isThai ? 'ทดสอบประสิทธิภาพโมเดล' : 'Model performance testing',
+        isThai ? 'ทดสอบการเชื่อมต่อระบบ' : 'Integration testing',
+        isThai ? 'ทดสอบการยอมรับของผู้ใช้' : 'User acceptance testing',
+        isThai ? 'ทดสอบโหลดและสเตรส' : 'Load & stress testing'
       ],
       deliverables: [
-        isThai ? 'Test reports' : 'Test reports',
-        isThai ? 'Performance metrics' : 'Performance metrics',
-        isThai ? 'Bug fixes & improvements' : 'Bug fixes & improvements'
+        isThai ? 'รายงานผลทดสอบ' : 'Test reports',
+        isThai ? 'เมตริกประสิทธิภาพ' : 'Performance metrics',
+        isThai ? 'รายการแก้ไขและปรับปรุง' : 'Bug fixes & improvements'
       ]
     },
     {
       step: 5,
       icon: Rocket,
-      title: isThai ? 'Deployment & Launch' : 'Deployment & Launch',
+      title: isThai ? 'ติดตั้งและเปิดใช้งาน' : 'Deployment & Launch',
       duration: isThai ? '1-2 สัปดาห์' : '1-2 weeks',
       description: isThai
-        ? 'Deploy ระบบไปยัง production พร้อมการ monitor และ support'
+        ? 'นำขึ้นระบบจริง พร้อมมอนิเตอร์และถ่ายทอดความรู้ให้ทีมของคุณ'
         : 'Deploy system to production with monitoring and support.',
       activities: [
-        isThai ? 'Production deployment' : 'Production deployment',
-        isThai ? 'Monitoring setup' : 'Monitoring setup',
-        isThai ? 'User training' : 'User training',
-        isThai ? 'Knowledge transfer' : 'Knowledge transfer'
+        isThai ? 'ติดตั้งระบบใช้งานจริง' : 'Production deployment',
+        isThai ? 'ตั้งค่า monitoring' : 'Monitoring setup',
+        isThai ? 'อบรมผู้ใช้งาน' : 'User training',
+        isThai ? 'ถ่ายทอดความรู้' : 'Knowledge transfer'
       ],
       deliverables: [
-        isThai ? 'Production system' : 'Production system',
-        isThai ? 'Monitoring dashboard' : 'Monitoring dashboard',
-        isThai ? 'Training materials' : 'Training materials',
-        isThai ? 'Handover documentation' : 'Handover documentation'
+        isThai ? 'ระบบพร้อมใช้งาน' : 'Production system',
+        isThai ? 'แดชบอร์ดมอนิเตอร์' : 'Monitoring dashboard',
+        isThai ? 'เอกสารส่งมอบ/คู่มือ' : 'Training materials'
       ]
     },
     {
       step: 6,
       icon: LifeBuoy,
-      title: isThai ? 'Support & Optimization' : 'Support & Optimization',
+      title: isThai ? 'ดูแลและปรับปรุงต่อเนื่อง' : 'Support & Optimization',
       duration: isThai ? 'ต่อเนื่อง' : 'Ongoing',
       description: isThai
-        ? 'การสนับสนุนต่อเนื่องและการปรับปรุงประสิทธิภาพ'
+        ? 'ติดตามผล ปรับจูน และพัฒนาเพิ่มเติมตามการใช้งานจริง'
         : 'Continuous support and performance optimization.',
       activities: [
-        isThai ? 'Performance monitoring' : 'Performance monitoring',
-        isThai ? 'Model retraining' : 'Model retraining',
-        isThai ? 'Bug fixes & updates' : 'Bug fixes & updates',
-        isThai ? 'Feature enhancements' : 'Feature enhancements'
+        isThai ? 'ติดตามประสิทธิภาพ' : 'Performance monitoring',
+        isThai ? 'ฝึกโมเดลซ้ำเมื่อจำเป็น' : 'Model retraining',
+        isThai ? 'แก้ไขบั๊กและอัปเดต' : 'Bug fixes & updates',
+        isThai ? 'เพิ่มฟีเจอร์ใหม่' : 'Feature enhancements'
       ],
       deliverables: [
-        isThai ? 'Monthly reports' : 'Monthly reports',
-        isThai ? 'Model updates' : 'Model updates',
-        isThai ? 'Optimization recommendations' : 'Optimization recommendations'
+        isThai ? 'รายงานรายเดือน' : 'Monthly reports',
+        isThai ? 'อัปเดตโมเดล' : 'Model updates',
+        isThai ? 'ข้อเสนอแนะการปรับปรุง' : 'Optimization recommendations'
       ]
     }
   ];
@@ -150,23 +149,23 @@ export default function HowWeWorkPage() {
   const successFactors = [
     {
       icon: Users,
-      title: isThai ? 'Collaboration' : 'Collaboration',
+      title: isThai ? 'การร่วมมือ' : 'Collaboration',
       description: isThai
-        ? 'ความร่วมมือระหว่างทีมของคุณและทีมของเราเป็นกุญแจสำคัญสู่ความสำเร็จ'
+        ? 'ทำงานร่วมกันอย่างใกล้ชิด เพื่อให้ข้อมูลครบและตัดสินใจได้เร็ว'
         : 'Collaboration between your team and ours is key to success.'
     },
     {
       icon: Target,
-      title: isThai ? 'Clear Objectives' : 'Clear Objectives',
+      title: isThai ? 'เป้าหมายชัดเจน' : 'Clear Objectives',
       description: isThai
-        ? 'เป้าหมายที่ชัดเจนและวัดผลได้ช่วยให้เรามุ่งเน้นไปที่สิ่งที่สำคัญที่สุด'
+        ? 'กำหนด KPI และผลลัพธ์ที่วัดได้ เพื่อโฟกัสสิ่งที่สำคัญจริง'
         : 'Clear, measurable objectives help us focus on what matters most.'
     },
     {
       icon: CheckCircle2,
-      title: isThai ? 'Data Quality' : 'Data Quality',
+      title: isThai ? 'คุณภาพข้อมูล' : 'Data Quality',
       description: isThai
-        ? 'ข้อมูลที่มีคุณภาพเป็นรากฐานของโซลูชัน AI ที่ประสบความสำเร็จ'
+        ? 'ข้อมูลที่ดีคือรากฐานของโซลูชัน AI ที่ใช้งานได้จริง'
         : 'Quality data is the foundation of successful AI solutions.'
     }
   ];
@@ -176,9 +175,9 @@ export default function HowWeWorkPage() {
       {/* Hero Section */}
       <MagicHero
         eyebrow={isThai ? 'กระบวนการทำงาน' : 'Our Process'}
-        title={isThai ? 'How We Work' : 'How We Work'}
+        title={isThai ? 'เราทำงานอย่างไร' : 'How We Work'}
         description={isThai
-          ? 'กระบวนการที่ได้รับการพิสูจน์แล้วในการส่งมอบโซลูชัน AI ที่ประสบความสำเร็จ ตั้งแต่การค้นพบไปจนถึงการใช้งานและต่อเนื่อง'
+          ? 'กระบวนการ 6 ขั้นตอนที่โปร่งใส ตั้งแต่สำรวจปัญหา ออกแบบ พัฒนา ทดสอบ จนถึงส่งมอบและดูแลต่อเนื่อง'
           : 'Our proven process for delivering successful AI solutions, from discovery to deployment and beyond.'
         }
         align="center"
@@ -201,7 +200,7 @@ export default function HowWeWorkPage() {
             </h2>
             <p className="text-text-muted max-w-2xl mx-auto">
               {isThai
-                ? 'กระบวนการ 6 ขั้นตอนที่ชัดเจนและโปร่งใสเพื่อให้มั่นใจว่าโครงการของคุณประสบความสำเร็จ'
+                ? 'โฟลว์งาน 6 ขั้นตอนที่ช่วยให้โปรเจกต์ชัดเจนและส่งมอบได้จริง'
                 : 'A clear, transparent 6-phase process to ensure your project succeeds.'
               }
             </p>
@@ -214,7 +213,6 @@ export default function HowWeWorkPage() {
 
               return (
                 <div key={step.step} className="relative">
-                  {/* Connector line */}
                   {index < processSteps.length - 1 && (
                     <div className="absolute left-8 top-24 w-0.5 h-20 bg-gradient-to-b from-primary/50 to-accent/50 hidden lg:block" />
                   )}
@@ -294,11 +292,11 @@ export default function HowWeWorkPage() {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-text mb-4">
-              {isThai ? 'ปัจจัยสู่ความสำเร็จ' : 'Success Factors'}
+              {isThai ? 'ปัจจัยความสำเร็จ' : 'Success Factors'}
             </h2>
             <p className="text-text-muted max-w-2xl mx-auto">
               {isThai
-                ? 'สิ่งที่ทำให้โครงการ AI ประสบความสำเร็จ'
+                ? 'สิ่งที่ทำให้โปรเจกต์ AI สำเร็จอย่างยั่งยืน'
                 : 'What makes AI projects succeed.'
               }
             </p>
@@ -338,7 +336,7 @@ export default function HowWeWorkPage() {
               </h2>
               <p className="text-text-muted">
                 {isThai
-                  ? 'ทุกโครงการมีทีมผู้เชี่ยวชาญที่ทุ่มเทเพื่อความสำเร็จของคุณ'
+                  ? 'ทุกโปรเจกต์มีทีมผู้เชี่ยวชาญที่ดูแลอย่างใกล้ชิดตั้งแต่เริ่มจนส่งมอบ'
                   : 'Every project has a dedicated team of experts committed to your success.'
                 }
               </p>
@@ -357,7 +355,7 @@ export default function HowWeWorkPage() {
                         <div>
                           <div className="font-medium text-text">Project Manager</div>
                           <div className="text-sm text-text-muted">
-                            {isThai ? 'ดูแลทั้งโครงการและเป็นจุดติดต่อหลัก' : 'Oversees entire project and main point of contact'}
+                            {isThai ? 'ดูแลโครงการและเป็นจุดติดต่อหลัก' : 'Oversees entire project and main point of contact'}
                           </div>
                         </div>
                       </li>
@@ -366,7 +364,7 @@ export default function HowWeWorkPage() {
                         <div>
                           <div className="font-medium text-text">AI/ML Engineer</div>
                           <div className="text-sm text-text-muted">
-                            {isThai ? 'พัฒนาและฝึกอบรมโมเดล' : 'Develops and trains models'}
+                            {isThai ? 'พัฒนาและฝึกโมเดล AI' : 'Develops and trains models'}
                           </div>
                         </div>
                       </li>
@@ -375,7 +373,7 @@ export default function HowWeWorkPage() {
                         <div>
                           <div className="font-medium text-text">Data Engineer</div>
                           <div className="text-sm text-text-muted">
-                            {isThai ? 'จัดการ data pipeline และโครงสร้างพื้นฐาน' : 'Manages data pipelines and infrastructure'}
+                            {isThai ? 'ดูแล data pipeline และโครงสร้างพื้นฐาน' : 'Manages data pipelines and infrastructure'}
                           </div>
                         </div>
                       </li>
@@ -392,7 +390,7 @@ export default function HowWeWorkPage() {
                         <div>
                           <div className="font-medium text-text">Solution Architect</div>
                           <div className="text-sm text-text-muted">
-                            {isThai ? 'ออกแบบโครงสร้างโซลูชัน' : 'Designs solution architecture'}
+                            {isThai ? 'ออกแบบสถาปัตยกรรมโซลูชัน' : 'Designs solution architecture'}
                           </div>
                         </div>
                       </li>
@@ -401,7 +399,7 @@ export default function HowWeWorkPage() {
                         <div>
                           <div className="font-medium text-text">QA Engineer</div>
                           <div className="text-sm text-text-muted">
-                            {isThai ? 'รับประกันคุณภาพและการทดสอบ' : 'Ensures quality and testing'}
+                            {isThai ? 'ทดสอบคุณภาพและความถูกต้อง' : 'Ensures quality and testing'}
                           </div>
                         </div>
                       </li>
@@ -410,7 +408,7 @@ export default function HowWeWorkPage() {
                         <div>
                           <div className="font-medium text-text">DevOps Engineer</div>
                           <div className="text-sm text-text-muted">
-                            {isThai ? 'จัดการ deployment และ monitoring' : 'Handles deployment and monitoring'}
+                            {isThai ? 'ดูแลการ deploy และ monitoring' : 'Handles deployment and monitoring'}
                           </div>
                         </div>
                       </li>
@@ -427,18 +425,18 @@ export default function HowWeWorkPage() {
       <section className="py-20 bg-gradient-to-br from-primary/10 via-transparent to-accent/10">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold text-text mb-4">
-            {isThai ? 'พร้อมที่จะเริ่มต้นแล้วหรือยัง?' : 'Ready to Get Started?'}
+            {isThai ? 'พร้อมเริ่มต้นหรือยัง?' : 'Ready to Get Started?'}
           </h2>
           <p className="text-text-muted mb-8 max-w-2xl mx-auto">
             {isThai
-              ? 'ติดต่อทีมของเราเพื่อหารือเกี่ยวกับโครงการของคุณและเรียนรู้เพิ่มเติมเกี่ยวกับกระบวนการของเรา'
+              ? 'คุยกับทีมเราเพื่อประเมินโปรเจกต์และออกแบบขั้นตอนที่เหมาะกับคุณ'
               : 'Contact our team to discuss your project and learn more about our process.'
             }
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg">
               <Link href={`${basePath}/contact` as any}>
-                {isThai ? 'เริ่มโครงการ' : 'Start a Project'}
+                {isThai ? 'เริ่มโปรเจกต์' : 'Start a Project'}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>

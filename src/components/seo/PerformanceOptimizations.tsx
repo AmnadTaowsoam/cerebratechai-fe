@@ -144,33 +144,13 @@ export function WebVitalsScript() {
 export function ResourceHints() {
   return (
     <>
-      {/* Preload critical fonts - commented out until files are available */}
-      {/* <link
-        rel="preload"
-        href="/fonts/inter-var.woff2"
-        as="font"
-        type="font/woff2"
-        crossOrigin="anonymous"
-      /> */}
-      
-      {/* Preload critical CSS - commented out until files are available */}
-      {/* <link
-        rel="preload"
-        href="/css/critical.css"
-        as="style"
-      /> */}
-      
-      {/* Preload critical JavaScript - commented out until files are available */}
-      {/* <link
-        rel="preload"
-        href="/js/critical.js"
-        as="script"
-      /> */}
-      
       {/* Prefetch likely next pages */}
-      <link rel="prefetch" href="/solutions" />
-      <link rel="prefetch" href="/packages" />
-      <link rel="prefetch" href="/contact" />
+      <link rel="prefetch" href="/th/solutions" />
+      <link rel="prefetch" href="/th/packages" />
+      <link rel="prefetch" href="/th/contact" />
+      <link rel="prefetch" href="/en/solutions" />
+      <link rel="prefetch" href="/en/packages" />
+      <link rel="prefetch" href="/en/contact" />
     </>
   );
 }

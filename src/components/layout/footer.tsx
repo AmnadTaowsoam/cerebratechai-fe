@@ -102,14 +102,14 @@ export function Footer() {
               <div className="relative">
                 <Image
                   src="/cerebratechai_logo.png"
-                  alt="Cerebratechai logo"
+                  alt="CerebraTechAI logo"
                   width={48}
                   height={48}
                   className="transition-transform duration-300 group-hover:scale-110"
                   priority
                 />
               </div>
-              <span className="text-2xl font-bold text-text tracking-tight">Cerebratechai</span>
+              <span className="text-2xl font-bold text-text tracking-tight">CerebraTechAI</span>
             </Link>
             
             <div className="space-y-4">
@@ -124,7 +124,7 @@ export function Footer() {
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
-                    <span className="text-lg font-bold text-text tracking-tight">Cerebratechai</span>
+                    <span className="text-lg font-bold text-text tracking-tight">CerebraTechAI</span>
                   </div>
                   <div className="space-y-1">
                     <p className="text-sm font-medium text-text/90">
@@ -254,7 +254,7 @@ export function Footer() {
           <div className="flex flex-col items-center justify-between gap-6 text-xs text-text-muted sm:flex-row">
             <div className="flex flex-col items-center sm:items-start gap-2">
               <p className="flex items-center gap-2">
-                <span>&copy; {new Date().getFullYear()} Cerebratechai</span>
+                <span>&copy; {new Date().getFullYear()} CerebraTechAI</span>
                 <span className="hidden sm:inline">•</span>
                 <span>{locale.startsWith('th') ? 'สงวนลิขสิทธิ์' : 'All rights reserved'}</span>
               </p>

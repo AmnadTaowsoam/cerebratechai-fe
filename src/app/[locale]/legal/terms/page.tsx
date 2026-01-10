@@ -8,7 +8,7 @@ const content = {
   en: {
     title: 'Terms of Service',
     description:
-      'These terms describe how Cerebratechai delivers projects, the responsibilities of each party, and the limits of our obligations.',
+      'These terms describe how CerebraTechAI delivers projects, the responsibilities of each party, and the limits of our obligations.',
     updated: 'Updated 6 Oct 2025',
     sections: [
       {
@@ -36,7 +36,7 @@ const content = {
         heading: '4. Intellectual Property',
         body: [
           'Custom assets created for the engagement are transferred to the client upon full payment unless otherwise agreed.',
-          'Cerebratechai retains ownership of pre-existing frameworks, accelerators, and tools used during delivery.',
+          'CerebraTechAI retains ownership of pre-existing frameworks, accelerators, and tools used during delivery.',
         ],
       },
       {
@@ -49,7 +49,7 @@ const content = {
       {
         heading: '6. Limitation of Liability',
         body: [
-          'Cerebratechai is not liable for indirect, incidental, or consequential damages.',
+          'CerebraTechAI is not liable for indirect, incidental, or consequential damages.',
           'Total liability is capped at the amounts paid for the services that gave rise to the claim.',
         ],
       },
@@ -78,8 +78,8 @@ const content = {
       {
         heading: '2. รูปแบบธุรกิจและข้อจำกัด',
         body: [
-          'Cerebratechai ดำเนินการโดยบุคคลธรรมดา ยังไม่จดทะเบียนเป็นบริษัทจำกัด',
-          '* สำหรับโครงการขนาดใหญ่ (มูลค่าเกิน 500,000 บาท) แนะนำให้ทำสัญญาแยกและพิจารณาหลักประกัน',
+          'CerebraTechAI ดำเนินการโดยบุคคลธรรมดา ยังไม่จดทะเบียนเป็นบริษัทจำกัด',
+          '* สำหรับโครงการขนาดใหญ่ (มูลค่าเกิน ฿500,000) แนะนำให้ทำสัญญาแยกและพิจารณาหลักประกัน',
           '* ขอบเขตบริการ: เน้นโครงการขนาดเล็กถึงกลาง (Proof of Concept, Small Pilot) เท่านั้น',
           'สำหรับโครงการ Production ขนาดใหญ่ ควรหาผู้ให้บริการที่จดทะเบียนบริษัทและมีทุนจดทะเบียนเพียงพอ',
         ],
@@ -99,7 +99,7 @@ const content = {
           'จัดหาข้อมูล สภาพแวดล้อม และผู้มีส่วนเกี่ยวข้องที่จำเป็นต่อการทำงาน',
           'ตรวจสอบว่าข้อมูลที่ให้มาไม่ละเมิดลิขสิทธิ์หรือสิทธิของบุคคลที่สาม',
           'รับผิดชอบค่าใช้จ่ายภายนอก เช่น Cloud service, API credits ที่เกิดจากการใช้งานจริง',
-          '* หากลูกค้าให้ข้อมูลไม่ครบหรือล่าช้า ทำให้ส่งมอบงานล่าช้า Cerebratechai ไม่รับผิดชอบ',
+          '* หากลูกค้าให้ข้อมูลไม่ครบหรือล่าช้า ทำให้ส่งมอบงานล่าช้า CerebraTechAI ไม่รับผิดชอบ',
         ],
       },
       {
@@ -116,7 +116,7 @@ const content = {
         heading: '6. ทรัพย์สินทางปัญญาและลิขสิทธิ์',
         body: [
           'ผลงานที่พัฒนาเฉพาะสำหรับโครงการ (Custom Development): โอนลิขสิทธิ์ให้ลูกค้าหลังชำระเงินครบ',
-          'เครื่องมือ Framework และ Code ที่มีอยู่ก่อน: Cerebratechai ยังคงเป็นเจ้าของ ลูกค้าได้เพียง License ใช้งาน',
+          'เครื่องมือ Framework และ Code ที่มีอยู่ก่อน: CerebraTechAI ยังคงเป็นเจ้าของ ลูกค้าได้เพียง License ใช้งาน',
           'Open-source components: อยู่ภายใต้ License ของ Library นั้นๆ',
           '* หากต้องการ Exclusive ownership ครบทุกส่วน กรุณาระบุในสัญญาและอาจมีค่าใช้จ่ายเพิ่ม',
         ],
@@ -134,9 +134,9 @@ const content = {
       {
         heading: '8. การยกเลิกและคืนเงิน',
         body: [
-          'ลูกค้ามีสิทธิยกเลิกภายใน 7 วันหลังชำระเงินงวดแรก หากยังไม่เริ่มทำงาน (คืนเงิน 100% หักค่าดำเนินการ 500 บาท)',
+          'ลูกค้ามีสิทธิยกเลิกภายใน 7 วันหลังชำระเงินงวดแรก หากยังไม่เริ่มทำงาน (คืนเงิน 100% หักค่าดำเนินการ ฿500)',
           'หากเริ่มทำงานแล้ว: คืนเงินตามสัดส่วนงานที่ยังไม่ได้ทำ',
-          'Cerebratechai สงวนสิทธิ์ยกเลิกสัญญาหากลูกค้าผิดนัดชำระเงิน หรือละเมิดเงื่อนไข โดยแจ้งล่วงหน้า 15 วัน',
+          'CerebraTechAI สงวนสิทธิ์ยกเลิกสัญญาหากลูกค้าผิดนัดชำระเงิน หรือละเมิดเงื่อนไข โดยแจ้งล่วงหน้า 15 วัน',
         ],
       },
       {
@@ -145,7 +145,7 @@ const content = {
           'ขั้นที่ 1: เจรจากันโดยตรงผ่านอีเมล (ภายใน 15 วัน)',
           'ขั้นที่ 2: ไกล่เกลี่ยโดยบุคคลที่สามที่ทั้งสองฝ่ายตกลง (ภายใน 30 วัน)',
           'ขั้นที่ 3: ฟ้องร้องต่อศาลแพ่งกรุงเทพมหานคร หรือ ศาลแขวงที่มีเขตอำนาจ',
-          '* สำหรับโครงการมูลค่าต่ำกว่า 300,000 บาท อาจใช้ศาลแขวง (มาตรา 6 แห่ง พ.ร.บ. จัดตั้งศาลแขวงฯ)',
+          '* สำหรับโครงการมูลค่าต่ำกว่า ฿300,000 อาจใช้ศาลแขวง (มาตรา 6 แห่ง พ.ร.บ. จัดตั้งศาลแขวงฯ)',
         ],
       },
       {
@@ -181,10 +181,10 @@ export default function TermsPage({ params }: TermsPageProps) {
   return (
     <>
       <SeoHead
-        title={isThai ? 'เงื่อนไขการใช้งาน - Cerebratechai' : 'Terms of Service - Cerebratechai'}
+        title={isThai ? 'เงื่อนไขการใช้งาน - CerebraTechAI' : 'Terms of Service - CerebraTechAI'}
         description={isThai 
-          ? 'เงื่อนไขการใช้บริการของ Cerebratechai และความรับผิดชอบของแต่ละฝ่าย'
-          : 'Cerebratechai terms of service and responsibilities of each party.'
+          ? 'เงื่อนไขการใช้บริการของ CerebraTechAI และความรับผิดชอบของแต่ละฝ่าย'
+          : 'CerebraTechAI terms of service and responsibilities of each party.'
         }
         keywords={isThai 
           ? ['เงื่อนไขการใช้งาน', 'Terms of Service', 'ข้อตกลง', 'ความรับผิดชอบ']

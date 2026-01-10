@@ -8,7 +8,7 @@ const content = {
   en: {
     title: 'Privacy Policy',
     description:
-      'Learn how Cerebratechai collects, uses, and protects personal data shared through our website, forms, and delivery engagements.',
+      'Learn how CerebraTechAI collects, uses, and protects personal data shared through our website, forms, and delivery engagements.',
     updated: 'Updated 6 Oct 2025',
     sections: [
       {
@@ -56,13 +56,13 @@ const content = {
   th: {
     title: 'นโยบายความเป็นส่วนตัว',
     description:
-      'อธิบายวิธีที่ Cerebratechai เก็บ ใช้ และปกป้องข้อมูลส่วนบุคคลตามพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562',
+      'อธิบายวิธีที่ CerebraTechAI เก็บ ใช้ และปกป้องข้อมูลส่วนบุคคลตามพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562',
     updated: 'ปรับปรุงล่าสุด 18 ต.ค. 2025',
     sections: [
       {
         heading: '1. ข้อมูลเกี่ยวกับผู้ควบคุมข้อมูลส่วนบุคคล',
         body: [
-          'ชื่อ: Cerebratechai (ดำเนินธุรกิจโดยบุคคลธรรมดา)',
+          'ชื่อ: CerebraTechAI (ดำเนินธุรกิจโดยบุคคลธรรมดา)',
           'ที่อยู่: กรุงเทพมหานคร ประเทศไทย',
           'อีเมลติดต่อ: privacy@cerebratechai.com | โทร: 085-662-1113',
           '* หมายเหตุ: เนื่องจากเป็นธุรกิจที่ยังไม่จดทะเบียนเป็นนิติบุคคล ความรับผิดตามกฎหมายจึงตกอยู่กับเจ้าของกิจการ ลูกค้าควรพิจารณาความเสี่ยงนี้ก่อนเปิดเผยข้อมูลที่มีความอ่อนไหว',
@@ -151,10 +151,10 @@ export default function PrivacyPolicyPage({ params }: PrivacyPageProps) {
   return (
     <>
       <SeoHead
-        title={isThai ? 'นโยบายความเป็นส่วนตัว - Cerebratechai' : 'Privacy Policy - Cerebratechai'}
+        title={isThai ? 'นโยบายความเป็นส่วนตัว - CerebraTechAI' : 'Privacy Policy - CerebraTechAI'}
         description={isThai 
-          ? 'นโยบายความเป็นส่วนตัวของ Cerebratechai เกี่ยวกับการเก็บรวบรวม ใช้ และปกป้องข้อมูลส่วนบุคคล'
-          : 'Cerebratechai privacy policy on how we collect, use, and protect personal data.'
+          ? 'นโยบายความเป็นส่วนตัวของ CerebraTechAI เกี่ยวกับการเก็บรวบรวม ใช้ และปกป้องข้อมูลส่วนบุคคล'
+          : 'CerebraTechAI privacy policy on how we collect, use, and protect personal data.'
         }
         keywords={isThai 
           ? ['นโยบายความเป็นส่วนตัว', 'Privacy Policy', 'PDPA', 'ข้อมูลส่วนบุคคล']

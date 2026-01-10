@@ -13,7 +13,7 @@ const logos = [
 const metrics = [
   { value: '55%', key: 'manufacturing' },
   { value: '42%', key: 'ops' },
-  { value: '18', key: 'logistics' },
+  { value: '420k', key: 'logistics' },
 ];
 
 export function SocialProofSection() {
@@ -58,8 +58,8 @@ export function SocialProofSection() {
           <div className="rounded-3xl border border-hairline bg-surface p-8">
             <blockquote className="text-lg text-text-muted">
               &ldquo;{locale.startsWith('th') 
-                ? 'Cerebratechai ให้ความได้เปรียบโดยการจับคู่ความลึกทางเทคนิคกับการจัดการการเปลี่ยนแปลงอย่างมีวินัย เราได้ผ่านทุกประตูกำกับดูแลโดยไม่ชะลอการส่งมอบ'
-                : 'Cerebratechai gave us the edge by pairing technical depth with disciplined change management. We met every regulatory gate without slowing delivery.'
+                ? 'CerebraTechAI ให้ความได้เปรียบโดยการจับคู่ความลึกทางเทคนิคกับการจัดการการเปลี่ยนแปลงอย่างมีวินัย เราได้ผ่านทุกประตูกำกับดูแลโดยไม่ชะลอการส่งมอบ'
+                : 'CerebraTechAI gave us the edge by pairing technical depth with disciplined change management. We met every regulatory gate without slowing delivery.'
               }&rdquo;
             </blockquote>
             <p className="mt-4 text-sm font-semibold text-text">
@@ -79,7 +79,7 @@ export function SocialProofSection() {
                       ? (locale.startsWith('th') ? 'POCs ที่ส่งมอบในโครงการขนาดเล็ก-กลาง' : 'POCs delivered for small-mid projects')
                       : metric.key === 'ops'
                       ? (locale.startsWith('th') ? 'เวลาเฉลี่ยในการส่งมอบ Pilot (สัปดาห์)' : 'Average Pilot delivery time (weeks)')
-                      : (locale.startsWith('th') ? 'ราคาเริ่มต้น POC Package (บาท)' : 'Starting POC Package price (THB)')
+                      : (locale.startsWith('th') ? 'ราคาเริ่มต้น POC Package (฿)' : 'Starting POC Package price (฿)')
                     }
                   </p>
                 </div>

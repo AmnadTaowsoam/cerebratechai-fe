@@ -190,7 +190,7 @@ export async function getHeroStats(): Promise<HeroStat[]> {
       id: 'starting-price',
       identifier: 'starting-price',
       value: '80K',
-      label: { en: 'Starting From (THB)', th: 'เริ่มต้น (บาท)' },
+      label: { en: 'Starting From (฿)', th: 'เริ่มต้น (฿)' },
       display_order: 3
     }
   ];

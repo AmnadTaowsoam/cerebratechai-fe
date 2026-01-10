@@ -66,15 +66,9 @@ export default function AboutPage() {
   return (
     <>
       <SeoHead
-        title={isThai ? 'เกี่ยวกับเรา - Cerebratechai AI Studio' : 'About Us - Cerebratechai AI Studio'}
-        description={isThai 
-          ? 'เรียนรู้เกี่ยวกับทีม AI ของเราในกรุงเทพฯ ที่มีประสบการณ์ในการพัฒนาโซลูชัน AI สำหรับธุรกิจ'
-          : 'Learn about our AI team in Bangkok with experience in developing AI solutions for businesses.'
-        }
-        keywords={isThai 
-          ? ['เกี่ยวกับเรา', 'ทีม AI', 'Cerebratechai', 'AI Bangkok', 'Machine Learning team']
-          : ['About us', 'AI team', 'Cerebratechai', 'AI Bangkok', 'Machine Learning team']
-        }
+        title={isThai ? 'เกี่ยวกับเรา - CerebraTechAI AI Studio' : 'About Us - CerebraTechAI AI Studio'}
+        description={isThai ? 'ทีม AI ของ CerebraTechAI ในกรุงเทพฯ เชี่ยวชาญการพัฒนาโซลูชัน AI สำหรับธุรกิจ' : 'Learn about our AI team in Bangkok with experience in developing AI solutions for businesses.'}
+        keywords={isThai ? ['เกี่ยวกับเรา', 'ทีม AI', 'CerebraTechAI', 'AI กรุงเทพ', 'ทีมแมชชีนเลิร์นนิง'] : ['About us', 'AI team', 'CerebraTechAI', 'AI Bangkok', 'Machine Learning team']}
         url="/about"
         type="website"
       />
@@ -83,14 +77,14 @@ export default function AboutPage() {
       <div className="bg-bg">
       {/* Hero Section */}
       <MagicHero
-        eyebrow="About Cerebratechai"
-        title="Building the Future of AI, One Solution at a Time"
-        description="We make AI accessible to everyone - from individuals to enterprises. Our solutions bridge the gap between cutting-edge AI research and real-world applications, delivering measurable business value and creating new opportunities."
+        eyebrow={isThai ? 'เกี่ยวกับ CerebraTechAI' : 'About CerebraTechAI'}
+        title={isThai ? 'สร้างอนาคตของ AI ทีละโซลูชัน' : 'Building the Future of AI, One Solution at a Time'}
+        description={isThai ? 'เราทำให้ AI เข้าถึงได้สำหรับทุกคน ตั้งแต่บุคคลทั่วไปไปจนถึงองค์กร โซลูชันของเราช่วยเชื่อมช่องว่างระหว่างงานวิจัย AI ระดับลึกกับการใช้งานจริง เพื่อสร้างผลลัพธ์ที่วัดได้และโอกาสใหม่ทางธุรกิจ' : 'We make AI accessible to everyone - from individuals to enterprises. Our solutions bridge the gap between cutting-edge AI research and real-world applications, delivering measurable business value and creating new opportunities.'}
         align="center"
         metrics={[
-          { value: '9+', label: isThai ? 'โปรเจกต์ที่จัดส่ง' : 'Projects Delivered' },
-          { value: '2025', label: isThai ? 'ก่อตั้ง' : 'Founded' },
-          { value: '100%', label: isThai ? 'โฟกัสที่ SME' : 'SME Focused' }
+          { value: '9+', label: isThai ? 'โปรเจกต์ที่ส่งมอบ' : 'Projects Delivered' },
+          { value: '2025', label: isThai ? 'ก่อตั้งปี' : 'Founded' },
+          { value: '100%', label: isThai ? 'โฟกัส SME' : 'SME Focused' }
         ]}
       />
 
@@ -161,7 +155,7 @@ export default function AboutPage() {
                 <div className="text-4xl font-bold text-primary mb-2">2025</div>
                 <h3 className="text-lg font-semibold text-text mb-2">Services</h3>
                 <p className="text-sm text-text-muted">
-                  Offering specialized services including CereBraKM knowledge management and NVR+Raspberry Pi CCTV solutions.
+                  Offering specialized services including CerebraForge knowledge management and NVR+Raspberry Pi CCTV solutions.
                 </p>
               </CardContent>
             </Card>
@@ -215,7 +209,7 @@ export default function AboutPage() {
               
               <Card className="border border-hairline bg-surface/80 hover:shadow-lg transition-all">
                 <CardContent className="p-8">
-                  <h4 className="text-xl font-bold text-text mb-4">CereBraKM</h4>
+                  <h4 className="text-xl font-bold text-text mb-4">CerebraForge</h4>
                   <p className="text-text-muted mb-4">
                     Advanced knowledge management system powered by RAG + LLM that helps organizations capture, organize, and leverage their intellectual assets with AI-powered search and recommendations.
                   </p>
@@ -402,7 +396,7 @@ export default function AboutPage() {
                   ))}
                 </div>
                 <p className="text-text-muted mb-6 italic">
-                  &quot;CereBraKM revolutionized our knowledge management. The RAG+LLM system helped our team find critical information 70% faster, and the AI search accuracy is remarkable at 90%.&quot;
+                  &quot;CerebraForge revolutionized our knowledge management. The RAG+LLM system helped our team find critical information 70% faster, and the AI search accuracy is remarkable at 90%.&quot;
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">

@@ -6,7 +6,7 @@ export const runtime = 'edge';
 async function handler(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
-    const title = searchParams.get('title') || 'Cerebratechai';
+    const title = searchParams.get('title') || 'CerebraTechAI';
     const description = searchParams.get('description') || 'Turn Pain Points into Production-Ready AI Systems';
     const locale = searchParams.get('locale') || 'en';
 
@@ -89,7 +89,7 @@ async function handler(request: NextRequest) {
                   letterSpacing: '-0.02em',
                 }}
               >
-                Cerebratechai
+                CerebraTechAI
               </div>
             </div>
 

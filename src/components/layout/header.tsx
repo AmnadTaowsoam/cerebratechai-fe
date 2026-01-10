@@ -1,37 +1,41 @@
 'use client';
 
-import { useState, useRef, useEffect, useMemo } from 'react';
-import Link from 'next/link';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import Image from 'next/image';
-import { useLocale } from 'next-intl';
-import { Menu, X, ChevronDown } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import { useLocale, useTranslations } from 'next-intl';
+import { ChevronDown, Menu, X } from 'lucide-react';
+
 import { LocaleSwitcher } from '@/components/locale-switcher';
-import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
+
+type NavigationItem = {
+  name: string;
+  href: string;
+  dropdown?: Array<{ name: string; href: string; isSection?: boolean }>;
+};
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
   const locale = useLocale();
+  const tNav = useTranslations('nav');
+  const tServices = useTranslations('services');
+
   const basePath = `/${locale}`;
 
-  // Force re-render when locale changes
   const navigationKey = `nav-${locale}`;
 
-  // Reset state when locale changes
   useEffect(() => {
     setIsMenuOpen(false);
     setActiveDropdown(null);
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
   }, [locale]);
 
   const handleMouseEnter = (itemName: string) => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setActiveDropdown(itemName);
   };
 
@@ -41,72 +45,76 @@ export function Header() {
     }, 200);
   };
 
-  const navigation = useMemo(() => [
-    {
-      name: 'Solutions',
-      href: `${basePath}/solutions`,
-      dropdown: [
-        { name: 'All Solutions', href: `${basePath}/solutions` },
-        { name: 'LLM & RAG', href: `${basePath}/solutions#llm-rag` },
-        { name: 'Computer Vision', href: `${basePath}/solutions#computer-vision` },
-        { name: 'Predictive Analytics', href: `${basePath}/solutions#predictive-analytics` },
-        { name: 'Edge AI & IoT', href: `${basePath}/solutions#edge-ai` },
-      ]
-    },
-    {
-      name: 'Industries',
-      href: `${basePath}/industries`,
-      dropdown: [
-        { name: 'All Industries', href: `${basePath}/industries` },
-        { name: 'Manufacturing', href: `${basePath}/industries/manufacturing` },
-        { name: 'Healthcare', href: `${basePath}/industries/healthcare` },
-        { name: 'Logistics', href: `${basePath}/industries/logistics` },
-        { name: 'Enterprise', href: `${basePath}/industries/enterprise` },
-      ]
-    },
-    { name: 'Case Studies', href: `${basePath}/cases` },
-    { name: 'Packages', href: `${basePath}/packages` },
-    {
-      name: 'Resources',
-      href: `${basePath}/resources`,
-      dropdown: [
-        { name: 'All Resources', href: `${basePath}/resources` },
-        { name: 'Blog', href: `${basePath}/blog` },
-        { name: 'Support', href: `${basePath}/support` },
-      ]
-    },
-    {
-      name: 'Company',
-      href: `${basePath}/about`,
-      dropdown: [
-        { name: 'About Us', href: `${basePath}/about` },
-        { name: 'How We Work', href: `${basePath}/how-we-work` },
-        { name: 'Trust & Security', href: `${basePath}/trust` },
-        { name: 'Careers', href: `${basePath}/careers` },
-        { name: 'Partners', href: `${basePath}/partners` },
-      ]
-    },
-  ], [basePath]);
+  const navigation: NavigationItem[] = useMemo(
+    () => [
+      {
+        name: tNav('solutions'),
+        href: `${basePath}/solutions`,
+        dropdown: [
+          { name: tNav('all_solutions'), href: `${basePath}/solutions` },
+          { name: tServices('solution_types.ai_core'), href: `${basePath}/solutions`, isSection: true },
+          { name: tServices('service_category_labels.llm'), href: `${basePath}/solutions#llm-rag` },
+          { name: tServices('service_category_labels.cv'), href: `${basePath}/solutions#computer-vision` },
+          { name: tServices('service_category_labels.ml'), href: `${basePath}/solutions#machine-learning` },
+          { name: tServices('service_category_labels.aiot'), href: `${basePath}/solutions#aiot` },
+          {
+            name: tServices('solution_types.engineering_accelerators'),
+            href: `${basePath}/solutions`,
+            isSection: true,
+          },
+          { name: tServices('service_category_labels.platform'), href: `${basePath}/solutions#platforms` },
+          { name: tServices('service_category_labels.analytics'), href: `${basePath}/solutions#analytics` },
+        ],
+      },
+      {
+        name: tNav('industries'),
+        href: `${basePath}/industries`,
+        dropdown: [
+          { name: tNav('all_industries'), href: `${basePath}/industries` },
+          { name: tNav('manufacturing'), href: `${basePath}/industries/manufacturing` },
+          { name: tNav('healthcare'), href: `${basePath}/industries/healthcare` },
+          { name: tNav('logistics'), href: `${basePath}/industries/logistics` },
+          { name: tNav('enterprise'), href: `${basePath}/industries/enterprise` },
+        ],
+      },
+      { name: tNav('cases'), href: `${basePath}/cases` },
+      { name: tNav('packages'), href: `${basePath}/packages` },
+      {
+        name: tNav('resources'),
+        href: `${basePath}/resources`,
+        dropdown: [
+          { name: tNav('all_resources'), href: `${basePath}/resources` },
+          { name: tNav('blog'), href: `${basePath}/blog` },
+          { name: tNav('support'), href: `${basePath}/support` },
+        ],
+      },
+      {
+        name: tNav('company'),
+        href: `${basePath}/about`,
+        dropdown: [
+          { name: tNav('about_us'), href: `${basePath}/about` },
+          { name: tNav('how_we_work'), href: `${basePath}/how-we-work` },
+          { name: tNav('trust_security'), href: `${basePath}/trust` },
+          { name: tNav('careers'), href: `${basePath}/careers` },
+          { name: tNav('partners'), href: `${basePath}/partners` },
+        ],
+      },
+    ],
+    [basePath, tNav, tServices]
+  );
 
   return (
-    <header key={navigationKey} className="sticky top-0 z-50 w-full border-b border-hairline bg-bg/80 backdrop-blur-sm">
+    <header
+      key={navigationKey}
+      className="sticky top-0 z-50 w-full border-b border-hairline bg-bg/80 backdrop-blur-sm"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
-          <div className="flex items-center">
-            <Link href={basePath as any} className="flex items-center space-x-2">
-              <Image
-                src="/cerebratechai_logo.png"
-                alt="Cerebratechai logo"
-                width={36}
-                height={36}
-                priority
-              />
-              <span className="text-xl font-bold text-text">Cerebratechai</span>
-            </Link>
-          </div>
+          <Link href={basePath as any} className="flex items-center space-x-2">
+            <Image src="/cerebratechai_logo.png" alt="CerebraTechAI logo" width={36} height={36} priority />
+            <span className="text-xl font-bold text-text">CerebraTechAI</span>
+          </Link>
 
-          {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
             {navigation.map((item) => (
               <div key={`${locale}-${item.name}`} className="relative">
@@ -123,22 +131,31 @@ export function Header() {
                       {item.name}
                       <ChevronDown className="h-4 w-4" />
                     </Link>
-                    
+
                     {activeDropdown === item.name && (
-                      <div 
-                        className="absolute top-full left-0 mt-2 w-56 rounded-lg border border-hairline bg-surface shadow-lg py-2 z-50"
+                      <div
+                        className="absolute top-full left-0 mt-2 w-64 rounded-lg border border-hairline bg-surface shadow-lg py-2 z-50"
                         onMouseEnter={() => handleMouseEnter(item.name)}
                         onMouseLeave={handleMouseLeave}
                       >
-                        {item.dropdown.map((dropdownItem) => (
-                          <Link
-                            key={`${locale}-${dropdownItem.name}`}
-                            href={dropdownItem.href as any}
-                            className="block px-4 py-2 text-sm text-text-muted hover:text-text hover:bg-surface-2 transition-colors duration-200"
-                          >
-                            {dropdownItem.name}
-                          </Link>
-                        ))}
+                        {item.dropdown.map((dropdownItem) =>
+                          dropdownItem.isSection ? (
+                            <div
+                              key={`${locale}-${dropdownItem.name}`}
+                              className="px-4 py-2 text-xs font-semibold text-text/50 uppercase tracking-wider"
+                            >
+                              {dropdownItem.name}
+                            </div>
+                          ) : (
+                            <Link
+                              key={`${locale}-${dropdownItem.name}`}
+                              href={dropdownItem.href as any}
+                              className="block px-4 py-2 text-sm text-text-muted hover:text-text hover:bg-surface-2 transition-colors duration-200"
+                            >
+                              {dropdownItem.name}
+                            </Link>
+                          )
+                        )}
                       </div>
                     )}
                   </div>
@@ -154,32 +171,25 @@ export function Header() {
             ))}
           </nav>
 
-          {/* Desktop Actions */}
           <div className="hidden lg:flex items-center space-x-4">
             <LocaleSwitcher />
             <Button size="sm" asChild>
-              <Link href={`${basePath}/contact` as any}>Contact</Link>
+              <Link href={`${basePath}/contact` as any}>{tNav('contact')}</Link>
             </Button>
           </div>
 
-          {/* Mobile menu button */}
           <div className="lg:hidden">
             <Button
               variant="ghost"
               size="icon"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              onClick={() => setIsMenuOpen((prev) => !prev)}
               aria-label="Toggle menu"
             >
-              {isMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="lg:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 border-t border-hairline">
@@ -194,24 +204,34 @@ export function Header() {
                   </Link>
                   {item.dropdown && (
                     <div className="ml-4 space-y-1">
-                      {item.dropdown.map((dropdownItem) => (
-                        <Link
-                          key={`${locale}-mobile-${dropdownItem.name}`}
-                          href={dropdownItem.href as any}
-                          className="block px-3 py-1 text-sm text-text-muted hover:text-text hover:bg-surface-2 rounded-md transition-colors duration-200"
-                          onClick={() => setIsMenuOpen(false)}
-                        >
-                          {dropdownItem.name}
-                        </Link>
-                      ))}
+                      {item.dropdown.map((dropdownItem) =>
+                        dropdownItem.isSection ? (
+                          <div
+                            key={`${locale}-mobile-${dropdownItem.name}`}
+                            className="px-3 py-1 text-xs font-semibold text-text/50 uppercase tracking-wider"
+                          >
+                            {dropdownItem.name}
+                          </div>
+                        ) : (
+                          <Link
+                            key={`${locale}-mobile-${dropdownItem.name}`}
+                            href={dropdownItem.href as any}
+                            className="block px-3 py-1 text-sm text-text-muted hover:text-text hover:bg-surface-2 rounded-md transition-colors duration-200"
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            {dropdownItem.name}
+                          </Link>
+                        )
+                      )}
                     </div>
                   )}
                 </div>
               ))}
+
               <div className="flex items-center justify-between px-3 py-2">
                 <LocaleSwitcher />
                 <Button size="sm" className="ml-2" asChild>
-                  <Link href={`${basePath}/contact` as any}>Contact</Link>
+                  <Link href={`${basePath}/contact` as any}>{tNav('contact')}</Link>
                 </Button>
               </div>
             </div>
@@ -221,3 +241,4 @@ export function Header() {
     </header>
   );
 }
+

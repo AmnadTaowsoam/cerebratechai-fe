@@ -1,0 +1,14 @@
+# CerebraTechAI AI - Robots.txt
+# Allow Googlebot to crawl the site
+User-agent: *
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+
+# Allow crawling of main pages
+Allow: /$
+Allow: /en
+Allow: /th
+
+# Sitemap
+Sitemap: /sitemap.xml

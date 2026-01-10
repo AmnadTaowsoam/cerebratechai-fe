@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>http://localhost:3000/en</loc>
+    <loc>http://localhost:3000/en/solutions</loc>
+    <loc>http://localhost:3000/en/cases</loc>
+    <loc>http://localhost:3000/en/packages</loc>
+    <loc>http://localhost:3000/en/resources</loc>
+    <loc>http://localhost:3000/en/support</loc>
+    <loc>http://localhost:3000/en/about</loc>
+    <loc>http://localhost:3000/en/contact</loc>
+    <loc>http://localhost:3000/en/legal</loc>
+    <loc>http://localhost:3000/en/legal/privacy</loc>
+    <loc>http://localhost:3000/en/legal/terms</loc>
+    <loc>http://localhost:3000/en/legal/pdpa</loc>
+    <loc>http://localhost:3000/en/legal/disclaimer</loc>
+    <loc>http://localhost:3000/en/legal/cookies</loc>
+    <loc>http://localhost:3000/en/legal/refund</loc>
+  </urlset>
+</urlset>

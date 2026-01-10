@@ -11,7 +11,6 @@ const copy = {
     back: 'Back to packages',
     timeline: 'Timeline',
     weeks: 'weeks',
-    bestFor: 'Best for',
     deliverables: 'Deliverables',
     inScope: 'In scope',
     outOfScope: 'Out of scope',
@@ -22,18 +21,17 @@ const copy = {
     cta: 'Discuss this package',
   },
   th: {
-    back: 'กลับไปดูแพ็กเกจทั้งหมด',
+    back: 'กลับหน้าแพ็กเกจ',
     timeline: 'ระยะเวลา',
     weeks: 'สัปดาห์',
-    bestFor: 'เหมาะสำหรับ',
-    deliverables: 'สิ่งที่จะได้รับ',
-    inScope: 'In scope',
-    outOfScope: 'Out of scope',
-    addOns: 'Add-ons',
+    deliverables: 'สิ่งที่ส่งมอบ',
+    inScope: 'รวมในแพ็กเกจ',
+    outOfScope: 'ไม่รวม',
+    addOns: 'ส่วนเสริม',
     pricing: 'ราคาและการเริ่มงาน',
     disclaimer:
-      'ต้องการปรับแพ็กเกจ? ทีม Value Engineering สามารถปรับขอบเขต เพิ่ม accelerator หรือทำงานร่วมกับทีมภายในของคุณได้.',
-    cta: 'พูดคุยกับทีมของเรา',
+      'หากต้องการปรับขอบเขต ทีม Value Engineering ของเราสามารถช่วยออกแบบให้เหมาะกับทีมของคุณได้',
+    cta: 'คุยรายละเอียดแพ็กเกจ',
   },
 } as const;
 
@@ -56,11 +54,11 @@ export function generateMetadata({ params }: PackageParams): Metadata {
     return {};
   }
 
-  const title = pkg.title;
+  const title = locale === 'th' ? (pkg.titleTh ?? pkg.title) : pkg.title;
   const summary = pkg.bullets?.[0] || 'AI package details';
 
   return {
-    title: `${title} | Cerebratechai packages`,
+    title: `${title} | CerebraTechAI packages`,
     description: summary,
   };
 }
@@ -76,19 +74,29 @@ export default function PackageDetailPage({ params }: PackageParams) {
   const messages = copy[locale];
   const basePath = `/${locale}`;
   const isThai = locale === 'th';
-  const priceAmount = pkg.priceFromTHB ? pkg.priceFromTHB.toLocaleString('th-TH') : (isThai ? 'ติดต่อเรา' : 'Contact us');
+  const priceAmount = pkg.priceFromTHB ? pkg.priceFromTHB.toLocaleString(isThai ? 'th-TH' : 'en-US') : (isThai ? 'ติดต่อทีม' : 'Contact us');
+
+  const getText = (value?: string, valueTh?: string) => {
+    if (isThai && valueTh) return valueTh;
+    return value ?? '';
+  };
+
+  const getList = (value?: string[], valueTh?: string[]) => {
+    if (isThai && valueTh && valueTh.length > 0) return valueTh;
+    return value ?? [];
+  };
 
   const getPriceUnit = () => {
     const unit = pkg.priceUnit;
     if (!unit || unit === 'one_time') return '';
     if (unit === 'per_env') return isThai ? ' / สภาพแวดล้อม' : ' / environment';
-    if (unit === 'per_rollout') return isThai ? ' / รอบการปล่อยใช้งาน' : ' / rollout';
+    if (unit === 'per_rollout') return isThai ? ' / rollout' : ' / rollout';
     if (unit === 'monthly') return isThai ? ' / เดือน' : ' / month';
     return '';
   };
 
   const getTimeline = () => {
-    if (!pkg.timeline) return isThai ? 'ติดต่อเรา' : 'Contact us';
+    if (!pkg.timeline) return isThai ? 'ติดต่อทีม' : 'Contact us';
     return isThai ? `${pkg.timeline} สัปดาห์` : `${pkg.timeline} weeks`;
   };
 
@@ -109,10 +117,10 @@ export default function PackageDetailPage({ params }: PackageParams) {
               {pkg.id}
             </span>
             <h1 className="text-4xl font-bold text-text md:text-5xl">
-              {pkg.title}
+              {getText(pkg.title, pkg.titleTh)}
             </h1>
             <p className="text-lg text-text-muted">
-              {pkg.bullets?.[0] || 'AI package details'}
+              {getList(pkg.bullets, pkg.bulletsTh)[0] || 'AI package details'}
             </p>
 
             <div className="flex flex-wrap items-center gap-4 text-sm text-text-muted">
@@ -123,7 +131,7 @@ export default function PackageDetailPage({ params }: PackageParams) {
               {pkg.priceFromTHB && (
                 <span className="inline-flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-primary" />
-                  {isThai ? 'จาก' : 'From'} ฿{priceAmount}{getPriceUnit()}
+                  {isThai ? 'เริ่มที่' : 'From'} ฿{priceAmount}{getPriceUnit()}
                 </span>
               )}
             </div>
@@ -141,7 +149,7 @@ export default function PackageDetailPage({ params }: PackageParams) {
                     <div>
                       <h2 className="text-xl font-semibold text-text">{messages.inScope}</h2>
                       <ul className="mt-4 space-y-3 text-sm text-text-muted">
-                        {pkg.inScope.map((item, index) => (
+                        {getList(pkg.inScope, pkg.inScopeTh).map((item, index) => (
                           <li key={index} className="flex items-start gap-2">
                             <span className="mt-1 h-2 w-2 rounded-full bg-green-500" aria-hidden />
                             <span>{item}</span>
@@ -159,7 +167,7 @@ export default function PackageDetailPage({ params }: PackageParams) {
                     <div>
                       <h2 className="text-xl font-semibold text-text">{messages.outOfScope}</h2>
                       <ul className="mt-4 space-y-3 text-sm text-text-muted">
-                        {pkg.outOfScope.map((item, index) => (
+                        {getList(pkg.outOfScope, pkg.outOfScopeTh).map((item, index) => (
                           <li key={index} className="flex items-start gap-2">
                             <span className="mt-1 h-2 w-2 rounded-full bg-red-500" aria-hidden />
                             <span>{item}</span>
@@ -177,7 +185,7 @@ export default function PackageDetailPage({ params }: PackageParams) {
                     <div>
                       <h2 className="text-xl font-semibold text-text">{messages.deliverables}</h2>
                       <ul className="mt-4 space-y-3 text-sm text-text-muted">
-                        {pkg.deliverables.map((deliverable, index) => (
+                        {getList(pkg.deliverables, pkg.deliverablesTh).map((deliverable, index) => (
                           <li key={index} className="flex items-start gap-2">
                             <span className="mt-1 h-2 w-2 rounded-full bg-primary" aria-hidden />
                             <span>{deliverable}</span>
@@ -195,7 +203,7 @@ export default function PackageDetailPage({ params }: PackageParams) {
                     <div>
                       <h2 className="text-xl font-semibold text-text">{messages.addOns}</h2>
                       <ul className="mt-4 space-y-3 text-sm text-text-muted">
-                        {pkg.addons.map((addon, index) => (
+                        {getList(pkg.addons, pkg.addonsTh).map((addon, index) => (
                           <li key={index} className="flex items-start gap-2">
                             <span className="mt-1 h-2 w-2 rounded-full bg-secondary" aria-hidden />
                             <span>{addon}</span>
@@ -211,16 +219,22 @@ export default function PackageDetailPage({ params }: PackageParams) {
                 <Card className="border border-hairline bg-surface">
                   <CardContent className="space-y-6 p-8">
                     <div>
-                      <h2 className="text-xl font-semibold text-text">Care Plan Tiers</h2>
+                      <h2 className="text-xl font-semibold text-text">
+                        {isThai ? 'ระดับบริการดูแล' : 'Care Plan Tiers'}
+                      </h2>
                       <div className="mt-4 grid gap-4 md:grid-cols-3">
                         {pkg.tiers.map(tier => (
                           <div key={tier.name} className="rounded-xl border border-white/10 bg-surface/40 p-4">
                             <div className="flex items-baseline justify-between mb-2">
-                              <div className="text-text font-semibold">{tier.name}</div>
-                              <div className="text-text font-bold">{tier.priceTHB.toLocaleString()} THB</div>
+                              <div className="text-text font-semibold">{isThai ? (tier.nameTh ?? tier.name) : tier.name}</div>
+                              <div className="text-text font-bold">฿{tier.priceTHB.toLocaleString(isThai ? 'th-TH' : 'en-US')}</div>
                             </div>
-                            <div className="text-sm text-text-muted">{tier.hours} hrs / mo · SLA {tier.sla}</div>
-                            {tier.bonus && <div className="mt-1 text-xs text-primary">{tier.bonus}</div>}
+                            <div className="text-sm text-text-muted">
+                              {isThai ? `${tier.hours} ชม./เดือน • SLA ${tier.sla}` : `${tier.hours} hrs / mo • SLA ${tier.sla}`}
+                            </div>
+                            {(isThai ? tier.bonusTh : tier.bonus) && (
+                              <div className="mt-1 text-xs text-primary">{isThai ? tier.bonusTh : tier.bonus}</div>
+                            )}
                           </div>
                         ))}
                       </div>
@@ -238,13 +252,13 @@ export default function PackageDetailPage({ params }: PackageParams) {
                     <div className="text-3xl font-bold text-text">
                       {pkg.priceFromTHB ? (
                         <>
-                          {isThai ? 'จาก' : 'From'} ฿{priceAmount}
+                          {isThai ? 'เริ่มที่' : 'From'} ฿{priceAmount}
                         </>
                       ) : (
-                        isThai ? 'ติดต่อเรา' : 'Contact us'
+                        isThai ? 'ติดต่อทีม' : 'Contact us'
                       )}
                     </div>
-                    <div>{getPriceUnit() || (isThai ? 'ครั้งเดียว' : 'One-time')}</div>
+                    <div>{getPriceUnit() || (isThai ? 'ราคาแบบครั้งเดียว' : 'One-time')}</div>
                   </div>
                 </div>
 

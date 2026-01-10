@@ -94,7 +94,7 @@ export default async function GET(
               fontWeight: '600',
             }}
           >
-            Cerebratechai Case Study
+            CerebraTechAI Case Study
           </div>
         </div>
       </div>

@@ -16,7 +16,7 @@ export type CaseItem = {
 export const CASES: CaseItem[] = [
   {
     slug: 'malai-thai-ceremony-management',
-    title: 'malAI — Thai Ceremony Management Platform',
+    title: 'malAI - Thai Ceremony Management Platform',
     subtitle: 'Event Management & Services',
     sector: 'Event Management',
     solutionFamily: ['RAG/LLM', 'Analytics'],
@@ -24,7 +24,7 @@ export const CASES: CaseItem[] = [
     challenge: 'Thai ceremonies involve complex vendor coordination, budget tracking, and auspicious timing selection. Traditional methods lead to fragmented communication, budget overruns, and missed cultural requirements.',
     solution: 'AI-powered platform connecting ceremony buyers with verified vendors, featuring automated planning workflows, budget calculator with cultural considerations, and Thai auspicious timing selection based on traditional calendars.',
     outcomes: [
-      {label:'Planning time', value:'–40%'},
+      {label:'Planning time', value:'-40%'},
       {label:'User satisfaction', value:'95%'},
       {label:'Vendor onboarding', value:'80%'},
     ],
@@ -37,7 +37,7 @@ export const CASES: CaseItem[] = [
   },
   {
     slug: 'dulaedee-dual-mode-wellness',
-    title: 'DulaeDee — Dual-Mode Wellness Platform',
+    title: 'DulaeDee - Dual-Mode Wellness Platform',
     subtitle: 'Healthcare & Wellness',
     sector: 'Healthcare',
     solutionFamily: ['Analytics', 'IoT'],
@@ -47,7 +47,7 @@ export const CASES: CaseItem[] = [
     outcomes: [
       {label:'User onboarding', value:'+60%'},
       {label:'User retention', value:'80%'},
-      {label:'Operational cost', value:'–45%'},
+      {label:'Operational cost', value:'-45%'},
     ],
     metricsFooter: [
       {label:'Active users', value:'2,500+'},
@@ -58,7 +58,7 @@ export const CASES: CaseItem[] = [
   },
   {
     slug: 'cerebrakm-ai-knowledge-management',
-    title: 'CereBraKM — AI Knowledge Management',
+    title: 'CerebraForge - AI Knowledge Management',
     subtitle: 'Enterprise Software',
     sector: 'Enterprise',
     solutionFamily: ['RAG/LLM', 'Analytics'],
@@ -109,7 +109,7 @@ export const CASES: CaseItem[] = [
     solution: 'AI-powered vision system with real-time defect detection, automated sorting, and quality analytics dashboard for production line optimization.',
     outcomes: [
       {label:'Inspection accuracy', value:'+92%'},
-      {label:'False alarms', value:'–75%'},
+      {label:'False alarms', value:'-75%'},
       {label:'Response time', value:'<2s'},
     ],
     metricsFooter: [
@@ -129,8 +129,8 @@ export const CASES: CaseItem[] = [
     challenge: 'Unplanned equipment failures caused production downtime and maintenance costs, with reactive maintenance approaches being inefficient and expensive.',
     solution: 'IoT sensor network with machine learning models for predictive maintenance, automated alerting, and maintenance scheduling optimization.',
     outcomes: [
-      {label:'Downtime reduction', value:'–45%'},
-      {label:'Maintenance cost', value:'–30%'},
+      {label:'Downtime reduction', value:'-45%'},
+      {label:'Maintenance cost', value:'-30%'},
       {label:'Prediction accuracy', value:'88%'},
     ],
     metricsFooter: [
@@ -150,9 +150,9 @@ export const CASES: CaseItem[] = [
     challenge: 'Manual quality inspection was slow, inconsistent, and prone to human error, leading to defective products reaching customers and high inspection costs.',
     solution: 'AI-powered computer vision system using tacit knowledge transfer from expert inspectors to automatically detect defects and sort products with 90%+ time reduction.',
     outcomes: [
-      {label:'Inspection time', value:'–90%'},
+      {label:'Inspection time', value:'-90%'},
       {label:'Detection accuracy', value:'+95%'},
-      {label:'False reject rate', value:'–75%'},
+      {label:'False reject rate', value:'-75%'},
     ],
     metricsFooter: [
       {label:'Items inspected', value:'15K+/day'},

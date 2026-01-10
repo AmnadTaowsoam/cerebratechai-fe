@@ -1,4 +1,4 @@
-# 🌟 Cerebratechai Web Application
+# 🌟 CerebraTechAI Web Application
 
 > **Modern AI Solutions Marketing Website** - Built with Next.js 14, TypeScript, and Tailwind CSS
 
@@ -245,7 +245,7 @@ Create `.env.local` file:
 ```bash
 # ==================== SITE CONFIGURATION ====================
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
-NEXT_PUBLIC_SITE_NAME=Cerebratechai
+NEXT_PUBLIC_SITE_NAME=CerebraTechAI
 
 # ==================== CONTACT SERVICE ====================
 # Backend API for contact form
@@ -941,7 +941,7 @@ cat tsconfig.json
 
 This project is proprietary and confidential.
 
-© 2025 Cerebratechai. All rights reserved.
+© 2025 CerebraTechAI. All rights reserved.
 
 ---
 
@@ -991,6 +991,6 @@ This project is proprietary and confidential.
 
 ---
 
-**Built with ❤️ by Cerebratechai Team**
+**Built with ❤️ by CerebraTechAI Team**
 
 **Happy Coding! 🚀✨**

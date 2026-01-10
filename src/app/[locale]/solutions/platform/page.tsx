@@ -6,12 +6,15 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight, Server, Cloud, Zap, Target, Users, Award } from 'lucide-react';
 import Link from 'next/link';
 import { SeoHead, ServiceSchema } from '@/components/seo';
+import TLDRBlock from '@/components/TLDRBlock';
+import KeyFactsBlock from '@/components/KeyFactsBlock';
 
 export default function PlatformPage() {
   const t = useTranslations('solutions');
   const locale = useLocale();
   const isThai = locale.startsWith('th');
   const basePath = `/${locale}`;
+  const schemaLocale: 'en' | 'th' = isThai ? 'th' : 'en';
 
   const platformSolutions = [
     {
@@ -121,6 +124,51 @@ export default function PlatformPage() {
       />
       
       <div className="bg-bg">
+      {/* TL;DR + Key Facts */}
+      <section className="py-12 bg-surface/30">
+        <div className="container mx-auto px-6">
+          <div className="grid gap-8 lg:grid-cols-2">
+            <TLDRBlock
+              summary={
+                isThai
+                  ? 'โครงสร้างพื้นฐานและแพลตฟอร์มที่ดีช่วยให้ AI/ข้อมูล “ขึ้นโปรดักชัน” ได้ไวและปลอดภัย เช่น data platform, MLOps, API gateway, event streaming และ observability'
+                  : 'Strong platforms and infrastructure help AI/data reach production faster and safer—data platforms, MLOps, API gateways, event streaming, and observability.'
+              }
+              locale={schemaLocale}
+            />
+            <KeyFactsBlock
+              facts={[
+                {
+                  label: isThai ? 'Best For' : 'Best For',
+                  value: isThai ? 'ทีมที่ต้องการ modernize ระบบ/infra และรองรับ scale' : 'Teams modernizing infra to scale reliably',
+                },
+                {
+                  label: isThai ? 'Deliverables' : 'Deliverables',
+                  value: isThai ? 'Blueprint + IaC + CI/CD + Monitoring + Runbooks' : 'Blueprints + IaC + CI/CD + monitoring + runbooks',
+                },
+                {
+                  label: isThai ? 'Architecture' : 'Architecture',
+                  value: 'Cloud-native, hybrid, on-prem (as required)',
+                },
+                {
+                  label: isThai ? 'Security' : 'Security',
+                  value: isThai ? 'SSO/RBAC, encryption, audit logs, compliance-ready' : 'SSO/RBAC, encryption, audit logs, compliance-ready',
+                },
+                {
+                  label: isThai ? 'Timeline' : 'Timeline',
+                  value: isThai ? '8-24 สัปดาห์ (ขึ้นกับขอบเขต)' : '8-24 weeks (scope-dependent)',
+                },
+                {
+                  label: isThai ? 'Pricing' : 'Pricing',
+                  value: isThai ? 'เริ่มจาก discovery เพื่อประเมินสภาพระบบเดิม' : 'Start with discovery to assess current stack',
+                },
+              ]}
+              locale={schemaLocale}
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Hero Section */}
       <MagicHero
         eyebrow="Platform Solutions"

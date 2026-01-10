@@ -33,7 +33,7 @@ export default function CaseSchema({ caseItem, locale = 'en' }: CaseSchemaProps)
     ],
     "creator": {
       "@type": "Organization",
-      "name": "Cerebratechai",
+      "name": "CerebraTechAI",
       "url": baseUrl
     },
     "datePublished": "2024-01-01",

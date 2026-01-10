@@ -1,8 +1,18 @@
 {
   "ci": {
     "collect": {
-      "url": ["http://localhost:3000", "http://localhost:3000/solutions", "http://localhost:3000/packages", "http://localhost:3000/contact"],
-      "numberOfRuns": 3
+      "url": [
+        "http://localhost:3000/en",
+        "http://localhost:3000/th",
+        "http://localhost:3000/en/solutions",
+        "http://localhost:3000/en/packages",
+        "http://localhost:3000/en/contact"
+      ],
+      "numberOfRuns": 3,
+      "settings": {
+        "onlyCategories": ["performance", "accessibility", "best-practices", "seo"],
+        "budgetPath": "./lighthouse-budget.json"
+      }
     },
     "assert": {
       "assertions": {
@@ -14,7 +24,43 @@
         "largest-contentful-paint": ["error", {"maxNumericValue": 2500}],
         "cumulative-layout-shift": ["error", {"maxNumericValue": 0.1}],
         "first-input-delay": ["error", {"maxNumericValue": 100}],
-        "speed-index": ["error", {"maxNumericValue": 3000}]
+        "speed-index": ["error", {"maxNumericValue": 3000}],
+        "total-byte-weight": ["warn", {"maxNumericValue": 1500000}],
+        "resource-summary": {
+          "script": ["warn", {"maxNumericValue": 300000}],
+          "stylesheet": ["warn", {"maxNumericValue": 100000}],
+          "font": ["warn", {"maxNumericValue": 150000}],
+          "image": ["warn", {"maxNumericValue": 500000}],
+          "total": ["warn", {"maxNumericValue": 1500000}]
+        },
+        "unused-css-rules": ["warn", {"maxLength": 0}],
+        "unused-javascript": ["warn", {"maxLength": 0}],
+        "modern-image-formats": ["warn", {"minScore": 0.5}],
+        "uses-responsive-images": ["warn", {"minScore": 0.8}],
+        "efficient-animated-content": ["warn", {"minScore": 0.5}],
+        "minified-css": ["warn", {"minScore": 1}],
+        "minified-javascript": ["warn", {"minScore": 1}],
+        "uses-text-compression": ["warn", {"minScore": 1}],
+        "uses-rel-preconnect": ["warn", {"minScore": 0.5}],
+        "render-blocking-resources": ["warn", {"maxLength": 0}],
+        "offscreen-images": ["warn", {"maxLength": 0}],
+        "unminified-css": ["warn", {"maxLength": 0}],
+        "unminified-javascript": ["warn", {"maxLength": 0}],
+        "viewport": ["warn", {"minScore": 1}],
+        "document-title": ["warn", {"minScore": 1}],
+        "meta-description": ["warn", {"minScore": 1}],
+        "http-status-code": ["warn", {"minScore": 1}],
+        "link-text": ["warn", {"minScore": 0.9}],
+        "is-crawlable": ["warn", {"minScore": 1}],
+        "robots-txt": ["warn", {"minScore": 1}],
+        "sitemap": ["warn", {"minScore": 1}],
+        "tap-targets": ["warn", {"minScore": 0.9}],
+        "color-contrast": ["warn", {"minScore": 0.9}],
+        "aria-labels": ["warn", {"minScore": 0.9}],
+        "image-alt": ["warn", {"minScore": 1}],
+        "html-has-lang": ["warn", {"minScore": 1}],
+        "valid-lang": ["warn", {"minScore": 1}],
+        "label": ["warn", {"minScore": 0.9}]
       }
     },
     "upload": {

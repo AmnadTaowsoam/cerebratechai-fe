@@ -12,7 +12,7 @@ export const homeStats = {
 export const heroCtas = [
   {
     id: 'explore_packages',
-    labelTh: 'สำรวจแพ็กเกจ',
+    labelTh: 'ดูแพ็กเกจทั้งหมด',
     labelEn: 'Explore Packages',
     href: '/packages',
     variant: 'primary' as const,
@@ -86,7 +86,7 @@ export const accelerators = [
     id: 'kickstart',
     titleTh: 'Kickstart',
     titleEn: 'Kickstart',
-    descriptionTh: 'วางแผนกลยุทธ์และประเมินความเป็นไปได้',
+    descriptionTh: 'สปรินต์วางกลยุทธ์และประเมินความเป็นไปได้',
     descriptionEn: 'Strategy planning and feasibility assessment',
     startingPrice: packagesMap.kickstart.priceFromTHB || 95000,
     duration: '2',
@@ -105,10 +105,10 @@ export const accelerators = [
     id: 'poc_lab',
     titleTh: 'POC Lab',
     titleEn: 'POC Lab',
-    descriptionTh: 'สร้างต้นแบบที่ทดสอบได้จริง',
+    descriptionTh: 'ทำต้นแบบที่ทดสอบได้ พร้อมรายงานผล',
     descriptionEn: 'Build testable prototype',
     startingPrice: packagesMap.poc_lab.priceFromTHB || 420000,
-    duration: '4–6',
+    duration: '4-6',
     deliverables: [
       'Working Prototype + Documentation',
       'Experiment Report + Metrics',
@@ -124,10 +124,10 @@ export const accelerators = [
     id: 'pilot_launch',
     titleTh: 'Pilot Launch',
     titleEn: 'Pilot Launch',
-    descriptionTh: 'เปิดใช้งานกับผู้ใช้จริงแบบจำกัด',
+    descriptionTh: 'เปิดใช้งานกับผู้ใช้จริงในขอบเขตจำกัด',
     descriptionEn: 'Launch with limited real users',
     startingPrice: packagesMap.pilot_launch.priceFromTHB || 720000,
-    duration: '6–9',
+    duration: '6-9',
     deliverables: [
       'Staging + Production Environment',
       'Monitoring & Alerting Setup',
@@ -143,10 +143,10 @@ export const accelerators = [
     id: 'production_scale',
     titleTh: 'Production Scale',
     titleEn: 'Production Scale',
-    descriptionTh: 'ระบบพร้อมใช้งานจริงระดับองค์กร',
+    descriptionTh: 'ระบบระดับองค์กร พร้อม SLA และความเสถียรสูง',
     descriptionEn: 'Enterprise-ready production system',
     startingPrice: packagesMap.production_scale.priceFromTHB || 1200000,
-    duration: '8–12',
+    duration: '8-12',
     deliverables: [
       'HA Multi-AZ + Autoscaling',
       'Full IaC + FinOps Setup',
@@ -170,8 +170,8 @@ export const budgetRanges = [
 
 export const timelineTargets = [
   { value: 'urgent', labelTh: 'เร่งด่วน (2-4 สัปดาห์)', labelEn: 'Urgent (2-4 weeks)' },
-  { value: 'standard', labelTh: 'มาตรฐาน (1-2 เดือน)', labelEn: 'Standard (1-2 months)' },
-  { value: 'flexible', labelTh: 'ยืดหยุ่นได้ (3+ เดือน)', labelEn: 'Flexible (3+ months)' },
+  { value: 'standard', labelTh: 'ปกติ (1-2 เดือน)', labelEn: 'Standard (1-2 months)' },
+  { value: 'flexible', labelTh: 'ยืดหยุ่น (3+ เดือน)', labelEn: 'Flexible (3+ months)' },
 ];
 
 // Terms
@@ -181,16 +181,15 @@ export const globalTerms = [
     keyEn: 'Prices exclude VAT 7%',
   },
   {
-    keyTh: 'ค่า Cloud เกินงบตั้งต้นคิดตามจริง',
+    keyTh: 'ค่า Cloud เกินงบเริ่มต้น คิดตามจริง',
     keyEn: 'Cloud consumption beyond starter budget billed to client',
   },
   {
-    keyTh: 'ชำระเงิน 50/30/20 ตาม milestone',
+    keyTh: 'ชำระ 50/30/20 ตาม milestone',
     keyEn: 'Payment 50/30/20 milestones',
   },
   {
-    keyTh: 'Change Request 18,000 บาท/คน-วัน',
-    keyEn: 'Change Request 18,000 THB/person-day',
+    keyTh: 'Change Request ฿18,000/คน-วัน',
+    keyEn: 'Change Request ฿18,000/person-day',
   },
 ];
-

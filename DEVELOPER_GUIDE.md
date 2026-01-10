@@ -1,4 +1,4 @@
-# 👨‍💻 Developer Guide - Cerebratechai Web App
+# 👨‍💻 Developer Guide - CerebraTechAI Web App
 
 > **Complete development guide** - Architecture, Testing, Security, Accessibility, Style Guide, UX
 
@@ -818,7 +818,7 @@ screens: {
    
    <Image
      src="/logo.png"
-     alt="Cerebratechai Logo"
+     alt="CerebraTechAI Logo"
      width={200}
      height={50}
      priority  // For above-fold images
@@ -846,7 +846,7 @@ screens: {
 ```tsx
 // app/[locale]/page.tsx
 export const metadata = {
-  title: 'AI Solutions for Business | Cerebratechai',
+  title: 'AI Solutions for Business | CerebraTechAI',
   description: 'Professional AI & ML solutions...',
   openGraph: {
     title: 'AI Solutions for Business',

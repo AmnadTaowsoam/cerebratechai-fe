@@ -6,12 +6,15 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight, Cpu, Wifi, Zap, Target, Users, Award } from 'lucide-react';
 import Link from 'next/link';
 import { SeoHead, ServiceSchema } from '@/components/seo';
+import TLDRBlock from '@/components/TLDRBlock';
+import KeyFactsBlock from '@/components/KeyFactsBlock';
 
 export default function AIoTPage() {
   const t = useTranslations('solutions');
   const locale = useLocale();
   const isThai = locale.startsWith('th');
   const basePath = `/${locale}`;
+  const schemaLocale: 'en' | 'th' = isThai ? 'th' : 'en';
 
   const aiotSolutions = [
     {
@@ -121,6 +124,51 @@ export default function AIoTPage() {
       />
       
       <div className="bg-bg">
+      {/* TL;DR + Key Facts */}
+      <section className="py-12 bg-surface/30">
+        <div className="container mx-auto px-6">
+          <div className="grid gap-8 lg:grid-cols-2">
+            <TLDRBlock
+              summary={
+                isThai
+                  ? 'AIoT รวม IoT + AI เพื่อเก็บข้อมูลจากหน้างาน วิเคราะห์แบบเรียลไทม์ และสั่งงานอัตโนมัติ เหมาะกับงาน monitoring, anomaly, predictive maintenance และ dashboard สำหรับ OT/IT'
+                  : 'AIoT combines IoT + AI to collect edge data, analyze in real time, and automate actions—ideal for monitoring, anomaly detection, predictive maintenance, and OT/IT dashboards.'
+              }
+              locale={schemaLocale}
+            />
+            <KeyFactsBlock
+              facts={[
+                {
+                  label: isThai ? 'Use Cases' : 'Use Cases',
+                  value: isThai ? 'Telemetry pipeline, Alerting, Predictive maintenance, Edge inference' : 'Telemetry, alerting, predictive maintenance, edge inference',
+                },
+                {
+                  label: isThai ? 'Minimum Data Required' : 'Minimum Data Required',
+                  value: isThai ? 'เริ่มได้จาก sensor logs + นิยามเหตุการณ์/threshold' : 'Sensor logs + event/threshold definitions',
+                },
+                {
+                  label: isThai ? 'Deliverables' : 'Deliverables',
+                  value: isThai ? 'Pipeline + Dashboard + Alert routing + Runbook' : 'Pipeline + dashboards + alert routing + runbooks',
+                },
+                {
+                  label: isThai ? 'Deployment Options' : 'Deployment Options',
+                  value: 'Edge, Cloud, Hybrid, On-prem',
+                },
+                {
+                  label: isThai ? 'Timeline' : 'Timeline',
+                  value: isThai ? 'Pilot: 8-14 สัปดาห์ | Rollout: 10-18 สัปดาห์' : 'Pilot: 8-14 weeks | Rollout: 10-18 weeks',
+                },
+                {
+                  label: isThai ? 'Pricing' : 'Pricing',
+                  value: isThai ? 'เริ่มจาก POC/Pilot เพื่อประเมินโครงสร้างและอุปกรณ์' : 'Start with POC/Pilot to validate infra and devices',
+                },
+              ]}
+              locale={schemaLocale}
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Hero Section */}
       <MagicHero
         eyebrow="AIoT Solutions"

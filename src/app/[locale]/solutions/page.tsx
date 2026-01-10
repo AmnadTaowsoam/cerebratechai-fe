@@ -11,100 +11,138 @@ type SolutionsPageProps = {
 };
 
 export const metadata: Metadata = {
-  title: 'Cerebratechai — Solutions',
-  description: 'Explore production-ready AI, data, and software solutions from Cerebratechai.',
+  title: 'CerebraTechAI - Solutions',
+  description: 'Explore production-ready AI, data, and software solutions from CerebraTechAI.',
 };
 
 export default function SolutionsPage({ params }: SolutionsPageProps) {
   const locale = params.locale?.startsWith('th') ? 'th' : 'en';
   const isThai = locale === 'th';
+
+  const t = (th: string, en: string) => (isThai ? th : en);
+
   const metrics = [
-    { value: '19+', label: isThai ? 'Solutions' : 'Solutions' },
-    { value: 'Edge→Cloud', label: isThai ? 'ครอบคลุม' : 'Coverage' },
-    { value: 'SLA Ready', label: isThai ? 'พร้อมใช้งาน' : 'SLA Ready' },
+    { value: '19+', label: t('โซลูชันพร้อมใช้งาน', 'Solutions') },
+    { value: 'Edge + Cloud', label: t('ครอบคลุม Edge + Cloud', 'Coverage') },
+    { value: 'SLA Ready', label: t('พร้อมใช้งานระดับ SLA', 'SLA Ready') },
+  ];
+
+  const pricingHighlights = [
+    {
+      value: '฿260,000',
+      note: t('จุดเริ่มต้นสำหรับงาน Computer Vision', 'Starting point for Computer Vision'),
+    },
+    {
+      value: '฿420,000',
+      note: t('จุดเริ่มต้นสำหรับงาน Predictive/ML', 'Starting point for Predictive/ML'),
+    },
   ];
 
   return (
     <>
       <SeoHead
-        title={isThai ? 'โซลูชัน AI - Machine Learning, Computer Vision, LLM' : 'AI Solutions - Machine Learning, Computer Vision, LLM'}
-        description={isThai 
-          ? 'โซลูชัน AI ครบวงจรสำหรับธุรกิจ ตั้งแต่ Machine Learning, Computer Vision, LLM, AIoT ไปจนถึง Edge Computing'
-          : 'Comprehensive AI solutions for businesses including Machine Learning, Computer Vision, LLM, AIoT, and Edge Computing.'
-        }
-        keywords={isThai 
-          ? ['โซลูชัน AI', 'Machine Learning', 'Computer Vision', 'LLM', 'AIoT', 'Edge Computing']
-          : ['AI solutions', 'Machine Learning', 'Computer Vision', 'LLM', 'AIoT', 'Edge Computing']
+        title={t('โซลูชัน AI - Machine Learning, Computer Vision, LLM', 'AI Solutions - Machine Learning, Computer Vision, LLM')}
+        description={t(
+          'โซลูชัน AI สำหรับธุรกิจ: Machine Learning, Computer Vision, LLM & RAG, AIoT และ Edge AI พร้อมบริการ MLOps และ Engineering',
+          'Comprehensive AI solutions for businesses including Machine Learning, Computer Vision, LLM, AIoT, and Edge AI with MLOps and Engineering support.'
+        )}
+        keywords={
+          isThai
+            ? ['โซลูชัน AI', 'Machine Learning', 'Computer Vision', 'LLM', 'AIoT', 'Edge AI']
+            : ['AI solutions', 'Machine Learning', 'Computer Vision', 'LLM', 'AIoT', 'Edge AI']
         }
         url="/solutions"
         type="website"
       />
-      <ServiceSchema 
-        serviceName={isThai ? 'โซลูชัน AI' : 'AI Solutions'}
-        description={isThai 
-          ? 'โซลูชัน AI ครบวงจรสำหรับธุรกิจทุกขนาด'
-          : 'Comprehensive AI solutions for businesses of all sizes'
-        }
+
+      <ServiceSchema
+        serviceName={t('โซลูชัน AI', 'AI Solutions')}
+        description={t('โซลูชัน AI สำหรับธุรกิจทุกขนาด', 'Comprehensive AI solutions for businesses of all sizes')}
       />
-      
+
       <div className="bg-bg">
-      <MagicHero
-        eyebrow={isThai ? 'โซลูชัน AI' : 'AI Solutions'}
-        title={
-          isThai
-            ? 'โซลูชัน AI พร้อมใช้งาน สำหรับ SME และโครงการขนาดกลาง'
-            : 'Production-Ready AI Solutions for SMEs and Mid-Size Projects'
-        }
-        description={
-          isThai
-            ? 'โซลูชัน AI หลักของเรา: LLM & RAG, Computer Vision, Predictive Analytics และ Edge AI พร้อมบริการสนับสนุนด้าน MLOps และ Engineering'
-            : 'Our AI Core Solutions: LLM & RAG, Computer Vision, Predictive Analytics, and Edge AI—with MLOps and Engineering support services.'
-        }
-        metrics={metrics}
-        align="center"
-      />
+        <MagicHero
+          eyebrow={t('โซลูชัน AI', 'AI Solutions')}
+          title={t('โซลูชัน AI พร้อมส่งมอบสำหรับ SME และโปรเจกต์ขนาดกลาง', 'Production-Ready AI Solutions for SMEs and Mid-Size Projects')}
+          description={t(
+            'โซลูชันหลักของเรา: LLM & RAG, Computer Vision, Predictive Analytics และ Edge AI พร้อมบริการ MLOps และ Engineering เพื่อใช้งานจริงได้เร็ว',
+            'Our AI Core Solutions: LLM & RAG, Computer Vision, Predictive Analytics, and Edge AI—with MLOps and Engineering support services.'
+          )}
+          metrics={metrics}
+          align="center"
+        />
 
-      {/* AI Core Solutions with Anchor Links */}
-      <div id="llm-rag" className="scroll-mt-20">
-        <ServicesGrid showFilters />
-      </div>
-
-      {/* Additional anchor points for navigation */}
-      <div id="computer-vision" className="scroll-mt-20" />
-      <div id="predictive-analytics" className="scroll-mt-20" />
-      <div id="edge-ai" className="scroll-mt-20" />
-
-      <section className="relative py-16">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(79,70,229,0.12),_transparent_60%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,_rgba(14,165,233,0.12),_transparent_60%)]" />
-        <div className="absolute inset-0 opacity-25">
-          <Particles quantity={38} staticity={24} ease={70} />
-        </div>
-
-        <div className="relative z-10 container mx-auto px-6">
-          <div className="flex flex-col gap-6 rounded-3xl border border-white/10 bg-surface-2/80 p-8 backdrop-blur md:flex-row md:items-center md:justify-between">
-            <div className="max-w-3xl">
-              <h2 className="text-2xl font-semibold text-text">
-                {isThai
-                  ? 'ต้องการโซลูชันเฉพาะทางมากขึ้นหรือไม่?'
-                  : 'Need a bespoke variant or new capability?'}
-              </h2>
-              <p className="mt-2 text-text-muted">
-                {isThai
-                  ? 'Blueprint ทุกชุดสามารถปรับแต่ง ขยาย หรือเชื่อมกับระบบเดิมของคุณได้ นัดคุยกับทีม Value Engineering เพื่อออกแบบเส้นทางที่เหมาะกับองค์กร'
-                  : 'Each blueprint can be customised, expanded, or integrated with your existing stack. Speak with our Value Engineering team to map the right path.'}
-              </p>
+        <section className="py-10">
+          <div className="container mx-auto px-6">
+            <div className="rounded-3xl border border-white/10 bg-surface/80 p-6 backdrop-blur">
+              <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                <div className="space-y-2">
+                  <h2 className="text-xl font-semibold text-text">{t('ราคาเริ่มต้นโดยประมาณ', 'Where pricing starts')}</h2>
+                  <p className="text-text-muted">
+                    {t(
+                      'ราคาขึ้นอยู่กับความซับซ้อนและความพร้อมของข้อมูล ตัวเลขนี้ช่วยตั้งความคาดหวังเบื้องต้น (ทีมงานจะประเมินแบบมีขอบเขตเมื่อทราบบริบทเพิ่มเติม)',
+                      'Pricing depends on complexity and data readiness. These starting points set expectations.'
+                    )}
+                  </p>
+                </div>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {pricingHighlights.map((item) => (
+                    <div key={item.value} className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4">
+                      <div className="text-2xl font-bold text-text">{item.value}</div>
+                      <div className="text-xs text-text-muted">{item.note}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="mt-4 flex flex-wrap items-center gap-3">
+                <span className="text-xs text-text-muted">
+                  {t('ต้องการใบเสนอราคาแบบเจาะจง? ส่งบริบทคร่าว ๆ เพื่อประเมินขอบเขตงาน', 'Need a tailored quote? Share your context for a scoped estimate.')}
+                </span>
+                <Link
+                  href={`/${locale}/contact` as any}
+                  className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-2 text-xs font-semibold text-primary"
+                >
+                  {t('ขอใบเสนอราคา', 'Request a quote')}
+                  <ArrowRight className="h-3 w-3" />
+                </Link>
+              </div>
             </div>
-            <ShimmerButton asChild className="px-8 py-4 text-sm">
-              <Link href="/contact" className="inline-flex items-center gap-2">
-                {isThai ? 'คุยกับทีมเรา' : 'Talk to our team'}
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </ShimmerButton>
           </div>
-        </div>
-      </section>
+        </section>
+
+        <ServicesGrid showTypeSections />
+
+        <section className="relative py-16">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(79,70,229,0.12),_transparent_60%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,_rgba(14,165,233,0.12),_transparent_60%)]" />
+          <div className="absolute inset-0 opacity-25">
+            <Particles quantity={38} staticity={24} ease={70} />
+          </div>
+
+          <div className="relative z-10 container mx-auto px-6">
+            <div className="flex flex-col gap-6 rounded-3xl border border-white/10 bg-surface-2/80 p-8 backdrop-blur md:flex-row md:items-center md:justify-between">
+              <div className="max-w-3xl">
+                <h2 className="text-2xl font-semibold text-text">
+                  {t('ต้องการเวอร์ชันเฉพาะหรือเพิ่มความสามารถใหม่?', 'Need a bespoke variant or new capability?')}
+                </h2>
+                <p className="mt-2 text-text-muted">
+                  {t(
+                    'ทุกโซลูชันสามารถปรับให้เข้ากับระบบเดิม เพิ่มโมดูล หรือเชื่อมต่อกับสแต็กของคุณได้ คุยกับทีมเพื่อประเมินเส้นทางที่เหมาะสม',
+                    'Each blueprint can be customised, expanded, or integrated with your existing stack. Speak with our team to map the right path.'
+                  )}
+                </p>
+              </div>
+              <ShimmerButton asChild className="px-8 py-4 text-sm">
+                <Link href={`/${locale}/contact` as any} className="inline-flex items-center gap-2">
+                  {t('คุยกับทีม', 'Talk to our team')}
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </ShimmerButton>
+            </div>
+          </div>
+        </section>
       </div>
     </>
   );
 }
+

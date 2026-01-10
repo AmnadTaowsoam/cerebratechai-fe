@@ -17,10 +17,9 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Cerebratechai - Turn Pain Points into Production-Ready AI Systems',
-    template: '%s | Cerebratechai',
+    default: 'CerebraTechAI - Turn Pain Points into Production-Ready AI Systems',
+    template: '%s | CerebraTechAI',
   },
-  description: 'Transform your pain points into production-ready AI systems. We build AI & full-stack solutions from Edge to Cloud with guardrails and playbooks, ready for production deployment. Boutique AI Studio in Bangkok, Thailand.',
   keywords: [
     'AI solutions Thailand',
     'Machine Learning services',
@@ -43,9 +42,9 @@ export const metadata: Metadata = {
     'AI automation',
     'AI transformation',
   ],
-  authors: [{ name: 'Cerebratechai Team' }],
-  creator: 'Cerebratechai',
-  publisher: 'Cerebratechai',
+  authors: [{ name: 'CerebraTechAI Team' }],
+  creator: 'CerebraTechAI',
+  publisher: 'CerebraTechAI',
   formatDetection: {
     email: false,
     address: false,
@@ -53,7 +52,6 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
   alternates: {
-    canonical: '/',
     languages: {
       th: '/th',
       en: '/en',
@@ -63,21 +61,21 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'th_TH',
     url: '/',
-    title: 'Cerebratechai - Turn Pain Points into Production-Ready AI Systems',
+    title: 'CerebraTechAI - Turn Pain Points into Production-Ready AI Systems',
     description: 'Transform your pain points into production-ready AI systems. We build AI & full-stack solutions from Edge to Cloud with guardrails and playbooks, ready for production deployment.',
-    siteName: 'Cerebratechai',
+    siteName: 'CerebraTechAI',
     images: [
       {
         url: '/cerebratechai_logo.png',
         width: 1200,
         height: 630,
-        alt: 'Cerebratechai - AI Solutions Studio in Bangkok, Thailand',
+        alt: 'CerebraTechAI - AI Solutions Studio in Bangkok, Thailand',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Cerebratechai - Turn Pain Points into Production-Ready AI Systems',
+    title: 'CerebraTechAI - Turn Pain Points into Production-Ready AI Systems',
     description: 'Transform your pain points into production-ready AI systems. We build AI & full-stack solutions from Edge to Cloud with guardrails and playbooks.',
     images: ['/cerebratechai_logo.png'],
     creator: '@cerebratechai',
@@ -125,10 +123,13 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const nonce = headers().get('x-nonce');
+  const requestHeaders = headers();
+  const nonce = requestHeaders.get('x-nonce');
+  // Set by next-intl middleware; falls back to English.
+  const locale = requestHeaders.get('x-next-intl-locale') ?? 'en';
 
   return (
-    <html lang="en" dir="ltr" className={cn(inter.variable)} suppressHydrationWarning>
+    <html lang={locale} dir="ltr" className={cn(inter.variable)} suppressHydrationWarning>
       <head>
         <link rel="icon" type="image/png" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/favicon.png" />

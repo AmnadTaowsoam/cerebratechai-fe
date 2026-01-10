@@ -8,13 +8,13 @@ const content = {
   en: {
     title: 'PDPA Notice',
     description:
-      'This PDPA notice explains how Cerebratechai complies with the Personal Data Protection Act (Thailand) when processing personal data.',
+      'This PDPA notice explains how CerebraTechAI complies with the Personal Data Protection Act (Thailand) when processing personal data.',
     updated: 'Updated 6 Oct 2025',
     sections: [
       {
         heading: '1. Data Controller',
         body: [
-          'Cerebratechai acts as the data controller for personal data collected through this website and related services.',
+          'CerebraTechAI acts as the data controller for personal data collected through this website and related services.',
           'Contact privacy@cerebratechai.com for PDPA enquiries.',
         ],
       },
@@ -51,13 +51,13 @@ const content = {
   th: {
     title: 'ประกาศความเป็นส่วนตัวตาม พ.ร.บ. คุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562',
     description:
-      'ประกาศฉบับนี้อธิบายวิธีที่ Cerebratechai ปฏิบัติตาม พ.ร.บ. คุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 (PDPA) อย่างครบถ้วน',
+      'ประกาศฉบับนี้อธิบายวิธีที่ CerebraTechAI ปฏิบัติตาม พ.ร.บ. คุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 (PDPA) อย่างครบถ้วน',
     updated: 'ปรับปรุงล่าสุด 18 ต.ค. 2025 | มีผลบังคับใช้ทันที',
     sections: [
       {
         heading: '1. ผู้ควบคุมข้อมูลส่วนบุคคล (Data Controller)',
         body: [
-          'ชื่อผู้ควบคุม: Cerebratechai',
+          'ชื่อผู้ควบคุม: CerebraTechAI',
           'ประเภทกิจการ: บุคคลธรรมดา ประกอบธุรกิจพัฒนา AI และซอฟต์แวร์',
           'ที่อยู่: กรุงเทพมหานคร ประเทศไทย',
           'ติดต่อเจ้าหน้าที่คุ้มครองข้อมูล: privacy@cerebratechai.com | โทร: 085-662-1113',
@@ -179,10 +179,10 @@ export default function PdpaPage({ params }: PdpaPageProps) {
   return (
     <>
       <SeoHead
-        title={isThai ? 'PDPA Notice - Cerebratechai' : 'PDPA Notice - Cerebratechai'}
+        title={isThai ? 'PDPA Notice - CerebraTechAI' : 'PDPA Notice - CerebraTechAI'}
         description={isThai 
-          ? 'ประกาศ PDPA ของ Cerebratechai เกี่ยวกับการปฏิบัติตามพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล'
-          : 'Cerebratechai PDPA notice on compliance with Personal Data Protection Act (Thailand).'
+          ? 'ประกาศ PDPA ของ CerebraTechAI เกี่ยวกับการปฏิบัติตามพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล'
+          : 'CerebraTechAI PDPA notice on compliance with Personal Data Protection Act (Thailand).'
         }
         keywords={isThai 
           ? ['PDPA', 'พรบ. คุ้มครองข้อมูลส่วนบุคคล', 'ข้อมูลส่วนบุคคล', 'Privacy']

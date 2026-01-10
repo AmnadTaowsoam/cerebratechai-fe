@@ -1,4 +1,4 @@
-# Makefile for Cerebratechai Web App Docker Operations
+# Makefile for CerebraTechAI Web App Docker Operations
 
 # Variables
 IMAGE_NAME=cerebratechai-web
@@ -16,7 +16,7 @@ CONTENT_API_URL?=http://localhost:7010/api/content
 # Default target
 help:
 	@echo "========================================="
-	@echo "Cerebratechai Web - Docker Commands"
+	@echo "CerebraTechAI Web - Docker Commands"
 	@echo "========================================="
 	@echo ""
 	@echo "Available commands:"

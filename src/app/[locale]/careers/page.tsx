@@ -164,8 +164,8 @@ export default function CareersPage() {
             </h2>
             <p className="text-text-muted max-w-2xl mx-auto">
               {locale.startsWith('th') 
-                ? 'เราเชื่อว่าโซลูชัน AI ที่ยอดเยี่ยมมาจากทีมที่ยอดเยี่ยม นี่คือสิ่งที่ทำให้การทำงานที่ Cerebratechai พิเศษและทำไมสมาชิกทีมของเราถึงรักสิ่งที่พวกเขาทำ'
-                : 'We believe that great AI solutions come from great teams. Here\'s what makes working at Cerebratechai special.'
+                ? 'เราเชื่อว่าโซลูชัน AI ที่ยอดเยี่ยมมาจากทีมที่ยอดเยี่ยม นี่คือสิ่งที่ทำให้การทำงานที่ CerebraTechAI พิเศษและทำไมสมาชิกทีมของเราถึงรักสิ่งที่พวกเขาทำ'
+                : 'We believe that great AI solutions come from great teams. Here\'s what makes working at CerebraTechAI special.'
               }
             </p>
           </div>
@@ -196,8 +196,8 @@ export default function CareersPage() {
             </h2>
             <p className="text-text-muted max-w-2xl mx-auto">
               {locale.startsWith('th') 
-                ? 'ฟังจากสมาชิกทีมของเราเกี่ยวกับประสบการณ์การทำงานที่ Cerebratechai และเหตุผลที่พวกเขารักการเป็นส่วนหนึ่งของภารกิจของเรา'
-                : 'Hear from our team members about their experience working at Cerebratechai and why they love being part of our mission.'
+                ? 'ฟังจากสมาชิกทีมของเราเกี่ยวกับประสบการณ์การทำงานที่ CerebraTechAI และเหตุผลที่พวกเขารักการเป็นส่วนหนึ่งของภารกิจของเรา'
+                : 'Hear from our team members about their experience working at CerebraTechAI and why they love being part of our mission.'
               }
             </p>
           </div>
@@ -210,7 +210,7 @@ export default function CareersPage() {
                     {'★'.repeat(5)}
                   </div>
                   <p className="text-text-muted italic">
-                    &quot;Working at Cerebratechai has been incredible. The projects are challenging, the team is supportive, and I&apos;m constantly learning new technologies. The best part is seeing our AI solutions make a real difference for our clients.&quot;
+                    &quot;Working at CerebraTechAI has been incredible. The projects are challenging, the team is supportive, and I&apos;m constantly learning new technologies. The best part is seeing our AI solutions make a real difference for our clients.&quot;
                   </p>
                 </div>
                 <div className="text-sm">

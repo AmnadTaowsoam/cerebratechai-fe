@@ -12,8 +12,8 @@ export function StatsSection() {
     {
       icon: TrendingUp,
       value: '9+',
-      label: isThai ? 'โปรเจกต์' : 'Projects',
-      description: isThai ? 'โปรเจกต์ AI ที่ส่งมอบแล้ว' : 'AI projects delivered',
+      label: isThai ? 'โครงการ' : 'Projects',
+      description: isThai ? 'โครงการ AI ที่ส่งมอบจริง' : 'AI projects delivered',
       color: 'text-primary',
       bgColor: 'bg-primary/10',
     },
@@ -21,7 +21,7 @@ export function StatsSection() {
       icon: Users,
       value: '3+',
       label: isThai ? 'แพลตฟอร์ม' : 'Platforms',
-      description: isThai ? 'แพลตฟอร์มที่พัฒนาแล้ว (malAI, DulaeDee, CereBraKM)' : 'Platforms developed (malAI, DulaeDee, CereBraKM)',
+      description: isThai ? 'แพลตฟอร์มที่พัฒนา (malAI, DulaeDee, CerebraForge)' : 'Platforms developed (malAI, DulaeDee, CerebraForge)',
       color: 'text-accent',
       bgColor: 'bg-accent/10',
     },
@@ -29,7 +29,7 @@ export function StatsSection() {
       icon: Zap,
       value: '2025',
       label: isThai ? 'ก่อตั้ง' : 'Founded',
-      description: isThai ? 'เริ่มต้นให้บริการ' : 'Started operations',
+      description: isThai ? 'เริ่มดำเนินงาน' : 'Started operations',
       color: 'text-primary',
       bgColor: 'bg-primary/10',
     },
@@ -37,7 +37,7 @@ export function StatsSection() {
       icon: Award,
       value: '100%',
       label: isThai ? 'โฟกัส SME' : 'SME Focused',
-      description: isThai ? 'มุ่งเน้นโครงการขนาดเล็กถึงกลาง' : 'Small to mid-size projects',
+      description: isThai ? 'งานขนาดเล็กถึงกลาง' : 'Small to mid-size projects',
       color: 'text-accent',
       bgColor: 'bg-accent/10',
     },
@@ -45,41 +45,67 @@ export function StatsSection() {
 
   const achievements = [
     {
-      title: 'malAI Platform',
+      titleEn: 'malAI Platform',
+      titleTh: 'แพลตฟอร์ม malAI',
       metric: '40%',
-      description: 'Reduction in event planning time',
-      impact: '1,200+ active users, 350+ vendors onboarded',
+      descriptionEn: 'Reduction in event planning time',
+      descriptionTh: 'ลดเวลาวางแผนงานพิธี',
+      impactEn: '1,200+ active users, 350+ vendors onboarded',
+      impactTh: 'ผู้ใช้ 1,200+ ราย, ผู้ให้บริการ 350+ ราย',
     },
     {
-      title: 'DulaeDee Wellness',
+      titleEn: 'DulaeDee Wellness',
+      titleTh: 'DulaeDee Wellness',
       metric: '60%',
-      description: 'Faster user onboarding process',
-      impact: '2,500+ active users, 99.8% platform uptime',
+      descriptionEn: 'Faster user onboarding process',
+      descriptionTh: 'ออนบอร์ดผู้ใช้เร็วขึ้น',
+      impactEn: '2,500+ active users, 99.8% platform uptime',
+      impactTh: 'ผู้ใช้ 2,500+ ราย, uptime 99.8%',
     },
     {
-      title: 'CereBraKM System',
+      titleEn: 'CerebraForge System',
+      titleTh: 'ระบบ CerebraForge',
       metric: '70%',
-      description: 'Faster knowledge retrieval',
-      impact: '50K+ documents indexed, 3,000+ daily queries',
+      descriptionEn: 'Faster knowledge retrieval',
+      descriptionTh: 'ค้นหาความรู้เร็วขึ้น',
+      impactEn: '50K+ documents indexed, 3,000+ daily queries',
+      impactTh: 'เอกสาร 50K+, คำค้น 3,000+ ต่อวัน',
     },
     {
-      title: 'Edge AI Solutions',
+      titleEn: 'Edge AI Solutions',
+      titleTh: 'โซลูชัน Edge AI',
       metric: '90%',
-      description: 'Latency reduction vs cloud',
-      impact: '80+ deployments, 100% offline capability',
+      descriptionEn: 'Latency reduction vs cloud',
+      descriptionTh: 'ลด latency เมื่อเทียบกับ cloud',
+      impactEn: '80+ deployments, 100% offline capability',
+      impactTh: 'ดีพลอย 80+ ครั้ง, ทำงานออฟไลน์ 100%',
     },
     {
-      title: 'Computer Vision',
+      titleEn: 'Computer Vision',
+      titleTh: 'Computer Vision',
       metric: '95%',
-      description: 'Accuracy in weight prediction',
-      impact: '10K+ items/day processed, ±2% precision',
+      descriptionEn: 'Accuracy in weight prediction',
+      descriptionTh: 'ความแม่นยำในการทำนายน้ำหนัก',
+      impactEn: '10K+ items/day processed, ±2% precision',
+      impactTh: 'ประมวลผล 10K+ ชิ้น/วัน, คลาดเคลื่อน ±2%',
     },
     {
-      title: 'OCR Dashboard',
+      titleEn: 'OCR Dashboard',
+      titleTh: 'OCR Dashboard',
       metric: '98%',
-      description: 'OCR accuracy rate',
-      impact: '5,000+ documents/day, <3 sec processing',
+      descriptionEn: 'OCR accuracy rate',
+      descriptionTh: 'ความแม่นยำของ OCR',
+      impactEn: '5,000+ documents/day, <3 sec processing',
+      impactTh: 'เอกสาร 5,000+ ฉบับ/วัน, ประมวลผล <3 วินาที',
     },
+  ];
+
+  const industries = [
+    { nameEn: 'Event Management', nameTh: 'งานพิธีและอีเวนต์', count: '1,200+' },
+    { nameEn: 'Healthcare & Wellness', nameTh: 'สุขภาพและเวลเนส', count: '2,500+' },
+    { nameEn: 'Enterprise Software', nameTh: 'ซอฟต์แวร์องค์กร', count: '50K+' },
+    { nameEn: 'Security & Surveillance', nameTh: 'ความปลอดภัยและเฝ้าระวัง', count: '150+' },
+    { nameEn: 'Logistics & Agriculture', nameTh: 'โลจิสติกส์และเกษตร', count: '10K+' },
   ];
 
   return (
@@ -92,17 +118,17 @@ export function StatsSection() {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-text mb-4">
-            {isThai ? 'โครงการและโซลูชันที่พัฒนา' : 'Projects & Solutions Developed'}
+            {isThai ? 'โครงการและโซลูชันที่พัฒนาแล้ว' : 'Projects & Solutions Developed'}
           </h2>
           <p className="text-text-muted max-w-2xl mx-auto">
             {isThai
-              ? 'โซลูชัน AI ที่เราพัฒนาครอบคลุมหลายอุตสาหกรรม จากการจัดการอีเวนต์ไปจนถึง Edge Computing และ Knowledge Management'
+              ? 'ผลงานของเราครอบคลุมหลายอุตสาหกรรม ตั้งแต่ระบบอีเวนต์ไปจนถึง Edge Computing และ Knowledge Management'
               : 'AI solutions we develop span multiple industries, from event management to edge computing and knowledge management.'
             }
           </p>
           <p className="text-xs text-text-muted/70 mt-4 max-w-3xl mx-auto">
             {isThai
-              ? '* ตัวเลขและผลลัพธ์ที่แสดงเป็นข้อมูลจากโครงการจริงและข้อมูลสังเคราะห์เพื่อการสาธิต ผลลัพธ์จริงขึ้นอยู่กับปัจจัยหลายประการ'
+              ? '* ตัวเลขและผลลัพธ์อ้างอิงจากโครงการจริงและข้อมูลสังเคราะห์เพื่อการสาธิต ผลลัพธ์จริงอาจแตกต่างตามบริบท'
               : '* Figures and outcomes shown are based on actual projects and synthetic data for demonstration. Actual results may vary based on multiple factors.'
             }
           </p>
@@ -130,18 +156,24 @@ export function StatsSection() {
         {/* Project Achievements */}
         <div className="mb-12">
           <h3 className="text-2xl font-bold text-text mb-8 text-center">
-            {locale.startsWith('th') ? 'ความสำเร็จของโครงการ' : 'Project Achievements'}
+            {isThai ? 'ผลลัพธ์จากโครงการ' : 'Project Achievements'}
           </h3>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {achievements.map((achievement, index) => (
               <Card key={index} className="border border-hairline bg-surface/80 backdrop-blur hover:shadow-lg transition-all">
                 <CardContent className="p-6">
-                  <h4 className="text-lg font-semibold text-text mb-3">{achievement.title}</h4>
+                  <h4 className="text-lg font-semibold text-text mb-3">
+                    {isThai ? achievement.titleTh : achievement.titleEn}
+                  </h4>
                   <div className="flex items-baseline gap-2 mb-3">
                     <span className="text-4xl font-bold text-primary">{achievement.metric}</span>
-                    <span className="text-sm text-text-muted">{achievement.description}</span>
+                    <span className="text-sm text-text-muted">
+                      {isThai ? achievement.descriptionTh : achievement.descriptionEn}
+                    </span>
                   </div>
-                  <p className="text-sm text-text-muted">{achievement.impact}</p>
+                  <p className="text-sm text-text-muted">
+                    {isThai ? achievement.impactTh : achievement.impactEn}
+                  </p>
                 </CardContent>
               </Card>
             ))}
@@ -152,19 +184,15 @@ export function StatsSection() {
         <Card className="border border-hairline bg-surface/80 backdrop-blur">
           <CardContent className="p-8">
             <h3 className="text-2xl font-bold text-text mb-6 text-center">
-              {locale.startsWith('th') ? 'อุตสาหกรรมที่เราบริการ' : 'Industries We Serve'}
+              {isThai ? 'อุตสาหกรรมที่เราให้บริการ' : 'Industries We Serve'}
             </h3>
             <div className="grid gap-6 md:grid-cols-3 lg:grid-cols-5">
-              {[
-                { name: 'Event Management', count: '1,200+' },
-                { name: 'Healthcare & Wellness', count: '2,500+' },
-                { name: 'Enterprise Software', count: '50K+' },
-                { name: 'Security & Surveillance', count: '150+' },
-                { name: 'Logistics & Agriculture', count: '10K+' },
-              ].map((industry) => (
-                <div key={industry.name} className="text-center">
+              {industries.map((industry) => (
+                <div key={industry.nameEn} className="text-center">
                   <div className="text-2xl font-bold text-primary mb-2">{industry.count}</div>
-                  <p className="text-sm text-text-muted">{industry.name}</p>
+                  <p className="text-sm text-text-muted">
+                    {isThai ? industry.nameTh : industry.nameEn}
+                  </p>
                 </div>
               ))}
             </div>
@@ -174,4 +202,3 @@ export function StatsSection() {
     </section>
   );
 }
-

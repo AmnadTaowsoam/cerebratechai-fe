@@ -24,7 +24,7 @@ const content = {
       {
         heading: '3. Third-party Links',
         body: [
-          'Links to external sites are provided for convenience. Cerebratechai is not responsible for the content or practices of those sites.',
+          'Links to external sites are provided for convenience. CerebraTechAI is not responsible for the content or practices of those sites.',
         ],
       },
       {
@@ -38,7 +38,7 @@ const content = {
   th: {
     title: 'ข้อจำกัดความรับผิดและข้อสงวนสิทธิ์',
     description:
-      'ประกาศนี้กำหนดขอบเขตความรับผิดชอบและข้อจำกัดสำหรับข้อมูลบนเว็บไซต์และบริการของ Cerebratechai',
+      'ประกาศนี้กำหนดขอบเขตความรับผิดชอบและข้อจำกัดสำหรับข้อมูลบนเว็บไซต์และบริการของ CerebraTechAI',
     updated: 'ปรับปรุงล่าสุด 18 ต.ค. 2025',
     sections: [
       {
@@ -72,7 +72,7 @@ const content = {
       {
         heading: '4. การจำกัดความรับผิด (Limitation of Liability)',
         body: [
-          'Cerebratechai ไม่รับผิดชอบต่อความเสียหาย ไม่ว่าทางตรงหรือทางอ้อม ที่เกิดจาก:',
+          'CerebraTechAI ไม่รับผิดชอบต่อความเสียหาย ไม่ว่าทางตรงหรือทางอ้อม ที่เกิดจาก:',
           '- การใช้หรือไม่สามารถใช้เว็บไซต์',
           '- ข้อผิดพลาด ข้อบกพร่อง หรือไวรัสในเว็บไซต์',
           '- การตัดสินใจโดยอาศัยข้อมูลจากเว็บไซต์',
@@ -92,8 +92,8 @@ const content = {
       {
         heading: '6. ขอบเขตบริการและข้อจำกัด',
         body: [
-          'Cerebratechai เป็นธุรกิจขนาดเล็ก เหมาะกับโครงการ: Kickstart, POC, Small Pilot',
-          'สำหรับโครงการขนาดใหญ่ (> 500,000 บาท) หรือ Mission-critical systems ควรพิจารณาผู้ให้บริการที่มีทุนจดทะเบียนสูงกว่า',
+          'CerebraTechAI เป็นธุรกิจขนาดเล็ก เหมาะกับโครงการ: Kickstart, POC, Small Pilot',
+          'สำหรับโครงการขนาดใหญ่ (> ฿500,000) หรือ Mission-critical systems ควรพิจารณาผู้ให้บริการที่มีทุนจดทะเบียนสูงกว่า',
           'ไม่รับงานที่เกี่ยวข้องกับ: ระบบสาธารณูปโภค อุปกรณ์การแพทย์ ระบบควบคุมยานพาหนะ หรืองานที่อาจเสี่ยงต่อชีวิต',
           '* หากโครงการของคุณต้องการ SLA สูง (99.95%+), Team 24/7 หรือ Compliance เฉพาะทาง กรุณาหาผู้ให้บริการที่ใหญ่กว่า',
         ],
@@ -101,7 +101,7 @@ const content = {
       {
         heading: '7. ทรัพย์สินทางปัญญา',
         body: [
-          'เนื้อหา โลโก้ ภาพ และ Code บนเว็บไซต์นี้เป็นทรัพย์สินของ Cerebratechai',
+          'เนื้อหา โลโก้ ภาพ และ Code บนเว็บไซต์นี้เป็นทรัพย์สินของ CerebraTechAI',
           'ห้ามคัดลอก ดัดแปลง หรือเผยแพร่โดยไม่ได้รับอนุญาต',
           'ชื่อและโลโก้ของบุคคลที่สาม (เช่น AWS, Google) เป็นเครื่องหมายการค้าของเจ้าของ',
           '* การละเมิดลิขสิทธิ์อาจต้องรับผิดตามกฎหมาย',
@@ -136,7 +136,7 @@ export function generateMetadata({ params }: DisclaimerPageProps): Metadata {
   const locale = params.locale?.startsWith('th') ? 'th' : 'en';
   const copy = content[locale];
   return {
-    title: `${copy.title} | Cerebratechai`,
+    title: `${copy.title} | CerebraTechAI`,
     description: copy.description,
   };
 }

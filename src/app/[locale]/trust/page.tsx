@@ -9,91 +9,98 @@ type TrustPageProps = {
 };
 
 export const metadata: Metadata = {
-  title: 'Trust & Security — Cerebratechai',
-  description: 'Our commitment to security, privacy, and compliance. Learn how we protect your data and ensure regulatory compliance.',
+  title: 'Trust & Security - CerebraTechAI',
+  description: 'Our commitment to security, privacy, and compliance. Learn how we protect your data and ensure regulatory compliance.'
 };
 
 export default function TrustPage({ params }: TrustPageProps) {
   const locale = params.locale?.startsWith('th') ? 'th' : 'en';
   const isThai = locale === 'th';
+  const t = (th: string, en: string) => (isThai ? th : en);
 
   const securityPillars = [
     {
       icon: Shield,
-      title: isThai ? 'Data Protection' : 'Data Protection',
-      description: isThai
-        ? 'เข้ารหัสข้อมูลทั้งระหว่างการส่ง (in-transit) และขณะจัดเก็บ (at-rest) ด้วยมาตรฐานอุตสาหกรรม'
-        : 'Industry-standard encryption for data in-transit and at-rest',
+      title: t('การปกป้องข้อมูล', 'Data Protection'),
+      description: t(
+        'เข้ารหัสข้อมูลทั้งระหว่างส่งและขณะจัดเก็บ พร้อมสำรองข้อมูลแบบปลอดภัย',
+        'Industry-standard encryption for data in transit and at rest'
+      ),
       items: [
-        isThai ? 'TLS 1.3 สำหรับการเชื่อมต่อทั้งหมด' : 'TLS 1.3 for all connections',
-        isThai ? 'AES-256 encryption สำหรับข้อมูลที่จัดเก็บ' : 'AES-256 encryption for stored data',
-        isThai ? 'จัดเก็บข้อมูลในประเทศไทย (data residency)' : 'Data residency in Thailand',
-        isThai ? 'สำรองข้อมูลอัตโนมัติและเข้ารหัส' : 'Automated encrypted backups'
+        t('TLS 1.3 สำหรับทุกการเชื่อมต่อ', 'TLS 1.3 for all connections'),
+        t('AES-256 สำหรับข้อมูลที่จัดเก็บ', 'AES-256 encryption for stored data'),
+        t('สำรองข้อมูลแบบเข้ารหัสอัตโนมัติ', 'Automated encrypted backups'),
+        t('รองรับการกำหนดที่ตั้งข้อมูลตามข้อตกลง', 'Data residency options when required')
       ]
     },
     {
       icon: Lock,
-      title: isThai ? 'Access Control' : 'Access Control',
-      description: isThai
-        ? 'ควบคุมการเข้าถึงข้อมูลแบบเข้มงวดด้วยหลักการ Least Privilege'
-        : 'Strict access controls following the principle of least privilege',
+      title: t('การควบคุมการเข้าถึง', 'Access Control'),
+      description: t(
+        'จำกัดสิทธิ์ตามบทบาทและหลัก least privilege',
+        'Strict access controls following the principle of least privilege'
+      ),
       items: [
-        isThai ? 'Multi-factor authentication (MFA)' : 'Multi-factor authentication (MFA)',
-        isThai ? 'Role-based access control (RBAC)' : 'Role-based access control (RBAC)',
-        isThai ? 'ตรวจสอบและทบทวนสิทธิ์การเข้าถึงเป็นประจำ' : 'Regular access reviews',
-        isThai ? 'Session management และ automatic timeout' : 'Session management and automatic timeout'
+        t('ยืนยันตัวตนหลายปัจจัย (MFA)', 'Multi-factor authentication (MFA)'),
+        t('ควบคุมสิทธิ์ตามบทบาท (RBAC)', 'Role-based access control (RBAC)'),
+        t('ทบทวนสิทธิ์การเข้าถึงอย่างสม่ำเสมอ', 'Regular access reviews'),
+        t('จัดการเซสชันและหมดเวลาอัตโนมัติ', 'Session management and automatic timeout')
       ]
     },
     {
       icon: Eye,
-      title: isThai ? 'Monitoring & Audit' : 'Monitoring & Audit',
-      description: isThai
-        ? 'บันทึกและตรวจสอบกิจกรรมทั้งหมดเพื่อความโปร่งใสและการตรวจสอบย้อนหลัง'
-        : 'Comprehensive logging and monitoring for transparency and auditability',
+      title: t('การเฝ้าระวังและบันทึกตรวจสอบ', 'Monitoring & Audit'),
+      description: t(
+        'ติดตามการใช้งานและเหตุการณ์เพื่อความโปร่งใสและตรวจสอบย้อนหลังได้',
+        'Comprehensive logging and monitoring for transparency and auditability'
+      ),
       items: [
-        isThai ? 'บันทึก audit logs ทุกการเข้าถึงข้อมูล' : 'Audit logs for all data access',
-        isThai ? 'ตรวจจับพฤติกรรมผิดปกติแบบ real-time' : 'Real-time anomaly detection',
-        isThai ? 'เก็บ logs อย่างน้อย 1 ปี' : 'Log retention for minimum 1 year',
-        isThai ? 'รายงานสรุปสำหรับผู้ดูแลระบบ' : 'Executive summaries for administrators'
+        t('บันทึกการเข้าถึงข้อมูลทุกครั้ง', 'Audit logs for all data access'),
+        t('ตรวจจับความผิดปกติแบบเรียลไทม์', 'Real-time anomaly detection'),
+        t('เก็บบันทึกอย่างน้อย 1 ปี', 'Log retention for minimum 1 year'),
+        t('สรุปรายงานสำหรับผู้ดูแลระบบ', 'Executive summaries for administrators')
       ]
     },
     {
       icon: FileCheck,
-      title: isThai ? 'Compliance & Privacy' : 'Compliance & Privacy',
-      description: isThai
-        ? 'ปฏิบัติตามกฎหมายและมาตรฐานการคุ้มครองข้อมูลส่วนบุคคล'
-        : 'Adherence to privacy regulations and data protection standards',
+      title: t('มาตรฐานและความเป็นส่วนตัว', 'Compliance & Privacy'),
+      description: t(
+        'ปฏิบัติตามข้อกำหนดด้านข้อมูลส่วนบุคคลอย่างเคร่งครัด',
+        'Adherence to privacy regulations and data protection standards'
+      ),
       items: [
-        isThai ? 'PDPA (พ.ร.บ. คุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562)' : 'PDPA (Thailand Personal Data Protection Act)',
-        isThai ? 'GDPR-ready architecture' : 'GDPR-ready architecture',
-        isThai ? 'Data Processing Agreements (DPA) สำหรับลูกค้า' : 'Data Processing Agreements (DPA) for clients',
-        isThai ? 'สิทธิ์ของเจ้าของข้อมูล: เข้าถึง, แก้ไข, ลบ, ถ่ายโอน' : 'Data subject rights: access, rectify, erase, portability'
+        t('PDPA (กฎหมายไทย)', 'PDPA (Thailand Personal Data Protection Act)'),
+        t('รองรับสถาปัตยกรรมที่สอดคล้อง GDPR', 'GDPR-ready architecture'),
+        t('จัดทำ DPA ตามความต้องการ', 'Data Processing Agreements (DPA)'),
+        t('สิทธิของเจ้าของข้อมูลครบถ้วน', 'Data subject rights management')
       ]
     },
     {
       icon: Server,
-      title: isThai ? 'Infrastructure Security' : 'Infrastructure Security',
-      description: isThai
-        ? 'โครงสร้างพื้นฐานที่ปลอดภัยและทันสมัย'
-        : 'Secure and modern infrastructure practices',
+      title: t('ความปลอดภัยโครงสร้างพื้นฐาน', 'Infrastructure Security'),
+      description: t(
+        'โครงสร้างพื้นฐานที่ปลอดภัยและทันสมัย',
+        'Secure and modern infrastructure practices'
+      ),
       items: [
-        isThai ? 'Cloud infrastructure จากผู้ให้บริการที่ได้รับการรับรอง' : 'Certified cloud infrastructure providers',
-        isThai ? 'Network segmentation และ firewalls' : 'Network segmentation and firewalls',
-        isThai ? 'ตรวจสอบช่องโหว่ (vulnerability scanning) เป็นประจำ' : 'Regular vulnerability scanning',
-        isThai ? 'Patch management และ security updates' : 'Patch management and security updates'
+        t('ผู้ให้บริการคลาวด์ที่ผ่านมาตรฐาน', 'Certified cloud infrastructure providers'),
+        t('แยกเครือข่ายและใช้ไฟร์วอลล์', 'Network segmentation and firewalls'),
+        t('สแกนช่องโหว่เป็นประจำ', 'Regular vulnerability scanning'),
+        t('แพตช์และอัปเดตความปลอดภัยสม่ำเสมอ', 'Patch management and security updates')
       ]
     },
     {
       icon: AlertCircle,
-      title: isThai ? 'Incident Response' : 'Incident Response',
-      description: isThai
-        ? 'แผนรับมือและแจ้งเตือนเมื่อเกิดเหตุการณ์ความปลอดภัย'
-        : 'Prepared incident response and notification procedures',
+      title: t('การรับมือเหตุการณ์', 'Incident Response'),
+      description: t(
+        'มีแผนตอบสนองเหตุการณ์และการแจ้งเตือนที่ชัดเจน',
+        'Prepared incident response and notification procedures'
+      ),
       items: [
-        isThai ? 'แผนรับมือเหตุการณ์ที่ได้รับการทดสอบ' : 'Tested incident response plan',
-        isThai ? 'ทีมพร้อมตอบสนอง 24/7 สำหรับเหตุร้ายแรง' : '24/7 response team for critical incidents',
-        isThai ? 'แจ้งเตือนภายใน 72 ชั่วโมงตาม PDPA' : 'Notification within 72 hours per PDPA',
-        isThai ? 'Post-incident analysis และป้องกันซ้ำ' : 'Post-incident analysis and prevention'
+        t('แผนรับมือเหตุการณ์ผ่านการทดสอบแล้ว', 'Tested incident response plan'),
+        t('ทีมรับมือเหตุการณ์สำหรับกรณีสำคัญ', 'On-call response team for critical incidents'),
+        t('แจ้งเหตุภายใน 72 ชั่วโมงตาม PDPA', 'Notification within 72 hours per PDPA'),
+        t('สรุปบทเรียนและป้องกันเหตุซ้ำ', 'Post-incident analysis and prevention')
       ]
     }
   ];
@@ -101,70 +108,78 @@ export default function TrustPage({ params }: TrustPageProps) {
   const certifications = [
     {
       name: 'PDPA Compliance',
-      description: isThai
-        ? 'ปฏิบัติตามพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562'
-        : 'Compliant with Thailand Personal Data Protection Act B.E. 2562',
+      description: t(
+        'สอดคล้องกับ พ.ร.บ.คุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562',
+        'Compliant with Thailand Personal Data Protection Act B.E. 2562'
+      ),
       status: 'active'
     },
     {
       name: 'ISO 27001 Ready',
-      description: isThai
-        ? 'ระบบบริหารจัดการความมั่นคงปลอดภัยสารสนเทศตามมาตรฐาน ISO'
-        : 'Information security management system following ISO standards',
+      description: t(
+        'ระบบบริหารความปลอดภัยข้อมูลตามมาตรฐาน ISO อยู่ระหว่างดำเนินการ',
+        'Information security management system following ISO standards'
+      ),
       status: 'in-progress'
     },
     {
       name: 'GDPR Architecture',
-      description: isThai
-        ? 'สถาปัตยกรรมที่รองรับข้อกำหนด GDPR'
-        : 'Architecture supporting GDPR requirements',
+      description: t(
+        'ออกแบบสถาปัตยกรรมให้รองรับข้อกำหนด GDPR',
+        'Architecture supporting GDPR requirements'
+      ),
       status: 'active'
     }
   ];
 
   const dataHandling = [
     {
-      title: isThai ? 'การเก็บรวบรวมข้อมูล' : 'Data Collection',
-      content: isThai
-        ? 'เราเก็บเฉพาะข้อมูลที่จำเป็นต่อการให้บริการเท่านั้น และขอความยินยอมก่อนการเก็บรวบรวมข้อมูลส่วนบุคคลทุกครั้ง'
-        : 'We collect only necessary data for service delivery and obtain consent before collecting any personal information.'
+      title: t('การเก็บข้อมูล', 'Data Collection'),
+      content: t(
+        'เก็บข้อมูลเท่าที่จำเป็นต่อการให้บริการ และขอความยินยอมก่อนเก็บข้อมูลส่วนบุคคล',
+        'We collect only necessary data for service delivery and obtain consent before collecting any personal information.'
+      )
     },
     {
-      title: isThai ? 'การใช้ข้อมูล' : 'Data Usage',
-      content: isThai
-        ? 'ข้อมูลของคุณใช้เพื่อวัตถุประสงค์ที่ระบุไว้เท่านั้น เช่น การพัฒนาโมเดล AI, การวิเคราะห์, และการปรับปรุงบริการ'
-        : 'Your data is used only for stated purposes such as AI model development, analytics, and service improvement.'
+      title: t('การใช้งานข้อมูล', 'Data Usage'),
+      content: t(
+        'ใช้ข้อมูลตามวัตถุประสงค์ที่ตกลงกัน เช่น พัฒนาโมเดล วิเคราะห์ และปรับปรุงบริการ',
+        'Your data is used only for stated purposes such as AI model development, analytics, and service improvement.'
+      )
     },
     {
-      title: isThai ? 'การแบ่งปันข้อมูล' : 'Data Sharing',
-      content: isThai
-        ? 'เราไม่ขายหรือแบ่งปันข้อมูลส่วนบุคคลกับบุคคลที่สาม ยกเว้นมีความจำเป็นตามกฎหมายหรือได้รับความยินยอมจากคุณ'
-        : 'We do not sell or share personal data with third parties, except when required by law or with your consent.'
+      title: t('การแชร์ข้อมูล', 'Data Sharing'),
+      content: t(
+        'เราไม่ขายหรือแชร์ข้อมูลให้บุคคลที่สาม เว้นแต่ได้รับความยินยอมหรือจำเป็นตามกฎหมาย',
+        'We do not sell or share personal data with third parties, except when required by law or with your consent.'
+      )
     },
     {
-      title: isThai ? 'การเก็บรักษาข้อมูล' : 'Data Retention',
-      content: isThai
-        ? 'เราเก็บข้อมูลเท่าที่จำเป็นต่อวัตถุประสงค์ หรือตามที่กฎหมายกำหนด และจะลบข้อมูลเมื่อไม่มีความจำเป็นอีกต่อไป'
-        : 'We retain data only as long as necessary for its purpose or as required by law, and delete it when no longer needed.'
+      title: t('ระยะเวลาการเก็บข้อมูล', 'Data Retention'),
+      content: t(
+        'เก็บข้อมูลเท่าที่จำเป็นตามวัตถุประสงค์หรือข้อกำหนดทางกฎหมาย และลบเมื่อไม่จำเป็น',
+        'We retain data only as long as necessary for its purpose or as required by law, and delete it when no longer needed.'
+      )
     },
     {
-      title: isThai ? 'สิทธิ์ของเจ้าของข้อมูล' : 'Your Rights',
-      content: isThai
-        ? 'คุณมีสิทธิ์เข้าถึง แก้ไข ลบ คัดค้านการประมวลผล และขอรับข้อมูลส่วนบุคคลของคุณได้ตลอดเวลา ติดต่อเราได้ที่ privacy@cerebratechai.com'
-        : 'You have the right to access, rectify, erase, object to processing, and receive your personal data at any time. Contact us at privacy@cerebratechai.com'
+      title: t('สิทธิของคุณ', 'Your Rights'),
+      content: t(
+        'คุณมีสิทธิ์เข้าถึง แก้ไข ลบ คัดค้าน และขอโอนข้อมูล ติดต่อได้ที่ privacy@cerebratechai.com',
+        'You have the right to access, rectify, erase, object to processing, and receive your personal data at any time. Contact us at privacy@cerebratechai.com'
+      )
     }
   ];
 
   return (
     <>
       <SeoHead
-        title={isThai ? 'ความปลอดภัยและความเชื่อมั่น - Trust Center' : 'Security & Trust Center'}
-        description={isThai
-          ? 'ความมุ่งมั่นของเราในการรักษาความปลอดภัย ความเป็นส่วนตัว และการปฏิบัติตามกฎระเบียบ เรียนรู้วิธีที่เราปกป้องข้อมูลของคุณ'
-          : 'Our commitment to security, privacy, and compliance. Learn how we protect your data and ensure regulatory adherence.'
-        }
+        title={t('ศูนย์ความปลอดภัยและความน่าเชื่อถือ - CerebraTechAI', 'Security & Trust Center')}
+        description={t(
+          'สรุปแนวทางด้านความปลอดภัย ความเป็นส่วนตัว และการปฏิบัติตามข้อกำหนดของเรา',
+          'Our commitment to security, privacy, and compliance. Learn how we protect your data and ensure regulatory adherence.'
+        )}
         keywords={isThai
-          ? ['ความปลอดภัย', 'PDPA', 'GDPR', 'การคุ้มครองข้อมูล', 'Compliance', 'ISO 27001']
+          ? ['ความปลอดภัย', 'PDPA', 'GDPR', 'คุ้มครองข้อมูล', 'Compliance', 'ISO 27001']
           : ['security', 'PDPA', 'GDPR', 'data protection', 'compliance', 'ISO 27001']
         }
         url="/trust"
@@ -173,17 +188,12 @@ export default function TrustPage({ params }: TrustPageProps) {
 
       <div className="bg-bg">
         <MagicHero
-          eyebrow={isThai ? 'ความเชื่อมั่น & ความปลอดภัย' : 'Trust & Security'}
-          title={
-            isThai
-              ? 'ความมั่นคงปลอดภัยและการปฏิบัติตามมาตรฐานเป็นหัวใจของเรา'
-              : 'Security and Compliance at Our Core'
-          }
-          description={
-            isThai
-              ? 'เราเข้าใจว่าการมอบหมายข้อมูลและโครงการ AI ให้กับพันธมิตรต้องอาศัยความไว้วางใจ เราจึงสร้างระบบที่มั่นคง โปร่งใส และปฏิบัติตามมาตรฐานสากล'
-              : 'We understand that entrusting your data and AI projects requires confidence. That\'s why we build secure, transparent systems that comply with international standards.'
-          }
+          eyebrow={t('Trust & Security', 'Trust & Security')}
+          title={t('ความปลอดภัยและการปฏิบัติตามข้อกำหนดคือหัวใจหลักของเรา', 'Security and Compliance at Our Core')}
+          description={t(
+            'เราสร้างระบบที่ปลอดภัย โปร่งใส และตรวจสอบได้ เพื่อให้คุณมั่นใจในการใช้งานข้อมูลและ AI',
+            'We understand that entrusting your data and AI projects requires confidence. That\'s why we build secure, transparent systems that comply with international standards.'
+          )}
           align="center"
         />
 
@@ -192,13 +202,13 @@ export default function TrustPage({ params }: TrustPageProps) {
           <div className="container mx-auto px-6">
             <div className="text-center mb-16">
               <h2 className="text-3xl font-bold text-text mb-4">
-                {isThai ? 'เสาหลักด้านความปลอดภัย' : 'Security Pillars'}
+                {t('เสาหลักด้านความปลอดภัย', 'Security Pillars')}
               </h2>
               <p className="text-text-muted max-w-2xl mx-auto">
-                {isThai
-                  ? 'แนวทางที่ครอบคลุมในการปกป้องข้อมูล ระบบ และโครงการของคุณ'
-                  : 'Our comprehensive approach to protecting your data, systems, and projects'
-                }
+                {t(
+                  'แนวทางที่ครอบคลุมเพื่อปกป้องข้อมูล ระบบ และโครงการของคุณ',
+                  'Our comprehensive approach to protecting your data, systems, and projects'
+                )}
               </p>
             </div>
 
@@ -238,13 +248,13 @@ export default function TrustPage({ params }: TrustPageProps) {
           <div className="container mx-auto px-6">
             <div className="text-center mb-16">
               <h2 className="text-3xl font-bold text-text mb-4">
-                {isThai ? 'มาตรฐานและการรับรอง' : 'Standards & Certifications'}
+                {t('มาตรฐานและการรับรอง', 'Standards & Certifications')}
               </h2>
               <p className="text-text-muted max-w-2xl mx-auto">
-                {isThai
-                  ? 'เรามุ่งมั่นที่จะปฏิบัติตามมาตรฐานสากลและกฎหมายที่เกี่ยวข้อง'
-                  : 'Our commitment to international standards and regulatory compliance'
-                }
+                {t(
+                  'ความพร้อมด้านมาตรฐานสากลและข้อกำหนดด้านความเป็นส่วนตัว',
+                  'Our commitment to international standards and regulatory compliance'
+                )}
               </p>
             </div>
 
@@ -263,8 +273,8 @@ export default function TrustPage({ params }: TrustPageProps) {
                         : 'bg-yellow-500/10 text-yellow-500'
                     }`}>
                       {cert.status === 'active'
-                        ? (isThai ? 'ใช้งานอยู่' : 'Active')
-                        : (isThai ? 'กำลังดำเนินการ' : 'In Progress')
+                        ? t('พร้อมใช้งาน', 'Active')
+                        : t('อยู่ระหว่างดำเนินการ', 'In Progress')
                       }
                     </span>
                   </CardContent>
@@ -279,13 +289,13 @@ export default function TrustPage({ params }: TrustPageProps) {
           <div className="container mx-auto px-6">
             <div className="text-center mb-16">
               <h2 className="text-3xl font-bold text-text mb-4">
-                {isThai ? 'วิธีที่เราจัดการกับข้อมูลของคุณ' : 'How We Handle Your Data'}
+                {t('การจัดการข้อมูลของคุณ', 'How We Handle Your Data')}
               </h2>
               <p className="text-text-muted max-w-2xl mx-auto">
-                {isThai
-                  ? 'ความโปร่งใสในการเก็บรวบรวม ใช้งาน และปกป้องข้อมูลของคุณ'
-                  : 'Transparency in how we collect, use, and protect your information'
-                }
+                {t(
+                  'โปร่งใสในทุกขั้นตอน ตั้งแต่การเก็บ ใช้ ไปจนถึงการลบข้อมูล',
+                  'Transparency in how we collect, use, and protect your information'
+                )}
               </p>
             </div>
 
@@ -314,29 +324,29 @@ export default function TrustPage({ params }: TrustPageProps) {
             <Card className="border border-primary/30 bg-gradient-to-br from-primary/5 to-accent/5 max-w-3xl mx-auto">
               <CardContent className="p-8 text-center">
                 <h2 className="text-2xl font-semibold text-text mb-4">
-                  {isThai ? 'มีคำถามเกี่ยวกับความปลอดภัย?' : 'Questions About Security?'}
+                  {t('มีคำถามเรื่องความปลอดภัย?', 'Questions About Security?')}
                 </h2>
                 <p className="text-text-muted mb-6">
-                  {isThai
-                    ? 'ทีมความปลอดภัยของเรายินดีตอบคำถามและให้ข้อมูลเพิ่มเติมเกี่ยวกับแนวทางปฏิบัติและนโยบายของเรา'
-                    : 'Our security team is happy to answer questions and provide additional information about our practices and policies.'
-                  }
+                  {t(
+                    'ทีมของเรายินดีตอบคำถามและจัดเตรียมเอกสารที่เกี่ยวข้อง',
+                    'Our security team is happy to answer questions and provide additional information about our practices and policies.'
+                  )}
                 </p>
                 <div className="space-y-2 text-sm">
                   <p className="text-text-muted">
-                    {isThai ? 'เรื่องความปลอดภัย: ' : 'Security inquiries: '}
+                    {t('ติดต่อด้านความปลอดภัย: ', 'Security inquiries: ')}
                     <a href="mailto:security@cerebratechai.com" className="text-primary hover:underline">
                       security@cerebratechai.com
                     </a>
                   </p>
                   <p className="text-text-muted">
-                    {isThai ? 'เรื่องความเป็นส่วนตัว: ' : 'Privacy inquiries: '}
+                    {t('ติดต่อด้านความเป็นส่วนตัว: ', 'Privacy inquiries: ')}
                     <a href="mailto:privacy@cerebratechai.com" className="text-primary hover:underline">
                       privacy@cerebratechai.com
                     </a>
                   </p>
                   <p className="text-text-muted">
-                    {isThai ? 'เรื่อง Compliance: ' : 'Compliance inquiries: '}
+                    {t('ติดต่อด้าน Compliance: ', 'Compliance inquiries: ')}
                     <a href="mailto:compliance@cerebratechai.com" className="text-primary hover:underline">
                       compliance@cerebratechai.com
                     </a>

@@ -6,12 +6,15 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight, MessageSquare, Brain, Zap, Target, Users, Award } from 'lucide-react';
 import Link from 'next/link';
 import { SeoHead, ServiceSchema } from '@/components/seo';
+import TLDRBlock from '@/components/TLDRBlock';
+import KeyFactsBlock from '@/components/KeyFactsBlock';
 
 export default function LLMPage() {
   const t = useTranslations('solutions');
   const locale = useLocale();
   const isThai = locale.startsWith('th');
   const basePath = `/${locale}`;
+  const schemaLocale: 'en' | 'th' = isThai ? 'th' : 'en';
 
   const llmSolutions = [
     {
@@ -121,6 +124,66 @@ export default function LLMPage() {
       />
       
       <div className="bg-bg">
+      {/* TL;DR + Key Facts Section */}
+      <section className="py-12 bg-surface/30">
+        <div className="container mx-auto px-6">
+          <div className="grid gap-8 lg:grid-cols-2">
+            {/* TL;DR Block */}
+            <div>
+              <TLDRBlock
+                summary={
+                  isThai
+                    ? 'โซลูชัน LLM และ RAG ช่วยให้คุณสร้างระบบ AI ที่เข้าใจธรรม ตอบคำถาม และจัดการเอกสารอัตโนมัติ พร้อมระบบความปลอดภัยและการประเมินผล'
+                    : 'LLM & RAG solutions help you build intelligent systems that understand context, answer questions, manage documents autonomously, with guardrails and evaluation frameworks for production deployment.'
+                }
+                locale={schemaLocale}
+              />
+            </div>
+
+            {/* Key Facts Block */}
+            <div>
+              <KeyFactsBlock
+                facts={[
+                  {
+                    label: isThai ? 'Use Cases' : 'Use Cases',
+                    value: isThai ? 'Customer Service, Legal, Marketing, Research' : 'Customer Service, Legal, Marketing, Research'
+                  },
+                  {
+                    label: isThai ? 'ข้อมูลขั้นต่ำ' : 'Minimum Data Required',
+                    value: isThai ? 'ตัวอย่างข้อมูล 1 แหล่ง + เป้าหมาย KPI ที่ชัดเจน' : '1 sample data source + clear KPI objectives'
+                  },
+                  {
+                    label: isThai ? 'สิ่งที่ได้รับ' : 'Deliverables',
+                    value: isThai ? 'RAG pipeline, evaluation set, dashboard, policy/PII guard' : 'RAG pipeline, evaluation set, dashboard, policy/PII guard'
+                  },
+                  {
+                    label: isThai ? 'KPI และการประเมินผล' : 'KPI & Evaluation',
+                    value: isThai ? 'ความแม่น (Precision@k), citation rate, groundedness' : 'Precision@k, citation rate, groundedness'
+                  },
+                  {
+                    label: isThai ? 'ระยะเวลา' : 'Timeline',
+                    value: isThai ? 'POC: 6-10 สัปดาห์ | Pilot: 8-16 สัปดาห์' : 'POC: 6-10 weeks | Pilot: 8-16 weeks'
+                  },
+                  {
+                    label: isThai ? 'ตัวเลือกการใช้งาน' : 'Deployment Options',
+                    value: 'Cloud, VPC, On-prem'
+                  },
+                  {
+                    label: isThai ? 'การเชื่อมต่อ (ไม่บังคับ)' : 'Integration (Optional)',
+                    value: isThai ? 'API integration, dashboard, SSO/RBAC, connectors' : 'API integration, dashboard, SSO/RBAC, connectors'
+                  },
+                  {
+                    label: isThai ? 'การนำเสนอราคา' : 'Pricing',
+                    value: isThai ? 'เริ่มต้นได้ด้วย Kickstart/POC (ช่วงราคาโดยประมาณ)' : 'Start with Kickstart/POC (range pricing)'
+                  }
+                ]}
+                locale={schemaLocale}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Hero Section */}
       <MagicHero
         eyebrow="LLM Solutions"

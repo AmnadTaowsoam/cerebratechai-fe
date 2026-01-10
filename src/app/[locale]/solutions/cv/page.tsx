@@ -6,12 +6,15 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight, Eye, Camera, Target, Zap, Users, Award } from 'lucide-react';
 import Link from 'next/link';
 import { SeoHead, ServiceSchema } from '@/components/seo';
+import TLDRBlock from '@/components/TLDRBlock';
+import KeyFactsBlock from '@/components/KeyFactsBlock';
 
 export default function ComputerVisionPage() {
   const t = useTranslations('solutions');
   const locale = useLocale();
   const isThai = locale.startsWith('th');
   const basePath = `/${locale}`;
+  const schemaLocale: 'en' | 'th' = isThai ? 'th' : 'en';
 
   const cvSolutions = [
     {
@@ -121,6 +124,66 @@ export default function ComputerVisionPage() {
       />
       
       <div className="bg-bg">
+      {/* TL;DR + Key Facts Section */}
+      <section className="py-12 bg-surface/30">
+        <div className="container mx-auto px-6">
+          <div className="grid gap-8 lg:grid-cols-2">
+            {/* TL;DR Block */}
+            <div>
+              <TLDRBlock
+                summary={
+                  isThai
+                    ? 'โซลูชัน Computer Vision ช่วยให้คุณตรวจสอบคุณภาพ ตรวจจัดการ และวิเคราะห์ด้วยความแม่นยำ 99% พร้อมระบบประเมินและการเฝ็ก'
+                    : 'Computer Vision solutions help you see and understand visual data with 99% accuracy, real-time processing, and scalable deployment with production-grade monitoring.'
+                }
+                locale={schemaLocale}
+              />
+            </div>
+
+            {/* Key Facts Block */}
+            <div>
+              <KeyFactsBlock
+                facts={[
+                  {
+                    label: isThai ? 'Use Cases' : 'Use Cases',
+                    value: isThai ? 'การตรวจสอบคุณภาพ, การจัดการ, การวิเคราะห์เอกสาร, การเฝ็ก' : 'Quality inspection, document processing, retail analytics, medical imaging, security surveillance'
+                  },
+                  {
+                    label: isThai ? 'ข้อมูลขั้นต่ำ' : 'Minimum Data Required',
+                    value: isThai ? 'ภาพตัวอย่าง 1-10 แหล่ง + เป้าหมายการตรวจ' : 'Sample images (10-100) + clear detection objectives'
+                  },
+                  {
+                    label: isThai ? 'สิ่งที่ได้รับ' : 'Deliverables',
+                    value: isThai ? 'โมเดลตรวจจัด, pipeline การประมวณภาพ, แดชบอร์ตรวจเวลาจริง, ระบบแจ้งเตือน' : 'Vision model, image processing pipeline, real-time alert system, monitoring dashboard'
+                  },
+                  {
+                    label: isThai ? 'KPI และการประเมินผล' : 'KPI & Evaluation',
+                    value: isThai ? 'ความแม่นยำ, precision, recall, F1-score, latency' : 'Accuracy, precision, recall, F1-score, latency'
+                  },
+                  {
+                    label: isThai ? 'ระยะเวลา' : 'Timeline',
+                    value: isThai ? 'POC: 8-12 สัปดาห์ | Pilot: 8-20 สัปดาห์' : 'POC: 8-12 weeks | Pilot: 8-20 weeks'
+                  },
+                  {
+                    label: isThai ? 'ตัวเลือกการใช้งาน' : 'Deployment Options',
+                    value: 'Cloud, Edge AI, On-prem'
+                  },
+                  {
+                    label: isThai ? 'การเชื่อมต่อ (ไม่บังคับ)' : 'Integration (Optional)',
+                    value: isThai ? 'API integration, dashboard, SSO/RBAC' : 'API integration, dashboard, SSO/RBAC'
+                  },
+                  {
+                    label: isThai ? 'การนำเสนอราคา' : 'Pricing',
+                    value: isThai ? 'เริ่มต้นได้ด้วย Kickstart/POC (ช่วงราคาโดยประมาณ)' : 'Start with Kickstart/POC (range pricing)'
+                  }
+                ]}
+                locale={schemaLocale}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Hero Section */}
       <MagicHero
         eyebrow="Computer Vision Solutions"

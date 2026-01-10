@@ -5,50 +5,50 @@ interface PricingCompareProps {
 }
 
 const features = [
-  { name: 'Prototype/Demo', key: 'prototype' },
-  { name: 'Monitoring', key: 'monitoring' },
-  { name: 'High Availability', key: 'ha' },
-  { name: 'SLA Support', key: 'sla' },
-  { name: 'Disaster Recovery', key: 'dr' },
-  { name: 'Compliance', key: 'compliance' },
+  { name: 'Prototype/Demo', nameTh: 'Prototype/เดโม', key: 'prototype' },
+  { name: 'Monitoring', nameTh: 'Monitoring', key: 'monitoring' },
+  { name: 'High Availability', nameTh: 'High Availability', key: 'ha' },
+  { name: 'SLA Support', nameTh: 'SLA Support', key: 'sla' },
+  { name: 'Disaster Recovery', nameTh: 'Disaster Recovery', key: 'dr' },
+  { name: 'Compliance', nameTh: 'Compliance', key: 'compliance' },
 ];
 
-const featureMap: Record<string, Record<string, string>> = {
+const featureMap: Record<string, Record<string, { en: string; th: string }>> = {
   prototype: {
-    kickstart: 'Basic',
-    poc_lab: 'Advanced',
-    pilot_launch: 'Production-ready',
-    production_scale: 'Enterprise-grade',
+    kickstart: { en: 'Basic', th: 'พื้นฐาน' },
+    poc_lab: { en: 'Advanced', th: 'ขั้นสูง' },
+    pilot_launch: { en: 'Production-ready', th: 'พร้อมใช้งานจริง' },
+    production_scale: { en: 'Enterprise-grade', th: 'ระดับองค์กร' },
   },
   monitoring: {
-    kickstart: 'Basic',
-    poc_lab: 'Experiment tracking',
-    pilot_launch: 'Full monitoring',
-    production_scale: 'Advanced analytics',
+    kickstart: { en: 'Basic', th: 'พื้นฐาน' },
+    poc_lab: { en: 'Experiment tracking', th: 'ติดตามการทดลอง' },
+    pilot_launch: { en: 'Full monitoring', th: 'Monitoring เต็มรูปแบบ' },
+    production_scale: { en: 'Advanced analytics', th: 'Analytics ขั้นสูง' },
   },
   ha: {
-    kickstart: 'Not included',
-    poc_lab: 'Not included',
-    pilot_launch: 'Basic',
-    production_scale: 'Multi-AZ',
+    kickstart: { en: 'Not included', th: 'ไม่รวม' },
+    poc_lab: { en: 'Not included', th: 'ไม่รวม' },
+    pilot_launch: { en: 'Basic', th: 'พื้นฐาน' },
+    production_scale: { en: 'Multi-AZ', th: 'Multi-AZ' },
   },
   sla: {
-    kickstart: 'Not included',
-    poc_lab: 'Not included',
-    pilot_launch: 'Business hours',
-    production_scale: '24/7',
+    kickstart: { en: 'Not included', th: 'ไม่รวม' },
+    poc_lab: { en: 'Not included', th: 'ไม่รวม' },
+    pilot_launch: { en: 'Business hours', th: 'เวลาทำการ' },
+    production_scale: { en: '24/7', th: '24/7' },
   },
   dr: {
-    kickstart: 'Not included',
-    poc_lab: 'Not included',
-    pilot_launch: 'Basic backup',
-    production_scale: 'Full DR',
+    kickstart: { en: 'Not included', th: 'ไม่รวม' },
+    poc_lab: { en: 'Not included', th: 'ไม่รวม' },
+    pilot_launch: { en: 'Basic backup', th: 'Backup พื้นฐาน' },
+    production_scale: { en: 'Full DR', th: 'DR เต็มรูปแบบ' },
   },
   compliance: {
-    kickstart: 'Not included',
-    poc_lab: 'Not included',
-    pilot_launch: 'Basic security',
-    production_scale: 'Enterprise compliance',
+    kickstart: { en: 'Not included', th: 'ไม่รวม' },
+    poc_lab: { en: 'Not included', th: 'ไม่รวม' },
+    pilot_launch: { en: 'Basic security', th: 'Security พื้นฐาน' },
+    production_scale: { en: 'Enterprise compliance', th: 'Compliance ระดับองค์กร' },
   },
 };
 
@@ -59,9 +59,9 @@ export default function PricingCompare({ locale = 'en' }: PricingCompareProps) {
   return (
     <div className="rounded-2xl border border-white/10 bg-surface/60 p-6">
       <h3 className="text-xl font-semibold text-text mb-6">
-        {isThai ? 'เปรียบเทียบฟีเจอร์' : 'Feature Comparison'}
+        {isThai ? 'เทียบฟีเจอร์แพ็กเกจ' : 'Feature Comparison'}
       </h3>
-      
+
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead>
@@ -71,7 +71,7 @@ export default function PricingCompare({ locale = 'en' }: PricingCompareProps) {
               </th>
               {packages.map(pkg => (
                 <th key={pkg.id} className="text-center py-3 px-4 font-semibold text-text min-w-[120px]">
-                  {pkg.title}
+                  {isThai ? (pkg.titleTh ?? pkg.title) : pkg.title}
                 </th>
               ))}
             </tr>
@@ -79,10 +79,14 @@ export default function PricingCompare({ locale = 'en' }: PricingCompareProps) {
           <tbody>
             {features.map(feature => (
               <tr key={feature.key} className="border-b border-white/5">
-                <td className="py-3 px-4 font-medium text-text">{feature.name}</td>
+                <td className="py-3 px-4 font-medium text-text">
+                  {isThai ? feature.nameTh : feature.name}
+                </td>
                 {packages.map(pkg => (
                   <td key={pkg.id} className="text-center py-3 px-4 text-text-muted">
-                    {featureMap[feature.key]?.[pkg.id] || (isThai ? 'ไม่รวม' : 'Not included')}
+                    {featureMap[feature.key]?.[pkg.id]
+                      ? (isThai ? featureMap[feature.key][pkg.id].th : featureMap[feature.key][pkg.id].en)
+                      : (isThai ? 'ไม่รวม' : 'Not included')}
                   </td>
                 ))}
               </tr>
@@ -93,4 +97,3 @@ export default function PricingCompare({ locale = 'en' }: PricingCompareProps) {
     </div>
   );
 }
-

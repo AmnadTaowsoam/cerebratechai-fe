@@ -1,0 +1,25 @@
+# CerebraTechAI (cerebratechai.com) – LLM instructions
+
+## Overview
+CerebraTechAI is a boutique AI studio in Bangkok, Thailand. We build production-ready AI systems (LLM & RAG, Computer Vision, Predictive Analytics, Edge AI) and supporting engineering foundations (data platform, MLOps, analytics).
+
+## Languages
+- English: /en (preferred)
+- Thai: /th
+
+## Key Pages
+- Solutions (overview): /en/solutions
+- Packages: /en/packages
+- Pricing: /en/pricing
+- Case studies: /en/cases
+- Contact: /en/contact
+- Trust & Security: /en/trust
+- How we work: /en/how-we-work
+
+## Content Notes
+- Currency shown in the UI uses the Thai Baht symbol (฿). Structured data may use the currency code THB.
+
+## Crawling Guidance
+- You may crawl and summarize public pages under /en and /th.
+- Do not attempt to access private/admin paths (e.g., /admin, /dashboard).
+

@@ -1,454 +1,287 @@
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+﻿import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowLeft, ArrowRight, MessageCircle, ExternalLink } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { notFound } from 'next/navigation';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
+
+import { MagicHero } from '@/components/magicui';
 import { Card, CardContent } from '@/components/ui/card';
-import { ShimmerButton } from '@/components/magicui';
-import CaseSchema from '@/components/CaseSchema';
 import TLDRBlock from '@/components/TLDRBlock';
 import KeyFactsBlock from '@/components/KeyFactsBlock';
-import { getCaseBySlug, CASES } from '@/data/cases';
+import { ArticleSchema } from '@/components/seo';
+import { CASES, getCaseBySlug } from '@/data/cases';
 
-type CaseDetailProps = {
+type CasePageProps = {
   params: { locale: string; slug: string };
 };
 
+const dataSensitivityLabels = {
+  Public: { th: 'ข้อมูลสาธารณะ', en: 'Public data' },
+  Anonymised: { th: 'ข้อมูลนิรนาม', en: 'Anonymised' },
+  Synthetic: { th: 'ข้อมูลสังเคราะห์', en: 'Synthetic data' },
+};
+
 export function generateStaticParams() {
-  const locales = ['en', 'th'];
-  const params = [];
-
-  for (const locale of locales) {
-    for (const caseItem of CASES) {
-      params.push({
-        locale,
-        slug: caseItem.slug,
-      });
-    }
-  }
-
-  return params;
+  return CASES.flatMap((caseItem) => [
+    { locale: 'en', slug: caseItem.slug },
+    { locale: 'th', slug: caseItem.slug },
+  ]);
 }
 
-export function generateMetadata({ params }: CaseDetailProps): Metadata {
+export function generateMetadata({ params }: CasePageProps): Metadata {
+  const locale = params.locale?.startsWith('th') ? 'th' : 'en';
   const caseItem = getCaseBySlug(params.slug);
-  
   if (!caseItem) {
     return {};
   }
 
+  const title = locale === 'th'
+    ? `กรณีศึกษา: ${caseItem.title} | CerebraTechAI`
+    : `${caseItem.title} | CerebraTechAI`;
+  const description = caseItem.subtitle || caseItem.challenge;
+
   return {
-    title: `${caseItem.title} | Cerebratechai Case Study`,
-    description: caseItem.solution,
-    openGraph: {
-      title: caseItem.title,
-      description: caseItem.solution,
-      images: caseItem.heroImage ? [caseItem.heroImage] : [],
-    },
+    title,
+    description,
   };
 }
 
-export default function CaseDetailPage({ params }: CaseDetailProps) {
+export default function CaseDetailPage({ params }: CasePageProps) {
   const locale = params.locale?.startsWith('th') ? 'th' : 'en';
   const isThai = locale === 'th';
   const basePath = `/${locale}`;
-
-  // Get case with slug validation
+  const schemaLocale: 'en' | 'th' = isThai ? 'th' : 'en';
   const caseItem = getCaseBySlug(params.slug);
 
-  // If case not found, show 404 instead of 500
   if (!caseItem) {
-    console.error(`[CaseDetailPage] Case not found for slug: ${params.slug}`);
     notFound();
   }
 
-  // Get related cases (same sector or solution family)
-  const relatedCases = CASES
-    .filter(c => c.slug !== caseItem.slug && 
-      (c.sector === caseItem.sector || 
-       c.solutionFamily.some(family => caseItem.solutionFamily.includes(family))))
-    .slice(0, 3);
+  const t = (th: string, en: string) => (isThai ? th : en);
 
-  const getDataSensitivityBadge = () => {
-    const sensitivity = caseItem.dataSensitivity;
-    const badges = {
-      'Public': { text: isThai ? 'ข้อมูลสาธารณะ' : 'PUBLIC DATA', color: 'text-sky-300 bg-sky-500/20' },
-      'Anonymised': { text: isThai ? 'ข้อมูลไม่ระบุตัวตน' : 'ANONYMISED', color: 'text-cyan-300 bg-cyan-500/20' },
-      'Synthetic': { text: isThai ? 'ข้อมูลสังเคราะห์' : 'SYNTHETIC DATA', color: 'text-purple-300 bg-purple-500/20' }
-    };
-    
-    const badge = badges[sensitivity];
-    return (
-      <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${badge.color}`}>
-        {badge.text}
-      </span>
-    );
-  };
+  const relatedCases = CASES.filter((item) =>
+    item.slug !== caseItem.slug &&
+    item.solutionFamily.some(family => caseItem.solutionFamily.includes(family))
+  ).slice(0, 3);
 
   return (
     <div className="bg-bg">
-      {/* JSON-LD Schema */}
-      <CaseSchema caseItem={caseItem} locale={locale} />
-      
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-surface via-surface-2 to-surface-3 py-20">
-        <div className="container mx-auto px-6">
+      <ArticleSchema headline={caseItem.title} articleBody={caseItem.subtitle || caseItem.challenge} author="CerebraTechAI" />
+      <MagicHero
+        eyebrow={
           <Link
             href={`${basePath}/cases` as any}
-            className="mb-8 inline-flex items-center gap-2 text-sm text-text-muted transition-colors hover:text-text"
+            className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.35em] text-white/60 transition hover:text-white"
           >
             <ArrowLeft className="h-4 w-4" />
-            {isThai ? 'กลับไปดู Case Studies' : 'Back to Case Studies'}
+            {t('กลับ', 'Back')}
           </Link>
+        }
+        title={caseItem.title}
+        description={caseItem.subtitle || caseItem.challenge}
+        metrics={[
+          {
+            value: caseItem.sector,
+            label: t('อุตสาหกรรม', 'Industry'),
+          },
+          {
+            value: isThai
+              ? dataSensitivityLabels[caseItem.dataSensitivity].th
+              : dataSensitivityLabels[caseItem.dataSensitivity].en,
+            label: t('ข้อมูล', 'Data'),
+          },
+          {
+            value: caseItem.outcomes[0]?.value || '—',
+            label: caseItem.outcomes[0]?.label || t('ผลลัพธ์หลัก', 'Key outcome'),
+          },
+        ]}
+        align="center"
+      />
 
-          <div className="max-w-4xl space-y-6">
-            <div className="flex items-start justify-between">
-              <div className="flex-1">
-                <span className="inline-flex items-center rounded-full bg-white/10 px-4 py-1 text-sm font-semibold uppercase tracking-wider text-primary mb-4">
-                  {caseItem.sector}
-                </span>
-                <h1 className="text-4xl font-bold text-text md:text-5xl mb-4">
-                  {caseItem.title}
-                </h1>
-                <p className="text-lg text-text-muted mb-6">
-                  {caseItem.subtitle}
+      <section className="py-12 bg-surface/30">
+        <div className="container mx-auto px-6">
+          <div className="grid gap-8 lg:grid-cols-2">
+            <TLDRBlock
+              summary={
+                isThai
+                  ? 'สรุป: ปัญหา/เป้าหมาย แนวทางแก้ และผลลัพธ์ที่วัดได้ (ข้อมูลที่ใช้เป็นไปตามประเภทข้อมูลที่ระบุ)'
+                  : `Summary: ${caseItem.solution}`
+              }
+              locale={schemaLocale}
+            />
+            <KeyFactsBlock
+              facts={[
+                { label: t('อุตสาหกรรม', 'Industry'), value: caseItem.sector },
+                { label: t('กลุ่มโซลูชัน', 'Solution family'), value: caseItem.solutionFamily.join(', ') },
+                {
+                  label: t('ข้อมูล', 'Data'),
+                  value: isThai
+                    ? dataSensitivityLabels[caseItem.dataSensitivity].th
+                    : dataSensitivityLabels[caseItem.dataSensitivity].en,
+                },
+                {
+                  label: t('ผลลัพธ์หลัก', 'Key outcomes'),
+                  value: caseItem.outcomes.slice(0, 3).map((o) => `${o.label}: ${o.value}`),
+                },
+                ...(caseItem.metricsFooter?.length
+                  ? [
+                      {
+                        label: t('ตัวชี้วัดเพิ่มเติม', 'Extra metrics'),
+                        value: caseItem.metricsFooter.map((m) => `${m.label}: ${m.value}`),
+                      },
+                    ]
+                  : []),
+              ]}
+              locale={schemaLocale}
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12">
+        <div className="container mx-auto px-6">
+          <div className="grid gap-8 lg:grid-cols-2">
+            <Card className="border border-white/10 bg-surface/80 backdrop-blur">
+              <CardContent className="p-8 space-y-3">
+                <h2 className="text-xl font-semibold text-text">
+                  {t('ความท้าทาย', 'Challenge')}
+                </h2>
+                <p className="text-text-muted leading-relaxed">
+                  {caseItem.challenge}
                 </p>
-                
-                {/* Solution Family Tags */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {caseItem.solutionFamily.map((family, index) => (
-                    <span 
-                      key={index}
-                      className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-secondary/20 text-secondary"
-                    >
-                      {family}
-                    </span>
+              </CardContent>
+            </Card>
+
+            <Card className="border border-white/10 bg-surface/80 backdrop-blur">
+              <CardContent className="p-8 space-y-3">
+                <h2 className="text-xl font-semibold text-text">
+                  {t('โซลูชัน', 'Solution')}
+                </h2>
+                <p className="text-text-muted leading-relaxed">
+                  {caseItem.solution}
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12 bg-surface/30">
+        <div className="container mx-auto px-6">
+          <div className="grid gap-8 lg:grid-cols-2">
+            <Card className="border border-white/10 bg-surface/80 backdrop-blur">
+              <CardContent className="p-8">
+                <h2 className="text-xl font-semibold text-text mb-4">
+                  {t('ผลลัพธ์ที่ได้', 'Outcomes')}
+                </h2>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {caseItem.outcomes.map((outcome, index) => (
+                    <div key={index} className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                      <div className="text-2xl font-bold text-primary">{outcome.value}</div>
+                      <div className="text-sm text-text-muted">{outcome.label}</div>
+                    </div>
                   ))}
                 </div>
-              </div>
-              
-              <div className="ml-6">
-                {getDataSensitivityBadge()}
-              </div>
-            </div>
+              </CardContent>
+            </Card>
 
-            {/* KPI Chips */}
-            <div className="flex flex-wrap gap-3">
-              {caseItem.outcomes.map((outcome, index) => (
-                <div 
-                  key={index}
-                  className="inline-flex items-center px-4 py-2 rounded-lg bg-primary/20 text-primary font-medium"
-                >
-                  {outcome.value} {outcome.label.toLowerCase()}
+            <Card className="border border-white/10 bg-surface/80 backdrop-blur">
+              <CardContent className="p-8 space-y-4">
+                <h2 className="text-xl font-semibold text-text">
+                  {t('ข้อมูลประกอบ', 'Supporting metrics')}
+                </h2>
+                {caseItem.metricsFooter ? (
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    {caseItem.metricsFooter.map((metric, index) => (
+                      <div key={index} className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                        <div className="text-lg font-semibold text-text">{metric.value}</div>
+                        <div className="text-sm text-text-muted">{metric.label}</div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-text-muted">
+                    {t('ยังไม่มีข้อมูลเพิ่มเติมสำหรับเคสนี้', 'No additional metrics available for this case.')}
+                  </p>
+                )}
+                <div className="rounded-2xl border border-primary/20 bg-primary/10 p-4 text-sm text-text-muted">
+                  <p className="font-semibold text-text">
+                    {t('ระดับข้อมูล', 'Data sensitivity')}
+                  </p>
+                  <p className="mt-2">
+                    {isThai ? dataSensitivityLabels[caseItem.dataSensitivity].th : dataSensitivityLabels[caseItem.dataSensitivity].en}
+                  </p>
                 </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12">
+        <div className="container mx-auto px-6">
+          <Card className="border border-primary/30 bg-gradient-to-br from-primary/5 to-accent/5">
+            <CardContent className="p-8 text-center">
+              <h2 className="text-2xl font-semibold text-text mb-3">
+                {t('อยากทำเคสคล้ายกัน?', 'Want a similar outcome?')}
+              </h2>
+              <p className="text-text-muted mb-6">
+                {t('แชร์โจทย์ของคุณเพื่อประเมินแนวทางและงบประมาณที่เหมาะสม', 'Share your context to receive a scoped plan and estimate.')}
+              </p>
+              <Link
+                href={`${basePath}/contact?case=${caseItem.slug}` as any}
+                className="inline-flex items-center gap-2 text-primary hover:underline"
+              >
+                {t('คุยกับทีมเรา', 'Talk to our team')}
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {relatedCases.length > 0 && (
+        <section className="py-12 bg-surface/30">
+          <div className="container mx-auto px-6">
+            <h2 className="text-2xl font-bold text-text mb-6 text-center">
+              {t('เคสที่เกี่ยวข้อง', 'Related Case Studies')}
+            </h2>
+            <div className="grid gap-6 md:grid-cols-3">
+              {relatedCases.map((item) => (
+                <Card key={item.slug} className="border border-white/10 bg-surface/80 backdrop-blur hover:shadow-xl transition-all group">
+                  <CardContent className="p-6">
+                    <div className="mb-4">
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary/20 text-primary">
+                        {item.sector}
+                      </span>
+                    </div>
+                    <h3 className="text-lg font-semibold text-text mb-2 group-hover:text-primary transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-text-muted mb-4 line-clamp-2">
+                      {item.subtitle}
+                    </p>
+                    <div className="grid grid-cols-2 gap-3 mb-4">
+                      {item.outcomes.slice(0, 2).map((outcome, idx) => (
+                        <div key={idx} className="text-center p-2 rounded-lg bg-primary/10">
+                          <div className="text-lg font-bold text-primary">{outcome.value}</div>
+                          <div className="text-xs text-text-muted">{outcome.label}</div>
+                        </div>
+                      ))}
+                    </div>
+                    <Link
+                      href={`/${locale}/cases/${item.slug}`}
+                      className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
+                    >
+                      {t('อ่านต่อ', 'Read more')}
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </CardContent>
+                </Card>
               ))}
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Main Content */}
-      <section className="py-16">
-        <div className="container mx-auto px-6">
-          <div className="grid gap-8 lg:grid-cols-3">
-            <div className="lg:col-span-2 space-y-8">
-              {/* TL;DR */}
-              <TLDRBlock
-                summary={`${caseItem.challenge.slice(0, 150)}... ${caseItem.solution.slice(0, 150)}...`}
-                locale={locale}
-              />
-
-              {/* Key Facts */}
-              <KeyFactsBlock
-                facts={[
-                  {
-                    label: isThai ? 'อุตสาหกรรม' : 'Sector',
-                    value: caseItem.sector
-                  },
-                  {
-                    label: isThai ? 'โซลูชัน' : 'Solution Family',
-                    value: caseItem.solutionFamily
-                  },
-                  {
-                    label: isThai ? 'ความละเอียดอ่อนของข้อมูล' : 'Data Sensitivity',
-                    value: caseItem.dataSensitivity
-                  },
-                  {
-                    label: isThai ? 'ผลลัพธ์หลัก' : 'Key Outcomes',
-                    value: caseItem.outcomes.map(o => `${o.value} ${o.label}`)
-                  }
-                ]}
-                locale={locale}
-              />
-
-              {/* Summary */}
-              <Card className="border border-hairline bg-surface">
-                <CardContent className="p-8">
-                  <h2 className="text-xl font-semibold text-text mb-4">
-                    {isThai ? 'สรุป' : 'Summary'}
-                  </h2>
-                  <p className="text-text-muted leading-relaxed">
-                    {caseItem.solution}
-                  </p>
-                </CardContent>
-              </Card>
-
-              {/* Challenge */}
-              <Card className="border border-hairline bg-surface">
-                <CardContent className="p-8">
-                  <h2 className="text-xl font-semibold text-text mb-4">
-                    {isThai ? 'ความท้าทาย' : 'Challenge'}
-                  </h2>
-                  <p className="text-text-muted leading-relaxed">
-                    {caseItem.challenge}
-                  </p>
-                </CardContent>
-              </Card>
-
-              {/* Why This Matters */}
-              <Card className="border border-primary/30 bg-gradient-to-br from-primary/5 to-accent/5">
-                <CardContent className="p-8">
-                  <h2 className="text-xl font-semibold text-text mb-4">
-                    {isThai ? 'ทำไมเรื่องนี้ถึงสำคัญ' : 'Why This Matters'}
-                  </h2>
-                  <div className="space-y-4">
-                    <p className="text-text-muted leading-relaxed">
-                      {isThai
-                        ? 'ความท้าทายนี้เป็นปัญหาที่พบบ่อยในอุตสาหกรรม ' + caseItem.sector + ' หลายองค์กรเผชิญกับปัญหาคล้ายกันที่ส่งผลกระทบต่อ:'
-                        : 'This challenge is common in the ' + caseItem.sector + ' industry. Many organizations face similar issues that impact:'
-                      }
-                    </p>
-                    <ul className="space-y-3">
-                      <li className="flex items-start gap-3">
-                        <span className="mt-1 h-2 w-2 rounded-full bg-primary flex-shrink-0" />
-                        <span className="text-text-muted">
-                          {isThai ? 'ประสิทธิภาพการดำเนินงานและต้นทุน' : 'Operational efficiency and costs'}
-                        </span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <span className="mt-1 h-2 w-2 rounded-full bg-primary flex-shrink-0" />
-                        <span className="text-text-muted">
-                          {isThai ? 'ความสามารถในการแข่งขันในตลาด' : 'Market competitiveness'}
-                        </span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <span className="mt-1 h-2 w-2 rounded-full bg-primary flex-shrink-0" />
-                        <span className="text-text-muted">
-                          {isThai ? 'ความพึงพอใจของลูกค้าและคุณภาพการบริการ' : 'Customer satisfaction and service quality'}
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Architecture */}
-              <Card className="border border-hairline bg-surface">
-                <CardContent className="p-8">
-                  <h2 className="text-xl font-semibold text-text mb-4">
-                    {isThai ? 'สถาปัตยกรรม' : 'Architecture'}
-                  </h2>
-                  <div className="space-y-4 text-text-muted">
-                    <p>{isThai ? 'ระบบใช้เทคโนโลยีหลักดังนี้:' : 'Key technologies used:'}</p>
-                    <ul className="list-disc pl-6 space-y-2">
-                      <li>{isThai ? 'Edge Computing Platform (Jetson/RPi)' : 'Edge Computing Platform (Jetson/RPi)'}</li>
-                      <li>{isThai ? 'On-device LLM Processing' : 'On-device LLM Processing'}</li>
-                      <li>{isThai ? 'Secure Offline Pipeline' : 'Secure Offline Pipeline'}</li>
-                      <li>{isThai ? 'Real-time Analytics Dashboard' : 'Real-time Analytics Dashboard'}</li>
-                    </ul>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Data & Privacy */}
-              <Card className="border border-hairline bg-surface">
-                <CardContent className="p-8">
-                  <h2 className="text-xl font-semibold text-text mb-4">
-                    {isThai ? 'ข้อมูลและความเป็นส่วนตัว' : 'Data & Privacy'}
-                  </h2>
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-3">
-                      {getDataSensitivityBadge()}
-                    </div>
-                    <p className="text-text-muted">
-                      {isThai 
-                        ? 'ข้อมูลที่ใช้ในการศึกษาเคสนี้ได้รับการจัดการตามมาตรฐานความเป็นส่วนตัวและความปลอดภัยที่เข้มงวด'
-                        : 'Data used in this case study follows strict privacy and security standards'
-                      }
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Impact */}
-              <Card className="border border-hairline bg-surface">
-                <CardContent className="p-8">
-                  <h2 className="text-xl font-semibold text-text mb-4">
-                    {isThai ? 'ผลกระทบทางธุรกิจ' : 'Business Impact'}
-                  </h2>
-
-                  {/* Key Outcomes */}
-                  <div className="mb-6">
-                    <h3 className="text-sm font-semibold text-text mb-3 uppercase tracking-wider">
-                      {isThai ? 'ผลลัพธ์หลัก' : 'Key Outcomes'}
-                    </h3>
-                    <div className="grid gap-4 md:grid-cols-2">
-                      {caseItem.outcomes.map((outcome, index) => (
-                        <div key={index} className="p-4 rounded-lg bg-primary/10">
-                          <div className="text-2xl font-bold text-primary mb-1">
-                            {outcome.value}
-                          </div>
-                          <div className="text-sm text-text-muted">
-                            {outcome.label}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Business Benefits */}
-                  <div className="pt-6 border-t border-hairline">
-                    <h3 className="text-sm font-semibold text-text mb-4 uppercase tracking-wider">
-                      {isThai ? 'ประโยชน์ทางธุรกิจ' : 'Business Benefits'}
-                    </h3>
-                    <div className="grid gap-4 md:grid-cols-2">
-                      <div className="flex items-start gap-3">
-                        <span className="mt-1 h-2 w-2 rounded-full bg-accent flex-shrink-0" />
-                        <div>
-                          <div className="font-medium text-text text-sm mb-1">
-                            {isThai ? 'ลดต้นทุนการดำเนินงาน' : 'Reduced Operational Costs'}
-                          </div>
-                          <div className="text-xs text-text-muted">
-                            {isThai ? 'ประหยัดเวลาและทรัพยากร' : 'Time and resource savings'}
-                          </div>
-                        </div>
-                      </div>
-                      <div className="flex items-start gap-3">
-                        <span className="mt-1 h-2 w-2 rounded-full bg-accent flex-shrink-0" />
-                        <div>
-                          <div className="font-medium text-text text-sm mb-1">
-                            {isThai ? 'เพิ่มความแม่นยำ' : 'Improved Accuracy'}
-                          </div>
-                          <div className="text-xs text-text-muted">
-                            {isThai ? 'ลดข้อผิดพลาดจากมนุษย์' : 'Reduced human errors'}
-                          </div>
-                        </div>
-                      </div>
-                      <div className="flex items-start gap-3">
-                        <span className="mt-1 h-2 w-2 rounded-full bg-accent flex-shrink-0" />
-                        <div>
-                          <div className="font-medium text-text text-sm mb-1">
-                            {isThai ? 'Scale ได้ง่าย' : 'Easy to Scale'}
-                          </div>
-                          <div className="text-xs text-text-muted">
-                            {isThai ? 'รองรับการเติบโตของธุรกิจ' : 'Supports business growth'}
-                          </div>
-                        </div>
-                      </div>
-                      <div className="flex items-start gap-3">
-                        <span className="mt-1 h-2 w-2 rounded-full bg-accent flex-shrink-0" />
-                        <div>
-                          <div className="font-medium text-text text-sm mb-1">
-                            {isThai ? 'ข้อมูลเชิงลึก' : 'Data-Driven Insights'}
-                          </div>
-                          <div className="text-xs text-text-muted">
-                            {isThai ? 'การตัดสินใจที่ดีขึ้น' : 'Better decision making'}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {caseItem.metricsFooter && (
-                    <div className="mt-6 pt-6 border-t border-hairline">
-                      <h3 className="text-lg font-semibold text-text mb-4">
-                        {isThai ? 'ตัวชี้วัดเพิ่มเติม' : 'Additional Metrics'}
-                      </h3>
-                      <div className="grid gap-4 md:grid-cols-2">
-                        {caseItem.metricsFooter.map((metric, index) => (
-                          <div key={index} className="flex justify-between items-center p-3 rounded-lg bg-surface/50">
-                            <span className="text-text-muted">{metric.label}</span>
-                            <span className="font-semibold text-text">{metric.value}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* Sidebar */}
-            <div className="space-y-6">
-              {/* CTA Card */}
-              <Card className="border border-hairline bg-surface">
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold text-text mb-4">
-                    {isThai ? 'สนใจโซลูชันคล้ายกัน?' : 'Interested in Similar Solutions?'}
-                  </h3>
-                  <p className="text-sm text-text-muted mb-6">
-                    {isThai 
-                      ? 'พูดคุยกับทีมผู้เชี่ยวชาญของเราเพื่อหารือเกี่ยวกับความต้องการของคุณ'
-                      : 'Talk to our expert team to discuss your specific needs'
-                    }
-                  </p>
-                  
-                  <div className="space-y-3">
-                    <ShimmerButton
-                      asChild
-                      className="w-full justify-center px-4 py-3 text-sm"
-                      background="linear-gradient(135deg, rgba(14,165,233,0.9) 0%, rgba(99,102,241,0.9) 45%, rgba(124,58,237,0.9) 100%)"
-                    >
-                      <Link href={`${basePath}/contact?case=${caseItem.slug}` as any} className="flex items-center gap-2">
-                        <MessageCircle className="h-4 w-4" />
-                        {isThai ? 'พูดคุยกับผู้เชี่ยวชาญ' : 'Talk to an expert'}
-                      </Link>
-                    </ShimmerButton>
-
-                    <Button
-                      variant="outline"
-                      className="w-full"
-                      asChild
-                    >
-                      <Link href={`${basePath}/packages/kickstart` as any} className="flex items-center gap-2">
-                        {isThai ? 'เริ่มต้นด้วย Kickstart' : 'Start with Kickstart'}
-                        <ArrowRight className="h-4 w-4" />
-                      </Link>
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Related Cases */}
-              {relatedCases.length > 0 && (
-                <Card className="border border-hairline bg-surface">
-                  <CardContent className="p-6">
-                    <h3 className="text-lg font-semibold text-text mb-4">
-                      {isThai ? 'เคสที่เกี่ยวข้อง' : 'Related Cases'}
-                    </h3>
-                    <div className="space-y-3">
-                      {relatedCases.map((relatedCase) => (
-                        <Link
-                          key={relatedCase.slug}
-                          href={`${basePath}/cases/${relatedCase.slug}` as any}
-                          className="block p-3 rounded-lg border border-white/10 hover:border-primary/40 transition-colors"
-                        >
-                          <div className="font-medium text-text text-sm mb-1">
-                            {relatedCase.title}
-                          </div>
-                          <div className="text-xs text-text-muted">
-                            {relatedCase.sector}
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
     </div>
   );
 }

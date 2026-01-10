@@ -22,36 +22,38 @@ export function SeoHead({
   url = '/',
   type = 'website',
   noindex = false,
-  canonical
+  canonical,
 }: SeoHeadProps) {
   const locale = useLocale();
   const isThai = locale.startsWith('th');
   const basePath = `/${locale}`;
-  const fullUrl = `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}${basePath}${url}`;
-  const canonicalUrl = canonical ? `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}${canonical}` : fullUrl;
 
-  const defaultTitle = isThai 
-    ? 'Cerebratechai - เปลี่ยนปัญหาเป็นระบบ AI พร้อมใช้งานจริง'
-    : 'Cerebratechai - Turn Pain Points into Production-Ready AI Systems';
-  
+  const origin = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  const fullUrl = `${origin}${basePath}${url}`;
+  const canonicalUrl = canonical ? `${origin}${canonical}` : fullUrl;
+
+  const defaultTitle = isThai
+    ? 'CerebraTechAI - เปลี่ยนปัญหาเป็นระบบ AI พร้อมใช้งานจริง'
+    : 'CerebraTechAI - Turn Pain Points into Production-Ready AI Systems';
+
   const defaultDescription = isThai
-    ? 'เปลี่ยนปัญหาเป็นระบบ AI พร้อมใช้งานจริง เราสร้างโซลูชัน AI และ full-stack จาก Edge ถึง Cloud ที่พร้อมปล่อยใช้งานจริง'
+    ? 'เราสร้างระบบ AI และ full-stack จาก Edge ถึง Cloud พร้อม deploy ใช้งานจริง มี guardrails และ playbooks ครบชุด'
     : 'Transform your pain points into production-ready AI systems. We build AI & full-stack solutions from Edge to Cloud with guardrails and playbooks, ready for production deployment.';
 
-  const fullTitle = title ? `${title} | Cerebratechai` : defaultTitle;
+  const fullTitle = title ? `${title} | CerebraTechAI` : defaultTitle;
   const fullDescription = description || defaultDescription;
 
   const defaultKeywords = isThai
     ? [
-        'AI ประเทศไทย',
-        'Machine Learning',
-        'Computer Vision',
-        'การพัฒนา AI',
-        'ระบบ AI พร้อมใช้งาน',
-        'AI consulting',
-        'AI solutions',
-        'Bangkok AI',
-        'Thailand AI company'
+        'โซลูชัน AI',
+        'แมชชีนเลิร์นนิง',
+        'คอมพิวเตอร์วิชัน',
+        'LLM',
+        'RAG',
+        'AIoT',
+        'ที่ปรึกษา AI',
+        'พัฒนา AI ใช้งานจริง',
+        'บริษัท AI กรุงเทพ',
       ]
     : [
         'AI solutions Thailand',
@@ -61,18 +63,17 @@ export function SeoHead({
         'Production-ready AI',
         'Full-stack AI development',
         'Edge Computing',
-        'AI system integration'
+        'AI system integration',
       ];
 
   const allKeywords = [...defaultKeywords, ...keywords];
 
   return (
     <>
-      {/* Basic Meta Tags */}
       <title>{fullTitle}</title>
       <meta name="description" content={fullDescription} />
       <meta name="keywords" content={allKeywords.join(', ')} />
-      <meta name="author" content="Cerebratechai Team" />
+      <meta name="author" content="CerebraTechAI Team" />
       <meta name="robots" content={noindex ? 'noindex,nofollow' : 'index,follow'} />
       <link rel="canonical" href={canonicalUrl} />
 
@@ -81,27 +82,27 @@ export function SeoHead({
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={fullDescription} />
       <meta property="og:url" content={fullUrl} />
-      <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}${image}`} />
+      <meta property="og:image" content={`${origin}${image}`} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content={fullTitle} />
-      <meta property="og:site_name" content="Cerebratechai" />
+      <meta property="og:site_name" content="CerebraTechAI" />
       <meta property="og:locale" content={isThai ? 'th_TH' : 'en_US'} />
 
       {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={fullDescription} />
-      <meta name="twitter:image" content={`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}${image}`} />
+      <meta name="twitter:image" content={`${origin}${image}`} />
       <meta name="twitter:image:alt" content={fullTitle} />
       <meta name="twitter:site" content="@cerebratechai" />
       <meta name="twitter:creator" content="@cerebratechai" />
 
-      {/* Additional Meta Tags */}
+      {/* Additional */}
       <meta name="theme-color" content="#0B1220" />
       <meta name="msapplication-TileColor" content="#0B1220" />
-      <meta name="apple-mobile-web-app-title" content="Cerebratechai" />
-      <meta name="application-name" content="Cerebratechai" />
+      <meta name="apple-mobile-web-app-title" content="CerebraTechAI" />
+      <meta name="application-name" content="CerebraTechAI" />
 
       {/* Language and Region */}
       <meta name="language" content={locale} />

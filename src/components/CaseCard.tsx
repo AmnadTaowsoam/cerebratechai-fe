@@ -10,30 +10,22 @@ interface CaseCardProps {
   locale?: string;
 }
 
+const dataSensitivityLabels = {
+  Public: { th: 'ข้อมูลสาธารณะ', en: 'PUBLIC DATA', color: 'text-sky-300 bg-sky-500/20' },
+  Anonymised: { th: 'ข้อมูลไม่ระบุตัวตน', en: 'ANONYMISED', color: 'text-cyan-300 bg-cyan-500/20' },
+  Synthetic: { th: 'ข้อมูลสังเคราะห์', en: 'SYNTHETIC DATA', color: 'text-purple-300 bg-purple-500/20' },
+};
+
 export default function CaseCard({ caseItem, locale = 'en' }: CaseCardProps) {
   const isThai = locale === 'th';
   const basePath = `/${locale}`;
 
-  const getDataSensitivityBadge = () => {
-    const sensitivity = caseItem.dataSensitivity;
-    const badges = {
-      'Public': { text: isThai ? 'ข้อมูลสาธารณะ' : 'PUBLIC DATA', color: 'text-sky-300 bg-sky-500/20' },
-      'Anonymised': { text: isThai ? 'ข้อมูลไม่ระบุตัวตน' : 'ANONYMISED', color: 'text-cyan-300 bg-cyan-500/20' },
-      'Synthetic': { text: isThai ? 'ข้อมูลสังเคราะห์' : 'SYNTHETIC DATA', color: 'text-purple-300 bg-purple-500/20' }
-    };
-    
-    const badge = badges[sensitivity];
-    return (
-      <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${badge.color}`}>
-        {badge.text}
-      </span>
-    );
-  };
+  const badge = dataSensitivityLabels[caseItem.dataSensitivity];
 
   return (
     <Card className="group relative flex h-full flex-col overflow-hidden border border-white/10 bg-surface/70 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_24px_64px_rgba(8,23,45,0.5)]">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-      
+
       <CardHeader>
         <CardTitle className="text-lg font-semibold text-text">
           {caseItem.title}
@@ -41,15 +33,15 @@ export default function CaseCard({ caseItem, locale = 'en' }: CaseCardProps) {
         <p className="text-sm text-text-muted">
           {caseItem.subtitle}
         </p>
-        
+
         {/* KPI Chips */}
         <div className="flex flex-wrap gap-2 mt-3">
           {caseItem.outcomes.slice(0, 3).map((outcome, index) => (
-            <span 
+            <span
               key={index}
               className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-primary/20 text-primary"
             >
-              {outcome.value} {outcome.label.toLowerCase()}
+              {outcome.value} {isThai ? outcome.label : outcome.label.toLowerCase()}
             </span>
           ))}
         </div>
@@ -72,7 +64,9 @@ export default function CaseCard({ caseItem, locale = 'en' }: CaseCardProps) {
 
         {/* Data Sensitivity Badge */}
         <div className="flex justify-start">
-          {getDataSensitivityBadge()}
+          <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${badge.color}`}>
+            {isThai ? badge.th : badge.en}
+          </span>
         </div>
 
         {/* Footer Metrics */}
@@ -112,7 +106,7 @@ export default function CaseCard({ caseItem, locale = 'en' }: CaseCardProps) {
           >
             <Link href={`${basePath}/contact?case=${caseItem.slug}` as any} className="flex items-center gap-1">
               <MessageCircle className="h-3 w-3" />
-              {isThai ? 'ขอโซลูชัน' : 'Request'}
+              {isThai ? 'ขอรายละเอียด' : 'Request'}
             </Link>
           </Button>
         </div>
@@ -120,4 +114,3 @@ export default function CaseCard({ caseItem, locale = 'en' }: CaseCardProps) {
     </Card>
   );
 }
-

@@ -32,7 +32,15 @@
     "whitepapers": "Whitepapers",
     "webinars": "Webinars",
     "templates": "Templates",
-    "support": "Support"
+    "support": "Support",
+    "industries": "Industries",
+    "all_industries": "All Industries",
+    "manufacturing": "Manufacturing",
+    "healthcare": "Healthcare",
+    "logistics": "Logistics",
+    "enterprise": "Enterprise",
+    "how_we_work": "How We Work",
+    "trust_security": "Trust & Security"
   },
   "cta": {
     "book": "Book a 30-min consult",
@@ -52,7 +60,7 @@
     "phone": "Phone",
     "goal": "Your Goal/Challenge",
     "submit": "Submit and Book a Call",
-    "consent": "I consent to Cerebratechai contacting me",
+    "consent": "I consent to CerebraTechAI contacting me",
     "required": "This field is required",
     "invalid_email": "Invalid email format",
     "min_length": "Must be at least {min} characters",
@@ -75,7 +83,7 @@
         "metrics": {
           "manufacturing": "POCs delivered for small-mid projects",
           "ops": "Average Pilot delivery time (weeks)",
-          "logistics": "Starting POC Package price (THB)"
+          "logistics": "Starting POC Package price (฿)"
         },
         "metrics_caption": "* Estimated figures. Actual results depend on complexity and scope.",
         "testimonial": {
@@ -127,7 +135,7 @@
     "cta_text": "Need a deeper walkthrough? Our solution architects will tailor a demo to your use case within 48 hours."
   },
   "about": {
-    "eyebrow": "About Cerebratechai",
+    "eyebrow": "About CerebraTechAI",
     "title": "Building the future of AI, one solution at a time",
     "description": "We're a boutique AI studio that combines deep technical expertise with practical business acumen to deliver AI solutions that actually work in production.",
     "mission": {
@@ -213,7 +221,7 @@
     "description": "Join a team of passionate AI experts who are transforming businesses through innovative technology. Work on cutting-edge projects, learn from industry leaders, and make a real impact.",
     "culture": {
       "title": "Our Culture",
-      "subtitle": "We believe that great AI solutions come from great teams. Here's what makes working at Cerebratechai special.",
+      "subtitle": "We believe that great AI solutions come from great teams. Here's what makes working at CerebraTechAI special.",
       "innovation": {
         "title": "Innovation First",
         "description": "We encourage experimentation and provide the freedom to explore new technologies and approaches."
@@ -409,7 +417,7 @@
   "news": {
     "eyebrow": "Company News & Updates",
     "title": "News & Media",
-    "description": "Stay updated with the latest news, announcements, and achievements from Cerebratechai. Follow our journey as we continue to innovate and transform businesses through AI.",
+    "description": "Stay updated with the latest news, announcements, and achievements from CerebraTechAI. Follow our journey as we continue to innovate and transform businesses through AI.",
     "featured": {
       "title": "Featured News"
     },
@@ -418,11 +426,11 @@
     },
     "media": {
       "title": "Media Coverage",
-      "subtitle": "See what industry publications and media outlets are saying about Cerebratechai and our AI innovations."
+      "subtitle": "See what industry publications and media outlets are saying about CerebraTechAI and our AI innovations."
     },
     "newsletter": {
       "title": "Stay Updated",
-      "description": "Get the latest news, announcements, and insights from Cerebratechai delivered directly to your inbox.",
+      "description": "Get the latest news, announcements, and insights from CerebraTechAI delivered directly to your inbox.",
       "placeholder": "Enter your email",
       "subscribe": "Subscribe"
     },
@@ -452,11 +460,11 @@
   },
   "seo": {
     "title": {
-      "home": "Cerebratechai — Turn pain points into production-ready AI",
-      "solutions": "Solutions | Cerebratechai",
-      "packages": "Packages | Cerebratechai",
-      "cases": "Case Studies | Cerebratechai",
-      "contact": "Contact | Cerebratechai"
+      "home": "CerebraTechAI — Turn pain points into production-ready AI",
+      "solutions": "Solutions | CerebraTechAI",
+      "packages": "Packages | CerebraTechAI",
+      "cases": "Case Studies | CerebraTechAI",
+      "contact": "Contact | CerebraTechAI"
     },
     "description": {
       "home": "Productized AI/ML solutions ready to ship from Edge → Cloud with anonymized cases and synthetic demos",
@@ -486,6 +494,12 @@
     "timeline_label": "Timeline",
     "weeks": "weeks",
     "view_solution": "View solution",
+    "solution_types": {
+      "ai_core": "AI Core",
+      "engineering_accelerators": "Engineering Accelerators"
+    },
+    "ai_core_description": "Core AI technologies and solutions including LLM, Computer Vision, Machine Learning, and AIoT",
+    "engineering_accelerators_description": "Engineering foundations and platforms including data infrastructure, analytics, and development accelerators",
     "categories": {
       "machine_learning": "Machine Learning",
       "computer_vision": "Computer Vision",
@@ -498,6 +512,16 @@
       "devops": "DevOps",
       "spc_quality": "SPC/Quality",
       "edge_cloud": "Edge→Cloud Sync"
+    },
+    "view_details": "View details",
+    "catalog_badge": "SOLUTIONS CATALOG",
+    "service_category_labels": {
+      "ml": "Machine Learning",
+      "cv": "Computer Vision",
+      "aiot": "AIoT",
+      "llm": "LLM & RAG",
+      "platform": "Platforms",
+      "analytics": "Analytics"
     }
   },
   "packages": {
@@ -540,9 +564,9 @@
   },
   "footer": {
     "description": "Boutique AI Studio for small-mid projects. Helping SMEs test AI ideas affordably.",
-    "company_name": "Cerebratechai",
+    "company_name": "CerebraTechAI",
     "company_tagline": "Boutique AI & Software Studio | Sole Proprietor (Not incorporated)",
-    "address": "Bangkok, Thailand",
+    "address": "Nonthaburi, Thailand",
     "quick_links": "Quick Links",
     "solutions": "Solutions",
     "packages": "Packages",

@@ -20,8 +20,8 @@ export default function NotFound() {
           : 'Sorry, the page you are looking for could not be found. Please check the URL or return to the homepage.'
         }
         keywords={isThai 
-          ? ['404', 'ไม่พบหน้า', 'error', 'Cerebratechai']
-          : ['404', 'page not found', 'error', 'Cerebratechai']
+          ? ['404', 'ไม่พบหน้า', 'error', 'CerebraTechAI']
+          : ['404', 'page not found', 'error', 'CerebraTechAI']
         }
         url="/not-found"
         noindex={true}

@@ -6,12 +6,15 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight, BarChart3, TrendingUp, Zap, Target, Users, Award } from 'lucide-react';
 import Link from 'next/link';
 import { SeoHead, ServiceSchema } from '@/components/seo';
+import TLDRBlock from '@/components/TLDRBlock';
+import KeyFactsBlock from '@/components/KeyFactsBlock';
 
 export default function AnalyticsPage() {
   const t = useTranslations('solutions');
   const locale = useLocale();
   const isThai = locale.startsWith('th');
   const basePath = `/${locale}`;
+  const schemaLocale: 'en' | 'th' = isThai ? 'th' : 'en';
 
   const analyticsSolutions = [
     {
@@ -121,6 +124,51 @@ export default function AnalyticsPage() {
       />
       
       <div className="bg-bg">
+      {/* TL;DR + Key Facts */}
+      <section className="py-12 bg-surface/30">
+        <div className="container mx-auto px-6">
+          <div className="grid gap-8 lg:grid-cols-2">
+            <TLDRBlock
+              summary={
+                isThai
+                  ? 'Analytics ช่วยทำให้ข้อมูล “ใช้ตัดสินใจได้จริง” ด้วย dashboard, KPI tree, alerting และโมเดลพยากรณ์ เหมาะกับผู้บริหารและทีมปฏิบัติการที่ต้องการ one source of truth'
+                  : 'Analytics turns data into decisions—dashboards, KPI trees, alerting, and forecasting—ideal for leadership and ops teams needing one source of truth.'
+              }
+              locale={schemaLocale}
+            />
+            <KeyFactsBlock
+              facts={[
+                {
+                  label: isThai ? 'Use Cases' : 'Use Cases',
+                  value: isThai ? 'BI dashboards, Operational analytics, Forecasting, Alerting' : 'BI dashboards, ops analytics, forecasting, alerting',
+                },
+                {
+                  label: isThai ? 'Data Sources' : 'Data Sources',
+                  value: isThai ? 'ERP/CRM, logs, spreadsheets, databases, streaming' : 'ERP/CRM, logs, spreadsheets, databases, streaming',
+                },
+                {
+                  label: isThai ? 'Deliverables' : 'Deliverables',
+                  value: isThai ? 'Semantic layer + Dashboards + Governance + Runbooks' : 'Semantic layer + dashboards + governance + runbooks',
+                },
+                {
+                  label: isThai ? 'KPI & Evaluation' : 'KPI & Evaluation',
+                  value: isThai ? 'Adoption, freshness, accuracy, decision cycle time' : 'Adoption, freshness, accuracy, decision cycle time',
+                },
+                {
+                  label: isThai ? 'Timeline' : 'Timeline',
+                  value: isThai ? '6-18 สัปดาห์' : '6-18 weeks',
+                },
+                {
+                  label: isThai ? 'Pricing' : 'Pricing',
+                  value: isThai ? 'เริ่มจาก scope + KPI mapping' : 'Start with scope and KPI mapping',
+                },
+              ]}
+              locale={schemaLocale}
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Hero Section */}
       <MagicHero
         eyebrow="Analytics Solutions"

@@ -4,13 +4,13 @@ const content = {
   en: {
     title: 'Refund Policy',
     description:
-      'This Refund Policy outlines the conditions under which Cerebratechai provides refunds for services and products.',
+      'This Refund Policy outlines the conditions under which CerebraTechAI provides refunds for services and products.',
     updated: 'Updated 18 Oct 2025',
     sections: [
       {
         heading: '1. General Policy',
         body: [
-          'Cerebratechai is committed to client satisfaction. We offer refunds under specific conditions outlined below.',
+          'CerebraTechAI is committed to client satisfaction. We offer refunds under specific conditions outlined below.',
           'All refund requests must be submitted in writing to finance@cerebratechai.com within the specified timeframe.',
           'Refunds are processed within 30 business days of approval.',
         ],
@@ -91,13 +91,13 @@ const content = {
   th: {
     title: 'นโยบายการคืนเงิน',
     description:
-      'นโยบายนี้อธิบายเงื่อนไขที่ Cerebratechai ให้การคืนเงินสำหรับบริการและผลิตภัณฑ์',
+      'นโยบายนี้อธิบายเงื่อนไขที่ CerebraTechAI ให้การคืนเงินสำหรับบริการและผลิตภัณฑ์',
     updated: 'ปรับปรุงล่าสุด 18 ต.ค. 2025',
     sections: [
       {
         heading: '1. นโยบายทั่วไป',
         body: [
-          'Cerebratechai มุ่งมั่นในความพึงพอใจของลูกค้า เรามีการคืนเงินภายใต้เงื่อนไขที่ระบุด้านล่าง',
+          'CerebraTechAI มุ่งมั่นในความพึงพอใจของลูกค้า เรามีการคืนเงินภายใต้เงื่อนไขที่ระบุด้านล่าง',
           'คำขอคืนเงินทั้งหมดต้องส่งเป็นลายลักษณ์อักษรไปที่ finance@cerebratechai.com ภายในกรอบเวลาที่กำหนด',
           'การคืนเงินจะดำเนินการภายใน 30 วันทำการหลังจากได้รับการอนุมัติ',
         ],
@@ -178,7 +178,7 @@ const content = {
 };
 
 export const metadata: Metadata = {
-  title: 'Refund Policy | Cerebratechai',
+  title: 'Refund Policy | CerebraTechAI',
   description: 'Learn about our refund and cancellation policies.',
 };
 

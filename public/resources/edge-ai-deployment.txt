@@ -1,0 +1,6 @@
+Edge AI Deployment Playbook (Placeholder)
+
+This is a placeholder file to prevent broken links during development.
+
+Replace with the real PDF/asset when ready.
+
