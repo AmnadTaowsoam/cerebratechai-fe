@@ -3,6 +3,7 @@
 import type { Metadata } from 'next';
 import { useLocale } from 'next-intl';
 import { SeoHead } from '@/components/seo';
+import TLDRBlock from '@/components/TLDRBlock';
 
 const content = {
   en: {
@@ -10,6 +11,7 @@ const content = {
     description:
       'This PDPA notice explains how CerebraTechAI complies with the Personal Data Protection Act (Thailand) when processing personal data.',
     updated: 'Updated 6 Oct 2025',
+    tldr: 'We process personal data under PDPA with lawful bases (consent, contract, legitimate interest). You have rights to access, correct, delete, and object. Contact privacy@cerebratechai.com to exercise rights or file complaints with PDPC.',
     sections: [
       {
         heading: '1. Data Controller',
@@ -53,6 +55,7 @@ const content = {
     description:
       'ประกาศฉบับนี้อธิบายวิธีที่ CerebraTechAI ปฏิบัติตาม พ.ร.บ. คุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 (PDPA) อย่างครบถ้วน',
     updated: 'ปรับปรุงล่าสุด 18 ต.ค. 2025 | มีผลบังคับใช้ทันที',
+    tldr: 'เราประมวลผลข้อมูลตาม PDPA โดยมีฐานทางกฎหมาย (ความยินยอม สัญญา ผลประโยชน์โดยชอบธรรม) คุณมีสิทธิเข้าถึง แก้ไข ลบ และคัดค้าน ติดต่อ privacy@cerebratechai.com เพื่อใช้สิทธิหรือร้องเรียนต่อ สคส.',
     sections: [
       {
         heading: '1. ผู้ควบคุมข้อมูลส่วนบุคคล (Data Controller)',
@@ -198,6 +201,11 @@ export default function PdpaPage({ params }: PdpaPageProps) {
           <h1 className="text-3xl font-bold text-text md:text-4xl">{copy.title}</h1>
           <p className="mt-3 max-w-3xl text-text-muted">{copy.description}</p>
           <p className="mt-4 text-sm text-text-muted">{copy.updated}</p>
+        </div>
+      </section>
+      <section className="py-8">
+        <div className="container mx-auto px-6">
+          <TLDRBlock summary={copy.tldr} locale={locale} />
         </div>
       </section>
       <section className="py-16">

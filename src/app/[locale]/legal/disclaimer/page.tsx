@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import TLDRBlock from '@/components/TLDRBlock';
 
 const content = {
   en: {
@@ -6,6 +7,7 @@ const content = {
     description:
       'This disclaimer sets expectations for information shared on our website, demo assets, and communications.',
     updated: 'Updated 6 Oct 2025',
+    tldr: 'Content is for informational purposes only, not professional advice. Case studies use anonymized/synthetic data. Results may vary. We provide no warranties about accuracy or completeness.',
     sections: [
       {
         heading: '1. Informational Use Only',
@@ -40,6 +42,7 @@ const content = {
     description:
       'ประกาศนี้กำหนดขอบเขตความรับผิดชอบและข้อจำกัดสำหรับข้อมูลบนเว็บไซต์และบริการของ CerebraTechAI',
     updated: 'ปรับปรุงล่าสุด 18 ต.ค. 2025',
+    tldr: 'เนื้อหาเพื่อข้อมูลทั่วไปเท่านั้น ไม่ใช่คำแนะนำจากผู้เชี่ยวชาญ กรณีศึกษาใช้ข้อมูลนิรนาม/สังเคราะห์ ผลลัพธ์อาจแตกต่าง ไม่มีการรับประกันความถูกต้องหรือครบถ้วน',
     sections: [
       {
         heading: '1. วัตถุประสงค์ของเว็บไซต์',
@@ -152,6 +155,11 @@ export default function DisclaimerPage({ params }: DisclaimerPageProps) {
           <h1 className="text-3xl font-bold text-text md:text-4xl">{copy.title}</h1>
           <p className="mt-3 max-w-3xl text-text-muted">{copy.description}</p>
           <p className="mt-4 text-sm text-text-muted">{copy.updated}</p>
+        </div>
+      </section>
+      <section className="py-8">
+        <div className="container mx-auto px-6">
+          <TLDRBlock summary={copy.tldr} locale={locale} />
         </div>
       </section>
       <section className="py-16">
