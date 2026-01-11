@@ -49,7 +49,7 @@ export default function BlogPage() {
         <div className="container mx-auto px-6">
           <div className="mb-10 flex items-end justify-between gap-4">
             <h2 className="text-2xl font-bold text-text">{isThai ? 'บทความแนะนำ' : 'Featured'}</h2>
-            <a href="/rss.xml" className="text-sm text-primary hover:text-primary/80 transition-colors">
+            <a href={`${basePath}/rss.xml`} className="text-sm text-primary hover:text-primary/80 transition-colors">
               RSS
             </a>
           </div>
@@ -153,4 +153,3 @@ export default function BlogPage() {
     </div>
   );
 }
-

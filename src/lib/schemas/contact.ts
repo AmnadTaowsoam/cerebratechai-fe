@@ -18,6 +18,8 @@ export const ContactFormSchema = z.object({
   consent: z.boolean().refine((val) => val === true, 'You must consent to being contacted'),
   // Honeypot field - should remain empty
   website: z.string().max(0).optional(),
+  // Honeypot field (legacy / backend anti-spam) - should remain empty
+  hp_field: z.string().max(0).optional(),
   locale: z.enum(['th', 'en']).optional(),
   // Anti-spam fields
   hp_time: z.number().optional(),

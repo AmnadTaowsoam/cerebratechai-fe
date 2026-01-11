@@ -9,12 +9,22 @@ export async function POST(request: NextRequest) {
     const formData = {
       ...body,
       website: body.website || '',
+      hp_field: body.hp_field || '',
     };
     const validatedData = ContactFormSchema.parse(formData);
 
     // Send to contact service
-    const contactServiceUrl = process.env.CONTACT_SERVICE_URL || 'https://cerebratechai-production.up.railway.app';
-    const apiKey = process.env.CONTACT_API_KEY || '764d0f97752fe6df432ccd0e4bd81d54f83f86fed9e40e326a90c58de54cdf0b';
+    const contactServiceUrl =
+      process.env.CONTACT_SERVICE_URL || (process.env.NODE_ENV === 'development' ? 'http://localhost:7002' : '');
+    const apiKey = process.env.CONTACT_API_KEY || '';
+
+    if (!contactServiceUrl) {
+      throw new Error('CONTACT_SERVICE_URL is not configured');
+    }
+
+    if (!apiKey) {
+      throw new Error('CONTACT_API_KEY is not configured');
+    }
     
     // Generate request ID for tracking
     const requestId = `req_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;

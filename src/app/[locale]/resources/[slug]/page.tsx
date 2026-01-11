@@ -6,25 +6,14 @@ import { ArrowLeft, Download, ExternalLink, Video } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { MagicHero } from '@/components/magicui';
 import { ArticleSchema } from '@/components/seo';
-import { getResourceBySlug } from '@/data/resources';
+import { RESOURCES, getResourceBySlug } from '@/data/resources';
 
 type ResourceDetailPageProps = {
   params: Promise<{ locale: string; slug: string }> | { locale: string; slug: string };
 };
 
 export async function generateStaticParams() {
-  // keep minimal; resources are few
-  const slugs = [
-    'ai-implementation-roadmap',
-    'mlops-best-practices',
-    'computer-vision-webinar',
-    'llm-thai-optimization',
-    'ai-roi-guide',
-    'ai-project-template',
-    'mlops-templates',
-    'edge-ai-deployment',
-  ];
-  return slugs.flatMap((slug) => [{ locale: 'en', slug }, { locale: 'th', slug }]);
+  return RESOURCES.flatMap((r) => [{ locale: 'en', slug: r.slug }, { locale: 'th', slug: r.slug }]);
 }
 
 export async function generateMetadata({ params }: ResourceDetailPageProps): Promise<Metadata> {
@@ -64,6 +53,23 @@ export default async function ResourceDetailPage({ params }: ResourceDetailPageP
   const title = isThai ? resource.title.th : resource.title.en;
   const description = isThai ? resource.description.th : resource.description.en;
 
+  const typeLabel =
+    resource.type === 'whitepaper'
+      ? isThai
+        ? 'ไวท์เปเปอร์'
+        : 'Whitepaper'
+      : resource.type === 'webinar'
+        ? isThai
+          ? 'เว็บบินาร์'
+          : 'Webinar'
+        : resource.type === 'ebook'
+          ? isThai
+            ? 'อีบุ๊ก'
+            : 'E-book'
+          : isThai
+            ? 'เทมเพลต'
+            : 'Template';
+
   return (
     <div className="bg-bg">
       <ArticleSchema headline={title} articleBody={description} author="CerebraTechAI" />
@@ -75,7 +81,7 @@ export default async function ResourceDetailPage({ params }: ResourceDetailPageP
             className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.35em] text-white/60 transition hover:text-white"
           >
             <ArrowLeft className="h-4 w-4" />
-            {isThai ? 'กลับไปแหล่งความรู้' : 'Back to resources'}
+            {isThai ? 'กลับไปหน้า Resources' : 'Back to resources'}
           </Link>
         }
         title={title}
@@ -92,7 +98,7 @@ export default async function ResourceDetailPage({ params }: ResourceDetailPageP
                   {isThai ? resource.category.th : resource.category.en}
                 </span>
                 <span>•</span>
-                <span className="capitalize">{resource.type}</span>
+                <span>{typeLabel}</span>
                 {resource.date ? (
                   <>
                     <span>•</span>
@@ -103,6 +109,12 @@ export default async function ResourceDetailPage({ params }: ResourceDetailPageP
                   <>
                     <span>•</span>
                     <span>{resource.duration}</span>
+                  </>
+                ) : null}
+                {resource.format ? (
+                  <>
+                    <span>•</span>
+                    <span>{resource.format}</span>
                   </>
                 ) : null}
               </div>
@@ -116,7 +128,7 @@ export default async function ResourceDetailPage({ params }: ResourceDetailPageP
                     rel="noreferrer"
                   >
                     <Download className="mr-2 h-4 w-4" />
-                    {isThai ? 'ดาวน์โหลดไฟล์ (ตัวอย่าง)' : 'Download (placeholder)'}
+                    {isThai ? 'ดาวน์โหลด' : 'Download'}
                   </a>
                 ) : null}
 
@@ -132,20 +144,6 @@ export default async function ResourceDetailPage({ params }: ResourceDetailPageP
                     <ExternalLink className="ml-2 h-4 w-4" />
                   </a>
                 ) : null}
-              </div>
-
-              <div className="mt-8 text-sm text-text-muted leading-relaxed">
-                {isThai ? (
-                  <p>
-                    หมายเหตุ: ในสภาพแวดล้อม dev เราใส่ไฟล์ตัวอย่างแบบข้อความไว้ก่อน เพื่อกันลิงก์เสีย (404). เมื่อพร้อมใช้งานจริง
-                    สามารถแทนที่ด้วยไฟล์ PDF/ZIP จริงใน `public/resources/` แล้วอัปเดต `src/data/resources.ts` ได้ทันที
-                  </p>
-                ) : (
-                  <p>
-                    Note: In dev we use small placeholder files to avoid broken links (404). Replace them with real PDF/ZIP
-                    assets in `public/resources/` and update `src/data/resources.ts` when ready.
-                  </p>
-                )}
               </div>
             </CardContent>
           </Card>
