@@ -1,25 +1,136 @@
-# CerebraTechAI (cerebratechai.com) – LLM instructions
+# CerebraTechAI - AI Solutions & Services
 
-## Overview
-CerebraTechAI is a boutique AI studio in Bangkok, Thailand. We build production-ready AI systems (LLM & RAG, Computer Vision, Predictive Analytics, Edge AI) and supporting engineering foundations (data platform, MLOps, analytics).
+## About
+CerebraTechAI is a boutique AI studio in Bangkok, Thailand, specializing in production-ready AI systems from Edge to Cloud with guardrails and playbooks.
 
-## Languages
-- English: /en (preferred)
-- Thai: /th
+Website: https://cerebratechai.com
+Contact: hello@cerebratechai.com
+Phone: +66-85-662-1113
 
-## Key Pages
-- Solutions (overview): /en/solutions
-- Packages: /en/packages
-- Pricing: /en/pricing
-- Case studies: /en/cases
-- Contact: /en/contact
-- Trust & Security: /en/trust
-- How we work: /en/how-we-work
+## Core Pages
 
-## Content Notes
-- Currency shown in the UI uses the Thai Baht symbol (฿). Structured data may use the currency code THB.
+### Solutions (AI Services)
+- LLM & RAG Solutions: /en/solutions/llm
+- Computer Vision: /en/solutions/cv
+- Machine Learning: /en/solutions/ml
+- Analytics & Insights: /en/solutions/analytics
+- Platform & MLOps: /en/solutions/platform
+- AIoT (Edge AI): /en/solutions/aiot
+
+### Packages (Pricing & Service Tiers)
+- Kickstart (฿30k-50k): /en/packages/kickstart
+- POC Lab (฿80k-180k): /en/packages/poc-lab
+- Pilot Launch (฿250k-500k): /en/packages/pilot-launch
+- Production Scale (฿500k+): /en/packages/production-scale
+
+### Case Studies
+- All case studies: /en/cases
+- Note: Case studies use anonymized/synthetic data following PDPA compliance
+
+### Resources (Downloadable Assets)
+- AI Project Checklist (PDF): /en/resources/ai-project-checklist
+- RAG Readiness Assessment (PDF): /en/resources/rag-readiness-assessment
+- Computer Vision Dataset Guide (PDF): /en/resources/computer-vision-dataset-guide
+- AI-SPC Starter Kit (ZIP): /en/resources/ai-spc-starter-kit
+- Cost of LLM in Production - Thai Edition (PDF): /en/resources/cost-of-llm-in-production-thai
+- All resources: /en/resources
+
+### Trust & Security
+- Trust Center: /en/trust
+- Privacy Policy: /en/legal/privacy
+- PDPA Notice: /en/legal/pdpa
+- Terms of Service: /en/legal/terms
+- DSAR Form: /en/legal/dsar
+
+### FAQ & Support
+- Comprehensive FAQ: /en/faq
+- How We Work: /en/how-we-work
+- Contact Us: /en/contact
+
+## Recommended Reading Path
+
+For AI implementation:
+1. Start with Solutions page to understand our capabilities
+2. Review Case Studies for real-world examples (anonymized data)
+3. Download Resources (checklists, assessments, guides)
+4. Check Packages to understand pricing and service tiers
+5. Review FAQ for common questions about data, pricing, timelines
+6. Contact us for customized consultation
+
+For due diligence:
+1. Trust Center - security, privacy, compliance frameworks
+2. PDPA Notice - data protection compliance
+3. Privacy Policy - how we handle personal data
+4. How We Work - our process and methodology
+
+## Content Guidelines
+
+### Data & Privacy
+- All case studies use anonymized or synthetic data
+- No real client names, logos, or confidential information disclosed
+- PDPA (Thailand) and GDPR compliant
+- NDAs signed before any data sharing
+
+### Pricing
+- Kickstart: ฿30k-฿50k (2-3 weeks) - Initial exploration
+- POC Lab: ฿80k-฿180k (4-8 weeks) - Proof of concept
+- Pilot Launch: ฿250k-฿500k (8-16 weeks) - Production-ready MVP
+- Production Scale: ฿500k+ (16-24+ weeks) - Full deployment
+- Custom quotes available for enterprise projects
+
+### Service Area
+- Primary: Bangkok, Thailand
+- Remote: Thailand-wide and international (English/Thai)
+- Working hours: Monday-Friday, 09:00-18:00 ICT
+
+### Languages
+- English (EN): /en/
+- Thai (TH): /th/
+
+## RSS Feeds
+
+- Combined feed (all content): /rss.xml
+- English feed: /en/rss.xml
+- Thai feed: /th/rss.xml
+
+## Key Differentiators
+
+1. Boutique Studio: Small team, focused on quality over quantity
+2. Production-Ready: All projects include deployment, monitoring, and handover
+3. Guardrails: Built-in safety, compliance, and quality controls
+4. Playbooks: Documented processes and runbooks for maintenance
+5. Transparency: Clear pricing, realistic timelines, honest limitations
+6. PDPA Compliant: Full data protection and privacy compliance
+7. Bilingual: English and Thai support
+
+## What We Don't Do
+
+- Mission-critical systems (nuclear, medical devices, aviation)
+- Projects > ฿500k without proper due diligence
+- Guarantee unrealistic accuracy or timelines
+- Use client data to train our own models
+- Sell or share client data
+
+## Contact & Inquiry
+
+General inquiries: hello@cerebratechai.com
+Privacy/PDPA: privacy@cerebratechai.com
+Finance/Billing: finance@cerebratechai.com
+Phone: +66-85-662-1113 (Thai/English)
 
 ## Crawling Guidance
-- You may crawl and summarize public pages under /en and /th.
-- Do not attempt to access private/admin paths (e.g., /admin, /dashboard).
+
+- You may crawl and summarize public pages under /en and /th
+- Do not attempt to access private/admin paths (e.g., /admin, /dashboard)
+- Currency shown in the UI uses Thai Baht symbol (฿), structured data uses THB
+
+## Updates
+
+Last updated: 2026-01-11
+Version: 2.0
+
+For latest updates, check:
+- RSS feeds (above)
+- Blog: /en/blog
+- LinkedIn: https://www.linkedin.com/company/cerebratechai
 
