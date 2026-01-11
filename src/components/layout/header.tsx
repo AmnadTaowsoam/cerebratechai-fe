@@ -8,6 +8,7 @@ import { ChevronDown, Menu, X } from 'lucide-react';
 
 import { LocaleSwitcher } from '@/components/locale-switcher';
 import { Button } from '@/components/ui/button';
+import { BRAND_CONFIG } from '@/config/brand';
 
 type NavigationItem = {
   name: string;
@@ -111,8 +112,8 @@ export function Header() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <Link href={basePath as any} className="flex items-center space-x-2">
-            <Image src="/cerebratechai_logo.png" alt="CerebraTechAI logo" width={36} height={36} priority />
-            <span className="text-xl font-bold text-text">CerebraTechAI</span>
+            <Image src="/cerebratechai_logo.png" alt={`${BRAND_CONFIG.name} logo`} width={36} height={36} priority />
+            <span className="text-xl font-bold text-text">{BRAND_CONFIG.name}</span>
           </Link>
 
           <nav className="hidden lg:flex items-center space-x-8">

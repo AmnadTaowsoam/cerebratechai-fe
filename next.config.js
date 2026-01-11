@@ -93,6 +93,20 @@ const nextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: '/en/legal/trust-security',
+        destination: '/en/trust',
+        permanent: true,
+      },
+      {
+        source: '/th/legal/trust-security',
+        destination: '/th/trust',
+        permanent: true,
+      },
+    ];
+  },
   webpack: (config, { dev, isServer }) => {
     // Optimize bundle size
     if (!dev && !isServer) {

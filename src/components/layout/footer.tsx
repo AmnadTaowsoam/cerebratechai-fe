@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useLocale } from 'next-intl';
 import { LocaleSwitcher } from '@/components/locale-switcher';
 import { Linkedin, Github, Youtube, Facebook } from 'lucide-react';
+import { BRAND_CONFIG } from '@/config/brand';
 
 export function Footer() {
   const locale = useLocale();
@@ -67,13 +68,13 @@ export function Footer() {
   const contactDetails = [
     {
       label: locale.startsWith('th') ? 'อีเมล' : 'Email',
-      value: 'hello@cerebratechai.com',
-      href: 'mailto:hello@cerebratechai.com',
+      value: BRAND_CONFIG.contact.email.general,
+      href: `mailto:${BRAND_CONFIG.contact.email.general}`,
     },
     {
       label: locale.startsWith('th') ? 'โทรศัพท์' : 'Phone',
-      value: '085-662-1113',
-      href: 'tel:+66856621113',
+      value: BRAND_CONFIG.contact.phone,
+      href: `tel:${BRAND_CONFIG.contact.phone.replace(/\s/g, '')}`,
     },
     {
       label: locale.startsWith('th') ? 'เวลาทำการ' : 'Business Hours',
@@ -82,10 +83,10 @@ export function Footer() {
   ];
 
   const socials = [
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/company/cerebratechai', icon: Linkedin },
-    { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61573397803179', icon: Facebook },
-    { label: 'GitHub', href: 'https://github.com/AmnadTaowsoam', icon: Github },
-    { label: 'YouTube', href: 'https://www.youtube.com/@cerebratechai', icon: Youtube },
+    { label: 'LinkedIn', href: BRAND_CONFIG.social.linkedin, icon: Linkedin },
+    { label: 'Facebook', href: BRAND_CONFIG.social.facebook, icon: Facebook },
+    { label: 'GitHub', href: BRAND_CONFIG.social.github, icon: Github },
+    { label: 'YouTube', href: BRAND_CONFIG.social.youtube, icon: Youtube },
   ];
 
   return (
@@ -102,14 +103,14 @@ export function Footer() {
               <div className="relative">
                 <Image
                   src="/cerebratechai_logo.png"
-                  alt="CerebraTechAI logo"
+                  alt={`${BRAND_CONFIG.name} logo`}
                   width={48}
                   height={48}
                   className="transition-transform duration-300 group-hover:scale-110"
                   priority
                 />
               </div>
-              <span className="text-2xl font-bold text-text tracking-tight">CerebraTechAI</span>
+              <span className="text-2xl font-bold text-text tracking-tight">{BRAND_CONFIG.name}</span>
             </Link>
             
             <div className="space-y-4">
@@ -124,7 +125,7 @@ export function Footer() {
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
-                    <span className="text-lg font-bold text-text tracking-tight">CerebraTechAI</span>
+                    <span className="text-lg font-bold text-text tracking-tight">{BRAND_CONFIG.name}</span>
                   </div>
                   <div className="space-y-1">
                     <p className="text-sm font-medium text-text/90">
@@ -135,7 +136,7 @@ export function Footer() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                       </svg>
-                      {locale.startsWith('th') ? 'กรุงเทพฯ, ประเทศไทย' : 'Bangkok, Thailand'}
+                      {locale.startsWith('th') ? BRAND_CONFIG.contact.address.th : BRAND_CONFIG.contact.address.en}
                     </p>
                   </div>
                 </div>
@@ -254,14 +255,14 @@ export function Footer() {
           <div className="flex flex-col items-center justify-between gap-6 text-xs text-text-muted sm:flex-row">
             <div className="flex flex-col items-center sm:items-start gap-2">
               <p className="flex items-center gap-2">
-                <span>&copy; {new Date().getFullYear()} CerebraTechAI</span>
+                <span>&copy; {new Date().getFullYear()} {BRAND_CONFIG.name}</span>
                 <span className="hidden sm:inline">•</span>
                 <span>{locale.startsWith('th') ? 'สงวนลิขสิทธิ์' : 'All rights reserved'}</span>
               </p>
               <p className="text-xs text-text-muted/80 text-center sm:text-left">
-                {locale.startsWith('th') 
-                  ? 'เปลี่ยนปัญหาเป็นระบบ AI พร้อมใช้งานจริง'
-                  : 'Transforming problems into production-ready AI systems'
+                {locale.startsWith('th')
+                  ? BRAND_CONFIG.tagline.th
+                  : BRAND_CONFIG.tagline.en
                 }
               </p>
             </div>
