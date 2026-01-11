@@ -3,6 +3,7 @@
 import type { Metadata } from 'next';
 import { useLocale } from 'next-intl';
 import { SeoHead } from '@/components/seo';
+import TLDRBlock from '@/components/TLDRBlock';
 
 const content = {
   en: {
@@ -10,6 +11,7 @@ const content = {
     description:
       'Learn how CerebraTechAI collects, uses, and protects personal data shared through our website, forms, and delivery engagements.',
     updated: 'Updated 6 Oct 2025',
+    tldr: 'We collect contact info to respond to inquiries and deliver services. We don\'t sell your data. You can request deletion anytime. Email privacy@cerebratechai.com for questions.',
     sections: [
       {
         heading: '1. Data We Collect',
@@ -58,6 +60,7 @@ const content = {
     description:
       'อธิบายวิธีที่ CerebraTechAI เก็บ ใช้ และปกป้องข้อมูลส่วนบุคคลตามพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562',
     updated: 'ปรับปรุงล่าสุด 18 ต.ค. 2025',
+    tldr: 'เราเก็บข้อมูลติดต่อเพื่อตอบคำถามและให้บริการ ไม่ขายข้อมูลของคุณ คุณสามารถขอลบข้อมูลได้ตลอดเวลา ติดต่อ privacy@cerebratechai.com หากมีคำถาม',
     sections: [
       {
         heading: '1. ข้อมูลเกี่ยวกับผู้ควบคุมข้อมูลส่วนบุคคล',
@@ -170,6 +173,11 @@ export default function PrivacyPolicyPage({ params }: PrivacyPageProps) {
           <h1 className="text-3xl font-bold text-text md:text-4xl">{copy.title}</h1>
           <p className="mt-3 max-w-3xl text-text-muted">{copy.description}</p>
           <p className="mt-4 text-sm text-text-muted">{copy.updated}</p>
+        </div>
+      </section>
+      <section className="py-8">
+        <div className="container mx-auto px-6">
+          <TLDRBlock summary={copy.tldr} locale={locale} />
         </div>
       </section>
       <section className="py-16">

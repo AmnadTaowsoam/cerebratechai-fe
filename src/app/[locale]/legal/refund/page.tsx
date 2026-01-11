@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import TLDRBlock from '@/components/TLDRBlock';
 
 const content = {
   en: {
@@ -6,6 +7,7 @@ const content = {
     description:
       'This Refund Policy outlines the conditions under which CerebraTechAI provides refunds for services and products.',
     updated: 'Updated 18 Oct 2025',
+    tldr: 'Kickstart: full refund within 7 days before work starts. POC Lab: refund before 50% completion. Pilot Launch: case-by-case. Production Scale: per contract terms. Submit requests to finance@cerebratechai.com.',
     sections: [
       {
         heading: '1. General Policy',
@@ -93,6 +95,7 @@ const content = {
     description:
       'นโยบายนี้อธิบายเงื่อนไขที่ CerebraTechAI ให้การคืนเงินสำหรับบริการและผลิตภัณฑ์',
     updated: 'ปรับปรุงล่าสุด 18 ต.ค. 2025',
+    tldr: 'Kickstart: คืนเต็มจำนวนภายใน 7 วันก่อนเริ่มงาน POC Lab: คืนเงินก่อนทำงาน 50% Pilot Launch: พิจารณาเป็นกรณี Production Scale: ตามสัญญา ส่งคำขอที่ finance@cerebratechai.com',
     sections: [
       {
         heading: '1. นโยบายทั่วไป',
@@ -194,6 +197,11 @@ export default function RefundPolicyPage({ params: { locale } }: { params: { loc
           <h1 className="text-4xl font-bold text-text mb-4">{c.title}</h1>
           <p className="text-lg text-text-muted mb-2">{c.description}</p>
           <p className="text-sm text-text-muted">{c.updated}</p>
+        </div>
+
+        {/* TL;DR Block */}
+        <div className="mb-12">
+          <TLDRBlock summary={c.tldr} locale={locale as 'en' | 'th'} />
         </div>
 
         {/* Sections */}

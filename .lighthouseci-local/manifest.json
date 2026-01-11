@@ -1,0 +1,62 @@
+[
+  {
+    "url": "http://localhost:3300/en",
+    "isRepresentativeRun": true,
+    "htmlPath": "D:\\cerabratechai_prd\\cerebratechai-fe\\.lighthouseci-local\\localhost-en-2026_01_10_17_33_17.report.html",
+    "jsonPath": "D:\\cerabratechai_prd\\cerebratechai-fe\\.lighthouseci-local\\localhost-en-2026_01_10_17_33_17.report.json",
+    "summary": {
+      "performance": 0.43,
+      "accessibility": 0.91,
+      "best-practices": 0.96,
+      "seo": 0.85
+    }
+  },
+  {
+    "url": "http://localhost:3300/th",
+    "isRepresentativeRun": true,
+    "htmlPath": "D:\\cerabratechai_prd\\cerebratechai-fe\\.lighthouseci-local\\localhost-th-2026_01_10_17_34_44.report.html",
+    "jsonPath": "D:\\cerabratechai_prd\\cerebratechai-fe\\.lighthouseci-local\\localhost-th-2026_01_10_17_34_44.report.json",
+    "summary": {
+      "performance": 0.5,
+      "accessibility": 0.87,
+      "best-practices": 0.96,
+      "seo": 0.92
+    }
+  },
+  {
+    "url": "http://localhost:3300/en/solutions",
+    "isRepresentativeRun": true,
+    "htmlPath": "D:\\cerabratechai_prd\\cerebratechai-fe\\.lighthouseci-local\\localhost-en_solutions-2026_01_10_17_35_30.report.html",
+    "jsonPath": "D:\\cerabratechai_prd\\cerebratechai-fe\\.lighthouseci-local\\localhost-en_solutions-2026_01_10_17_35_30.report.json",
+    "summary": {
+      "performance": 0.35,
+      "accessibility": 0.96,
+      "best-practices": 0.96,
+      "seo": 0.85
+    }
+  },
+  {
+    "url": "http://localhost:3300/en/packages",
+    "isRepresentativeRun": true,
+    "htmlPath": "D:\\cerabratechai_prd\\cerebratechai-fe\\.lighthouseci-local\\localhost-en_packages-2026_01_10_17_37_05.report.html",
+    "jsonPath": "D:\\cerabratechai_prd\\cerebratechai-fe\\.lighthouseci-local\\localhost-en_packages-2026_01_10_17_37_05.report.json",
+    "summary": {
+      "performance": 0.38,
+      "accessibility": 0.94,
+      "best-practices": 0.96,
+      "seo": 0.85
+    }
+  },
+  {
+    "url": "http://localhost:3300/en/contact",
+    "isRepresentativeRun": true,
+    "htmlPath": "D:\\cerabratechai_prd\\cerebratechai-fe\\.lighthouseci-local\\localhost-en_contact-2026_01_10_17_38_03.report.html",
+    "jsonPath": "D:\\cerabratechai_prd\\cerebratechai-fe\\.lighthouseci-local\\localhost-en_contact-2026_01_10_17_38_03.report.json",
+    "summary": {
+      "performance": 0.35,
+      "accessibility": 0.9,
+      "best-practices": 0.96,
+      "seo": 0.85
+    }
+  }
+]

@@ -3,6 +3,7 @@
 import type { Metadata } from 'next';
 import { useLocale } from 'next-intl';
 import { SeoHead } from '@/components/seo';
+import TLDRBlock from '@/components/TLDRBlock';
 
 const content = {
   en: {
@@ -10,6 +11,7 @@ const content = {
     description:
       'These terms describe how CerebraTechAI delivers projects, the responsibilities of each party, and the limits of our obligations.',
     updated: 'Updated 6 Oct 2025',
+    tldr: 'Services provided per agreed statements of work. Clients must provide timely access and information. CerebraTechAI is not liable for indirect damages; total liability capped at project fees paid.',
     sections: [
       {
         heading: '1. Engagement Scope',
@@ -66,6 +68,7 @@ const content = {
     description:
       'เงื่อนไขนี้กำหนดสิทธิและหน้าที่ของทั้งสองฝ่ายตามประมวลกฎหมายแพ่งและพาณิชย์และกฎหมายไทยที่เกี่ยวข้อง',
     updated: 'ปรับปรุงล่าสุด 18 ต.ค. 2025',
+    tldr: 'บริการตามใบเสนอราคาและสัญญา ลูกค้าต้องให้ข้อมูลและความร่วมมือตามกำหนด ไม่รับผิดความเสียหายทางอ้อม ความรับผิดสูงสุดไม่เกินค่าบริการที่จ่าย',
     sections: [
       {
         heading: '1. การยอมรับเงื่อนไข',
@@ -200,6 +203,11 @@ export default function TermsPage({ params }: TermsPageProps) {
           <h1 className="text-3xl font-bold text-text md:text-4xl">{copy.title}</h1>
           <p className="mt-3 max-w-3xl text-text-muted">{copy.description}</p>
           <p className="mt-4 text-sm text-text-muted">{copy.updated}</p>
+        </div>
+      </section>
+      <section className="py-8">
+        <div className="container mx-auto px-6">
+          <TLDRBlock summary={copy.tldr} locale={locale} />
         </div>
       </section>
       <section className="py-16">

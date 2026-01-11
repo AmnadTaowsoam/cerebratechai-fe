@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import TLDRBlock from '@/components/TLDRBlock';
 
 const content = {
   en: {
@@ -6,6 +7,7 @@ const content = {
     description:
       'This Cookie Policy explains how CerebraTechAI uses cookies and similar technologies on our website.',
     updated: 'Updated 18 Oct 2025',
+    tldr: 'We use essential, performance, and analytics cookies to improve your experience. You can manage cookies through browser settings or our cookie banner. Third-party cookies are used for analytics.',
     sections: [
       {
         heading: '1. What Are Cookies',
@@ -79,6 +81,7 @@ const content = {
     description:
       'นโยบายนี้อธิบายวิธีที่ CerebraTechAI ใช้คุกกี้และเทคโนโลยีที่คล้ายกันบนเว็บไซต์ของเรา',
     updated: 'ปรับปรุงล่าสุด 18 ต.ค. 2025',
+    tldr: 'เราใช้คุกกี้จำเป็น คุกกี้ประสิทธิภาพ และคุกกี้วิเคราะห์เพื่อปรับปรุงประสบการณ์ คุณสามารถจัดการคุกกี้ผ่านการตั้งค่าเบราว์เซอร์หรือแบนเนอร์คุกกี้ของเรา',
     sections: [
       {
         heading: '1. คุกกี้คืออะไร',
@@ -166,6 +169,11 @@ export default function CookiePolicyPage({ params: { locale } }: { params: { loc
           <h1 className="text-4xl font-bold text-text mb-4">{c.title}</h1>
           <p className="text-lg text-text-muted mb-2">{c.description}</p>
           <p className="text-sm text-text-muted">{c.updated}</p>
+        </div>
+
+        {/* TL;DR Block */}
+        <div className="mb-12">
+          <TLDRBlock summary={c.tldr} locale={locale as 'en' | 'th'} />
         </div>
 
         {/* Sections */}
