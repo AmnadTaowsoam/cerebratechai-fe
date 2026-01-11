@@ -11,7 +11,15 @@ function escapeXml(value: string) {
     .replace(/'/g, '&apos;');
 }
 
-export function GET() {
+type RouteParams = {
+  params: Promise<{ locale: string }> | { locale: string };
+};
+
+export async function GET(request: Request, { params }: RouteParams) {
+  const resolvedParams = await Promise.resolve(params);
+  const locale = resolvedParams.locale?.startsWith('th') ? 'th' : 'en';
+  const isThai = locale === 'th';
+
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 
   const allItems: Array<{ title: string; link: string; pubDate: string; description: string; category: string }> = [];
@@ -19,33 +27,33 @@ export function GET() {
   // Blog posts
   BLOG_POSTS.forEach((post) => {
     allItems.push({
-      title: escapeXml(post.title.en),
-      link: `${siteUrl}/en/blog/${post.slug}`,
+      title: escapeXml(isThai ? post.title.th : post.title.en),
+      link: `${siteUrl}/${locale}/blog/${post.slug}`,
       pubDate: new Date(post.date).toUTCString(),
-      description: escapeXml(post.excerpt.en),
-      category: 'Blog',
+      description: escapeXml(isThai ? post.excerpt.th : post.excerpt.en),
+      category: isThai ? 'บทความ' : 'Blog',
     });
   });
 
-  // Case studies (use current date as they don't have dates in data)
+  // Case studies
   CASES.forEach((caseItem) => {
     allItems.push({
       title: escapeXml(caseItem.title),
-      link: `${siteUrl}/en/cases/${caseItem.slug}`,
+      link: `${siteUrl}/${locale}/cases/${caseItem.slug}`,
       pubDate: new Date('2025-01-01').toUTCString(),
       description: escapeXml(caseItem.subtitle || caseItem.challenge),
-      category: 'Case Study',
+      category: isThai ? 'กรณีศึกษา' : 'Case Study',
     });
   });
 
   // Resources (only those with dates)
   RESOURCES.filter(r => r.date).forEach((resource) => {
     allItems.push({
-      title: escapeXml(resource.title.en),
-      link: `${siteUrl}/en/resources/${resource.slug}`,
+      title: escapeXml(isThai ? resource.title.th : resource.title.en),
+      link: `${siteUrl}/${locale}/resources/${resource.slug}`,
       pubDate: new Date(resource.date!).toUTCString(),
-      description: escapeXml(resource.description.en),
-      category: 'Resource',
+      description: escapeXml(isThai ? resource.description.th : resource.description.en),
+      category: isThai ? 'ทรัพยากร' : 'Resource',
     });
   });
 
@@ -67,15 +75,23 @@ export function GET() {
     ? allItems[0].pubDate
     : new Date().toUTCString();
 
+  const channelTitle = isThai
+    ? 'CerebraTechAI - โซลูชัน AI และทรัพยากร'
+    : 'CerebraTechAI - AI Solutions & Resources';
+
+  const channelDescription = isThai
+    ? 'ระบบ AI พร้อมใช้งานจริง: กรณีศึกษา บทความ และทรัพยากรสำหรับการทำ AI'
+    : 'Production-ready AI systems: case studies, blog posts, and practical resources for AI implementation.';
+
   const xml = `
     <?xml version="1.0" encoding="UTF-8"?>
     <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
       <channel>
-        <title>CerebraTechAI - AI Solutions & Resources</title>
-        <link>${siteUrl}</link>
-        <description>Production-ready AI systems: case studies, blog posts, and practical resources for AI implementation.</description>
-        <language>en</language>
-        <atom:link href="${siteUrl}/rss.xml" rel="self" type="application/rss+xml" />
+        <title>${escapeXml(channelTitle)}</title>
+        <link>${siteUrl}/${locale}</link>
+        <description>${escapeXml(channelDescription)}</description>
+        <language>${locale}</language>
+        <atom:link href="${siteUrl}/${locale}/rss.xml" rel="self" type="application/rss+xml" />
         <lastBuildDate>${lastBuildDate}</lastBuildDate>
         ${items}
       </channel>
@@ -89,4 +105,3 @@ export function GET() {
     },
   });
 }
-
