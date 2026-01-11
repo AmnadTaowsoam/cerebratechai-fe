@@ -5,7 +5,7 @@ import { MagicHero, Particles, ShimmerButton } from '@/components/magicui';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight, MessageSquare, Brain, Zap, Target, Users, Award } from 'lucide-react';
 import Link from 'next/link';
-import { SeoHead, ServiceSchema } from '@/components/seo';
+import { SeoHead, ServiceSchema, FAQSection } from '@/components/seo';
 import TLDRBlock from '@/components/TLDRBlock';
 import KeyFactsBlock from '@/components/KeyFactsBlock';
 
@@ -97,6 +97,45 @@ export default function LLMPage() {
       icon: Award,
       title: 'Enterprise Security',
       description: 'Secure deployment with data privacy, access control, and compliance frameworks.'
+    }
+  ];
+
+  const faqs = [
+    {
+      question: isThai ? 'LLM และ RAG ต่างกันอย่างไร?' : 'What is the difference between LLM and RAG?',
+      answer: isThai
+        ? 'LLM (Large Language Model) คือโมเดล AI ที่สามารถเข้าใจและสร้างข้อความ RAG (Retrieval-Augmented Generation) เป็นเทคนิคที่เพิ่มความสามารถให้ LLM โดยให้มันดึงข้อมูลจากแหล่งความรู้ภายนอก (เช่น ฐานข้อมูลเอกสาร) ก่อนตอบคำถาม ทำให้คำตอบแม่นยำและอิงจากข้อมูลจริงมากขึ้น'
+        : 'LLM (Large Language Model) is an AI model that can understand and generate text. RAG (Retrieval-Augmented Generation) enhances LLM by allowing it to retrieve information from external knowledge sources (like document databases) before answering, making responses more accurate and grounded in real data.'
+    },
+    {
+      question: isThai ? 'ต้องใช้ข้อมูลเท่าไหร่?' : 'How much data do I need?',
+      answer: isThai
+        ? 'สำหรับ POC ต้องการอย่างน้อย 50-100 เอกสารตัวอย่าง หรือ 1 แหล่งข้อมูล (เช่น knowledge base หนึ่งชุด) สำหรับ Production ต้องการข้อมูลมากกว่า 500+ เอกสาร หรือ API/database ที่มีข้อมูลครบถ้วน คุณภาพข้อมูลสำคัญกว่าปริมาณ'
+        : 'For POC, you need at least 50-100 sample documents or 1 data source (like a knowledge base). For Production, you need 500+ documents or comprehensive API/database access. Quality matters more than quantity.'
+    },
+    {
+      question: isThai ? 'วัดความแม่นยำอย่างไร?' : 'How do you measure accuracy?',
+      answer: isThai
+        ? 'เราใช้ metrics: Precision@k (ความแม่นยำของคำตอบที่ดึงมา), Citation Rate (% ที่อ้างอิงแหล่งข้อมูล), Groundedness (% ที่คำตอบมาจากเอกสารจริง), และ Hallucination Rate (% ที่ตอบเอง) โดยทั่วไปเป้าหมายคือ Precision > 85% และ Citation Rate > 90%'
+        : 'We use metrics: Precision@k (accuracy of retrieved answers), Citation Rate (% that cite sources), Groundedness (% answers from real documents), and Hallucination Rate (% made-up answers). Typical targets: Precision > 85%, Citation Rate > 90%.'
+    },
+    {
+      question: isThai ? 'รองรับภาษาไทยได้ดีแค่ไหน?' : 'How well does it support Thai language?',
+      answer: isThai
+        ? 'เรารองรับภาษาไทยได้ดีด้วยการใช้ multilingual LLM (เช่น GPT-4, Claude) และเทคนิค prompt engineering สำหรับภาษาไทย อาจต้อง fine-tune เพิ่มเติมสำหรับ domain เฉพาะทาง (เช่น กฎหมาย การแพทย์) ประสิทธิภาพขึ้นอยู่กับคุณภาพและปริมาณข้อมูลภาษาไทยที่มี'
+        : 'We support Thai well using multilingual LLMs (like GPT-4, Claude) and Thai-specific prompt engineering. Fine-tuning may be needed for specialized domains (legal, medical). Performance depends on quality and quantity of Thai data available.'
+    },
+    {
+      question: isThai ? 'ป้องกัน Hallucination อย่างไร?' : 'How do you prevent hallucinations?',
+      answer: isThai
+        ? 'เราใช้หลายวิธี: RAG (ดึงข้อมูลจากแหล่งที่เชื่อถือได้), Guardrails (เช็คความถูกต้อง), Citation (บังคับให้อ้างอิง), และ Evaluation (ทดสอบอย่างสม่ำเสมอ) รวมถึงการตั้งค่า temperature ให้ต่ำและใช้ system prompts ที่ชัดเจน'
+        : 'We use multiple methods: RAG (retrieve from trusted sources), Guardrails (check correctness), Citation (force references), and Evaluation (regular testing), plus low temperature settings and clear system prompts.'
+    },
+    {
+      question: isThai ? 'ต้นทุนการใช้งาน API เท่าไหร่?' : 'What are the API costs?',
+      answer: isThai
+        ? 'ต้นทุนขึ้นอยู่กับ: ปริมาณการใช้งาน (queries/day), โมเดลที่เลือก (GPT-3.5 ถูกกว่า GPT-4), และขนาดบริบท โดยทั่วไป POC ใช้งบ API ประมาณ ฿5,000-15,000/เดือน Production อาจสูงถึง ฿50,000+/เดือนขึ้นอยู่กับ usage เราช่วยเพิ่มประสิทธิภาพเพื่อลดต้นทุน'
+        : 'Costs depend on: usage volume (queries/day), model choice (GPT-3.5 cheaper than GPT-4), and context size. Typically, POC uses ฿5k-15k/month API budget. Production can be ฿50k+/month depending on usage. We help optimize to reduce costs.'
     }
   ];
 
@@ -289,6 +328,9 @@ export default function LLMPage() {
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <FAQSection faqs={faqs} />
 
       {/* CTA Section */}
       <section className="py-20">
