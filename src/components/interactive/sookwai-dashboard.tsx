@@ -34,7 +34,7 @@ export function SookwaiDashboard() {
             <User className="w-6 h-6 text-teal-400" />
           </div>
           <div>
-            <h3 className="font-semibold text-white">คุณยายสมศรี (82 ปี)</h3>
+            <h3 className="font-semibold text-white">Mrs. Somsri (82 years)</h3>
             <div className="flex items-center gap-2 text-xs text-teal-400">
               <span className="w-2 h-2 bg-teal-400 rounded-full animate-pulse" />
               Online • Wearable Active

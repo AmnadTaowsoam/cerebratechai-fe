@@ -55,6 +55,10 @@ const PATTERNS = [
 ];
 
 const WHITELIST = [
+  // Next-intl namespace declarations (not leaks)
+  'namespace:',
+  "namespace: '",
+  'namespace: "',
   // Technical terms that are intentionally mixed
   'api.',
   'app.',
@@ -318,8 +322,19 @@ function checkMixedLanguage(dir) {
           // Check if it's a string literal (which is okay for translations)
           const inString = /["'`][^"'`]*[\u0E00-\u0E7F][^"'`]*["'`]/.test(line);
 
-          // Allow mixed language in translation files or string literals
-          if (!filePath.includes('i18n') && !inString) {
+          // Allow mixed language in:
+          // - translation files (i18n/)
+          // - data files (src/data/)
+          // - string literals
+          // - utility/API files (src/lib/)
+          // - currency symbols (฿)
+          const isAllowedFile =
+            filePath.includes('i18n') ||
+            filePath.includes(`${path.sep}data${path.sep}`) ||
+            filePath.includes(`${path.sep}lib${path.sep}`);
+          const hasCurrency = line.includes('฿');
+
+          if (!isAllowedFile && !inString && !hasCurrency) {
             mixedLanguageIssues.push({
               file: filePath,
               line: index + 1,

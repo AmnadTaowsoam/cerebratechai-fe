@@ -765,6 +765,23 @@
         "clients": "25+",
         "clientsDesc": "Happy Clients"
       },
+      "techStack": {
+        "title": "Built with Modern Tech",
+        "description": "Our robust architecture ensures scalability, reliability, and exceptional user experience.",
+        "frontend": "Frontend",
+        "backend": "Backend",
+        "integrations": "Integrations"
+      },
+      "successStory": {
+        "title": "Success Story",
+        "subtitle": "See how our platform has helped businesses transform elderly care.",
+        "stat1": "30%",
+        "stat1Desc": "Cost Reduction",
+        "stat2": "95%",
+        "stat2Desc": "PDPA Compliance",
+        "stat3": "100%",
+        "stat3Desc": "Achieved PDPA certification"
+      },
       "pricing": "Pricing",
       "pricingDesc": "Choose your plan",
       "family": "Family",
@@ -776,6 +793,8 @@
       "ctaTitle": "Ready to transform elderly care?",
       "ctaDesc": "Schedule a demo today",
       "faq": {
+        "title": "Frequently Asked Questions",
+        "subtitle": "Everything you need to know about Sookwai platform.",
         "q1": "Is Sookwai safe?",
         "a1": "Yes, we use PDPA standards and 100% Audit Log for bank-level security.",
         "q2": "Can it connect to IoT devices?",

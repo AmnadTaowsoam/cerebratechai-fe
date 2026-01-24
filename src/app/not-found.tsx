@@ -12,20 +12,20 @@ export default function NotFound() {
         404 - Page Not Found
       </h2>
       <p className="text-text-muted max-w-md mb-8 text-lg">
-        ขออภัย เราไม่พบหน้าที่คุณต้องการ อาจมีการย้ายหน้าหรือคุณอาจพิมพ์ URL
-        ผิดพลาด
+        Sorry, we couldn't find the page you're looking for. It may have been
+        moved or you may have typed the URL incorrectly.
       </p>
       <div className="flex gap-4">
         <Button asChild size="lg" className="rounded-xl">
           <Link href="/">
             <Home className="w-4 h-4 mr-2" />
-            กลับสู่หน้าหลัก
+            Back to Home
           </Link>
         </Button>
         <Button asChild variant="outline" size="lg" className="rounded-xl">
-          <Link href="/th/contact">
+          <Link href="/en/contact">
             <MessageCircle className="w-4 h-4 mr-2" />
-            ติดต่อเรา
+            Contact Us
           </Link>
         </Button>
       </div>

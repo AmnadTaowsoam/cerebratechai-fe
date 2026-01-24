@@ -53,7 +53,7 @@ export function AccessibilityTools() {
           >
             <div className="bg-primary text-white px-4 py-3">
               <h3 className="font-semibold">Accessibility Options</h3>
-              <p className="text-sm opacity-80">ตัวเลือกการเข้าถึง</p>
+              <p className="text-sm opacity-80">Adjust settings for better accessibility</p>
             </div>
 
             <div className="p-4 space-y-4">
@@ -61,7 +61,7 @@ export function AccessibilityTools() {
               <div>
                 <label className="flex items-center gap-2 text-sm font-medium mb-2">
                   <Type className="w-4 h-4" />
-                  ขนาดตัวอักษร
+                  Font Size
                 </label>
                 <div className="flex gap-2">
                   <button
@@ -89,7 +89,7 @@ export function AccessibilityTools() {
               <div className="flex items-center justify-between">
                 <label className="flex items-center gap-2 text-sm font-medium">
                   <Sun className="w-4 h-4" />
-                  คอนทราสต์สูง
+                  High Contrast
                 </label>
                 <button
                   onClick={() => setHighContrast(!highContrast)}
@@ -106,7 +106,7 @@ export function AccessibilityTools() {
               <div className="flex items-center justify-between">
                 <label className="flex items-center gap-2 text-sm font-medium">
                   <Minus className="w-4 h-4" />
-                  ลดการเคลื่อนไหว
+                  Reduced Motion
                 </label>
                 <button
                   onClick={() => setReducedMotion(!reducedMotion)}
