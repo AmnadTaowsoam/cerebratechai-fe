@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { ArrowRight, ExternalLink, Shield, Zap, Globe, Award } from 'lucide-react';
 import Link from 'next/link';
+import { SECTION_SPACING } from '@/lib/constants/spacing';
 
 export default function PartnersPage() {
   const t = useTranslations('partners');
@@ -174,8 +175,8 @@ export default function PartnersPage() {
   ];
 
   return (
-    <div className="bg-bg">
-      {/* Hero Section */}
+      <div className="bg-bg">
+        {/* Hero Section */}
       <MagicHero
         eyebrow={locale.startsWith('th') ? 'โปรแกรมพันธมิตร' : 'Partnership Program'}
         title={locale.startsWith('th') ? 'สร้างระบบนิเวศ AI ที่แข็งแกร่งร่วมกัน' : 'Building Strong AI Ecosystems Together'}
@@ -192,7 +193,7 @@ export default function PartnersPage() {
       />
 
       {/* Technology Partners */}
-      <section className="py-20">
+      <section className={SECTION_SPACING.FEATURES}>
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-text mb-4">
@@ -236,7 +237,7 @@ export default function PartnersPage() {
       </section>
 
       {/* Integration Partners */}
-      <section className="py-20 bg-surface/30">
+      <section className={`${SECTION_SPACING.FEATURES} bg-surface/30`}>
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-text mb-4">
@@ -280,7 +281,7 @@ export default function PartnersPage() {
       </section>
 
       {/* Success Stories */}
-      <section className="py-20">
+      <section className={SECTION_SPACING.FEATURES}>
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-text mb-4">
@@ -342,7 +343,7 @@ export default function PartnersPage() {
           </div>
         </div>
       </section>
-      <section className="py-20">
+      <section className={SECTION_SPACING.FEATURES}>
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-text mb-4">
@@ -377,7 +378,7 @@ export default function PartnersPage() {
       </section>
 
       {/* Partner Program */}
-      <section className="py-20 bg-surface/30">
+      <section className={`${SECTION_SPACING.FEATURES} bg-surface/30`}>
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-text mb-4">
@@ -422,7 +423,7 @@ export default function PartnersPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-primary/10 via-transparent to-accent/10">
+      <section className={`${SECTION_SPACING.CTA} bg-gradient-to-br from-primary/10 via-transparent to-accent/10`}>
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold text-text mb-4">
             {locale.startsWith('th') ? 'พร้อมเป็นพันธมิตรกับเรา?' : 'Ready to Partner with Us?'}

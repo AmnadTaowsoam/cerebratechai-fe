@@ -10,65 +10,58 @@ import { ErrorBoundary } from '@/components/ui/error-boundary';
 import type { Metadata } from 'next';
 import { defaultLocale, locales } from '@/i18n';
 import { BreadcrumbsAuto } from '@/components/seo';
+import { AccessibilityTools } from '@/components/a11y/accessibility-tools';
+import Script from 'next/script';
 
-export const metadata: Metadata = {
-  title: {
-    template: '%s | CerebraTechAI',
-    default: 'Turn pain points into production-ready AI | CerebraTechAI',
-  },
-  keywords: ['AI', 'Machine Learning', 'Computer Vision', 'Cloud Computing', 'Full-Stack Development', 'Edge Computing'],
-  authors: [{ name: 'CerebraTechAI Team' }],
-  creator: 'CerebraTechAI',
-  publisher: 'CerebraTechAI',
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
-  alternates: {
-    languages: {
-      'en': '/en',
-      'th': '/th',
-    },
-  },
-  openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: '/',
-    title: 'Turn pain points into production-ready AI | CerebraTechAI',
-    description: 'Transform your pain points into production-ready AI systems. We build AI & full-stack solutions from Edge to Cloud that are ready for deployment.',
-    siteName: 'CerebraTechAI',
-    images: [
-      {
-        url: '/cerebratechai_logo.png',
-        width: 1200,
-        height: 630,
-        alt: 'CerebraTechAI - AI & Full-Stack Solutions',
-      },
+// Generate dynamic metadata based on locale
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const { locale } = params;
+  const resolvedLocale = locales.includes(locale as any) ? locale : defaultLocale;
+
+  const ogLocale = resolvedLocale === 'th' ? 'th_TH' : 'en_US';
+  const alternateLocale = resolvedLocale === 'th' ? 'en_US' : 'th_TH';
+
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'CerebraTechAI',
+    url: 'https://www.cerebratechai.com',
+    logo: 'https://www.cerebratechai.com/cerebratechai_logo.png',
+    description: 'Engineering Intelligence for Thailand\'s Future',
+    sameAs: [
+      'https://www.linkedin.com/company/cerebratechai',
+      'https://www.facebook.com/cerebratechai',
+      'https://line.me/ti/p/@cerebratechai'
     ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Turn pain points into production-ready AI | CerebraTechAI',
-    description: 'Transform your pain points into production-ready AI systems. We build AI & full-stack solutions from Edge to Cloud that are ready for deployment.',
-    images: ['/cerebratechai_logo.png'],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+66-2-XXX-XXXX',
+      contactType: 'sales',
+      availableLanguage: ['Thai', 'English']
+    }
+  };
+
+  return {
+    openGraph: {
+      locale: ogLocale,
+      alternateLocale: alternateLocale,
     },
-  },
-  verification: {
-    google: process.env.GOOGLE_SITE_VERIFICATION,
-  },
-};
+    alternates: {
+      canonical: `/${resolvedLocale}`,
+      languages: {
+        'en': '/en',
+        'th': '/th',
+      },
+    },
+    other: {
+      'application/ld+json': JSON.stringify(organizationSchema),
+    },
+  };
+}
 
 export default async function LocaleLayout({
   children,
@@ -99,6 +92,7 @@ export default async function LocaleLayout({
             <Footer />
             <CookieConsent />
             <Toaster />
+            <AccessibilityTools />
           </ErrorBoundary>
         </QueryProvider>
       </ThemeProvider>

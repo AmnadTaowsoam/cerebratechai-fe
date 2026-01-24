@@ -7,9 +7,10 @@ import { AnimatedGradientText, MagicHero, ShimmerButton } from '@/components/mag
 import { Card, CardContent } from '@/components/ui/card';
 import { services, getLocalized } from '@/data/content';
 import { CASES } from '@/data/cases';
+import { routes } from '@/lib/routes';
 
 type ServicePageProps = {
-  params: Promise<{ locale: string; slug: string }> | { locale: string; slug: string };
+  params: { locale: string; slug: string };
 };
 
 const serviceMap = new Map(services.map((service) => [service.slug, service]));
@@ -22,22 +23,22 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
-  const resolvedParams = await Promise.resolve(params);
+  const { locale, slug } = params;
 
-  if (!resolvedParams || !resolvedParams.locale || !resolvedParams.slug) {
+  if (!locale || !slug) {
     return {
       title: 'Solution | CerebraTechAI',
       description: 'AI solutions and services',
     };
   }
 
-  const locale = resolvedParams.locale.startsWith('th') ? 'th' : 'en';
-  const service = serviceMap.get(resolvedParams.slug);
+  const normalizedLocale = locale.startsWith('th') ? 'th' : 'en';
+  const service = serviceMap.get(slug);
   if (!service) return {};
 
   return {
-    title: `${getLocalized(locale, service.title)} | CerebraTechAI`,
-    description: getLocalized(locale, service.summary),
+    title: `${getLocalized(normalizedLocale, service.title)} | CerebraTechAI`,
+    description: getLocalized(normalizedLocale, service.summary),
   };
 }
 
@@ -153,17 +154,16 @@ const USE_CASES: Record<string, UseCaseItem[]> = {
 };
 
 export default async function ServiceDetailPage({ params }: ServicePageProps) {
-  const resolvedParams = await Promise.resolve(params);
+  const { locale, slug } = params;
 
-  if (!resolvedParams || !resolvedParams.locale || !resolvedParams.slug) {
+  if (!locale || !slug) {
     notFound();
   }
 
-  const locale = resolvedParams.locale.startsWith('th') ? 'th' : 'en';
-  const isThai = locale === 'th';
-  const basePath = `/${locale}`;
+  const normalizedLocale = locale.startsWith('th') ? 'th' : 'en';
+  const isThai = normalizedLocale === 'th';
 
-  const service = serviceMap.get(resolvedParams.slug);
+  const service = serviceMap.get(slug);
   if (!service) notFound();
 
   const t = (th: string, en: string) => (isThai ? th : en);
@@ -199,15 +199,15 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
       <MagicHero
         eyebrow={
           <Link
-            href={`${basePath}/solutions` as any}
+            href={routes.solutions(locale)}
             className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.35em] text-white/60 transition hover:text-white"
           >
             <ArrowLeft className="h-4 w-4" />
             {labels.back}
           </Link>
         }
-        title={getLocalized(locale, service.title)}
-        description={getLocalized(locale, service.summary)}
+        title={getLocalized(normalizedLocale, service.title)}
+        description={getLocalized(normalizedLocale, service.summary)}
         metrics={[
           { value: timelineValue, label: labels.timeline },
           { value: typeValue, label: labels.type },
@@ -231,31 +231,31 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         </div>
       </MagicHero>
 
-      <section className="py-16">
+      <section className="py-20">
         <div className="container mx-auto px-6">
           <div className="grid gap-8 lg:grid-cols-2">
-            <Card className="border border-white/10 bg-surface/80 backdrop-blur">
+            <Card className="border border-hairline bg-surface/80">
               <CardContent className="p-8">
                 <h2 className="text-xl font-semibold text-text">{labels.outcomes}</h2>
                 <ul className="mt-4 space-y-3 text-sm text-text-muted">
                   {service.outcomes.map((outcome, index) => (
                     <li key={index} className="flex items-start gap-2">
                       <span className="mt-1 h-2 w-2 rounded-full bg-secondary" aria-hidden />
-                      <span>{getLocalized(locale, outcome)}</span>
+                      <span>{getLocalized(normalizedLocale, outcome)}</span>
                     </li>
                   ))}
                 </ul>
               </CardContent>
             </Card>
 
-            <Card className="border border-white/10 bg-surface/80 backdrop-blur">
+            <Card className="border border-hairline bg-surface/80">
               <CardContent className="p-8">
                 <h2 className="text-xl font-semibold text-text">{labels.whatYouGet}</h2>
                 <ul className="mt-4 space-y-3 text-sm text-text-muted">
                   {service.deliverables.map((deliverable, index) => (
                     <li key={index} className="flex items-start gap-2">
                       <span className="mt-1 h-2 w-2 rounded-full bg-primary" aria-hidden />
-                      <span>{getLocalized(locale, deliverable)}</span>
+                      <span>{getLocalized(normalizedLocale, deliverable)}</span>
                     </li>
                   ))}
                 </ul>
@@ -264,7 +264,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
           </div>
 
           <div className="mt-12 grid gap-8 lg:grid-cols-2">
-            <Card className="border border-white/10 bg-surface/80 backdrop-blur">
+            <Card className="border border-hairline bg-surface/80">
               <CardContent className="p-8">
                 <h2 className="flex items-center gap-2 text-xl font-semibold text-text">
                   <Layers className="h-5 w-5 text-primary" />
@@ -280,7 +280,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
               </CardContent>
             </Card>
 
-            <Card className="border border-white/10 bg-surface/80 backdrop-blur">
+            <Card className="border border-hairline bg-surface/80">
               <CardContent className="p-8 space-y-4">
                 <h2 className="text-xl font-semibold text-text">{labels.nextSteps}</h2>
                 <p className="text-sm text-text-muted">
@@ -298,7 +298,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                   </ul>
                 </div>
                 <ShimmerButton asChild className="px-6 py-3 text-sm">
-                  <Link href={`${basePath}/contact` as any} className="inline-flex items-center gap-2">
+                  <Link href={routes.contact(locale)} className="inline-flex items-center gap-2">
                     {t('จองเวลาคุยงาน', 'Book a working session')}
                     <ArrowRight className="h-4 w-4" />
                   </Link>
@@ -312,7 +312,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
               <h2 className="text-2xl font-bold text-text mb-8 text-center">{labels.commonUseCases}</h2>
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {useCases.map((item, idx) => (
-                  <Card key={idx} className="border border-white/10 bg-surface/80 backdrop-blur">
+                  <Card key={idx} className="border border-hairline bg-surface/80 hover:shadow-xl transition-all">
                     <CardContent className="p-6">
                       <h3 className="font-semibold text-text mb-3">{t(item.title.th, item.title.en)}</h3>
                       <p className="text-sm text-text-muted mb-4">{t(item.description.th, item.description.en)}</p>
@@ -334,7 +334,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                 {relatedCases.map((caseItem) => (
                   <Card
                     key={caseItem.slug}
-                    className="border border-white/10 bg-surface/80 backdrop-blur hover:shadow-xl transition-all group"
+                    className="border border-hairline bg-surface/80 hover:shadow-xl transition-all group"
                   >
                     <CardContent className="p-6">
                       <div className="mb-4">
@@ -347,7 +347,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                       </h3>
                       <p className="text-sm text-text-muted mb-4 line-clamp-2">{caseItem.subtitle}</p>
                       <Link
-                        href={`${basePath}/cases/${caseItem.slug}` as any}
+                        href={routes.caseDetail(locale, caseItem.slug)}
                         className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
                       >
                         {labels.readMore}

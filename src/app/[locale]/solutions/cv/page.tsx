@@ -249,7 +249,7 @@ export default function ComputerVisionPage() {
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {cvSolutions.map((solution, index) => (
-              <Card key={index} className="border border-hairline bg-surface/80 hover:bg-surface transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+              <Card key={index} className="border border-hairline bg-surface/80 hover:bg-surface transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
                 <CardHeader>
                   <CardTitle className="text-xl mb-2">{solution.title}</CardTitle>
                   <p className="text-text-muted">{solution.description}</p>

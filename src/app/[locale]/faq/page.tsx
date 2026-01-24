@@ -4,8 +4,9 @@ import { useLocale } from 'next-intl';
 import { MagicHero, Particles } from '@/components/magicui';
 import { Card, CardContent } from '@/components/ui/card';
 import { SeoHead, FAQSection } from '@/components/seo';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, HelpCircle } from 'lucide-react';
 import { useState } from 'react';
+import { SECTION_SPACING } from '@/lib/constants/spacing';
 
 const faqs = {
   en: {
@@ -286,7 +287,7 @@ export default function FAQPage() {
         </section>
 
         {/* CTA */}
-        <section className="py-20 bg-surface/30">
+        <section className={`${SECTION_SPACING.CTA} bg-surface/30`}>
           <div className="container mx-auto px-6 text-center">
             <h2 className="text-2xl font-bold text-text mb-4">
               {isThai ? 'ยังมีคำถาม?' : 'Still have questions?'}

@@ -3,7 +3,7 @@
 import { useLocale } from 'next-intl';
 import { MagicHero } from '@/components/magicui';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Calculator } from 'lucide-react';
+import { ArrowRight, Calculator, DollarSign } from 'lucide-react';
 import Link from 'next/link';
 import PricingCards from '@/components/PricingCards';
 import PricingCompare from '@/components/PricingCompare';
@@ -11,6 +11,7 @@ import CarePlanSection from '@/components/CarePlanSection';
 import PricingTerms from '@/components/PricingTerms';
 import { SeoHead, PricingSchema, FAQSchema } from '@/components/seo';
 import { QuickQuote } from '@/components/lead-capture';
+import { SECTION_SPACING } from '@/lib/constants/spacing';
 
 export default function PricingPage() {
   const locale = useLocale();
@@ -132,14 +133,14 @@ export default function PricingPage() {
         />
 
         {/* Pricing Model Explanation */}
-        <section className="py-16 bg-surface/30">
+        <section className={`${SECTION_SPACING.FEATURES} bg-surface/30`}>
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-2xl font-bold text-text mb-6 text-center">
                 {isThai ? 'แนวคิดการตั้งราคา' : 'Our Pricing Model'}
               </h2>
               <div className="grid gap-6 md:grid-cols-3 mb-8">
-                <div className="rounded-2xl border border-white/10 bg-surface/80 p-6 text-center">
+                <div className="rounded-2xl border border-hairline bg-surface/80 p-6 text-center">
                   <div className="text-3xl font-bold text-primary mb-2">Fixed Price</div>
                   <h3 className="font-semibold text-text mb-2">
                     {isThai ? 'ราคาคงที่' : 'Fixed Price'}
@@ -151,7 +152,7 @@ export default function PricingPage() {
                     }
                   </p>
                 </div>
-                <div className="rounded-2xl border border-white/10 bg-surface/80 p-6 text-center">
+                <div className="rounded-2xl border border-hairline bg-surface/80 p-6 text-center">
                   <div className="text-3xl font-bold text-accent mb-2">Transparent</div>
                   <h3 className="font-semibold text-text mb-2">
                     {isThai ? 'โปร่งใส' : 'Transparent'}
@@ -163,7 +164,7 @@ export default function PricingPage() {
                     }
                   </p>
                 </div>
-                <div className="rounded-2xl border border-white/10 bg-surface/80 p-6 text-center">
+                <div className="rounded-2xl border border-hairline bg-surface/80 p-6 text-center">
                   <div className="text-3xl font-bold text-primary mb-2">Value-based</div>
                   <h3 className="font-semibold text-text mb-2">
                     {isThai ? 'ยึดตามคุณค่า' : 'Value-based'}
@@ -176,7 +177,7 @@ export default function PricingPage() {
                   </p>
                 </div>
               </div>
-              <div className="rounded-2xl border border-white/10 bg-surface/80 p-6">
+              <div className="rounded-2xl border border-hairline bg-surface/80 p-6">
                 <h3 className="font-semibold text-text mb-3">
                   {isThai ? 'สิ่งที่รวมในราคา' : 'What\'s Included in the Price?'}
                 </h3>
@@ -204,7 +205,7 @@ export default function PricingPage() {
         </section>
 
         {/* Packages */}
-        <section className="py-20">
+        <section className={SECTION_SPACING.FEATURES}>
           <div className="container mx-auto px-6">
             <div className="text-center mb-16">
               <h2 className="text-3xl font-bold text-text mb-4">
@@ -223,7 +224,7 @@ export default function PricingPage() {
         </section>
 
         {/* Starter vs Scale */}
-        <section className="py-16 bg-surface/30">
+        <section className={`${SECTION_SPACING.FEATURES} bg-surface/30`}>
           <div className="container mx-auto px-6">
             <div className="text-center mb-10">
               <h2 className="text-2xl font-bold text-text mb-3">
@@ -237,7 +238,7 @@ export default function PricingPage() {
             </div>
             <div className="grid gap-6 lg:grid-cols-2">
               {starterVsScale.map((tier) => (
-                <div key={tier.title} className="rounded-2xl border border-white/10 bg-surface/80 p-6">
+                <div key={tier.title} className="rounded-2xl border border-hairline bg-surface/80 p-6">
                   <div className="flex items-baseline justify-between mb-3">
                     <h3 className="text-xl font-semibold text-text">{tier.title}</h3>
                     <span className="text-sm text-text-muted">{tier.subtitle}</span>
@@ -261,7 +262,7 @@ export default function PricingPage() {
         </section>
 
         {/* Cost Drivers */}
-        <section className="py-16">
+        <section className={SECTION_SPACING.FEATURES}>
           <div className="container mx-auto px-6">
             <div className="text-center mb-10">
               <h2 className="text-2xl font-bold text-text mb-3">
@@ -275,7 +276,7 @@ export default function PricingPage() {
             </div>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
               {costDrivers.map((driver) => (
-                <div key={driver.title} className="rounded-2xl border border-white/10 bg-surface/80 p-5">
+                <div key={driver.title} className="rounded-2xl border border-hairline bg-surface/80 p-5">
                   <h3 className="text-lg font-semibold text-text mb-2">{driver.title}</h3>
                   <p className="text-sm text-text-muted">{driver.description}</p>
                 </div>
@@ -285,7 +286,7 @@ export default function PricingPage() {
         </section>
 
         {/* Trust Indicators */}
-        <section className="py-16 bg-surface/30">
+        <section className={`${SECTION_SPACING.FEATURES} bg-surface/30`}>
           <div className="container mx-auto px-6">
             <div className="text-center mb-12">
               <h2 className="text-2xl font-bold text-text mb-4">
@@ -329,7 +330,7 @@ export default function PricingPage() {
         </section>
 
         {/* Quick Quote */}
-        <section className="py-16 bg-surface/30">
+        <section className={`${SECTION_SPACING.FEATURES} bg-surface/30`}>
           <div className="container mx-auto px-6">
             <div className="max-w-xl mx-auto">
               <QuickQuote source="pricing-page" variant="default" />
@@ -338,7 +339,7 @@ export default function PricingPage() {
         </section>
 
         {/* Feature Comparison */}
-        <section className="py-20">
+        <section className={SECTION_SPACING.FEATURES}>
           <div className="container mx-auto px-6">
             <div className="text-center mb-16">
               <h2 className="text-3xl font-bold text-text mb-4">
@@ -363,7 +364,7 @@ export default function PricingPage() {
         <PricingTerms locale={locale} />
 
         {/* FAQ */}
-        <section className="py-20">
+        <section className={SECTION_SPACING.FAQ}>
           <div className="container mx-auto px-6">
             <div className="text-center mb-16">
               <h2 className="text-3xl font-bold text-text mb-4">
@@ -379,7 +380,7 @@ export default function PricingPage() {
 
             <div className="max-w-3xl mx-auto space-y-6">
               {faqs.map((faq, index) => (
-                <div key={index} className="rounded-2xl border border-white/10 bg-surface/80 p-6">
+                <div key={index} className="rounded-2xl border border-hairline bg-surface/80 p-6">
                   <h3 className="text-lg font-semibold text-text mb-3">
                     {faq.question}
                   </h3>
@@ -393,7 +394,7 @@ export default function PricingPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-br from-primary/10 via-transparent to-accent/10">
+        <section className={`${SECTION_SPACING.CTA} bg-gradient-to-br from-primary/10 via-transparent to-accent/10`}>
           <div className="container mx-auto px-6 text-center">
             <h2 className="text-3xl font-bold text-text mb-4">
               {isThai ? 'พร้อมเริ่มต้นหรือยัง?' : 'Ready to Get Started?'}

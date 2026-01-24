@@ -1,0 +1,20 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="smartfarm-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#6366f1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#smartfarm-gradient)" />
+  <g transform="translate(600, 315)">
+    <!-- IoT/Sensor Icon -->
+    <rect x="-50" y="-70" width="100" height="100" rx="10" fill="rgba(255,255,255,255,0.1)" />
+    <circle cx="0" cy="-20" r="15" fill="rgba(255,255,255,255,0.3)" />
+    <path d="M-30,30 L0,20 L30,30" stroke="white" stroke-width="2" />
+    <path d="M-20,40 L0,35 L20,40" stroke="white" stroke-width="2" />
+    <path d="M-10,50 L0,45 L10,50" stroke="white" stroke-width="2" />
+    <text x="0" y="100" text-anchor="middle" fill="white" font-family="sans-serif" font-size="24" font-weight="bold">SmartFarm</text>
+    <text x="0" y="130" text-anchor="middle" fill="rgba(255,255,255,255,0.8)" font-family="sans-serif" font-size="16">IoT Platform for Farms</text>
+  </g>
+</svg>

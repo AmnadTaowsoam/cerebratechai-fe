@@ -1,0 +1,19 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="pluktunraka-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0d9488;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#pluktunraka-gradient)" />
+  <g transform="translate(600, 315)">
+    <!-- Agriculture Icon -->
+    <path d="M-60,-60 L60,-60 L60,60 L-60,60 Z" fill="rgba(255,255,255,255,0.1)" />
+    <circle cx="0" cy="-10" r="35" fill="rgba(255,255,255,255,0.2)" />
+    <path d="M-20,20 L0,-5 L20,20" stroke="white" stroke-width="3" stroke-linecap="round" />
+    <path d="M-15,30 L15,30" stroke="white" stroke-width="2" />
+    <text x="0" y="100" text-anchor="middle" fill="white" font-family="sans-serif" font-size="24" font-weight="bold">ปลูกทันราคา</text>
+    <text x="0" y="130" text-anchor="middle" fill="rgba(255,255,255,255,0.8)" font-family="sans-serif" font-size="16">AI Crop Planning</text>
+  </g>
+</svg>

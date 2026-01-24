@@ -1,0 +1,68 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" fill="#1e293b" />
+  
+  <!-- Dashboard Header -->
+  <rect x="0" y="0" width="1200" height="60" fill="#334155" />
+  <text x="20" y="38" fill="white" font-family="sans-serif" font-size="18" font-weight="bold">ChartSentinel - AI-SPC Platform</text>
+  <circle cx="1150" cy="30" r="15" fill="#dc2626" />
+  <path d="M1145,30 L1155,30 M1150,25 L1150,35" stroke="white" stroke-width="2" />
+  
+  <!-- SPC Charts Section -->
+  <g transform="translate(20, 100)">
+    <rect width="560" height="280" rx="10" fill="#334155" />
+    <text x="20" y="30" fill="#94a3b8" font-family="sans-serif" font-size="14">SPC Control Chart</text>
+    
+    <!-- Chart Background -->
+    <rect x="20" y="60" width="520" height="180" fill="#1e293b" />
+    
+    <!-- UCL/LCL Lines -->
+    <line x1="20" y1="80" x2="540" y2="80" stroke="#dc2626" stroke-width="1" stroke-dasharray="5,5" />
+    <line x1="20" y1="200" x2="540" y2="200" stroke="#dc2626" stroke-width="1" stroke-dasharray="5,5" />
+    
+    <!-- Center Line -->
+    <line x1="20" y1="140" x2="540" y2="140" stroke="#22c55e" stroke-width="2" />
+    
+    <!-- Data Points -->
+    <circle cx="50" cy="130" r="5" fill="#22c55e" />
+    <circle cx="100" cy="120" r="5" fill="#22c55e" />
+    <circle cx="150" cy="150" r="5" fill="#22c55e" />
+    <circle cx="200" cy="110" r="5" fill="#22c55e" />
+    <circle cx="250" cy="160" r="5" fill="#22c55e" />
+    <circle cx="300" cy="130" r="5" fill="#22c55e" />
+    <circle cx="350" cy="145" r="5" fill="#22c55e" />
+    <circle cx="400" cy="125" r="5" fill="#22c55e" />
+    <circle cx="450" cy="155" r="5" fill="#22c55e" />
+    <circle cx="500" cy="135" r="5" fill="#22c55e" />
+    
+    <!-- Labels -->
+    <text x="540" y="85" fill="#dc2626" font-family="sans-serif" font-size="10">UCL</text>
+    <text x="540" y="145" fill="#dc2626" font-family="sans-serif" font-size="10">LCL</text>
+    <text x="540" y="205" fill="#dc2626" font-family="sans-serif" font-size="10">Target</text>
+  </g>
+  
+  <!-- Anomaly Detection Section -->
+  <g transform="translate(600, 100)">
+    <rect width="560" height="280" rx="10" fill="#334155" />
+    <text x="20" y="30" fill="#94a3b8" font-family="sans-serif" font-size="14">AI Anomaly Detection</text>
+    
+    <!-- Alert Box -->
+    <rect x="20" y="60" width="520" height="80" rx="5" fill="#dc2626" fill-opacity="0.2" />
+    <text x="35" y="95" fill="white" font-family="sans-serif" font-size="16" font-weight="bold">⚠️ ANOMALY DETECTED</text>
+    <text x="35" y="120" fill="white" font-family="sans-serif" font-size="12">Production Line 3 - Parameter X</text>
+    <text x="35" y="140" fill="#94a3b8" font-family="sans-serif" font-size="11">Deviation: +2.5σ | Confidence: 95%</text>
+    
+    <!-- Normal Status -->
+    <rect x="20" y="160" width="520" height="40" rx="5" fill="#22c55e" fill-opacity="0.1" />
+    <text x="35" y="185" fill="white" font-family="sans-serif" font-size="12">✓ All Systems Normal</text>
+    <text x="450" y="185" fill="#94a3b8" font-family="sans-serif" font-size="11">Lines 1, 2, 4, 5</text>
+    
+    <!-- Metrics -->
+    <rect x="20" y="220" width="520" height="40" rx="5" fill="#1e293b" />
+    <text x="35" y="245" fill="white" font-family="sans-serif" font-size="12">Defect Rate: 0.3% | False Alarms: 2/hr</text>
+  </g>
+  
+  <!-- Status Footer -->
+  <rect x="0" y="740" width="1200" height="60" fill="#334155" />
+  <text x="20" y="775" fill="#94a3b8" font-family="sans-serif" font-size="12">Monitoring 5 Production Lines | Defect Reduction: 85% | Uptime: 99.9%</text>
+  <text x="1100" y="775" fill="#dc2626" font-family="sans-serif" font-size="12">v1.0.0</text>
+</svg>

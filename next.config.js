@@ -6,12 +6,15 @@ const nextConfig = {
   experimental: {
     typedRoutes: true,
   },
-  // Enable standalone output for Docker
+  // Enable standalone output for Docker (supports i18n better than static export)
   output: 'standalone',
+  // Better for static hosting and SEO
+  trailingSlash: true,
   // Optimize production builds
   compress: true,
   poweredByHeader: false,
   generateEtags: false,
+  swcMinify: true,
   images: {
     formats: ['image/webp', 'image/avif'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
@@ -19,6 +22,20 @@ const nextConfig = {
     minimumCacheTTL: 60,
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**.cerebratechai.com',
+      },
+      {
+        protocol: 'https',
+        hostname: '**.cloudinary.com',
+      },
+      {
+        protocol: 'https',
+        hostname: '**.amazonaws.com',
+      },
+    ],
   },
   async headers() {
     // Base security headers

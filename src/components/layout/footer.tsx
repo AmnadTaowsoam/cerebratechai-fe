@@ -6,79 +6,79 @@ import { useLocale } from 'next-intl';
 import { LocaleSwitcher } from '@/components/locale-switcher';
 import { Linkedin, Github, Youtube, Facebook } from 'lucide-react';
 import { BRAND_CONFIG } from '@/config/brand';
+import { routes, createExternalRoute } from '@/lib/routes';
 
 export function Footer() {
   const locale = useLocale();
-  const basePath = `/${locale}`;
 
   const quickLinks = [
-    { 
-      name: locale.startsWith('th') ? 'โซลูชัน' : 'Solutions', 
-      href: `${basePath}/solutions`,
-      desc: locale.startsWith('th') ? 'บริการ AI ที่เรามี' : 'Our AI services'
+    {
+        name: locale.startsWith('th') ? 'โซลูชัน' : 'Solutions',
+        href: routes.solutions(locale),
+        desc: locale.startsWith('th') ? 'บริการ AI ที่เรามี' : 'Our AI services'
     },
-    { 
-      name: locale.startsWith('th') ? 'แพ็กเกจ' : 'Packages', 
-      href: `${basePath}/packages`,
-      desc: locale.startsWith('th') ? 'แพ็กเกจราคา' : 'Pricing packages'
+    {
+        name: locale.startsWith('th') ? 'แพ็กเกจ' : 'Packages',
+        href: routes.packages(locale),
+        desc: locale.startsWith('th') ? 'แพ็กเกจราคา' : 'Pricing packages'
     },
-    { 
-      name: locale.startsWith('th') ? 'เคสศึกษา' : 'Case Studies', 
-      href: `${basePath}/cases`,
-      desc: locale.startsWith('th') ? 'ผลงานจริง' : 'Real projects'
+    {
+        name: locale.startsWith('th') ? 'เคสศึกษา' : 'Case Studies',
+        href: routes.cases(locale),
+        desc: locale.startsWith('th') ? 'ผลงานจริง' : 'Real projects'
     },
-    { 
-      name: locale.startsWith('th') ? 'ติดต่อ' : 'Contact', 
-      href: `${basePath}/contact`,
-      desc: locale.startsWith('th') ? 'พูดคุยกับเรา' : 'Get in touch'
+    {
+        name: locale.startsWith('th') ? 'ติดต่อ' : 'Contact',
+        href: routes.contact(locale),
+        desc: locale.startsWith('th') ? 'พูดคุยกับเรา' : 'Get in touch'
     },
   ];
 
   const legalLinks = [
     {
-      name: locale.startsWith('th') ? 'ความปลอดภัย & ความน่าเชื่อถือ' : 'Trust & Security',
-      href: `${basePath}/trust`
+        name: locale.startsWith('th') ? 'ความปลอดภัย & ความน่าเชื่อถือ' : 'Trust & Security',
+        href: routes.trust(locale)
     },
     {
-      name: locale.startsWith('th') ? 'นโยบายความเป็นส่วนตัว' : 'Privacy Policy',
-      href: `${basePath}/legal/privacy`
+        name: locale.startsWith('th') ? 'นโยบายความเป็นส่วนตัว' : 'Privacy Policy',
+        href: routes.legal.privacy(locale)
     },
     {
-      name: locale.startsWith('th') ? 'เงื่อนไขการใช้งาน' : 'Terms of Service',
-      href: `${basePath}/legal/terms`
+        name: locale.startsWith('th') ? 'เงื่อนไขการใช้งาน' : 'Terms of Service',
+        href: routes.legal.terms(locale)
     },
     {
-      name: locale.startsWith('th') ? 'นโยบายคุกกี้' : 'Cookie Policy',
-      href: `${basePath}/legal/cookies`
+        name: locale.startsWith('th') ? 'นโยบายคุกกี้' : 'Cookie Policy',
+        href: routes.legal.cookies(locale)
     },
     {
-      name: locale.startsWith('th') ? 'นโยบายการคืนเงิน' : 'Refund Policy',
-      href: `${basePath}/legal/refund`
+        name: locale.startsWith('th') ? 'นโยบายการคืนเงิน' : 'Refund Policy',
+        href: routes.legal.refund(locale)
     },
     {
-      name: locale.startsWith('th') ? 'ข้อจำกัดความรับผิดชอบ' : 'Disclaimer',
-      href: `${basePath}/legal/disclaimer`
+        name: locale.startsWith('th') ? 'ข้อจำกัดความรับผิดชอบ' : 'Disclaimer',
+        href: routes.legal.disclaimer(locale)
     },
     {
-      name: 'PDPA',
-      href: `${basePath}/legal/pdpa`
+        name: 'PDPA',
+        href: routes.legal.pdpa(locale)
     },
   ];
 
   const contactDetails = [
     {
-      label: locale.startsWith('th') ? 'อีเมล' : 'Email',
-      value: BRAND_CONFIG.contact.email.general,
-      href: `mailto:${BRAND_CONFIG.contact.email.general}`,
+        label: locale.startsWith('th') ? 'อีเมล' : 'Email',
+        value: BRAND_CONFIG.contact.email.general,
+        href: createExternalRoute(`mailto:${BRAND_CONFIG.contact.email.general}`),
     },
     {
-      label: locale.startsWith('th') ? 'โทรศัพท์' : 'Phone',
-      value: BRAND_CONFIG.contact.phone,
-      href: `tel:${BRAND_CONFIG.contact.phone.replace(/\s/g, '')}`,
+        label: locale.startsWith('th') ? 'โทรศัพท์' : 'Phone',
+        value: BRAND_CONFIG.contact.phone,
+        href: createExternalRoute(`tel:${BRAND_CONFIG.contact.phone.replace(/\s/g, '')}`),
     },
     {
-      label: locale.startsWith('th') ? 'เวลาทำการ' : 'Business Hours',
-      value: locale.startsWith('th') ? 'จ-ศ 9:00-18:00 (GMT+7)' : 'Mon-Fri 9:00-18:00 (GMT+7)',
+        label: locale.startsWith('th') ? 'เวลาทำการ' : 'Business Hours',
+        value: locale.startsWith('th') ? 'จ-ศ 9:00-18:00 (GMT+7)' : 'Mon-Fri 9:00-18:00 (GMT+7)',
     },
   ];
 
@@ -99,7 +99,7 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
           {/* Brand Section - Larger on desktop */}
           <div className="lg:col-span-5 space-y-6">
-            <Link href={basePath as any} className="inline-flex items-center space-x-3 group">
+            <Link href={routes.home(locale)} className="inline-flex items-center space-x-3 group">
               <div className="relative">
                 <Image
                   src="/cerebratechai_logo.png"
@@ -159,7 +159,7 @@ export function Footer() {
                 {quickLinks.map((link) => (
                   <li key={link.name}>
                     <Link
-                      href={link.href as any}
+                      href={link.href}
                       className="group block transition-all duration-200 hover:translate-x-1"
                     >
                       <div className="flex items-center text-sm font-medium text-text transition-colors group-hover:text-primary">
@@ -184,7 +184,7 @@ export function Footer() {
                 {legalLinks.map((link) => (
                   <li key={link.name}>
                     <Link
-                      href={link.href as any}
+                      href={link.href}
                       className="group inline-flex items-center text-sm text-text-muted transition-all duration-200 hover:text-primary hover:translate-x-1"
                     >
                       <span className="h-1 w-1 rounded-full bg-primary/40 mr-2 transition-all group-hover:bg-primary group-hover:w-2" />
@@ -206,8 +206,8 @@ export function Footer() {
                     <li key={item.label} className="group">
                       <span className="block text-xs font-medium text-text/60 mb-1">{item.label}</span>
                       {item.href ? (
-                        <Link 
-                          href={item.href as any} 
+                        <Link
+                          href={item.href}
                           className="text-sm text-text-muted transition-colors hover:text-primary inline-flex items-center gap-1"
                         >
                           {item.value}
@@ -232,12 +232,13 @@ export function Footer() {
                     const IconComponent = social.icon;
                     return (
                       <li key={social.label}>
-                        <Link 
-                          href={social.href as any} 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
+                        <Link
+                          href={createExternalRoute(social.href)}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-hairline/50 bg-surface/30 text-text-muted transition-all hover:border-primary/50 hover:bg-primary/10 hover:text-primary hover:shadow-sm"
                           title={social.label}
+                          aria-label={social.label}
                         >
                           <IconComponent className="h-5 w-5" />
                         </Link>

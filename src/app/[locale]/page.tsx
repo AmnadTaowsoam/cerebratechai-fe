@@ -1,56 +1,121 @@
-'use client';
-
-import { useLocale } from 'next-intl';
-import { HeroSection } from '@/components/landing/hero-section';
-import { FeaturesSection } from '@/components/landing/features-section';
-import { ContactForm } from '@/components/landing/contact-form';
-import { ValueCardsSection } from '@/components/landing/value-cards-section';
-import { ProcessStepsSection } from '@/components/landing/process-steps-section';
-import { PackagesPreviewSection } from '@/components/landing/packages-preview-section';
-import { CaseShowcaseSection } from '@/components/landing/case-showcase-section';
-import { SocialProofSection } from '@/components/landing/social-proof-section';
-import { ChatGPTAppsSection } from '@/components/landing/chatgpt-apps-section';
-import { StatsSection } from '@/components/landing/stats-section';
-import { ServicesGrid } from '@/components/services/services-grid';
-import { WebVitalsClient } from '@/components/metrics/web-vitals-client';
-import { RAGDemoSection } from '@/components/rag/rag-demo-section';
+import { getTranslations } from 'next-intl/server';
+import { Metadata } from 'next';
+import Link from 'next/link';
+import { Brain, Cpu, Layers, BarChart, Sparkles, Heart, Leaf, ExternalLink } from 'lucide-react';
 import { SeoHead, OrganizationJsonLd, WebsiteJsonLd, ServiceJsonLd, LocalBusinessJsonLd } from '@/components/seo';
+import { WebVitalsClient } from '@/components/metrics/web-vitals-client';
+import { StatsSection } from '@/components/landing/stats-section';
+import { SocialProofSection } from '@/components/landing/social-proof-section';
+import { SECTION_SPACING } from '@/lib/constants/spacing';
 
-export default function Home() {
-  const locale = useLocale();
-  const isThai = locale.startsWith('th');
-  const readinessItems = [
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+  const isThai = params.locale.startsWith('th');
+
+  return {
+    title: isThai ? 'พาร์ทเนอร์ AI สำหรับธุรกิจไทย - CerebraTechAI' : 'AI Solutions Partner for Thai Enterprises - CerebraTechAI',
+    description: isThai
+      ? 'จาก POC สู่ Production - เราสร้าง AI ที่ใช้งานได้จริง'
+      : 'From POC to Production - We Build AI That Works',
+    openGraph: {
+      title: isThai ? 'พาร์ทเนอร์ AI สำหรับธุรกิจไทย' : 'AI Solutions Partner for Thai Enterprises',
+      description: isThai
+        ? 'จาก POC สู่ Production - เราสร้าง AI ที่ใช้งานได้จริง'
+        : 'From POC to Production - We Build AI That Works',
+    },
+  };
+}
+
+export default async function HomePage({ params }: { params: { locale: string } }) {
+  const t = await getTranslations({ locale: params.locale, namespace: 'home' });
+  const ctaT = await getTranslations({ locale: params.locale, namespace: 'cta' });
+  const isThai = params.locale.startsWith('th');
+
+  const heroContent = {
+    en: {
+      title: "AI Solutions Partner for Thai Enterprises",
+      subtitle: "From POC to Production - We Build AI That Works",
+      description: "Ready to transform your business with AI? Let's discuss your project and create a custom solution that delivers real results.",
+      cta1: { label: "Start Your AI Project", href: "/contact" },
+      cta2: { label: "Get Free Consultation", href: "/contact?type=consultation" },
+    },
+    th: {
+      title: "พาร์ทเนอร์ AI สำหรับธุรกิจไทย",
+      subtitle: "จาก POC สู่ Production - เราสร้าง AI ที่ใช้งานได้จริง",
+      description: "พร้อมเปลี่ยนธุรกิจของคุณด้วย AI หรือยัง? มาคุยกันเกี่ยวกับโปรเจกต์ของคุณและสร้างโซลูชันที่ให้ผลลัพธ์จริง",
+      cta1: { label: "เริ่มโปรเจกต์ AI", href: "/contact" },
+      cta2: { label: "ปรึกษาฟรี", href: "/contact?type=consultation" },
+    },
+  };
+
+  const content = isThai ? heroContent.th : heroContent.en;
+
+  const services = [
     {
-      title: 'Quick Consultation',
-      titleTh: 'ปรึกษาเบื้องต้น',
-      description: '30-minute chat to understand your AI idea and see if we can help.',
-      descriptionTh: 'พูดคุย 30 นาทีเพื่อทำความเข้าใจไอเดีย AI ของคุณและดูว่าเราช่วยได้หรือไม่',
+      title: isThai ? 'AI Consulting' : 'AI Consulting',
+      description: isThai ? 'POC/Pilot, Assessment, Strategy' : 'POC/Pilot, Assessment, Strategy',
+      icon: Brain,
+      href: `/${params.locale}/services`,
     },
     {
-      title: 'POC Proposal',
-      titleTh: 'ข้อเสนอ POC',
-      description: 'Get a clear scope, timeline (4-8 weeks), and budget for your POC.',
-      descriptionTh: 'รับขอบเขตงาน ระยะเวลา (4-8 สัปดาห์) และงบประมาณที่ชัดเจนสำหรับ POC',
+      title: isThai ? 'AI Development' : 'AI Development',
+      description: isThai ? 'Custom AI, Integration, Training' : 'Custom AI, Integration, Training',
+      icon: Cpu,
+      href: `/${params.locale}/services`,
     },
     {
-      title: 'Build & Test',
-      titleTh: 'สร้างและทดสอบ',
-      description: 'We build a working prototype you can test with real scenarios.',
-      descriptionTh: 'เราสร้างต้นแบบที่ใช้งานได้จริงให้คุณทดสอบกับสถานการณ์จริง',
+      title: isThai ? 'AI Deployment' : 'AI Deployment',
+      description: isThai ? 'MLOps, Maintenance, Support' : 'MLOps, Maintenance, Support',
+      icon: Layers,
+      href: `/${params.locale}/services`,
+    },
+  ];
+
+  const featuredSolutions = [
+    {
+      name: 'ChartSentinel',
+      description: isThai ? 'AI-SPC Quality Control - ลดของเสีย 85%' : 'AI-SPC Quality Control - Reduce waste by 85%',
+      icon: BarChart,
+      href: `/${params.locale}/products/chartsentinel`,
+      gradient: 'from-orange-500 via-red-500 to-pink-500',
+    },
+    {
+      name: 'CerebraForge',
+      description: isThai ? 'Enterprise RAG Platform - Document AI' : 'Enterprise RAG Platform - Document AI',
+      icon: Layers,
+      href: `/${params.locale}/products/cerebraforge`,
+      gradient: 'from-purple-500 via-pink-500 to-rose-500',
+    },
+  ];
+
+  const externalProducts = [
+    {
+      name: 'Phitiai',
+      description: isThai ? 'AI Festival Platform' : 'AI Festival Platform',
+      icon: Sparkles,
+      href: 'https://www.phithiai.com',
+    },
+    {
+      name: 'Sookwai',
+      description: isThai ? 'Elderly Wellness' : 'Elderly Wellness',
+      icon: Heart,
+      href: 'https://www.sookwei.com',
+    },
+    {
+      name: 'PlukTunRaka',
+      description: isThai ? 'AgTech Platform' : 'AgTech Platform',
+      icon: Leaf,
+      href: 'https://www.pluktunraka.com',
     },
   ];
 
   return (
     <>
       <SeoHead
-        title={isThai ? 'โซลูชัน AI สำหรับ SME - LLM, Computer Vision, Edge AI' : 'AI Solutions for SMEs - LLM, Computer Vision, Edge AI'}
-        description={isThai
-          ? 'โซลูชัน AI สำหรับ SME และโครงการขนาดกลาง: LLM & RAG, Computer Vision, Predictive Analytics, Edge AI พร้อม MLOps และบริการด้านวิศวกรรม สตูดิโอ AI ในกรุงเทพฯ'
-          : 'AI Solutions for SMEs and mid-size projects: LLM & RAG, Computer Vision, Predictive Analytics, Edge AI with MLOps and engineering services. Boutique AI Studio in Bangkok, Thailand.'
-        }
+        title={content.title}
+        description={content.subtitle}
         keywords={isThai
-          ? ['AI สำหรับ SME', 'LLM ไทย', 'Computer Vision', 'Edge AI', 'RAG', 'AI consulting Bangkok', 'โซลูชัน AI', 'Machine Learning']
-          : ['AI for SMEs', 'Thai LLM', 'Computer Vision', 'Edge AI', 'RAG solutions', 'AI consulting Bangkok', 'Machine Learning Thailand', 'Predictive Analytics']
+          ? ['AI สำหรับธุรกิจไทย', 'POC AI', 'Production AI', 'AI Solutions', 'CerebraTechAI']
+          : ['AI for Thai Enterprises', 'AI POC', 'AI Production', 'AI Solutions', 'CerebraTechAI']
         }
         url="/"
         type="website"
@@ -61,65 +126,201 @@ export default function Home() {
       <LocalBusinessJsonLd />
       
       <WebVitalsClient />
-      <HeroSection />
-      <FeaturesSection />
-      <StatsSection />
-      <ValueCardsSection />
-      <ServicesGrid limit={6} />
-      <ProcessStepsSection />
-      <ChatGPTAppsSection />
-      <RAGDemoSection />
-      <PackagesPreviewSection />
-      <CaseShowcaseSection />
-      <SocialProofSection />
-      <section className="relative overflow-hidden bg-gradient-to-br from-bg via-surface to-bg py-24">
-        {/* Decorative elements */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(14,165,233,0.08),_transparent_40%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_rgba(99,102,241,0.06),_transparent_40%)]" />
-        
-        <div className="relative container mx-auto px-6">
-          <div className="mb-16 text-center">
-            <div className="mb-4 inline-block rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary">
-              {locale.startsWith('th') ? 'เริ่มต้นการเดินทาง' : 'Start Your Journey'}
-            </div>
-            <h2 className="mb-4 text-3xl font-bold text-text md:text-5xl">
-              {locale.startsWith('th') ? 'พร้อมทดลองไอเดีย AI แล้วหรือยัง?' : 'Ready to try your AI ideas?'}
+      
+      {/* 1. HERO SECTION */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-bg via-surface to-bg">
+        <div className="container mx-auto px-4 text-center py-24 md:py-20 lg:py-24">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              {content.title}
+            </span>
+          </h1>
+          <p className="text-xl md:text-2xl text-text-muted max-w-3xl mx-auto mb-4">
+            {content.subtitle}
+          </p>
+          <p className="text-lg text-text-muted/80 max-w-2xl mx-auto mb-8">
+            {content.description}
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link href={`/${params.locale}${content.cta1.href}`} className="btn-primary">
+              {content.cta1.label}
+            </Link>
+            <Link href={`/${params.locale}${content.cta2.href}`} className="btn-secondary">
+              {content.cta2.label}
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. SERVICES SECTION (3 cards) */}
+      <section className={`${SECTION_SPACING.FEATURES} bg-bg`}>
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              {isThai ? 'บริการ AI ที่เรามอบให้' : 'AI Services We Provide'}
             </h2>
-            <p className="mx-auto max-w-2xl text-lg text-text-muted md:text-xl">
-              {locale.startsWith('th') 
-                ? 'เริ่มต้นง่ายๆ ด้วย POC ที่ทดสอบได้จริง ไม่มีค่าใช้จ่ายซ่อนเร้น'
-                : 'Start easily with a real testable POC, no hidden costs.'
+            <p className="text-lg text-text-muted max-w-2xl mx-auto">
+              {isThai 
+                ? 'เราช่วยคุณตั้งแต่เริ่มต้นจนถึงการใช้งานจริง ครบวงจรในที่เดียว'
+                : 'We help you from start to finish - complete AI solutions in one place'
               }
             </p>
           </div>
-          
-          <div className="mb-14 grid gap-8 md:grid-cols-3">
-            {readinessItems.map((item, index) => (
-              <div
-                key={item.title}
-                className="group relative overflow-hidden rounded-2xl border border-hairline/50 bg-surface/80 p-8 backdrop-blur-sm transition-all duration-300 hover:border-primary/30 hover:shadow-xl hover:-translate-y-2"
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {services.map((service) => (
+              <Link
+                key={service.title}
+                href={service.href}
+                className="group bg-surface p-8 rounded-xl border border-surface-3 hover:border-primary/50 transition-all hover:shadow-xl hover:-translate-y-1"
               >
-                {/* Step number */}
-                <div className="absolute -right-4 -top-4 text-8xl font-bold text-primary/5 transition-all group-hover:text-primary/10">
-                  {index + 1}
+                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                  <service.icon className="w-6 h-6 text-primary" />
                 </div>
-                
-                <div className="relative">
-                  <div className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-lg font-bold text-primary">
-                    {index + 1}
-                  </div>
-                  <h3 className="mt-4 text-xl font-bold text-text">
-                    {locale.startsWith('th') ? item.titleTh : item.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-text-muted">
-                    {locale.startsWith('th') ? item.descriptionTh : item.description}
-                  </p>
-                </div>
-              </div>
+                <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                  {service.title}
+                </h3>
+                <p className="text-text-muted mb-4">
+                  {service.description}
+                </p>
+                <span className="text-primary text-sm font-medium group-hover:underline">
+                  {isThai ? 'เรียนรู้เพิ่มเติม →' : 'Learn More →'}
+                </span>
+              </Link>
             ))}
           </div>
-          
-          <ContactForm />
+          <div className="text-center mt-12">
+            <Link 
+              href={`/${params.locale}/contact`}
+              className="inline-flex items-center gap-2 text-primary font-semibold hover:underline"
+            >
+              {isThai ? 'ต้องการบริการแบบครบวงจร? ติดต่อเรา' : 'Need end-to-end service? Contact Us'}
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. FEATURED SOLUTIONS (2 cards - Highlight) */}
+      <section className={`${SECTION_SPACING.FEATURES} bg-surface`}>
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <span className="inline-block mb-4 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold">
+              ⭐ {isThai ? 'โซลูชันแนะนำ' : 'Featured Solutions'}
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold">
+              {isThai ? 'โซลูชันที่โดดเด่น' : 'Featured Solutions'}
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {featuredSolutions.map((solution) => (
+              <Link
+                key={solution.name}
+                href={solution.href}
+                className="group relative overflow-hidden bg-bg p-8 rounded-xl border border-surface-3 hover:border-primary/50 transition-all hover:shadow-xl hover:-translate-y-1"
+              >
+                <div className={`absolute inset-0 bg-gradient-to-br ${solution.gradient} opacity-10 group-hover:opacity-20 transition-opacity`} />
+                <div className="relative">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                      <solution.icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold group-hover:text-primary transition-colors">
+                        ⭐ {solution.name}
+                      </h3>
+                    </div>
+                  </div>
+                  <p className="text-text-muted mb-4">
+                    {solution.description}
+                  </p>
+                  <span className="text-primary font-semibold group-hover:underline">
+                    {isThai ? 'เรียนรู้เพิ่มเติม →' : 'Learn More →'}
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. VERTICAL PLATFORMS (External - Proof of Work) */}
+      <section className={`${SECTION_SPACING.FEATURES} bg-bg`}>
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              {isThai ? 'Products เราสร้างและเปิดใช้งานจริง' : 'Products We Built and Deployed'}
+            </h2>
+            <p className="text-text-muted max-w-2xl mx-auto">
+              {isThai 
+                ? 'ผลิตภัณฑ์ที่เราพัฒนาและเปิดใช้งานจริงในตลาด'
+                : 'Products we developed and deployed in the market'
+              }
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {externalProducts.map((product) => (
+              <a
+                key={product.name}
+                href={product.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group bg-surface p-6 rounded-xl border border-surface-3 hover:border-primary/50 transition-all hover:shadow-xl hover:-translate-y-1"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <product.icon className="w-5 h-5 text-primary" />
+                  </div>
+                  <ExternalLink className="w-4 h-4 text-text-muted group-hover:text-primary transition-colors" />
+                </div>
+                <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
+                  {product.name}
+                </h3>
+                <p className="text-sm text-text-muted">
+                  {product.description}
+                </p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. TRUST SIGNALS */}
+      <section className={`${SECTION_SPACING.FEATURES} bg-surface`}>
+        <StatsSection />
+        <SocialProofSection />
+      </section>
+
+      {/* 6. CTA SECTION */}
+      <section className={`${SECTION_SPACING.CTA} bg-gradient-to-r from-primary to-secondary`}>
+        <div className="container mx-auto px-4 text-center text-white">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            {isThai ? 'พร้อมเริ่มโปรเจกต์ AI ของคุณ?' : 'Ready to Start Your AI Project?'}
+          </h2>
+          <p className="text-xl opacity-90 mb-6 max-w-2xl mx-auto">
+            {isThai 
+              ? 'มาคุยกันเกี่ยวกับโจทย์ของคุณ เราจะช่วยออกแบบและพัฒนาโซลูชัน AI ที่เหมาะกับธุรกิจของคุณ'
+              : 'Let\'s discuss your challenge. We\'ll help design and develop an AI solution tailored to your business'
+            }
+          </p>
+          <p className="text-lg opacity-80 mb-8 max-w-xl mx-auto">
+            {isThai
+              ? 'ตอบกลับภายใน 24 ชั่วโมง พร้อมแผนเบื้องต้นและขั้นตอนถัดไป'
+              : 'Response within 24 hours with initial plan and next steps'
+            }
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link 
+              href={`/${params.locale}/contact`} 
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-primary rounded-lg font-semibold hover:bg-opacity-90 transition shadow-lg"
+            >
+              {isThai ? 'เริ่มโปรเจกต์' : 'Start Project'}
+            </Link>
+            <Link 
+              href={`/${params.locale}/contact?type=consultation`} 
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition"
+            >
+              {isThai ? 'ปรึกษาฟรี' : 'Free Consultation'}
+            </Link>
+          </div>
         </div>
       </section>
     </>

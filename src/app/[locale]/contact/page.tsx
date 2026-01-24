@@ -52,12 +52,12 @@ export default function ContactPage({ params }: ContactPageProps) {
         <MagicHero
           eyebrow={isThai ? 'ติดต่อเรา' : 'Contact us'}
           title={
-            isThai ? 'มาวางแผนความสามารถถัดไปที่พร้อมใช้งานจริง' : "Let's map your next production ready capability"
+            isThai ? 'พร้อมเริ่มโปรเจกต์ AI ของคุณ?' : "Ready to Start Your AI Project?"
           }
           description={
             isThai
-              ? 'บอกโจทย์หลักของคุณหรือเลือกช่องทางด้านล่าง เราตอบกลับภายใน 24 ชั่วโมงพร้อมขั้นตอนถัดไปและแผนเบื้องต้น'
-              : 'Share a few details or pick a channel below. We respond within 24 hours with next steps and a draft plan.'
+              ? 'แชร์โจทย์หรือความท้าทายของคุณกับเรา เราจะช่วยออกแบบและพัฒนาโซลูชัน AI ที่เหมาะกับธุรกิจของคุณ ตอบกลับภายใน 24 ชั่วโมงพร้อมแผนเบื้องต้น'
+              : 'Share your challenge or requirements with us. We\'ll help design and develop an AI solution tailored to your business. Response within 24 hours with an initial plan.'
           }
           actions={
             <ShimmerButton asChild className="px-8 py-4 text-sm">
@@ -239,12 +239,12 @@ export default function ContactPage({ params }: ContactPageProps) {
                 </span>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-text mb-4">
-                {isThai ? 'เริ่มโปรเจกต์ของคุณวันนี้' : 'Start Your Project Today'}
+                {isThai ? 'เริ่มโปรเจกต์ AI ของคุณวันนี้' : 'Start Your AI Project Today'}
               </h2>
               <p className="text-text-muted/80 mb-8 max-w-2xl mx-auto">
                 {isThai
-                  ? 'ปรึกษาฟรีกับผู้เชี่ยวชาญ AI ของเรา เพื่อค้นหาแนวทางที่เหมาะกับธุรกิจของคุณ'
-                  : 'Book a free consultation with our AI experts and discover the right solution for your business.'}
+                  ? 'ปรึกษาฟรีกับทีมผู้เชี่ยวชาญ AI ของเรา เราจะช่วยวิเคราะห์โจทย์ ออกแบบโซลูชัน และประเมินงบประมาณให้คุณ'
+                  : 'Get a free consultation with our AI expert team. We\'ll help analyze your challenge, design a solution, and provide budget estimates.'}
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <ShimmerButton asChild className="px-8 py-4">

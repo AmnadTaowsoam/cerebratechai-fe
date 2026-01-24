@@ -1,14 +1,13 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, FileText } from 'lucide-react';
 
 import { MagicHero } from '@/components/magicui';
 import { Card, CardContent } from '@/components/ui/card';
 import TLDRBlock from '@/components/TLDRBlock';
 import KeyFactsBlock from '@/components/KeyFactsBlock';
 import { ArticleSchema } from '@/components/seo';
-import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { CASES, getCaseBySlug } from '@/data/cases';
 
 type CasePageProps = {
@@ -90,18 +89,9 @@ export default async function CaseDetailPage({ params }: CasePageProps) {
     item.solutionFamily.some(family => caseItem.solutionFamily.includes(family))
   ).slice(0, 3);
 
-  const breadcrumbItems = [
-    { label: t('กรณีศึกษา', 'Case Studies'), href: `${basePath}/cases` },
-    { label: caseItem.title },
-  ];
-
   return (
     <div className="bg-bg">
       <ArticleSchema headline={caseItem.title} articleBody={caseItem.subtitle || caseItem.challenge} author="CerebraTechAI" />
-
-      <div className="container mx-auto px-6 pt-6">
-        <Breadcrumbs items={breadcrumbItems} />
-      </div>
 
       <MagicHero
         eyebrow={
@@ -134,7 +124,7 @@ export default async function CaseDetailPage({ params }: CasePageProps) {
         align="center"
       />
 
-      <section className="py-12 bg-surface/30">
+      <section className="py-20 bg-surface/30">
         <div className="container mx-auto px-6">
           <div className="grid gap-8 lg:grid-cols-2">
             <TLDRBlock
@@ -174,10 +164,10 @@ export default async function CaseDetailPage({ params }: CasePageProps) {
         </div>
       </section>
 
-      <section className="py-12">
+      <section className="py-20">
         <div className="container mx-auto px-6">
           <div className="grid gap-8 lg:grid-cols-2">
-            <Card className="border border-white/10 bg-surface/80 backdrop-blur">
+            <Card className="border border-hairline bg-surface/80">
               <CardContent className="p-8 space-y-3">
                 <h2 className="text-xl font-semibold text-text">
                   {t('ความท้าทาย', 'Challenge')}
@@ -188,7 +178,7 @@ export default async function CaseDetailPage({ params }: CasePageProps) {
               </CardContent>
             </Card>
 
-            <Card className="border border-white/10 bg-surface/80 backdrop-blur">
+            <Card className="border border-hairline bg-surface/80">
               <CardContent className="p-8 space-y-3">
                 <h2 className="text-xl font-semibold text-text">
                   {t('โซลูชัน', 'Solution')}
@@ -202,17 +192,17 @@ export default async function CaseDetailPage({ params }: CasePageProps) {
         </div>
       </section>
 
-      <section className="py-12 bg-surface/30">
+      <section className="py-20 bg-surface/30">
         <div className="container mx-auto px-6">
           <div className="grid gap-8 lg:grid-cols-2">
-            <Card className="border border-white/10 bg-surface/80 backdrop-blur">
+            <Card className="border border-hairline bg-surface/80">
               <CardContent className="p-8">
                 <h2 className="text-xl font-semibold text-text mb-4">
                   {t('ผลลัพธ์ที่ได้', 'Outcomes')}
                 </h2>
                 <div className="grid gap-4 sm:grid-cols-2">
                   {caseItem.outcomes.map((outcome, index) => (
-                    <div key={index} className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                    <div key={index} className="rounded-2xl border border-hairline bg-surface-2/50 p-4">
                       <div className="text-2xl font-bold text-primary">{outcome.value}</div>
                       <div className="text-sm text-text-muted">{outcome.label}</div>
                     </div>
@@ -221,7 +211,7 @@ export default async function CaseDetailPage({ params }: CasePageProps) {
               </CardContent>
             </Card>
 
-            <Card className="border border-white/10 bg-surface/80 backdrop-blur">
+            <Card className="border border-hairline bg-surface/80">
               <CardContent className="p-8 space-y-4">
                 <h2 className="text-xl font-semibold text-text">
                   {t('ข้อมูลประกอบ', 'Supporting metrics')}
@@ -229,7 +219,7 @@ export default async function CaseDetailPage({ params }: CasePageProps) {
                 {caseItem.metricsFooter ? (
                   <div className="grid gap-4 sm:grid-cols-2">
                     {caseItem.metricsFooter.map((metric, index) => (
-                      <div key={index} className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                      <div key={index} className="rounded-2xl border border-hairline bg-surface-2/50 p-4">
                         <div className="text-lg font-semibold text-text">{metric.value}</div>
                         <div className="text-sm text-text-muted">{metric.label}</div>
                       </div>
@@ -254,7 +244,7 @@ export default async function CaseDetailPage({ params }: CasePageProps) {
         </div>
       </section>
 
-      <section className="py-12">
+      <section className="py-20">
         <div className="container mx-auto px-6">
           <Card className="border border-primary/30 bg-gradient-to-br from-primary/5 to-accent/5">
             <CardContent className="p-8 text-center">
@@ -277,14 +267,14 @@ export default async function CaseDetailPage({ params }: CasePageProps) {
       </section>
 
       {relatedCases.length > 0 && (
-        <section className="py-12 bg-surface/30">
+        <section className="py-20 bg-surface/30">
           <div className="container mx-auto px-6">
             <h2 className="text-2xl font-bold text-text mb-6 text-center">
               {t('เคสที่เกี่ยวข้อง', 'Related Case Studies')}
             </h2>
             <div className="grid gap-6 md:grid-cols-3">
               {relatedCases.map((item) => (
-                <Card key={item.slug} className="border border-white/10 bg-surface/80 backdrop-blur hover:shadow-xl transition-all group">
+                <Card key={item.slug} className="border border-hairline bg-surface/80 hover:shadow-xl transition-all group">
                   <CardContent className="p-6">
                     <div className="mb-4">
                       <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary/20 text-primary">
@@ -299,7 +289,7 @@ export default async function CaseDetailPage({ params }: CasePageProps) {
                     </p>
                     <div className="grid grid-cols-2 gap-3 mb-4">
                       {item.outcomes.slice(0, 2).map((outcome, idx) => (
-                        <div key={idx} className="text-center p-2 rounded-lg bg-primary/10">
+                        <div key={idx} className="text-center p-2 rounded-xl bg-primary/10">
                           <div className="text-lg font-bold text-primary">{outcome.value}</div>
                           <div className="text-xs text-text-muted">{outcome.label}</div>
                         </div>

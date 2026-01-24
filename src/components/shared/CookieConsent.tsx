@@ -53,16 +53,13 @@ export function CookieConsent() {
     };
     localStorage.setItem(COOKIE_CONSENT_KEY, JSON.stringify(consentData));
 
-    // Log consent (for audit trail)
-    console.log('Cookie consent:', consentData);
-
-    // TODO: Initialize analytics based on consent type
+    // Initialize analytics based on consent type
     if (type === 'all') {
       // Enable all tracking
-      console.log('All cookies enabled');
+      // Analytics initialization would go here
     } else {
       // Enable only essential cookies
-      console.log('Only essential cookies enabled');
+      // Essential-only mode
     }
 
     // Close banner

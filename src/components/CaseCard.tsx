@@ -23,7 +23,7 @@ export default function CaseCard({ caseItem, locale = 'en' }: CaseCardProps) {
   const badge = dataSensitivityLabels[caseItem.dataSensitivity];
 
   return (
-    <Card className="group relative flex h-full flex-col overflow-hidden border border-white/10 bg-surface/70 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_24px_64px_rgba(8,23,45,0.5)]">
+    <Card className="group relative flex h-full flex-col overflow-hidden border border-white/10 bg-surface/70 backdrop-blur transition-all duration-300 hover:scale-[1.02] hover:border-primary/40 hover:shadow-[0_24px_64px_rgba(8,23,45,0.5)] active:scale-[0.98]">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
       <CardHeader>

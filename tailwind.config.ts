@@ -23,32 +23,29 @@ const config: Config = {
         surface: '#0F172A',
         'surface-2': '#1E293B',
         'surface-3': '#334155',
-        // Aliases to match utility usage in components
-        surface2: '#1E293B',
-        surface3: '#334155',
-        
+
         // Text
         text: '#E5E7EB',
         'text-muted': '#94A3B8',
         'text-subtle': '#64748B',
-        
+
         // Accents
         primary: '#0EA5E9',
         secondary: '#6366F1',
         'primary-brand': '#6366F1',
-        
+
         // Semantic
         success: '#22C55E',
         warning: '#F59E0B',
         danger: '#EF4444',
         info: '#38BDF8',
-        
+
         // Lines & overlays
         line: 'rgba(255,255,255,0.06)',
         hairline: 'rgba(255,255,255,0.08)',
         overlay: 'rgba(11,18,32,0.65)',
         'scrim-strong': 'rgba(0,0,0,0.45)',
-        
+
         // Shadcn/ui colors
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
@@ -96,7 +93,7 @@ const config: Config = {
           radial-gradient(120% 120% at 70% 0%, #0EA5E9 0%, #6366F1 50%, rgba(12,18,32,0) 100%),
           #0B1220
         `,
-        
+
         // Specialized gradients
         'grad-quantum': 'linear-gradient(135deg, #22D3EE 0%, #2563EB 100%)',
         'grad-aurora': 'linear-gradient(135deg, #2DD4BF 0%, #7C3AED 100%)',

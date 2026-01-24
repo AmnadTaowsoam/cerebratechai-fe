@@ -1,0 +1,18 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="phitiai-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#f97316;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#phitiai-gradient)" />
+  <g transform="translate(600, 315)">
+    <!-- Thai Temple Icon -->
+    <path d="M-50,-80 L50,-80 L50,80 L-50,80 Z" fill="rgba(255,255,255,255,0.1)" />
+    <circle cx="0" cy="-20" r="30" fill="rgba(255,255,255,255,0.2)" />
+    <path d="M-20,20 L0,-10 L20,20" stroke="white" stroke-width="3" stroke-linecap="round" />
+    <text x="0" y="120" text-anchor="middle" fill="white" font-family="sans-serif" font-size="24" font-weight="bold">Phitiai</text>
+    <text x="0" y="150" text-anchor="middle" fill="rgba(255,255,255,255,0.8)" font-family="sans-serif" font-size="16">AI Marketplace for Thai Traditions</text>
+  </g>
+</svg>

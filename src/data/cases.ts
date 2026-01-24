@@ -206,6 +206,69 @@ export const CASES: CaseItem[] = [
     ],
     heroImage: '/images/cases/predictive-analytics-ml/og.jpg',
     lang: 'en'
+  },
+  {
+    slug: 'pluktunraka-khon-kaen-farmer',
+    title: 'เกษตรกรขอนแก่นลดค่าปุ๋ยได้ 30%',
+    subtitle: 'AI Crop Planning Success Story',
+    sector: 'Agriculture',
+    solutionFamily: ['Machine Learning', 'Analytics'],
+    dataSensitivity: 'Public',
+    challenge: 'เกษตรกรในขอนแก่นต้องเผชิญกับความไม่แน่นอนของราคาพืช ทำให้การวางแผนการเก็บเกี่ยวและการใช้ปุ๋ยไม่เหมาะสม ส่งผลให้เกิดต้นทุนสูงและผลผลิตต่ำ',
+    solution: 'ใช้ระบบปลูกทันราคาที่ใช้ AI วิเคราะห์และพยากรณ์ราคาพืชล่วงหน้า 3-6 เดือน ช่วยให้เกษตรกรวางแผนการปลูกที่เหมาะสมกับสภาพตลาดและเพิ่มผลผลิต',
+    outcomes: [
+      { label: 'ลดต้นทุนปุ๋ย', value: '30%' },
+      { label: 'ROI', value: '3x' },
+      { label: 'ระยะเวลา', value: '1 ฤดูกาล' }
+    ],
+    metricsFooter: [
+      { label: 'พื้นที่เกษตร', value: '50 ไร่' },
+      { label: 'พืชที่ปลูก', value: 'ข้าวนาปี' }
+    ],
+    heroImage: '/images/cases/pluktunraka/og.jpg',
+    lang: 'th'
+  },
+  {
+    slug: 'chartsentinel-auto-parts-defect',
+    title: 'โรงงานชิ้นส่วนยานยนต์ลด Defect 85%',
+    subtitle: 'AI-SPC Platform Success Story',
+    sector: 'Manufacturing',
+    solutionFamily: ['Analytics', 'Machine Learning', 'Quality Intelligence'],
+    dataSensitivity: 'Public',
+    challenge: 'โรงงานผลิตชิ้นส่วนยานยนต์ต้องเผชิญกับปัญหาของเสียที่สูง การตรวจสอบคุณภาพด้วยมนุษย์ทำให้เกิดความผิดพลาดและไม่สามารถตรวจจับข้อบกพร่องได้ทันเวลา',
+    solution: 'ใช้ ChartSentinel ที่มีระบบ AI-SPC ตรวจจับสัญญาณผิดปกติแบบ Real-time ร่วมกับ Lab Quality Data ช่วยลดของเสียและปรับปรุงกระบวนการควบคุมคุณภาพ',
+    outcomes: [
+      { label: 'ลดของเสีย', value: '85%' },
+      { label: 'ROI', value: '6 เดือน' },
+      { label: 'ความแม่นยำ', value: '99.5%' }
+    ],
+    metricsFooter: [
+      { label: 'Production Lines', value: '3' },
+      { label: 'Inspections/day', value: '1,000+' }
+    ],
+    heroImage: '/images/cases/chartsentinel/og.jpg',
+    lang: 'th'
+  },
+  {
+    slug: 'sookwai-elderly-care-efficiency',
+    title: 'ศูนย์ดูแลผู้สูงอายุลดภาระพยาบาล 40%',
+    subtitle: 'Wellness Platform Success Story',
+    sector: 'Healthcare',
+    solutionFamily: ['IoT', 'Analytics'],
+    dataSensitivity: 'Public',
+    challenge: 'ศูนย์ดูแลผู้สูงอายุมีจำนวนเตียงมาก ทำให้พยาบาลต้องตรวจสอบสุขภาพผู้สูงอายุทีละคน ใช้เวลานานและไม่สามารถตรวจจับเหตุฉุกเฉินทางการแพทย์ได้ทันท่วงที',
+    solution: 'ใช้ Sookwai ที่มี Dashboard สำหรับตรวจสอบสุขภาพผู้สูงอายุ 50 เตียงพร้อมกัน พร้อมระบบแจ้งเตือนอัตโนมัติเมื่อมีความผิดปกติ ช่วยลดภาระงานของพยาบาลและเพิ่มประสิทธิภาพการดูแล',
+    outcomes: [
+      { label: 'ลดภาระพยาบาล', value: '+40%' },
+      { label: 'เตียงที่ดูแล', value: '50 เตียง' },
+      { label: 'เวลาตอบสนอง', value: '<200ms' }
+    ],
+    metricsFooter: [
+      { label: 'ผู้สูงอายุ', value: '50 คน' },
+      { label: 'พยาบาล', value: '5 คน' }
+    ],
+    heroImage: '/images/cases/sookwai/og.jpg',
+    lang: 'th'
   }
 ];
 

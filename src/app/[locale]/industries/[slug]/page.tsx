@@ -5,9 +5,10 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { CASES } from '@/data/cases';
+import { routes } from '@/lib/routes';
 
 type IndustryDetailProps = {
-  params: Promise<{ locale: string; slug: string }> | { locale: string; slug: string };
+  params: { locale: string; slug: string };
 };
 
 const INDUSTRY_DATA = {
@@ -57,28 +58,28 @@ const INDUSTRY_DATA = {
     solutions: ['LLM & RAG', 'Computer Vision', 'Predictive Analytics'],
     sectorMatch: 'Healthcare'
   },
-  logistics: {
-    name: { en: 'Logistics & Supply Chain', th: 'โลจิสติกส์และซัพพลายเชน' },
+  agriculture: {
+    name: { en: 'Agriculture', th: 'เกษตรกรรม' },
     description: {
-      en: 'AI for demand forecasting, route optimization, and inventory inspection',
-      th: 'AI สำหรับการคาดการณ์อุปสงค์ การเพิ่มประสิทธิภาพเส้นทาง และการตรวจสอบสินค้าคงคลัง'
+      en: 'AI-powered solutions for crop monitoring, yield prediction, and smart farming',
+      th: 'โซลูชัน AI สำหรับการติดตามพืชผล การพยากรณ์ผลผลิต และการเกษตรอัจฉริยะ'
     },
     challenges: {
       en: [
-        'Optimizing delivery routes and schedules',
-        'Accurate demand forecasting',
-        'Inventory management and tracking',
-        'Reducing operational costs'
+        'Monitoring crop health and growth',
+        'Predicting optimal harvest times',
+        'Managing water and fertilizer usage',
+        'Reducing crop loss and waste'
       ],
       th: [
-        'การเพิ่มประสิทธิภาพเส้นทางและตารางการส่ง',
-        'การคาดการณ์อุปสงค์ที่แม่นยำ',
-        'การจัดการและติดตามสินค้าคงคลัง',
-        'ลดต้นทุนการดำเนินงาน'
+        'การติดตามสุขภาพและการเจริญเติบโตของพืช',
+        'การพยากรณ์เวลาเก็บเกี่ยวที่เหมาะสม',
+        'การจัดการการใช้น้ำและปุ๋ย',
+        'ลดการสูญเสียพืชผลและของเสีย'
       ]
     },
-    solutions: ['Computer Vision', 'Predictive Analytics', 'Edge AI'],
-    sectorMatch: 'Logistics'
+    solutions: ['Computer Vision', 'Edge AI', 'Predictive Analytics'],
+    sectorMatch: 'Agriculture'
   },
   enterprise: {
     name: { en: 'Enterprise', th: 'องค์กรขนาดใหญ่' },
@@ -120,40 +121,39 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: IndustryDetailProps): Promise<Metadata> {
-  const resolvedParams = await Promise.resolve(params);
+  const { locale, slug } = params;
 
-  if (!resolvedParams || !resolvedParams.locale || !resolvedParams.slug) {
+  if (!locale || !slug) {
     return {
       title: 'Industry | CerebraTechAI',
       description: 'AI solutions for industries',
     };
   }
 
-  const locale = resolvedParams.locale.startsWith('th') ? 'th' : 'en';
-  const industry = INDUSTRY_DATA[resolvedParams.slug as keyof typeof INDUSTRY_DATA];
+  const normalizedLocale = locale.startsWith('th') ? 'th' : 'en';
+  const industry = INDUSTRY_DATA[slug as keyof typeof INDUSTRY_DATA];
 
   if (!industry) {
     return {};
   }
 
   return {
-    title: `${industry.name[locale]} AI Solutions | CerebraTechAI`,
-    description: industry.description[locale],
+    title: `${industry.name[normalizedLocale]} AI Solutions | CerebraTechAI`,
+    description: industry.description[normalizedLocale],
   };
 }
 
 export default async function IndustryDetailPage({ params }: IndustryDetailProps) {
-  const resolvedParams = await Promise.resolve(params);
+  const { locale, slug } = params;
 
-  if (!resolvedParams || !resolvedParams.locale || !resolvedParams.slug) {
+  if (!locale || !slug) {
     notFound();
   }
 
-  const locale = resolvedParams.locale.startsWith('th') ? 'th' : 'en';
-  const isThai = locale === 'th';
-  const basePath = `/${locale}`;
+  const normalizedLocale = locale.startsWith('th') ? 'th' : 'en';
+  const isThai = normalizedLocale === 'th';
 
-  const industry = INDUSTRY_DATA[resolvedParams.slug as keyof typeof INDUSTRY_DATA];
+  const industry = INDUSTRY_DATA[slug as keyof typeof INDUSTRY_DATA];
 
   if (!industry) {
     notFound();
@@ -168,7 +168,7 @@ export default async function IndustryDetailPage({ params }: IndustryDetailProps
       <section className="bg-gradient-to-br from-surface via-surface-2 to-surface-3 py-20">
         <div className="container mx-auto px-6">
           <Link
-            href={`${basePath}/industries` as any}
+            href={routes.industries(locale)}
             className="mb-8 inline-flex items-center gap-2 text-sm text-text-muted transition-colors hover:text-text"
           >
             <ArrowLeft className="h-4 w-4" />
@@ -177,10 +177,10 @@ export default async function IndustryDetailPage({ params }: IndustryDetailProps
 
           <div className="max-w-4xl">
             <h1 className="text-4xl font-bold text-text md:text-5xl mb-4">
-              {industry.name[locale]}
+              {industry.name[normalizedLocale]}
             </h1>
             <p className="text-lg text-text-muted mb-6">
-              {industry.description[locale]}
+              {industry.description[normalizedLocale]}
             </p>
 
             <div className="flex flex-wrap gap-2">
@@ -198,7 +198,7 @@ export default async function IndustryDetailPage({ params }: IndustryDetailProps
       </section>
 
       {/* Challenges */}
-      <section className="py-16">
+      <section className="py-20">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl">
             <h2 className="text-2xl font-bold text-text mb-6">
@@ -207,7 +207,7 @@ export default async function IndustryDetailPage({ params }: IndustryDetailProps
             <Card className="border border-hairline bg-surface">
               <CardContent className="p-8">
                 <ul className="space-y-3">
-                  {industry.challenges[locale].map((challenge, index) => (
+                  {industry.challenges[normalizedLocale].map((challenge, index) => (
                     <li key={index} className="flex items-start gap-3">
                       <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center text-sm font-medium mt-0.5">
                         {index + 1}
@@ -224,7 +224,7 @@ export default async function IndustryDetailPage({ params }: IndustryDetailProps
 
       {/* Case Studies */}
       {relatedCases.length > 0 && (
-        <section className="py-16 bg-surface/30">
+        <section className="py-20 bg-surface/30">
           <div className="container mx-auto px-6">
             <h2 className="text-2xl font-bold text-text mb-8">
               {isThai ? 'กรณีศึกษา' : 'Case Studies'}
@@ -233,7 +233,7 @@ export default async function IndustryDetailPage({ params }: IndustryDetailProps
               {relatedCases.map((caseItem) => (
                 <Card
                   key={caseItem.slug}
-                  className="border border-hairline bg-surface hover:shadow-lg transition-all group"
+                  className="border border-hairline bg-surface hover:shadow-xl transition-all group"
                 >
                   <CardContent className="p-6">
                     <div className="mb-4">
@@ -249,7 +249,7 @@ export default async function IndustryDetailPage({ params }: IndustryDetailProps
                     </p>
                     <Button variant="ghost" size="sm" asChild>
                       <Link
-                        href={`${basePath}/cases/${caseItem.slug}` as any}
+                        href={routes.caseDetail(locale, caseItem.slug)}
                         className="flex items-center gap-2"
                       >
                         {isThai ? 'อ่านเพิ่มเติม' : 'Read More'}
@@ -278,13 +278,13 @@ export default async function IndustryDetailPage({ params }: IndustryDetailProps
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg">
-              <Link href={`${basePath}/contact` as any}>
+              <Link href={routes.contact(locale)}>
                 {isThai ? 'ติดต่อเรา' : 'Contact Us'}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg">
-              <Link href={`${basePath}/solutions` as any}>
+              <Link href={routes.solutions(locale)}>
                 {isThai ? 'ดูโซลูชันทั้งหมด' : 'View All Solutions'}
               </Link>
             </Button>

@@ -9,11 +9,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Main pages
     { path: '', priority: 1.0, changeFreq: 'daily' as const },
     { path: '/solutions', priority: 0.9, changeFreq: 'weekly' as const },
+    { path: '/services', priority: 0.9, changeFreq: 'weekly' as const },
     { path: '/packages', priority: 0.9, changeFreq: 'weekly' as const },
     { path: '/pricing', priority: 0.9, changeFreq: 'weekly' as const },
     { path: '/cases', priority: 0.8, changeFreq: 'weekly' as const },
     { path: '/contact', priority: 0.8, changeFreq: 'monthly' as const },
     { path: '/about', priority: 0.7, changeFreq: 'monthly' as const },
+    { path: '/trust', priority: 0.7, changeFreq: 'monthly' as const },
+    { path: '/how-we-work', priority: 0.7, changeFreq: 'monthly' as const },
+    
+    // Services pages
+    { path: '/services/consulting', priority: 0.8, changeFreq: 'weekly' as const },
+    { path: '/services/development', priority: 0.8, changeFreq: 'weekly' as const },
+    { path: '/services/deployment', priority: 0.8, changeFreq: 'weekly' as const },
     
     // Solutions pages
     { path: '/solutions/ml', priority: 0.8, changeFreq: 'weekly' as const },
@@ -22,6 +30,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/solutions/aiot', priority: 0.8, changeFreq: 'weekly' as const },
     { path: '/solutions/platform', priority: 0.8, changeFreq: 'weekly' as const },
     { path: '/solutions/analytics', priority: 0.8, changeFreq: 'weekly' as const },
+    
+    // Industries pages
+    { path: '/industries', priority: 0.8, changeFreq: 'weekly' as const },
+    { path: '/industries/manufacturing', priority: 0.8, changeFreq: 'weekly' as const },
+    { path: '/industries/agriculture', priority: 0.8, changeFreq: 'weekly' as const },
+    { path: '/industries/healthcare', priority: 0.8, changeFreq: 'weekly' as const },
+    { path: '/industries/enterprise', priority: 0.8, changeFreq: 'weekly' as const },
+    
+    // Product pages
+    { path: '/products', priority: 0.9, changeFreq: 'weekly' as const },
+    { path: '/products/smartfarm', priority: 0.9, changeFreq: 'weekly' as const },
+    { path: '/products/cerebraforge', priority: 0.9, changeFreq: 'weekly' as const },
+    { path: '/products/chartsentinel', priority: 0.9, changeFreq: 'weekly' as const },
+    { path: '/products/vetpath', priority: 0.9, changeFreq: 'weekly' as const },
+    { path: '/products/skill400', priority: 0.9, changeFreq: 'weekly' as const },
+    { path: '/products/cerebra-api', priority: 0.9, changeFreq: 'weekly' as const },
     
     // Package pages
     { path: '/packages/kickstart', priority: 0.8, changeFreq: 'weekly' as const },
@@ -44,6 +68,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/careers', priority: 0.6, changeFreq: 'monthly' as const },
     { path: '/blog', priority: 0.7, changeFreq: 'weekly' as const },
     { path: '/news', priority: 0.7, changeFreq: 'weekly' as const },
+    { path: '/faq', priority: 0.6, changeFreq: 'monthly' as const },
   ];
 
   const sitemap: MetadataRoute.Sitemap = [];

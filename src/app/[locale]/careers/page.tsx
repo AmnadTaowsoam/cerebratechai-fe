@@ -4,7 +4,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { MagicHero } from '@/components/magicui';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { ArrowRight, MapPin, Clock, Users, Heart, Zap, Globe, Award } from 'lucide-react';
+import { ArrowRight, MapPin, Clock, Users, Heart, Zap, Globe, Award, Briefcase } from 'lucide-react';
 import Link from 'next/link';
 
 export default function CareersPage() {
@@ -139,7 +139,7 @@ export default function CareersPage() {
 
   return (
     <div className="bg-bg">
-      {/* Hero Section */}
+        {/* Hero Section */}
       <MagicHero
         eyebrow={locale.startsWith('th') ? 'ร่วมทีมกับเรา' : 'Join Our Team'}
         title={locale.startsWith('th') ? 'สร้างอนาคตของ AI กับเรา' : 'Build the Future of AI with Us'}

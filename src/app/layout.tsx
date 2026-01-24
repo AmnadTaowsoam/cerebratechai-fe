@@ -7,6 +7,7 @@ import { NonceProvider } from '@/components/providers/nonce-provider';
 import { Analytics } from '@/components/analytics/Analytics';
 import { Toaster } from '@/components/ui/toaster';
 import { PerformanceOptimizations, WebVitalsScript, ResourceHints } from '@/components/seo';
+import { ScrollObserver } from '@/lib/scroll-observer';
 import './globals.css';
 
 const inter = Inter({
@@ -59,7 +60,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    locale: 'th_TH',
+    // Locale will be set dynamically by locale-specific layouts
     url: '/',
     title: 'CerebraTechAI - Turn Pain Points into Production-Ready AI Systems',
     description: 'Transform your pain points into production-ready AI systems. We build AI & full-stack solutions from Edge to Cloud with guardrails and playbooks, ready for production deployment.',
@@ -155,8 +156,10 @@ export default async function RootLayout({
           <QueryProvider>
             {/* SEO and Performance Optimizations */}
             <PerformanceOptimizations />
+            <PerformanceOptimizations />
             <WebVitalsScript />
             <ResourceHints />
+            <ScrollObserver />
             
             {/* Skip link for accessibility */}
             <a

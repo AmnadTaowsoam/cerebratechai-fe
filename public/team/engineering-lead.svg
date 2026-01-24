@@ -1,0 +1,20 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="400" fill="#3b82f6" />
+  
+  <!-- Background Circle -->
+  <circle cx="200" cy="200" r="180" fill="#2563eb" />
+  
+  <!-- Abstract Person Icon -->
+  <g transform="translate(200, 200)">
+    <!-- Head -->
+    <circle cx="0" cy="-60" r="50" fill="#0ea5e9" />
+    <!-- Body -->
+    <path d="M-50,0 Q-30,40 0,100 Q30,40 60,0" fill="#0ea5e9" />
+    <!-- Collar -->
+    <rect x="-65" y="30" width="130" height="25" rx="5" fill="#1e293b" />
+  </g>
+  
+  <!-- Name Label -->
+  <rect x="50" y="320" width="300" height="50" rx="10" fill="rgba(0,0,0,0.7)" />
+  <text x="200" y="350" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="bold">Engineering Lead</text>
+</svg>

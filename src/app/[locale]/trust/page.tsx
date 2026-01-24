@@ -3,6 +3,7 @@ import { Shield, Lock, Eye, FileCheck, Server, AlertCircle, CheckCircle } from '
 import { MagicHero } from '@/components/magicui';
 import { Card, CardContent } from '@/components/ui/card';
 import { SeoHead, FAQSection, TrustFAQs } from '@/components/seo';
+import { SECTION_SPACING } from '@/lib/constants/spacing';
 
 type TrustPageProps = {
   params: { locale: string };
@@ -198,7 +199,7 @@ export default function TrustPage({ params }: TrustPageProps) {
         />
 
         {/* Security Pillars */}
-        <section className="py-20">
+        <section className={SECTION_SPACING.FEATURES}>
           <div className="container mx-auto px-6">
             <div className="text-center mb-16">
               <h2 className="text-3xl font-bold text-text mb-4">
@@ -244,7 +245,7 @@ export default function TrustPage({ params }: TrustPageProps) {
         </section>
 
         {/* Certifications & Standards */}
-        <section className="py-20 bg-surface/30">
+        <section className={`${SECTION_SPACING.FEATURES} bg-surface/30`}>
           <div className="container mx-auto px-6">
             <div className="text-center mb-16">
               <h2 className="text-3xl font-bold text-text mb-4">
@@ -285,7 +286,7 @@ export default function TrustPage({ params }: TrustPageProps) {
         </section>
 
         {/* Data Handling */}
-        <section className="py-20">
+        <section className={SECTION_SPACING.FEATURES}>
           <div className="container mx-auto px-6">
             <div className="text-center mb-16">
               <h2 className="text-3xl font-bold text-text mb-4">
@@ -319,7 +320,7 @@ export default function TrustPage({ params }: TrustPageProps) {
         />
 
         {/* Contact */}
-        <section className="py-16 bg-surface/30">
+        <section className={`${SECTION_SPACING.FEATURES} bg-surface/30`}>
           <div className="container mx-auto px-6">
             <Card className="border border-primary/30 bg-gradient-to-br from-primary/5 to-accent/5 max-w-3xl mx-auto">
               <CardContent className="p-8 text-center">

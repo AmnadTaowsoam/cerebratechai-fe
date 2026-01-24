@@ -1,0 +1,21 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="400" fill="#f97316" />
+  
+  <!-- Background Circle -->
+  <circle cx="200" cy="200" r="180" fill="#7c3aed" />
+  
+  <!-- Abstract Person Icon -->
+  <g transform="translate(200, 200)">
+    <!-- Head -->
+    <circle cx="0" cy="-60" r="50" fill="#0d9488" />
+    <!-- Body -->
+    <path d="M-50,0 Q-30,40 0,100 Q30,40 60,0" fill="#0d9488" />
+    <!-- Glasses -->
+    <circle cx="-20" cy="-65" r="12" fill="none" stroke="#1e293b" stroke-width="3" />
+    <line x1="-20" y1="-53" x2="-8" y2="-65" stroke="#1e293b" stroke-width="3" />
+  </g>
+  
+  <!-- Name Label -->
+  <rect x="50" y="320" width="300" height="50" rx="10" fill="rgba(0,0,0,0.7)" />
+  <text x="200" y="350" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="bold">Data Scientist</text>
+</svg>

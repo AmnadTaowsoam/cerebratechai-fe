@@ -45,8 +45,8 @@ export function StatsSection() {
 
   const achievements = [
     {
-      titleEn: 'malAI Platform',
-      titleTh: 'แพลตฟอร์ม malAI',
+      titleEn: 'phithiai',
+      titleTh: 'แพลตฟอร์ม phithiai',
       metric: '40%',
       descriptionEn: 'Reduction in event planning time',
       descriptionTh: 'ลดเวลาวางแผนงานพิธี',
@@ -54,8 +54,8 @@ export function StatsSection() {
       impactTh: 'ผู้ใช้ 1,200+ ราย, ผู้ให้บริการ 350+ ราย',
     },
     {
-      titleEn: 'DulaeDee Wellness',
-      titleTh: 'DulaeDee Wellness',
+      titleEn: 'sookwei',
+      titleTh: 'sookwei',
       metric: '60%',
       descriptionEn: 'Faster user onboarding process',
       descriptionTh: 'ออนบอร์ดผู้ใช้เร็วขึ้น',
