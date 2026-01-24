@@ -165,7 +165,7 @@ export default async function ChartSentinelPage({ params }: { params: { locale: 
           : ['AI-SPC', 'Quality Control', 'Manufacturing', 'Waste Reduction', 'ChartSentinel']
         }
         url="/products/chartsentinel"
-        type="product"
+        type="website"
       />
       <OrganizationJsonLd />
 

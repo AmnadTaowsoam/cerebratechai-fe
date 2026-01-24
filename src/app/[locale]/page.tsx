@@ -170,7 +170,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
             {services.map((service) => (
               <Link
                 key={service.title}
-                href={service.href}
+                href={service.href as any}
                 className="group bg-surface p-8 rounded-xl border border-surface-3 hover:border-primary/50 transition-all hover:shadow-xl hover:-translate-y-1"
               >
                 <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
@@ -214,7 +214,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
             {featuredSolutions.map((solution) => (
               <Link
                 key={solution.name}
-                href={solution.href}
+                href={solution.href as any}
                 className="group relative overflow-hidden bg-bg p-8 rounded-xl border border-surface-3 hover:border-primary/50 transition-all hover:shadow-xl hover:-translate-y-1"
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${solution.gradient} opacity-10 group-hover:opacity-20 transition-opacity`} />

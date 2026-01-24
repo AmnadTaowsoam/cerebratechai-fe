@@ -165,7 +165,7 @@ export default function ServicesPage({ params }: ServicesPageProps) {
                 <p className="mt-2 text-text-muted">
                   {t(
                     'ติดต่อเราวันนี้เพื่อรับการประเมินและคำแนะนำฟรี เราจะช่วยคุณวางแผนเส้นทางสู่ความสำเร็จด้วย AI',
-                    'Contact us today for a free assessment and consultation. We'll help you plan your path to AI success.'
+                    "Contact us today for a free assessment and consultation. We'll help you plan your path to AI success."
                   )}
                 </p>
               </div>

@@ -189,7 +189,7 @@ export default async function CerebraForgePage({ params }: { params: { locale: s
           : ['RAG', 'Enterprise RAG', 'Document AI', 'Knowledge Management', 'CerebraForge']
         }
         url="/products/cerebraforge"
-        type="product"
+        type="website"
       />
       <OrganizationJsonLd />
 
