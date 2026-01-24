@@ -76,22 +76,47 @@ const SKIP_PATTERNS = [
 function extractRoutes(dir, basePath = '') {
   try {
     const files = fs.readdirSync(dir);
-    
+
     files.forEach(file => {
       const filePath = path.join(dir, file);
       const stat = fs.statSync(filePath);
-      
+
       if (stat.isDirectory()) {
         // Skip special directories
-        if (['api', '_not-found', 'layout.tsx', 'layout.js', 'page.tsx', 'page.js', 'loading.tsx', 'loading.js', 'error.tsx', 'error.js', 'not-found.tsx', 'not-found.js'].includes(file)) {
+        if (
+          [
+            'api',
+            '_not-found',
+            'layout.tsx',
+            'layout.js',
+            'page.tsx',
+            'page.js',
+            'loading.tsx',
+            'loading.js',
+            'error.tsx',
+            'error.js',
+            'not-found.tsx',
+            'not-found.js',
+          ].includes(file)
+        ) {
           return;
         }
-        
+
         // Handle dynamic routes [slug] -> :slug
-        const routeSegment = file.startsWith('[') && file.endsWith(']') ? `:${file.slice(1, -1)}` : file;
-        const nextBasePath = basePath ? `${basePath}/${routeSegment}` : `/${routeSegment}`;
+        const routeSegment =
+          file.startsWith('[') && file.endsWith(']')
+            ? `:${file.slice(1, -1)}`
+            : file;
+        const nextBasePath = basePath
+          ? `${basePath}/${routeSegment}`
+          : `/${routeSegment}`;
         extractRoutes(filePath, nextBasePath);
-      } else if (file === 'page.tsx' || file === 'page.js' || file === 'route.ts' || file === 'route.js') {
+      } else if (
+        file === 'page.tsx' ||
+        file === 'page.js' ||
+        file === 'route.ts' ||
+        file === 'route.js'
+      ) {
         // This is a page route or a file route (e.g. /rss.xml)
         definedRoutes.add(basePath || '/');
       }
@@ -125,7 +150,7 @@ function routeToRegex(routePattern) {
   const parts = routePattern
     .split('/')
     .filter(Boolean)
-    .map((segment) => {
+    .map(segment => {
       if (segment.startsWith(':')) return '[^/]+';
       return segment.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     });
@@ -151,7 +176,7 @@ function extractLinksFromFile(filePath) {
   try {
     const content = fs.readFileSync(filePath, 'utf-8');
     const lines = content.split('\n');
-    
+
     lines.forEach((line, index) => {
       const trimmedLine = line.trim();
       if (
@@ -168,18 +193,18 @@ function extractLinksFromFile(filePath) {
         let match;
         while ((match = pattern.exec(line)) !== null) {
           const url = match[1];
-          
+
           // Skip if should be skipped
           if (shouldSkipLink(url)) {
             return;
           }
-          
+
           const linkInfo = {
             file: filePath,
             line: index + 1,
             url: url,
           };
-          
+
           if (isInternal(url)) {
             const normalized = normalizeUrl(url);
             if (!links.internal.has(normalized)) {
@@ -205,7 +230,7 @@ function extractLinksFromFile(filePath) {
 function scanDirectory(dir, extensions = ['.tsx', '.ts', '.jsx', '.js']) {
   try {
     const files = fs.readdirSync(dir);
-    
+
     files.forEach(file => {
       const filePath = path.join(dir, file);
       let stat;
@@ -214,9 +239,21 @@ function scanDirectory(dir, extensions = ['.tsx', '.ts', '.jsx', '.js']) {
       } catch (e) {
         return;
       }
-      
+
       if (stat.isDirectory()) {
-        if (!['node_modules', '.next', 'dist', 'build', '.git', 'coverage', '.turbo', 'public'].includes(file) && !file.startsWith('.')) {
+        if (
+          ![
+            'node_modules',
+            '.next',
+            'dist',
+            'build',
+            '.git',
+            'coverage',
+            '.turbo',
+            'public',
+          ].includes(file) &&
+          !file.startsWith('.')
+        ) {
           scanDirectory(filePath, extensions);
         }
       } else {
@@ -233,11 +270,11 @@ function scanDirectory(dir, extensions = ['.tsx', '.ts', '.jsx', '.js']) {
 
 // Check external link with HTTP request
 function checkExternalLink(url) {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     try {
       const parsedUrl = new URL(url);
       const client = parsedUrl.protocol === 'https:' ? https : http;
-      
+
       const options = {
         method: 'HEAD',
         headers: {
@@ -245,16 +282,16 @@ function checkExternalLink(url) {
         },
         timeout: CONFIG.timeout,
       };
-      
-      const req = client.request(parsedUrl, options, (res) => {
+
+      const req = client.request(parsedUrl, options, res => {
         resolve({
           url: url,
           status: res.statusCode,
           valid: res.statusCode >= 200 && res.statusCode < 400,
         });
       });
-      
-      req.on('error', (error) => {
+
+      req.on('error', error => {
         resolve({
           url: url,
           status: 'ERROR',
@@ -262,7 +299,7 @@ function checkExternalLink(url) {
           error: error.message,
         });
       });
-      
+
       req.on('timeout', () => {
         req.destroy();
         resolve({
@@ -272,7 +309,7 @@ function checkExternalLink(url) {
           error: 'Request timeout',
         });
       });
-      
+
       req.end();
     } catch (error) {
       resolve({
@@ -291,63 +328,67 @@ async function checkExternalLinks() {
     console.log('⏭️  Skipping external link checks in CI mode\n');
     return [];
   }
-  
+
   const urls = Array.from(links.external.keys());
   const results = [];
-  
+
   console.log(`🔍 Checking ${urls.length} external links...\n`);
-  
+
   for (let i = 0; i < urls.length; i += CONFIG.maxConcurrent) {
     const batch = urls.slice(i, i + CONFIG.maxConcurrent);
     const batchResults = await Promise.all(batch.map(checkExternalLink));
     results.push(...batchResults);
-    
+
     // Show progress
     const checked = Math.min(i + CONFIG.maxConcurrent, urls.length);
     console.log(`  Progress: ${checked}/${urls.length} links checked`);
   }
-  
+
   return results;
 }
 
 // Main execution
 async function main() {
   console.log('🔍 Checking for broken links...\n');
-  
+
   const srcPath = path.join(process.cwd(), 'src');
   const appPath = path.join(srcPath, 'app');
-  
+
   // Extract defined routes
   console.log('📋 Extracting defined routes...');
   extractRoutes(appPath);
   console.log(`   Found ${definedRoutes.size} defined routes\n`);
-  
+
   // Scan for links
   console.log('🔎 Scanning for links...');
   scanDirectory(srcPath);
   console.log(`   Found ${links.internal.size} internal links`);
   console.log(`   Found ${links.external.size} external links\n`);
-  
+
   let exitCode = 0;
-  
+
   // Check internal links
   console.log('🔍 Checking internal links...\n');
   const brokenInternalLinks = [];
-  
+
   links.internal.forEach((occurrences, url) => {
     const normalized = normalizeUrl(url);
-    
+
     // Check if it's a dynamic route (contains :param)
     if (normalized.includes(':')) {
       return; // Skip dynamic routes
     }
-    
+
     // Check if route exists
     if (!isRouteDefined(normalized)) {
       // Also check if it's a file in public directory
-      const publicPath = path.join(process.cwd(), 'public', normalized.replace(/^\//, ''));
+      const publicPath = path.join(
+        process.cwd(),
+        'public',
+        normalized.replace(/^\//, '')
+      );
       const fileExists = fs.existsSync(publicPath);
-      
+
       if (!fileExists) {
         brokenInternalLinks.push({
           url: url,
@@ -356,9 +397,11 @@ async function main() {
       }
     }
   });
-  
+
   if (brokenInternalLinks.length > 0) {
-    console.log(`❌ Found ${brokenInternalLinks.length} broken internal links:\n`);
+    console.log(
+      `❌ Found ${brokenInternalLinks.length} broken internal links:\n`
+    );
     brokenInternalLinks.slice(0, 20).forEach(link => {
       console.log(`  Link: ${link.url}`);
       link.occurrences.slice(0, 3).forEach(occ => {
@@ -376,16 +419,20 @@ async function main() {
   } else {
     console.log('✅ All internal links are valid!\n');
   }
-  
+
   // Check external links
   const externalResults = await checkExternalLinks();
   const brokenExternalLinks = externalResults.filter(r => !r.valid);
-  
+
   if (brokenExternalLinks.length > 0) {
-    console.log(`\n❌ Found ${brokenExternalLinks.length} broken external links:\n`);
+    console.log(
+      `\n❌ Found ${brokenExternalLinks.length} broken external links:\n`
+    );
     brokenExternalLinks.slice(0, 20).forEach(link => {
       console.log(`  ${link.url}`);
-      console.log(`    Status: ${link.status}${link.error ? ` (${link.error})` : ''}`);
+      console.log(
+        `    Status: ${link.status}${link.error ? ` (${link.error})` : ''}`
+      );
       const occurrences = links.external.get(link.url) || [];
       occurrences.slice(0, 3).forEach(occ => {
         console.log(`    ${occ.file}:${occ.line}`);
@@ -402,7 +449,7 @@ async function main() {
   } else if (!CONFIG.skipExternal) {
     console.log('✅ All external links are valid!\n');
   }
-  
+
   console.log('\n✨ Link check complete!');
   process.exit(exitCode);
 }

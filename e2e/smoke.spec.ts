@@ -31,7 +31,9 @@ test.describe('Smoke Tests', () => {
   test('locale switcher works', async ({ page }) => {
     await page.goto('/en');
 
-    const switchToThai = page.locator('button[aria-label="Switch to Thai"]').first();
+    const switchToThai = page
+      .locator('button[aria-label="Switch to Thai"]')
+      .first();
     await expect(switchToThai).toBeVisible();
     await switchToThai.click();
     await expect(page).toHaveURL(/\/th(\/|$)/);
@@ -43,13 +45,17 @@ test.describe('Smoke Tests', () => {
     const form = page.locator('form').first();
     await expect(form).toBeVisible();
 
-    const inputs = page.locator('input[type="text"], input[type="email"], textarea');
+    const inputs = page.locator(
+      'input[type="text"], input[type="email"], textarea'
+    );
     await expect(inputs.first()).toBeVisible();
   });
 
   test('404 page works', async ({ page }) => {
     await page.goto('/en/non-existent-page');
-    await expect(page.locator('body')).toContainText(/not found|404/i, { timeout: 5000 });
+    await expect(page.locator('body')).toContainText(/not found|404/i, {
+      timeout: 5000,
+    });
   });
 
   test('API health endpoint responds', async ({ request }) => {
@@ -66,9 +72,13 @@ test.describe('Performance Smoke Tests', () => {
     await page.waitForLoadState('networkidle');
 
     const metrics = await page.evaluate(() => {
-      const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
+      const navigation = performance.getEntriesByType(
+        'navigation'
+      )[0] as PerformanceNavigationTiming;
       return {
-        domContentLoaded: navigation.domContentLoadedEventEnd - navigation.domContentLoadedEventStart,
+        domContentLoaded:
+          navigation.domContentLoadedEventEnd -
+          navigation.domContentLoadedEventStart,
         loadComplete: navigation.loadEventEnd - navigation.loadEventStart,
       };
     });
@@ -80,7 +90,7 @@ test.describe('Performance Smoke Tests', () => {
   test('no console errors on page load', async ({ page }) => {
     const errors: string[] = [];
 
-    page.on('console', (msg) => {
+    page.on('console', msg => {
       if (msg.type() === 'error') errors.push(msg.text());
     });
 
@@ -89,7 +99,10 @@ test.describe('Performance Smoke Tests', () => {
     await page.waitForTimeout(1500);
 
     const criticalErrors = errors.filter(
-      (err) => !err.includes('DevTools') && !err.includes('Extension') && !err.includes('favicon')
+      err =>
+        !err.includes('DevTools') &&
+        !err.includes('Extension') &&
+        !err.includes('favicon')
     );
     expect(criticalErrors.length).toBe(0);
   });
@@ -120,14 +133,18 @@ test.describe('Accessibility Smoke Tests', () => {
 test.describe('SEO Smoke Tests', () => {
   test('page has meta description', async ({ page }) => {
     await page.goto('/en');
-    const metaDescription = await page.locator('meta[name="description"]').getAttribute('content');
+    const metaDescription = await page
+      .locator('meta[name="description"]')
+      .getAttribute('content');
     expect(metaDescription).toBeTruthy();
     expect(metaDescription?.length).toBeGreaterThan(50);
   });
 
   test('page has canonical URL', async ({ page }) => {
     await page.goto('/en');
-    const canonical = await page.locator('link[rel="canonical"]').getAttribute('href');
+    const canonical = await page
+      .locator('link[rel="canonical"]')
+      .getAttribute('href');
     expect(canonical).toBeTruthy();
   });
 });
@@ -139,4 +156,3 @@ test.describe('Responsive Design Smoke Tests', () => {
     await expect(page.locator('main').first()).toBeVisible();
   });
 });
-

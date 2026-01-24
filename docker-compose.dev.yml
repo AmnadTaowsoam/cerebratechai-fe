@@ -3,7 +3,7 @@ version: '3.8'
 # Development Docker Compose
 # Web App + Contact Service
 # ใช้ PostgreSQL ภายนอก (local)
-# 
+#
 # Setup:
 #   cp env.example .env
 #   แก้ไข SMTP_USER และ SMTP_PASS
@@ -11,7 +11,7 @@ version: '3.8'
 
 services:
   # ==================== WEB APPLICATION ====================
-  
+
   web:
     build:
       context: .
@@ -22,7 +22,7 @@ services:
     image: cerebratechai/web:dev
     container_name: cerebratechai-web-dev
     ports:
-      - "3000:3000"
+      - '3000:3000'
     environment:
       - NODE_ENV=development
       - NEXT_TELEMETRY_DISABLED=1
@@ -40,14 +40,22 @@ services:
       - contact-service
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/api/health"]
+      test:
+        [
+          'CMD',
+          'wget',
+          '--no-verbose',
+          '--tries=1',
+          '--spider',
+          'http://localhost:3000/api/health',
+        ]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 60s
 
   # ==================== CONTACT SERVICE ====================
-  
+
   contact-service:
     build:
       context: ../../services/contact-service
@@ -55,7 +63,7 @@ services:
     image: cerebratechai/contact-service:dev
     container_name: cerebratechai-contact-service-dev
     ports:
-      - "7002:7002"
+      - '7002:7002'
     environment:
       - NODE_ENV=development
       - PORT=7002
@@ -78,7 +86,15 @@ services:
       - cerebratechai-dev
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:7002/health"]
+      test:
+        [
+          'CMD',
+          'wget',
+          '--no-verbose',
+          '--tries=1',
+          '--spider',
+          'http://localhost:7002/health',
+        ]
       interval: 30s
       timeout: 10s
       retries: 3

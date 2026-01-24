@@ -15,7 +15,7 @@ services:
         NEXT_PUBLIC_FB_PIXEL_ID: ${NEXT_PUBLIC_FB_PIXEL_ID}
     container_name: cerebratechai-web-prod
     ports:
-      - "3000:3000"
+      - '3000:3000'
     environment:
       - NODE_ENV=production
       - NEXT_TELEMETRY_DISABLED=1
@@ -29,7 +29,15 @@ services:
     networks:
       - cerebratechai-network
     healthcheck:
-      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/api/health"]
+      test:
+        [
+          'CMD',
+          'wget',
+          '--no-verbose',
+          '--tries=1',
+          '--spider',
+          'http://localhost:3000/api/health',
+        ]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -43,11 +51,10 @@ services:
           cpus: '1'
           memory: 1G
     labels:
-      - "com.cerebratechai.service=web"
-      - "com.cerebratechai.environment=production"
+      - 'com.cerebratechai.service=web'
+      - 'com.cerebratechai.environment=production'
 
 networks:
   cerebratechai-network:
     external: true
     name: cerebratechai-network
-

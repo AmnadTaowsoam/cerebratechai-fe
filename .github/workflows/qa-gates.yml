@@ -80,13 +80,23 @@ jobs:
 
       - name: Start application in background
         run: |
+          # Kill any process using port 3000
+          lsof -ti:3000 | xargs kill -9 2>/dev/null || true
+          # Start application
           yarn start &
+          # Wait for application to be ready
           npx wait-on http://localhost:3000 --timeout 60000
 
       - name: Run smoke tests
         run: yarn e2e:smoke
         env:
           BASE_URL: http://localhost:3000
+
+      - name: Cleanup
+        if: always()
+        run: |
+          # Kill the Next.js server
+          lsof -ti:3000 | xargs kill -9 2>/dev/null || true
 
       - name: Upload test results
         if: always()
@@ -134,13 +144,23 @@ jobs:
 
       - name: Start application in background
         run: |
+          # Kill any process using port 3000
+          lsof -ti:3000 | xargs kill -9 2>/dev/null || true
+          # Start application
           yarn start &
+          # Wait for application to be ready
           npx wait-on http://localhost:3000 --timeout 60000
 
       - name: Run Lighthouse CI
         run: yarn lighthouse:ci
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+
+      - name: Cleanup
+        if: always()
+        run: |
+          # Kill the Next.js server
+          lsof -ti:3000 | xargs kill -9 2>/dev/null || true
 
       - name: Upload Lighthouse results
         if: always()
@@ -206,13 +226,23 @@ jobs:
 
       - name: Start application in background
         run: |
+          # Kill any process using port 3000
+          lsof -ti:3000 | xargs kill -9 2>/dev/null || true
+          # Start application
           yarn start &
+          # Wait for application to be ready
           npx wait-on http://localhost:3000 --timeout 60000
 
       - name: Run full E2E tests
         run: yarn e2e
         env:
           BASE_URL: http://localhost:3000
+
+      - name: Cleanup
+        if: always()
+        run: |
+          # Kill the Next.js server
+          lsof -ti:3000 | xargs kill -9 2>/dev/null || true
 
       - name: Upload test results
         if: always()
