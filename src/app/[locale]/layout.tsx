@@ -20,7 +20,9 @@ export async function generateMetadata({
   params: { locale: string };
 }): Promise<Metadata> {
   const { locale } = params;
-  const resolvedLocale = locales.includes(locale as any) ? locale : defaultLocale;
+  const resolvedLocale = locales.includes(locale as any)
+    ? locale
+    : defaultLocale;
 
   const ogLocale = resolvedLocale === 'th' ? 'th_TH' : 'en_US';
   const alternateLocale = resolvedLocale === 'th' ? 'en_US' : 'th_TH';
@@ -31,18 +33,18 @@ export async function generateMetadata({
     name: 'CerebraTechAI',
     url: 'https://www.cerebratechai.com',
     logo: 'https://www.cerebratechai.com/cerebratechai_logo.png',
-    description: 'Engineering Intelligence for Thailand\'s Future',
+    description: "Engineering Intelligence for Thailand's Future",
     sameAs: [
       'https://www.linkedin.com/company/cerebratechai',
       'https://www.facebook.com/cerebratechai',
-      'https://line.me/ti/p/@cerebratechai'
+      'https://line.me/ti/p/@cerebratechai',
     ],
     contactPoint: {
       '@type': 'ContactPoint',
       telephone: '+66-2-XXX-XXXX',
       contactType: 'sales',
-      availableLanguage: ['Thai', 'English']
-    }
+      availableLanguage: ['Thai', 'English'],
+    },
   };
 
   return {
@@ -53,8 +55,8 @@ export async function generateMetadata({
     alternates: {
       canonical: `/${resolvedLocale}`,
       languages: {
-        'en': '/en',
-        'th': '/th',
+        en: '/en',
+        th: '/th',
       },
     },
     other: {
@@ -70,15 +72,27 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  const normalized = (locale ?? defaultLocale).toString().toLowerCase().split(/[-_]/)[0] as (typeof locales)[number];
+  const normalized = (locale ?? defaultLocale)
+    .toString()
+    .toLowerCase()
+    .split(/[-_]/)[0] as (typeof locales)[number];
   const resolved = locales.includes(normalized) ? normalized : defaultLocale;
 
   setRequestLocale(resolved);
   const messages = (await import(`../../i18n/${resolved}.json`)).default;
 
   return (
-    <NextIntlClientProvider key={resolved} locale={resolved} messages={messages}>
-      <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
+    <NextIntlClientProvider
+      key={resolved}
+      locale={resolved}
+      messages={messages}
+    >
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="dark"
+        enableSystem={false}
+        disableTransitionOnChange
+      >
         <QueryProvider>
           <ErrorBoundary>
             <a className="sr-only focus:not-sr-only" href="#main">

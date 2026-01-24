@@ -1,15 +1,35 @@
 import type { Metadata } from 'next';
-import { Clock, Mail, MapPin, Phone, Shield, Lock, CheckCircle2, Zap } from 'lucide-react';
+import {
+  Clock,
+  Mail,
+  MapPin,
+  Phone,
+  Shield,
+  Lock,
+  CheckCircle2,
+  Zap,
+} from 'lucide-react';
 
-import { AnimatedGradientText, MagicHero, Particles, ShimmerButton } from '@/components/magicui';
+import {
+  AnimatedGradientText,
+  MagicHero,
+  Particles,
+  ShimmerButton,
+} from '@/components/magicui';
 import { ContactForm } from '@/components/landing/contact-form';
 import { SeoHead, ServiceSchema } from '@/components/seo';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 import { contactFAQs, contactSocialProof } from '@/data/contact';
 
 export const metadata: Metadata = {
   title: 'CerebraTechAI - Contact',
-  description: 'Book a working session with CerebraTechAI to discuss AI, data, and software delivery.',
+  description:
+    'Book a working session with CerebraTechAI to discuss AI, data, and software delivery.',
 };
 
 type ContactPageProps = {
@@ -27,7 +47,11 @@ export default function ContactPage({ params }: ContactPageProps) {
   return (
     <>
       <SeoHead
-        title={isThai ? 'ติดต่อเรา - AI Consulting Bangkok' : 'Contact Us - AI Consulting Bangkok'}
+        title={
+          isThai
+            ? 'ติดต่อเรา - AI Consulting Bangkok'
+            : 'Contact Us - AI Consulting Bangkok'
+        }
         description={
           isThai
             ? 'ติดต่อทีมที่ปรึกษา AI ในกรุงเทพฯ เพื่อพูดคุยโครงการ AI และ Machine Learning ของคุณ'
@@ -35,8 +59,18 @@ export default function ContactPage({ params }: ContactPageProps) {
         }
         keywords={
           isThai
-            ? ['ติดต่อที่ปรึกษา AI', 'AI consulting Bangkok', 'ปรึกษา AI', 'Machine Learning Thailand']
-            : ['Contact AI', 'AI consulting Bangkok', 'AI consultation', 'Machine Learning Thailand']
+            ? [
+                'ติดต่อที่ปรึกษา AI',
+                'AI consulting Bangkok',
+                'ปรึกษา AI',
+                'Machine Learning Thailand',
+              ]
+            : [
+                'Contact AI',
+                'AI consulting Bangkok',
+                'AI consultation',
+                'Machine Learning Thailand',
+              ]
         }
         url="/contact"
         type="website"
@@ -44,7 +78,9 @@ export default function ContactPage({ params }: ContactPageProps) {
       <ServiceSchema
         serviceName={isThai ? 'ที่ปรึกษา AI' : 'AI Consulting'}
         description={
-          isThai ? 'บริการให้คำปรึกษาและพัฒนา AI สำหรับธุรกิจ' : 'AI consulting and development services for businesses'
+          isThai
+            ? 'บริการให้คำปรึกษาและพัฒนา AI สำหรับธุรกิจ'
+            : 'AI consulting and development services for businesses'
         }
       />
       <div className="bg-bg">
@@ -52,16 +88,21 @@ export default function ContactPage({ params }: ContactPageProps) {
         <MagicHero
           eyebrow={isThai ? 'ติดต่อเรา' : 'Contact us'}
           title={
-            isThai ? 'พร้อมเริ่มโปรเจกต์ AI ของคุณ?' : "Ready to Start Your AI Project?"
+            isThai
+              ? 'พร้อมเริ่มโปรเจกต์ AI ของคุณ?'
+              : 'Ready to Start Your AI Project?'
           }
           description={
             isThai
               ? 'แชร์โจทย์หรือความท้าทายของคุณกับเรา เราจะช่วยออกแบบและพัฒนาโซลูชัน AI ที่เหมาะกับธุรกิจของคุณ ตอบกลับภายใน 24 ชั่วโมงพร้อมแผนเบื้องต้น'
-              : 'Share your challenge or requirements with us. We\'ll help design and develop an AI solution tailored to your business. Response within 24 hours with an initial plan.'
+              : "Share your challenge or requirements with us. We'll help design and develop an AI solution tailored to your business. Response within 24 hours with an initial plan."
           }
           actions={
             <ShimmerButton asChild className="px-8 py-4 text-sm">
-              <a href="mailto:hello@cerebratechai.com" className="inline-flex items-center gap-2">
+              <a
+                href="mailto:hello@cerebratechai.com"
+                className="inline-flex items-center gap-2"
+              >
                 {isThai ? 'ส่งอีเมลถึงทีม' : 'Email the team'}
                 <Mail className="h-4 w-4" />
               </a>
@@ -105,13 +146,14 @@ export default function ContactPage({ params }: ContactPageProps) {
             {/* Trust Badges */}
             <div className="flex flex-wrap justify-center gap-6">
               {trustBadges.map((badge, index) => {
-                const Icon = badge.icon === 'shield'
-                  ? Shield
-                  : badge.icon === 'lock'
-                    ? Lock
-                    : badge.icon === 'check-circle'
-                      ? CheckCircle2
-                      : Clock;
+                const Icon =
+                  badge.icon === 'shield'
+                    ? Shield
+                    : badge.icon === 'lock'
+                      ? Lock
+                      : badge.icon === 'check-circle'
+                        ? CheckCircle2
+                        : Clock;
                 return (
                   <div
                     key={index}
@@ -142,13 +184,19 @@ export default function ContactPage({ params }: ContactPageProps) {
                   {isThai ? 'คำถามที่พบบ่อย' : 'Frequently Asked Questions'}
                 </h2>
                 <p className="text-text-muted/80">
-                  {isThai ? 'หากมีคำถามอื่น ๆ สามารถติดต่อเราได้เสมอ' : 'If you have any other questions, feel free to reach out'}
+                  {isThai
+                    ? 'หากมีคำถามอื่น ๆ สามารถติดต่อเราได้เสมอ'
+                    : 'If you have any other questions, feel free to reach out'}
                 </p>
               </div>
 
               <Accordion type="single" collapsible className="space-y-2">
-                {faqs.map((faq) => (
-                  <AccordionItem key={faq.id} value={faq.id} className="rounded-xl border border-white/10 bg-surface/50 backdrop-blur overflow-hidden">
+                {faqs.map(faq => (
+                  <AccordionItem
+                    key={faq.id}
+                    value={faq.id}
+                    className="rounded-xl border border-white/10 bg-surface/50 backdrop-blur overflow-hidden"
+                  >
                     <AccordionTrigger className="px-6 hover:text-primary transition-colors">
                       {faq.question}
                     </AccordionTrigger>
@@ -176,7 +224,9 @@ export default function ContactPage({ params }: ContactPageProps) {
                 {isThai ? 'ช่องทางติดต่อ' : 'Contact Channels'}
               </h2>
               <p className="text-text-muted/80 max-w-2xl mx-auto">
-                {isThai ? 'เลือกช่องทางที่สะดวกที่สุด ทีมของเราพร้อมช่วยเหลือเสมอ' : "Choose the channel that works best for you. We're here to help."}
+                {isThai
+                  ? 'เลือกช่องทางที่สะดวกที่สุด ทีมของเราพร้อมช่วยเหลือเสมอ'
+                  : "Choose the channel that works best for you. We're here to help."}
               </p>
             </div>
 
@@ -185,39 +235,53 @@ export default function ContactPage({ params }: ContactPageProps) {
                 {
                   icon: Mail,
                   title: 'hello@cerebratechai.com',
-                  description: isThai ? 'กล่องจดหมายหลักสำหรับสอบถามโปรเจกต์' : 'Primary inbox for project enquiries',
+                  description: isThai
+                    ? 'กล่องจดหมายหลักสำหรับสอบถามโปรเจกต์'
+                    : 'Primary inbox for project enquiries',
                   gradient: 'from-blue-500/20 to-cyan-500/20',
                 },
                 {
                   icon: Phone,
                   title: '085-662-1113',
-                  description: isThai ? 'สายด่วนสำหรับลูกค้าองค์กร' : 'Hotline for enterprise clients',
+                  description: isThai
+                    ? 'สายด่วนสำหรับลูกค้าองค์กร'
+                    : 'Hotline for enterprise clients',
                   gradient: 'from-green-500/20 to-emerald-500/20',
                 },
                 {
                   icon: MapPin,
                   title: 'Bangkok / Hybrid',
-                  description: isThai ? 'รองรับทั้ง onsite และ remote' : 'On-site and remote friendly',
+                  description: isThai
+                    ? 'รองรับทั้ง onsite และ remote'
+                    : 'On-site and remote friendly',
                   gradient: 'from-purple-500/20 to-indigo-500/20',
                 },
                 {
                   icon: Clock,
                   title: '08:00-18:00 ICT',
-                  description: isThai ? 'ตอบกลับภายใน 1 วันทำการ' : 'Response within one business day',
+                  description: isThai
+                    ? 'ตอบกลับภายใน 1 วันทำการ'
+                    : 'Response within one business day',
                   gradient: 'from-orange-500/20 to-red-500/20',
                 },
-              ].map((channel) => (
+              ].map(channel => (
                 <div
                   key={channel.title}
                   className="group relative overflow-hidden rounded-3xl border border-white/10 bg-surface/70 p-6 backdrop-blur transition-all duration-300 hover:border-primary/40 hover:shadow-[0_24px_64px_rgba(8,23,45,0.45)] hover:-translate-y-1"
                 >
-                  <div className={`absolute inset-0 bg-gradient-to-br ${channel.gradient} opacity-0 transition-opacity duration-300 group-hover:opacity-100`} />
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br ${channel.gradient} opacity-0 transition-opacity duration-300 group-hover:opacity-100`}
+                  />
                   <div className="relative">
                     <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-secondary/20 group-hover:from-primary/30 group-hover:to-secondary/30 transition-all duration-300">
                       <channel.icon className="h-6 w-6 text-primary group-hover:scale-110 transition-transform duration-300" />
                     </div>
-                    <p className="text-base font-semibold text-text mb-2">{channel.title}</p>
-                    <p className="text-sm text-text-muted/80">{channel.description}</p>
+                    <p className="text-base font-semibold text-text mb-2">
+                      {channel.title}
+                    </p>
+                    <p className="text-sm text-text-muted/80">
+                      {channel.description}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -239,16 +303,21 @@ export default function ContactPage({ params }: ContactPageProps) {
                 </span>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-text mb-4">
-                {isThai ? 'เริ่มโปรเจกต์ AI ของคุณวันนี้' : 'Start Your AI Project Today'}
+                {isThai
+                  ? 'เริ่มโปรเจกต์ AI ของคุณวันนี้'
+                  : 'Start Your AI Project Today'}
               </h2>
               <p className="text-text-muted/80 mb-8 max-w-2xl mx-auto">
                 {isThai
                   ? 'ปรึกษาฟรีกับทีมผู้เชี่ยวชาญ AI ของเรา เราจะช่วยวิเคราะห์โจทย์ ออกแบบโซลูชัน และประเมินงบประมาณให้คุณ'
-                  : 'Get a free consultation with our AI expert team. We\'ll help analyze your challenge, design a solution, and provide budget estimates.'}
+                  : "Get a free consultation with our AI expert team. We'll help analyze your challenge, design a solution, and provide budget estimates."}
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <ShimmerButton asChild className="px-8 py-4">
-                  <a href="mailto:hello@cerebratechai.com" className="inline-flex items-center gap-2">
+                  <a
+                    href="mailto:hello@cerebratechai.com"
+                    className="inline-flex items-center gap-2"
+                  >
                     <Mail className="h-4 w-4" />
                     {isThai ? 'ส่งอีเมล' : 'Email Us'}
                   </a>

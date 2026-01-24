@@ -3,8 +3,15 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { Eye, Database, Users, Activity } from 'lucide-react';
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const t = await getTranslations({ locale: params.locale, namespace: 'products.vetpath' });
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const t = await getTranslations({
+    locale: params.locale,
+    namespace: 'products.vetpath',
+  });
 
   return {
     title: `${t('name')} - ${t('tagline')}`,
@@ -16,8 +23,15 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   };
 }
 
-export default async function VetPathPage({ params }: { params: { locale: string } }) {
-  const t = await getTranslations({ locale: params.locale, namespace: 'products.vetpath' });
+export default async function VetPathPage({
+  params,
+}: {
+  params: { locale: string };
+}) {
+  const t = await getTranslations({
+    locale: params.locale,
+    namespace: 'products.vetpath',
+  });
 
   return (
     <main className="min-h-screen bg-slate-950 text-white">
@@ -53,34 +67,44 @@ export default async function VetPathPage({ params }: { params: { locale: string
       {/* Features Grid */}
       <section id="features" className="py-20 bg-slate-900">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-white">{t('features')}</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-white">
+            {t('features')}
+          </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-cyan-500 transition">
               <div className="w-14 h-14 bg-cyan-500/20 rounded-lg flex items-center justify-center mb-4">
                 <Eye className="w-7 h-7 text-cyan-400" />
               </div>
-              <h3 className="text-xl font-semibold mb-2 text-white">{t('feature1_title')}</h3>
+              <h3 className="text-xl font-semibold mb-2 text-white">
+                {t('feature1_title')}
+              </h3>
               <p className="text-slate-300 text-lg">{t('feature1_desc')}</p>
             </div>
             <div className="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-blue-500 transition">
               <div className="w-14 h-14 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
                 <Database className="w-7 h-7 text-blue-400" />
               </div>
-              <h3 className="text-xl font-semibold mb-2 text-white">{t('feature2_title')}</h3>
+              <h3 className="text-xl font-semibold mb-2 text-white">
+                {t('feature2_title')}
+              </h3>
               <p className="text-slate-300 text-lg">{t('feature2_desc')}</p>
             </div>
             <div className="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-indigo-500 transition">
               <div className="w-14 h-14 bg-indigo-500/20 rounded-lg flex items-center justify-center mb-4">
                 <Users className="w-7 h-7 text-indigo-400" />
               </div>
-              <h3 className="text-xl font-semibold mb-2 text-white">{t('feature3_title')}</h3>
+              <h3 className="text-xl font-semibold mb-2 text-white">
+                {t('feature3_title')}
+              </h3>
               <p className="text-slate-300 text-lg">{t('feature3_desc')}</p>
             </div>
             <div className="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-cyan-500 transition">
               <div className="w-14 h-14 bg-cyan-500/20 rounded-lg flex items-center justify-center mb-4">
                 <Activity className="w-7 h-7 text-cyan-400" />
               </div>
-              <h3 className="text-xl font-semibold mb-2 text-white">{t('feature4_title')}</h3>
+              <h3 className="text-xl font-semibold mb-2 text-white">
+                {t('feature4_title')}
+              </h3>
               <p className="text-slate-300 text-lg">{t('feature4_desc')}</p>
             </div>
           </div>
@@ -90,7 +114,9 @@ export default async function VetPathPage({ params }: { params: { locale: string
       {/* Tech Stack */}
       <section className="py-20 bg-slate-950">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-white">{t('techStack')}</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-white">
+            {t('techStack')}
+          </h2>
           <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-5xl mx-auto">
             <div className="bg-slate-800 p-4 rounded-xl border border-slate-700">
               <code className="text-cyan-400 text-lg">Python</code>
@@ -120,12 +146,18 @@ export default async function VetPathPage({ params }: { params: { locale: string
       {/* Pricing */}
       <section className="py-20 bg-slate-900">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-4 text-white">{t('pricing')}</h2>
+          <h2 className="text-3xl font-bold text-center mb-4 text-white">
+            {t('pricing')}
+          </h2>
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {/* Clinic */}
             <div className="bg-slate-800 p-8 rounded-2xl border border-slate-700">
-              <h3 className="text-2xl font-semibold mb-2 text-white">{t('clinic')}</h3>
-              <div className="text-5xl font-bold mb-4 text-cyan-400">{t('clinicPrice')}</div>
+              <h3 className="text-2xl font-semibold mb-2 text-white">
+                {t('clinic')}
+              </h3>
+              <div className="text-5xl font-bold mb-4 text-cyan-400">
+                {t('clinicPrice')}
+              </div>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-center gap-2 text-slate-300">
                   <span className="text-cyan-400">✓</span>
@@ -151,7 +183,9 @@ export default async function VetPathPage({ params }: { params: { locale: string
             {/* Hospital */}
             <div className="bg-gradient-to-br from-cyan-600 to-blue-600 p-8 rounded-2xl text-white border-2 border-white/20">
               <h3 className="text-2xl font-semibold mb-2">{t('hospital')}</h3>
-              <div className="text-5xl font-bold mb-4 text-cyan-400">{t('hospitalPrice')}</div>
+              <div className="text-5xl font-bold mb-4 text-cyan-400">
+                {t('hospitalPrice')}
+              </div>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-center gap-2 text-cyan-100">
                   <span>✓</span>
@@ -176,8 +210,12 @@ export default async function VetPathPage({ params }: { params: { locale: string
 
             {/* Enterprise */}
             <div className="bg-slate-800 p-8 rounded-2xl border border-slate-700">
-              <h3 className="text-2xl font-semibold mb-2 text-white">{t('enterprise')}</h3>
-              <div className="text-5xl font-bold mb-4 text-cyan-400">{t('custom')}</div>
+              <h3 className="text-2xl font-semibold mb-2 text-white">
+                {t('enterprise')}
+              </h3>
+              <div className="text-5xl font-bold mb-4 text-cyan-400">
+                {t('custom')}
+              </div>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-center gap-2 text-slate-300">
                   <span className="text-cyan-400">✓</span>
@@ -206,14 +244,20 @@ export default async function VetPathPage({ params }: { params: { locale: string
       {/* FAQ Section */}
       <section className="py-20 bg-slate-950">
         <div className="container mx-auto px-4 max-w-3xl">
-          <h2 className="text-3xl font-bold text-center mb-12 text-white">FAQ</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-white">
+            FAQ
+          </h2>
           <div className="space-y-6">
             <div className="bg-slate-800 p-6 rounded-xl border border-slate-700">
-              <h3 className="text-lg font-semibold mb-2 text-white">{t('faq.q1')}</h3>
+              <h3 className="text-lg font-semibold mb-2 text-white">
+                {t('faq.q1')}
+              </h3>
               <p className="text-slate-300 text-lg">{t('faq.a1')}</p>
             </div>
             <div className="bg-slate-800 p-6 rounded-xl border border-slate-700">
-              <h3 className="text-lg font-semibold mb-2 text-white">{t('faq.q2')}</h3>
+              <h3 className="text-lg font-semibold mb-2 text-white">
+                {t('faq.q2')}
+              </h3>
               <p className="text-slate-300 text-lg">{t('faq.a2')}</p>
             </div>
           </div>

@@ -4,7 +4,17 @@ import { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
-import { Sparkles, Users, Leaf, Wifi, Brain, Cpu, Eye, Layers, ArrowRight } from 'lucide-react';
+import {
+  Sparkles,
+  Users,
+  Leaf,
+  Wifi,
+  Brain,
+  Cpu,
+  Eye,
+  Layers,
+  ArrowRight,
+} from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface BentoCardProps {
@@ -22,12 +32,20 @@ interface HomeBentoGridProps {
   className?: string;
 }
 
-const GridPattern = ({ width = 40, height = 40, x = -1, y = -1, strokeDasharray = 0, className, ...props }: any) => {
+const GridPattern = ({
+  width = 40,
+  height = 40,
+  x = -1,
+  y = -1,
+  strokeDasharray = 0,
+  className,
+  ...props
+}: any) => {
   return (
     <svg
       aria-hidden="true"
       className={cn(
-        "absolute inset-0 h-full w-full fill-neutral-400/30 stroke-neutral-400/30",
+        'absolute inset-0 h-full w-full fill-neutral-400/30 stroke-neutral-400/30',
         className
       )}
       {...props}
@@ -44,7 +62,12 @@ const GridPattern = ({ width = 40, height = 40, x = -1, y = -1, strokeDasharray 
           <path d={`M.5 ${height}V.5H${width}`} fill="none" />
         </pattern>
       </defs>
-      <rect width="100%" height="100%" strokeWidth={0} fill="url(#bento-grid-pattern)" />
+      <rect
+        width="100%"
+        height="100%"
+        strokeWidth={0}
+        fill="url(#bento-grid-pattern)"
+      />
     </svg>
   );
 };
@@ -83,22 +106,38 @@ const BentoCard = ({
         sizeClasses[size]
       )}
     >
-       {/* Background Pattern */}
+      {/* Background Pattern */}
       <div className="absolute inset-0 z-0 opacity-20 group-hover:opacity-30 transition-opacity duration-500">
-        <GridPattern width={30} height={30} x={-1} y={-1} className="stroke-white/10 fill-white/5" />
+        <GridPattern
+          width={30}
+          height={30}
+          x={-1}
+          y={-1}
+          className="stroke-white/10 fill-white/5"
+        />
       </div>
 
       {/* Gradient Overlay */}
-      <div className={cn("absolute inset-0 z-0 opacity-30 bg-gradient-to-br transition-opacity duration-500 group-hover:opacity-50", gradient)} />
+      <div
+        className={cn(
+          'absolute inset-0 z-0 opacity-30 bg-gradient-to-br transition-opacity duration-500 group-hover:opacity-50',
+          gradient
+        )}
+      />
 
       {/* Content */}
       <div className="relative z-10 block h-full p-6 md:p-8">
         {href.startsWith('http://') || href.startsWith('https://') ? (
-          <a href={href} target="_blank" rel="noopener noreferrer" className="block h-full">
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block h-full"
+          >
             <div className="flex flex-col h-full">
               <div className="flex items-start justify-between mb-4">
                 <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-white/10 text-white group-hover:bg-white/20 transition-colors backdrop-blur-sm border border-white/10">
-                   <div className="absolute inset-0 bg-primary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute inset-0 bg-primary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
                   <Icon className="h-7 w-7 relative z-10" />
                 </div>
                 {badge && (
@@ -107,7 +146,7 @@ const BentoCard = ({
                   </span>
                 )}
               </div>
-              
+
               <div className="flex-1">
                 <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
                   {title}
@@ -115,8 +154,8 @@ const BentoCard = ({
                 <p className="text-sm md:text-base text-white/70 group-hover:text-white/90 transition-colors">
                   {description}
                 </p>
-                 {/* Tech Decoration Lines */}
-                 <div className="mt-4 h-0.5 w-12 bg-white/10 group-hover:w-full group-hover:bg-primary/50 transition-all duration-500" />
+                {/* Tech Decoration Lines */}
+                <div className="mt-4 h-0.5 w-12 bg-white/10 group-hover:w-full group-hover:bg-primary/50 transition-all duration-500" />
               </div>
 
               {children && <div className="mt-4">{children}</div>}
@@ -126,8 +165,8 @@ const BentoCard = ({
                   Learn more
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </span>
-                 {/* Tech Corner Accent */}
-                 <div className="w-4 h-4 border-b-2 border-r-2 border-white/10 group-hover:border-primary/50 transition-colors duration-500 rounded-br-lg" />
+                {/* Tech Corner Accent */}
+                <div className="w-4 h-4 border-b-2 border-r-2 border-white/10 group-hover:border-primary/50 transition-colors duration-500 rounded-br-lg" />
               </div>
             </div>
           </a>
@@ -136,7 +175,7 @@ const BentoCard = ({
             <div className="flex flex-col h-full">
               <div className="flex items-start justify-between mb-4">
                 <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-white/10 text-white group-hover:bg-white/20 transition-colors backdrop-blur-sm border border-white/10">
-                   <div className="absolute inset-0 bg-primary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute inset-0 bg-primary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
                   <Icon className="h-7 w-7 relative z-10" />
                 </div>
                 {badge && (
@@ -145,7 +184,7 @@ const BentoCard = ({
                   </span>
                 )}
               </div>
-              
+
               <div className="flex-1">
                 <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
                   {title}
@@ -153,8 +192,8 @@ const BentoCard = ({
                 <p className="text-sm md:text-base text-white/70 group-hover:text-white/90 transition-colors">
                   {description}
                 </p>
-                 {/* Tech Decoration Lines */}
-                 <div className="mt-4 h-0.5 w-12 bg-white/10 group-hover:w-full group-hover:bg-primary/50 transition-all duration-500" />
+                {/* Tech Decoration Lines */}
+                <div className="mt-4 h-0.5 w-12 bg-white/10 group-hover:w-full group-hover:bg-primary/50 transition-all duration-500" />
               </div>
 
               {children && <div className="mt-4">{children}</div>}
@@ -164,8 +203,8 @@ const BentoCard = ({
                   Learn more
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </span>
-                 {/* Tech Corner Accent */}
-                 <div className="w-4 h-4 border-b-2 border-r-2 border-white/10 group-hover:border-primary/50 transition-colors duration-500 rounded-br-lg" />
+                {/* Tech Corner Accent */}
+                <div className="w-4 h-4 border-b-2 border-r-2 border-white/10 group-hover:border-primary/50 transition-colors duration-500 rounded-br-lg" />
               </div>
             </div>
           </Link>
@@ -197,7 +236,7 @@ const PhitiaiVisual = () => (
         <div className="h-1.5 w-10 bg-primary/40 rounded mb-1 ml-auto" />
         <div className="h-1.5 w-full bg-primary/20 rounded" />
       </div>
-       <div className="bg-white/5 p-2 rounded-lg rounded-tl-none w-2/3">
+      <div className="bg-white/5 p-2 rounded-lg rounded-tl-none w-2/3">
         <div className="h-1.5 w-8 bg-white/20 rounded mb-1" />
         <div className="h-1.5 w-full bg-white/10 rounded" />
       </div>
@@ -209,50 +248,59 @@ const SookwaiVisual = () => (
   <div className="absolute right-4 bottom-4 h-32 w-48 bg-surface rounded-xl border border-white/10 p-3 shadow-xl group-hover:scale-105 transition-transform duration-500">
     <div className="flex justify-between items-end h-full gap-1">
       {[40, 70, 45, 90, 65, 80, 50].map((h, i) => (
-         <div key={i} className="w-full bg-gradient-to-t from-cyan-500/20 to-blue-500/20 rounded-t-sm relative overflow-hidden" style={{ height: `${h}%` }}>
-            <div className="absolute bottom-0 left-0 right-0 h-full bg-gradient-to-t from-cyan-500/50 to-transparent opacity-50" />
-         </div>
+        <div
+          key={i}
+          className="w-full bg-gradient-to-t from-cyan-500/20 to-blue-500/20 rounded-t-sm relative overflow-hidden"
+          style={{ height: `${h}%` }}
+        >
+          <div className="absolute bottom-0 left-0 right-0 h-full bg-gradient-to-t from-cyan-500/50 to-transparent opacity-50" />
+        </div>
       ))}
     </div>
     <div className="absolute top-3 left-3 flex items-center gap-1.5">
-       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-       <span className="text-[10px] font-medium text-white/60">Health Live</span>
+      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+      <span className="text-[10px] font-medium text-white/60">Health Live</span>
     </div>
   </div>
 );
 
 const SmartFarmVisual = () => (
   <div className="absolute right-0 bottom-0 h-40 w-full overflow-hidden">
-     {/* Grid Nodes */}
-     <div className="absolute top-8 right-12 w-3 h-3 bg-teal-500 rounded-full shadow-[0_0_10px_rgba(20,184,166,0.5)] animate-ping" />
-     <div className="absolute top-8 right-12 w-3 h-3 bg-teal-500 rounded-full" />
-     
-     <div className="absolute bottom-12 right-32 w-2 h-2 bg-cyan-500/50 rounded-full" />
-     <div className="absolute top-4 right-48 w-2 h-2 bg-cyan-500/50 rounded-full" />
-     
-     {/* Connection Lines (SVG) */}
-     <svg className="absolute inset-0 w-full h-full pointer-events-none">
-        <path d="M280 40 L220 80 L350 120" stroke="rgba(20,184,166,0.2)" fill="none" strokeWidth="1" />
-     </svg>
-     
-     <div className="absolute bottom-4 right-4 bg-surface/90 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 text-[10px] text-teal-300">
-        IoT Node: Active
-     </div>
+    {/* Grid Nodes */}
+    <div className="absolute top-8 right-12 w-3 h-3 bg-teal-500 rounded-full shadow-[0_0_10px_rgba(20,184,166,0.5)] animate-ping" />
+    <div className="absolute top-8 right-12 w-3 h-3 bg-teal-500 rounded-full" />
+
+    <div className="absolute bottom-12 right-32 w-2 h-2 bg-cyan-500/50 rounded-full" />
+    <div className="absolute top-4 right-48 w-2 h-2 bg-cyan-500/50 rounded-full" />
+
+    {/* Connection Lines (SVG) */}
+    <svg className="absolute inset-0 w-full h-full pointer-events-none">
+      <path
+        d="M280 40 L220 80 L350 120"
+        stroke="rgba(20,184,166,0.2)"
+        fill="none"
+        strokeWidth="1"
+      />
+    </svg>
+
+    <div className="absolute bottom-4 right-4 bg-surface/90 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 text-[10px] text-teal-300">
+      IoT Node: Active
+    </div>
   </div>
 );
-
 
 export function HomeBentoGrid({ className }: HomeBentoGridProps) {
   const cards = [
     {
       title: 'Phitiai',
-      description: 'AI Marketplace งานประเพณี - สร้างการ์ดอวยพรด้วย AI ใน 3 วินาที',
+      description:
+        'AI Marketplace งานประเพณี - สร้างการ์ดอวยพรด้วย AI ใน 3 วินาที',
       icon: Sparkles,
       href: 'https://www.phithiai.com',
       size: 'large' as const,
       gradient: 'from-amber-500/20 to-orange-600/20',
       badge: 'Featured',
-      children: <PhitiaiVisual />
+      children: <PhitiaiVisual />,
     },
     {
       title: 'Sookwai',
@@ -262,7 +310,7 @@ export function HomeBentoGrid({ className }: HomeBentoGridProps) {
       size: 'medium' as const,
       gradient: 'from-cyan-500/20 to-blue-600/20',
       badge: 'Featured',
-      children: <SookwaiVisual />
+      children: <SookwaiVisual />,
     },
     {
       title: 'PlukTunRaka',
@@ -279,7 +327,7 @@ export function HomeBentoGrid({ className }: HomeBentoGridProps) {
       href: '/products/smartfarm',
       size: 'medium' as const,
       gradient: 'from-teal-500/20 to-cyan-600/20',
-      children: <SmartFarmVisual />
+      children: <SmartFarmVisual />,
     },
     {
       title: 'CerebraForge',

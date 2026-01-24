@@ -3,7 +3,16 @@
 import { useLocale } from 'next-intl';
 import { MagicHero, Particles, ShimmerButton } from '@/components/magicui';
 import { Card, CardContent } from '@/components/ui/card';
-import { ArrowRight, Cpu, Code, Settings, TestTube, Zap, Database, GitBranch } from 'lucide-react';
+import {
+  ArrowRight,
+  Cpu,
+  Code,
+  Settings,
+  TestTube,
+  Zap,
+  Database,
+  GitBranch,
+} from 'lucide-react';
 import Link from 'next/link';
 import { SeoHead, ServiceSchema, FAQSection } from '@/components/seo';
 import TLDRBlock from '@/components/TLDRBlock';
@@ -54,7 +63,10 @@ export default function DevelopmentPage() {
   ];
 
   const technologies = [
-    t('Machine Learning (TensorFlow, PyTorch)', 'Machine Learning (TensorFlow, PyTorch)'),
+    t(
+      'Machine Learning (TensorFlow, PyTorch)',
+      'Machine Learning (TensorFlow, PyTorch)'
+    ),
     t('Computer Vision (OpenCV, YOLO)', 'Computer Vision (OpenCV, YOLO)'),
     t('LLM & RAG (LangChain, LlamaIndex)', 'LLM & RAG (LangChain, LlamaIndex)'),
     t('Edge AI (TensorFlow Lite, ONNX)', 'Edge AI (TensorFlow Lite, ONNX)'),
@@ -71,14 +83,20 @@ export default function DevelopmentPage() {
 
   const faqs = [
     {
-      question: t('AI Development ใช้เวลานานแค่ไหน?', 'How long does AI Development take?'),
+      question: t(
+        'AI Development ใช้เวลานานแค่ไหน?',
+        'How long does AI Development take?'
+      ),
       answer: t(
         'ระยะเวลาขึ้นอยู่กับความซับซ้อนของโครงการ โดยทั่วไปใช้เวลา 6-16 สัปดาห์ สำหรับการพัฒนาและทดสอบ',
         'Duration depends on project complexity. Typically 6-16 weeks for development and testing.'
       ),
     },
     {
-      question: t('AI Development มีค่าใช้จ่ายเท่าไหร่?', 'How much does AI Development cost?'),
+      question: t(
+        'AI Development มีค่าใช้จ่ายเท่าไหร่?',
+        'How much does AI Development cost?'
+      ),
       answer: t(
         'ค่าใช้จ่ายขึ้นอยู่กับความซับซ้อนและขอบเขตของโครงการ เริ่มต้นที่ ฿260,000 สำหรับ Computer Vision และ ฿420,000 สำหรับ Predictive/ML',
         'Cost depends on complexity and scope. Starting from ฿260,000 for Computer Vision and ฿420,000 for Predictive/ML.'
@@ -96,7 +114,10 @@ export default function DevelopmentPage() {
   return (
     <>
       <SeoHead
-        title={t('AI Development - พัฒนาระบบ AI แบบกำหนดเอง', 'AI Development - Custom AI System Development')}
+        title={t(
+          'AI Development - พัฒนาระบบ AI แบบกำหนดเอง',
+          'AI Development - Custom AI System Development'
+        )}
         description={t(
           'บริการพัฒนา AI ครบวงจร: การพัฒนาโมเดล การรวมเข้ากับระบบเดิม การฝึกอบรม และการทดสอบ',
           'Comprehensive AI development services: model development, system integration, training, and testing.'
@@ -112,7 +133,10 @@ export default function DevelopmentPage() {
 
       <ServiceSchema
         serviceName={t('AI Development', 'AI Development')}
-        description={t('บริการพัฒนาระบบ AI แบบกำหนดเองสำหรับธุรกิจ', 'Custom AI system development services for businesses')}
+        description={t(
+          'บริการพัฒนาระบบ AI แบบกำหนดเองสำหรับธุรกิจ',
+          'Custom AI system development services for businesses'
+        )}
       />
 
       <div className="bg-bg">
@@ -134,7 +158,9 @@ export default function DevelopmentPage() {
         <section className={SECTION_SPACING.FEATURES}>
           <div className="container mx-auto px-6">
             <div className="mb-12 text-center">
-              <h2 className="mb-4 text-3xl font-bold text-text">{t('บริการของเรา', 'Our Services')}</h2>
+              <h2 className="mb-4 text-3xl font-bold text-text">
+                {t('บริการของเรา', 'Our Services')}
+              </h2>
               <p className="mx-auto max-w-2xl text-text-muted">
                 {t(
                   'เรามอบบริการพัฒนา AI ครบวงจรเพื่อให้คุณได้ระบบที่เหมาะกับธุรกิจ',
@@ -143,16 +169,23 @@ export default function DevelopmentPage() {
               </p>
             </div>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-              {services.map((service) => {
+              {services.map(service => {
                 const IconComponent = service.icon;
                 return (
-                  <Card key={service.title} className="border border-hairline bg-surface/80">
+                  <Card
+                    key={service.title}
+                    className="border border-hairline bg-surface/80"
+                  >
                     <CardContent className="p-6">
                       <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-accent/20">
                         <IconComponent className="h-6 w-6 text-primary" />
                       </div>
-                      <h3 className="mb-2 text-lg font-semibold text-text">{service.title}</h3>
-                      <p className="text-sm text-text-muted leading-relaxed">{service.description}</p>
+                      <h3 className="mb-2 text-lg font-semibold text-text">
+                        {service.title}
+                      </h3>
+                      <p className="text-sm text-text-muted leading-relaxed">
+                        {service.description}
+                      </p>
                     </CardContent>
                   </Card>
                 );
@@ -173,10 +206,22 @@ export default function DevelopmentPage() {
               />
               <KeyFactsBlock
                 facts={[
-                  { label: t('ระยะเวลา', 'Duration'), value: t('6-16 สัปดาห์', '6-16 weeks') },
-                  { label: t('ราคาเริ่มต้น', 'Starting Price'), value: t('฿260,000 - ฿420,000', '฿260,000 - ฿420,000') },
-                  { label: t('เทคโนโลยี', 'Technologies'), value: technologies },
-                  { label: t('สิ่งที่ได้รับ', 'Deliverables'), value: deliverables },
+                  {
+                    label: t('ระยะเวลา', 'Duration'),
+                    value: t('6-16 สัปดาห์', '6-16 weeks'),
+                  },
+                  {
+                    label: t('ราคาเริ่มต้น', 'Starting Price'),
+                    value: t('฿260,000 - ฿420,000', '฿260,000 - ฿420,000'),
+                  },
+                  {
+                    label: t('เทคโนโลยี', 'Technologies'),
+                    value: technologies,
+                  },
+                  {
+                    label: t('สิ่งที่ได้รับ', 'Deliverables'),
+                    value: deliverables,
+                  },
                 ]}
                 locale={schemaLocale}
               />
@@ -186,7 +231,7 @@ export default function DevelopmentPage() {
 
         <FAQSection
           title={t('คำถามที่พบบ่อย', 'Frequently Asked Questions')}
-          faqs={faqs.map((faq) => ({
+          faqs={faqs.map(faq => ({
             question: faq.question,
             answer: faq.answer,
           }))}
@@ -213,7 +258,10 @@ export default function DevelopmentPage() {
                 </p>
               </div>
               <ShimmerButton asChild className="px-8 py-4 text-sm">
-                <Link href={`/${locale}/contact` as any} className="inline-flex items-center gap-2">
+                <Link
+                  href={`/${locale}/contact` as any}
+                  className="inline-flex items-center gap-2"
+                >
                   {t('ติดต่อเรา', 'Contact us')}
                   <ArrowRight className="h-4 w-4" />
                 </Link>

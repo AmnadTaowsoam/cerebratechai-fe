@@ -13,7 +13,12 @@
       ],
       "numberOfRuns": 1,
       "settings": {
-        "onlyCategories": ["performance", "accessibility", "best-practices", "seo"],
+        "onlyCategories": [
+          "performance",
+          "accessibility",
+          "best-practices",
+          "seo"
+        ],
         "budgetPath": "./lighthouse-budget.json"
       }
     },

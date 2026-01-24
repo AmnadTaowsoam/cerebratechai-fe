@@ -11,15 +11,16 @@ export function Hreflang({ currentPath }: HreflangProps) {
   const locale = useLocale();
   const pathname = usePathname();
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-  
+
   // Get the path without locale
-  const pathWithoutLocale = currentPath || pathname.replace(`/${locale}`, '') || '/';
-  
+  const pathWithoutLocale =
+    currentPath || pathname.replace(`/${locale}`, '') || '/';
+
   const locales = ['en', 'th'];
-  
+
   return (
     <>
-      {locales.map((loc) => (
+      {locales.map(loc => (
         <link
           key={loc}
           rel="alternate"
@@ -37,18 +38,18 @@ export function Hreflang({ currentPath }: HreflangProps) {
 }
 
 // Static hreflang for specific pages
-export function StaticHreflang({ 
-  path, 
-  locales = ['en', 'th'] 
-}: { 
-  path: string; 
-  locales?: string[] 
+export function StaticHreflang({
+  path,
+  locales = ['en', 'th'],
+}: {
+  path: string;
+  locales?: string[];
 }) {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-  
+
   return (
     <>
-      {locales.map((locale) => (
+      {locales.map(locale => (
         <link
           key={locale}
           rel="alternate"

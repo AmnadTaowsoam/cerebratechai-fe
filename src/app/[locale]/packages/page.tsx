@@ -13,7 +13,8 @@ type PackagesPageProps = {
 
 export const metadata: Metadata = {
   title: 'CerebraTechAI - Packages',
-  description: 'AI and software delivery packages covering strategy, pilots, production and care plans.',
+  description:
+    'AI and software delivery packages covering strategy, pilots, production and care plans.',
 };
 
 export default function PackagesPage({ params }: PackagesPageProps) {
@@ -89,14 +90,30 @@ export default function PackagesPage({ params }: PackagesPageProps) {
   return (
     <>
       <SeoHead
-        title={isThai ? 'แพ็กเกจ AI - เริ่มที่ ฿95,000' : 'AI Packages - Starting from ฿95,000'}
-        description={isThai
-          ? 'แพ็กเกจ AI ตั้งแต่ Kickstart จนถึง Production Scale พร้อมบริการดูแลต่อเนื่อง'
-          : 'Various AI packages for every need from Kickstart to Production Scale.'
+        title={
+          isThai
+            ? 'แพ็กเกจ AI - เริ่มที่ ฿95,000'
+            : 'AI Packages - Starting from ฿95,000'
         }
-        keywords={isThai
-          ? ['แพ็กเกจ AI', 'AI packages', 'บริการ AI', 'Machine Learning packages']
-          : ['AI packages', 'AI Thailand', 'Machine Learning packages', 'AI consulting packages']
+        description={
+          isThai
+            ? 'แพ็กเกจ AI ตั้งแต่ Kickstart จนถึง Production Scale พร้อมบริการดูแลต่อเนื่อง'
+            : 'Various AI packages for every need from Kickstart to Production Scale.'
+        }
+        keywords={
+          isThai
+            ? [
+                'แพ็กเกจ AI',
+                'AI packages',
+                'บริการ AI',
+                'Machine Learning packages',
+              ]
+            : [
+                'AI packages',
+                'AI Thailand',
+                'Machine Learning packages',
+                'AI consulting packages',
+              ]
         }
         url="/packages"
         type="website"
@@ -106,13 +123,15 @@ export default function PackagesPage({ params }: PackagesPageProps) {
       <div className="bg-bg">
         <MagicHero
           eyebrow={isThai ? 'แพ็กเกจ' : 'Packages'}
-          title={isThai
-            ? 'แพ็กเกจยืดหยุ่น ตั้งแต่เริ่มต้นจนถึงดูแลหลังเปิดใช้งาน'
-            : 'Flexible packages from strategy to post-launch care'
+          title={
+            isThai
+              ? 'แพ็กเกจยืดหยุ่น ตั้งแต่เริ่มต้นจนถึงดูแลหลังเปิดใช้งาน'
+              : 'Flexible packages from strategy to post-launch care'
           }
-          description={isThai
-            ? 'เริ่มจาก Kickstart, พิสูจน์ด้วย POC Lab, ขยายด้วย Pilot/Production และดูแลต่อเนื่องด้วย Care Plan'
-            : 'Start with a Kickstart workshop, prove value in the POC Lab, roll out with Pilot or Production Scale, and stay sharp with the Care Plan.'
+          description={
+            isThai
+              ? 'เริ่มจาก Kickstart, พิสูจน์ด้วย POC Lab, ขยายด้วย Pilot/Production และดูแลต่อเนื่องด้วย Care Plan'
+              : 'Start with a Kickstart workshop, prove value in the POC Lab, roll out with Pilot or Production Scale, and stay sharp with the Care Plan.'
           }
           metrics={metrics}
           align="center"
@@ -139,16 +158,24 @@ export default function PackagesPage({ params }: PackagesPageProps) {
               <p className="text-text-muted max-w-2xl mx-auto">
                 {isThai
                   ? 'เหมาะกับทีมที่ต้องการเริ่มเร็ว พร้อมงบและผลลัพธ์ที่วัดได้'
-                  : 'Designed for teams who want to start fast with a clear budget and measurable outcomes.'
-                }
+                  : 'Designed for teams who want to start fast with a clear budget and measurable outcomes.'}
               </p>
             </div>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
               {starterOffers.map(offer => (
-                <div key={offer.name} className="rounded-2xl border border-white/10 bg-surface/80 p-5">
-                  <h3 className="text-lg font-semibold text-text mb-1">{offer.name}</h3>
-                  <p className="text-xs text-text-muted mb-3">{offer.timeline}</p>
-                  <div className="text-2xl font-bold text-text mb-2">{offer.price}</div>
+                <div
+                  key={offer.name}
+                  className="rounded-2xl border border-white/10 bg-surface/80 p-5"
+                >
+                  <h3 className="text-lg font-semibold text-text mb-1">
+                    {offer.name}
+                  </h3>
+                  <p className="text-xs text-text-muted mb-3">
+                    {offer.timeline}
+                  </p>
+                  <div className="text-2xl font-bold text-text mb-2">
+                    {offer.price}
+                  </div>
                   <p className="text-sm text-text-muted">{offer.description}</p>
                 </div>
               ))}
@@ -165,15 +192,21 @@ export default function PackagesPage({ params }: PackagesPageProps) {
               <p className="text-text-muted max-w-2xl mx-auto">
                 {isThai
                   ? 'ราคาแปรผันตามความซับซ้อน ความเสี่ยง และข้อกำหนดด้านระบบ'
-                  : 'Pricing reflects complexity and risk, not just hours.'
-                }
+                  : 'Pricing reflects complexity and risk, not just hours.'}
               </p>
             </div>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
               {costDrivers.map(driver => (
-                <div key={driver.title} className="rounded-2xl border border-white/10 bg-surface/80 p-5">
-                  <h3 className="text-lg font-semibold text-text mb-2">{driver.title}</h3>
-                  <p className="text-sm text-text-muted">{driver.description}</p>
+                <div
+                  key={driver.title}
+                  className="rounded-2xl border border-white/10 bg-surface/80 p-5"
+                >
+                  <h3 className="text-lg font-semibold text-text mb-2">
+                    {driver.title}
+                  </h3>
+                  <p className="text-sm text-text-muted">
+                    {driver.description}
+                  </p>
                 </div>
               ))}
             </div>
@@ -188,17 +221,21 @@ export default function PackagesPage({ params }: PackagesPageProps) {
               <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
                 <div className="max-w-3xl space-y-3">
                   <h2 className="text-2xl font-semibold text-text">
-                    {isThai ? 'ยังไม่แน่ใจว่าแพ็กเกจไหนเหมาะ?' : 'Not sure which package fits?'}
+                    {isThai
+                      ? 'ยังไม่แน่ใจว่าแพ็กเกจไหนเหมาะ?'
+                      : 'Not sure which package fits?'}
                   </h2>
                   <p className="text-text-muted">
                     {isThai
                       ? 'ทีมของเราจะช่วยประเมินบริบทและแนะนำแพ็กเกจที่เหมาะกับคุณ'
-                      : 'Our team will review your context and recommend the right package or add-ons.'
-                    }
+                      : 'Our team will review your context and recommend the right package or add-ons.'}
                   </p>
                 </div>
                 <ShimmerButton asChild className="px-8 py-4 text-sm">
-                  <Link href={`${basePath}/contact` as any} className="flex items-center gap-2">
+                  <Link
+                    href={`${basePath}/contact` as any}
+                    className="flex items-center gap-2"
+                  >
                     {isThai ? 'คุยกับทีมเรา' : 'Talk to our team'}
                     <ArrowRight className="h-4 w-4" />
                   </Link>

@@ -2,8 +2,15 @@ import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
 import { SmartFarmContent } from './smartfarm-content';
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const t = await getTranslations({ locale: params.locale, namespace: 'products.smartfarm' });
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const t = await getTranslations({
+    locale: params.locale,
+    namespace: 'products.smartfarm',
+  });
 
   return {
     title: `${t('name')} - ${t('tagline')}`,
@@ -15,8 +22,15 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   };
 }
 
-export default async function SmartFarmPage({ params }: { params: { locale: string } }) {
-  const t = await getTranslations({ locale: params.locale, namespace: 'products.smartfarm' });
+export default async function SmartFarmPage({
+  params,
+}: {
+  params: { locale: string };
+}) {
+  const t = await getTranslations({
+    locale: params.locale,
+    namespace: 'products.smartfarm',
+  });
 
   // Extract all translations as plain object for Client Component
   const translations = {

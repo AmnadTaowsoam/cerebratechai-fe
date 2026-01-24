@@ -11,18 +11,25 @@ interface CrossLinkProps {
 const crossLinks = {
   'Edge CV': { packageSlug: 'pilot_launch', text: 'See Pilot Launch package' },
   'RAG/LLM': { packageSlug: 'poc_lab', text: 'See POC Lab package' },
-  'Analytics': { packageSlug: 'kickstart', text: 'See Kickstart package' },
-  'OCR': { packageSlug: 'pilot_launch', text: 'See Pilot Launch package' },
-  'IoT': { packageSlug: 'production_scale', text: 'See Production Scale package' }
+  Analytics: { packageSlug: 'kickstart', text: 'See Kickstart package' },
+  OCR: { packageSlug: 'pilot_launch', text: 'See Pilot Launch package' },
+  IoT: {
+    packageSlug: 'production_scale',
+    text: 'See Production Scale package',
+  },
 };
 
-export default function CrossLink({ locale = 'en', solutionFamily, packageSlug }: CrossLinkProps) {
+export default function CrossLink({
+  locale = 'en',
+  solutionFamily,
+  packageSlug,
+}: CrossLinkProps) {
   const isThai = locale === 'th';
   const basePath = `/${locale}`;
-  
+
   const link = crossLinks[solutionFamily as keyof typeof crossLinks];
   const targetSlug = packageSlug || link?.packageSlug;
-  
+
   if (!targetSlug) return null;
 
   return (
@@ -33,7 +40,9 @@ export default function CrossLink({ locale = 'en', solutionFamily, packageSlug }
             {isThai ? 'สนใจโซลูชันนี้?' : 'Interested in this solution?'}
           </p>
           <p className="text-xs text-text-muted">
-            {isThai ? 'ดูแพ็กเกจที่เกี่ยวข้อง' : link?.text || 'See related package'}
+            {isThai
+              ? 'ดูแพ็กเกจที่เกี่ยวข้อง'
+              : link?.text || 'See related package'}
           </p>
         </div>
         <Button
@@ -51,4 +60,3 @@ export default function CrossLink({ locale = 'en', solutionFamily, packageSlug }
     </div>
   );
 }
-

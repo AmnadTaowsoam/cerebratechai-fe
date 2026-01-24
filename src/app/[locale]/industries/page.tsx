@@ -23,7 +23,7 @@ export default function IndustriesPage() {
       solutions: ['Computer Vision', 'Predictive Analytics', 'Edge AI'],
       caseCount: 3,
       color: 'from-blue-500/20 to-cyan-500/20',
-      borderColor: 'border-blue-500/30'
+      borderColor: 'border-blue-500/30',
     },
     {
       slug: 'healthcare',
@@ -35,7 +35,7 @@ export default function IndustriesPage() {
       solutions: ['LLM & RAG', 'Computer Vision', 'Predictive Analytics'],
       caseCount: 2,
       color: 'from-pink-500/20 to-rose-500/20',
-      borderColor: 'border-pink-500/30'
+      borderColor: 'border-pink-500/30',
     },
     {
       slug: 'logistics',
@@ -47,7 +47,7 @@ export default function IndustriesPage() {
       solutions: ['Computer Vision', 'Predictive Analytics', 'Edge AI'],
       caseCount: 2,
       color: 'from-orange-500/20 to-amber-500/20',
-      borderColor: 'border-orange-500/30'
+      borderColor: 'border-orange-500/30',
     },
     {
       slug: 'enterprise',
@@ -59,8 +59,8 @@ export default function IndustriesPage() {
       solutions: ['LLM & RAG', 'Predictive Analytics', 'MLOps'],
       caseCount: 2,
       color: 'from-purple-500/20 to-violet-500/20',
-      borderColor: 'border-purple-500/30'
-    }
+      borderColor: 'border-purple-500/30',
+    },
   ];
 
   return (
@@ -68,10 +68,15 @@ export default function IndustriesPage() {
       {/* Hero Section */}
       <MagicHero
         eyebrow={isThai ? 'อุตสาหกรรม' : 'Industries'}
-        title={isThai ? 'โซลูชัน AI สำหรับทุกอุตสาหกรรม' : 'AI Solutions for Every Industry'}
-        description={isThai
-          ? 'เราเชี่ยวชาญในการสร้างโซลูชัน AI ที่ตรงกับความต้องการเฉพาะของแต่ละอุตสาหกรรม ตั้งแต่การผลิตไปจนถึงการดูแลสุขภาพ'
-          : 'We specialize in building AI solutions tailored to the unique needs of each industry, from manufacturing to healthcare.'
+        title={
+          isThai
+            ? 'โซลูชัน AI สำหรับทุกอุตสาหกรรม'
+            : 'AI Solutions for Every Industry'
+        }
+        description={
+          isThai
+            ? 'เราเชี่ยวชาญในการสร้างโซลูชัน AI ที่ตรงกับความต้องการเฉพาะของแต่ละอุตสาหกรรม ตั้งแต่การผลิตไปจนถึงการดูแลสุขภาพ'
+            : 'We specialize in building AI solutions tailored to the unique needs of each industry, from manufacturing to healthcare.'
         }
       >
         <Particles quantity={40} staticity={20} ease={60} />
@@ -82,7 +87,7 @@ export default function IndustriesPage() {
       <section className="py-20">
         <div className="container mx-auto px-6">
           <div className="grid gap-8 md:grid-cols-2">
-            {industries.map((industry) => {
+            {industries.map(industry => {
               const IconComponent = industry.icon;
 
               return (
@@ -110,7 +115,9 @@ export default function IndustriesPage() {
                     <div className="space-y-4">
                       <div>
                         <h4 className="text-sm font-semibold text-text mb-2">
-                          {isThai ? 'โซลูชันที่เกี่ยวข้อง:' : 'Related Solutions:'}
+                          {isThai
+                            ? 'โซลูชันที่เกี่ยวข้อง:'
+                            : 'Related Solutions:'}
                         </h4>
                         <div className="flex flex-wrap gap-2">
                           {industry.solutions.map((solution, idx) => (
@@ -127,10 +134,16 @@ export default function IndustriesPage() {
                       <div className="pt-4 border-t border-hairline">
                         <div className="flex items-center justify-between">
                           <span className="text-sm text-text-muted">
-                            {industry.caseCount} {isThai ? 'กรณีศึกษา' : 'case studies'}
+                            {industry.caseCount}{' '}
+                            {isThai ? 'กรณีศึกษา' : 'case studies'}
                           </span>
                           <Button variant="ghost" size="sm" asChild>
-                            <Link href={`${basePath}/industries/${industry.slug}` as any} className="flex items-center gap-2">
+                            <Link
+                              href={
+                                `${basePath}/industries/${industry.slug}` as any
+                              }
+                              className="flex items-center gap-2"
+                            >
                               {isThai ? 'เรียนรู้เพิ่มเติม' : 'Learn More'}
                               <ArrowRight className="h-4 w-4" />
                             </Link>
@@ -150,13 +163,12 @@ export default function IndustriesPage() {
       <section className="py-20 bg-surface/30">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold text-text mb-4">
-            {isThai ? 'ไม่เห็นอุตสาหกรรมของคุณ?' : 'Don\'t See Your Industry?'}
+            {isThai ? 'ไม่เห็นอุตสาหกรรมของคุณ?' : "Don't See Your Industry?"}
           </h2>
           <p className="text-text-muted mb-8 max-w-2xl mx-auto">
             {isThai
               ? 'เราทำงานกับหลากหลายอุตสาหกรรม พูดคุยกับทีมของเราเพื่อหารือเกี่ยวกับความต้องการเฉพาะของคุณ'
-              : 'We work with diverse industries. Talk to our team to discuss your specific needs.'
-            }
+              : 'We work with diverse industries. Talk to our team to discuss your specific needs.'}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg">

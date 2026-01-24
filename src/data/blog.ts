@@ -12,7 +12,10 @@ export type BlogPost = {
 export const BLOG_POSTS: BlogPost[] = [
   {
     slug: 'ai-implementation-best-practices',
-    title: { en: 'AI Implementation Best Practices: From Pilot to Production', th: 'ทำ AI ให้ไปถึง Production: แนวทางจาก Pilot สู่ระบบจริง' },
+    title: {
+      en: 'AI Implementation Best Practices: From Pilot to Production',
+      th: 'ทำ AI ให้ไปถึง Production: แนวทางจาก Pilot สู่ระบบจริง',
+    },
     excerpt: {
       en: 'A practical checklist to deliver AI projects end-to-end: scope, data readiness, evaluation, rollout, and operations.',
       th: 'เช็กลิสต์แบบใช้งานได้จริงสำหรับทำโปรเจกต์ AI ตั้งแต่ต้นจนจบ: scope, data readiness, evaluation, rollout และ operations',
@@ -36,7 +39,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: 'mlops-production-guide',
-    title: { en: 'MLOps in Production: A Practical Guide to Scaling AI Systems', th: 'MLOps ใน Production: คู่มือขยายระบบ AI แบบใช้งานจริง' },
+    title: {
+      en: 'MLOps in Production: A Practical Guide to Scaling AI Systems',
+      th: 'MLOps ใน Production: คู่มือขยายระบบ AI แบบใช้งานจริง',
+    },
     excerpt: {
       en: 'An end-to-end overview of MLOps: versioning, deployment, monitoring, and continuous improvement.',
       th: 'ภาพรวม MLOps ตั้งแต่ต้นจนจบ: versioning, deployment, monitoring และการปรับปรุงอย่างต่อเนื่อง',
@@ -60,7 +66,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: 'computer-vision-manufacturing',
-    title: { en: 'Computer Vision in Manufacturing: Practical Quality Inspection', th: 'Computer Vision ในโรงงาน: ตรวจคุณภาพแบบใช้งานจริง' },
+    title: {
+      en: 'Computer Vision in Manufacturing: Practical Quality Inspection',
+      th: 'Computer Vision ในโรงงาน: ตรวจคุณภาพแบบใช้งานจริง',
+    },
     excerpt: {
       en: 'A practical approach to vision-based inspection: data collection, labeling, evaluation, and deployment considerations.',
       th: 'แนวทางทำ inspection ด้วย vision: เก็บข้อมูล ทำ label ประเมินผล และข้อควรคำนึงก่อน deploy',
@@ -84,7 +93,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: 'llm-thai-language-optimization',
-    title: { en: 'LLM for Thai: Practical Optimization & Evaluation', th: 'LLM ภาษาไทย: ปรับจูนและประเมินผลแบบลงมือทำ' },
+    title: {
+      en: 'LLM for Thai: Practical Optimization & Evaluation',
+      th: 'LLM ภาษาไทย: ปรับจูนและประเมินผลแบบลงมือทำ',
+    },
     excerpt: {
       en: 'Thai tokenization, spacing, retrieval quality, and evaluation pitfalls—plus practical tips.',
       th: 'ประเด็นสำคัญของภาษาไทยที่กระทบ RAG/LLM: tokenization, เว้นวรรค, retrieval และหลุมพรางตอนประเมินผล',
@@ -108,7 +120,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: 'ai-roi-measurement',
-    title: { en: 'Measuring AI ROI: Beyond Technical Metrics', th: 'วัด ROI ของ AI: ให้เกินกว่าตัวเลขทางเทคนิค' },
+    title: {
+      en: 'Measuring AI ROI: Beyond Technical Metrics',
+      th: 'วัด ROI ของ AI: ให้เกินกว่าตัวเลขทางเทคนิค',
+    },
     excerpt: {
       en: 'How to measure and communicate business value of AI investments to stakeholders and executives.',
       th: 'วิธีวัดและสื่อสารมูลค่าทางธุรกิจของ AI ให้ผู้เกี่ยวข้องและผู้บริหารเข้าใจตรงกัน',
@@ -132,7 +147,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: 'edge-ai-deployment',
-    title: { en: 'Edge AI Deployment: Bringing Intelligence to the Edge', th: 'Edge AI Deployment: นำความฉลาดไปอยู่ที่หน้างาน' },
+    title: {
+      en: 'Edge AI Deployment: Bringing Intelligence to the Edge',
+      th: 'Edge AI Deployment: นำความฉลาดไปอยู่ที่หน้างาน',
+    },
     excerpt: {
       en: 'Deploying AI at the edge: hardware constraints, latency, privacy, connectivity, and optimization techniques.',
       th: 'แนวทาง deploy AI ที่ edge: ข้อจำกัดฮาร์ดแวร์ ความหน่วง ความเป็นส่วนตัว การเชื่อมต่อ และการ optimize',
@@ -156,7 +174,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: 'rag-in-production-playbook',
-    title: { en: 'RAG in Production: A Practical Playbook', th: 'RAG ใน Production: เพลย์บุ๊กแบบใช้งานจริง' },
+    title: {
+      en: 'RAG in Production: A Practical Playbook',
+      th: 'RAG ใน Production: เพลย์บุ๊กแบบใช้งานจริง',
+    },
     excerpt: {
       en: 'A set of practical practices for RAG: data governance, evaluation, regression tests, and safe rollout.',
       th: 'แนวทางทำ RAG ให้พร้อม production: governance, evaluation, regression test และ rollout แบบปลอดภัย',
@@ -180,8 +201,14 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: 'pdpa-gdpr-for-ai-projects',
-    title: { en: 'PDPA/GDPR for AI Projects: Operational Checklist', th: 'PDPA/GDPR สำหรับโปรเจกต์ AI: เช็กลิสต์การทำงาน' },
-    excerpt: { en: 'A practical alignment checklist for Legal/Compliance and Engineering (not legal advice).', th: 'เช็กลิสต์ทำงานร่วมกันระหว่าง Legal/Compliance และทีมวิศวกรรม (ไม่ใช่คำปรึกษากฎหมาย)' },
+    title: {
+      en: 'PDPA/GDPR for AI Projects: Operational Checklist',
+      th: 'PDPA/GDPR สำหรับโปรเจกต์ AI: เช็กลิสต์การทำงาน',
+    },
+    excerpt: {
+      en: 'A practical alignment checklist for Legal/Compliance and Engineering (not legal advice).',
+      th: 'เช็กลิสต์ทำงานร่วมกันระหว่าง Legal/Compliance และทีมวิศวกรรม (ไม่ใช่คำปรึกษากฎหมาย)',
+    },
     author: 'CerebraTechAI Team',
     date: '2025-07-15',
     readTime: { en: '9 min read', th: 'อ่าน 9 นาที' },
@@ -201,8 +228,14 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: 'fine-tune-vs-rag',
-    title: { en: 'Fine-tuning vs RAG: How to Choose (Practical Criteria)', th: 'Fine-tune vs RAG: เลือกอย่างไร (เกณฑ์แบบใช้งานจริง)' },
-    excerpt: { en: 'Decision criteria: data quality, update frequency, cost, latency, and governance constraints.', th: 'เกณฑ์ตัดสินใจ: คุณภาพข้อมูล ความถี่การเปลี่ยนแปลง ต้นทุน latency และข้อจำกัดด้าน governance' },
+    title: {
+      en: 'Fine-tuning vs RAG: How to Choose (Practical Criteria)',
+      th: 'Fine-tune vs RAG: เลือกอย่างไร (เกณฑ์แบบใช้งานจริง)',
+    },
+    excerpt: {
+      en: 'Decision criteria: data quality, update frequency, cost, latency, and governance constraints.',
+      th: 'เกณฑ์ตัดสินใจ: คุณภาพข้อมูล ความถี่การเปลี่ยนแปลง ต้นทุน latency และข้อจำกัดด้าน governance',
+    },
     author: 'CerebraTechAI Team',
     date: '2025-06-20',
     readTime: { en: '8 min read', th: 'อ่าน 8 นาที' },
@@ -222,8 +255,14 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: 'ai-spc-practical',
-    title: { en: 'AI-SPC: Practical Guide for Manufacturing Teams', th: 'AI-SPC: คู่มือแบบใช้งานจริงสำหรับทีมโรงงาน' },
-    excerpt: { en: 'How to add AI-assisted SPC in real lines: data, thresholds, false alarms, and rollout steps.', th: 'แนวทางเพิ่ม SPC แบบมี AI ช่วย: data, threshold, false alarm และขั้นตอน rollout' },
+    title: {
+      en: 'AI-SPC: Practical Guide for Manufacturing Teams',
+      th: 'AI-SPC: คู่มือแบบใช้งานจริงสำหรับทีมโรงงาน',
+    },
+    excerpt: {
+      en: 'How to add AI-assisted SPC in real lines: data, thresholds, false alarms, and rollout steps.',
+      th: 'แนวทางเพิ่ม SPC แบบมี AI ช่วย: data, threshold, false alarm และขั้นตอน rollout',
+    },
     author: 'CerebraTechAI Team',
     date: '2025-05-28',
     readTime: { en: '9 min read', th: 'อ่าน 9 นาที' },
@@ -243,8 +282,14 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: 'incident-response-for-ai',
-    title: { en: 'Incident Response for AI Systems: A Practical Runbook', th: 'Incident Response สำหรับระบบ AI: Runbook แบบใช้งานจริง' },
-    excerpt: { en: 'Runbooks, alerting, and triage patterns for AI incidents: data, model, infra, and product behaviors.', th: 'runbook, alerting และ triage สำหรับ incident ของ AI: data, model, infra และพฤติกรรมสินค้า' },
+    title: {
+      en: 'Incident Response for AI Systems: A Practical Runbook',
+      th: 'Incident Response สำหรับระบบ AI: Runbook แบบใช้งานจริง',
+    },
+    excerpt: {
+      en: 'Runbooks, alerting, and triage patterns for AI incidents: data, model, infra, and product behaviors.',
+      th: 'runbook, alerting และ triage สำหรับ incident ของ AI: data, model, infra และพฤติกรรมสินค้า',
+    },
     author: 'CerebraTechAI Team',
     date: '2025-05-01',
     readTime: { en: '10 min read', th: 'อ่าน 10 นาที' },
@@ -264,8 +309,14 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: 'ai-vendor-selection',
-    title: { en: 'Selecting an AI Vendor: A Practical Scorecard', th: 'เลือกเวนเดอร์ AI: scorecard แบบใช้งานจริง' },
-    excerpt: { en: 'How to compare vendors by delivery risk, security posture, cost, and long-term maintainability.', th: 'วิธีเทียบเวนเดอร์ด้วยความเสี่ยงการส่งมอบ ความปลอดภัย ต้นทุน และการดูแลระยะยาว' },
+    title: {
+      en: 'Selecting an AI Vendor: A Practical Scorecard',
+      th: 'เลือกเวนเดอร์ AI: scorecard แบบใช้งานจริง',
+    },
+    excerpt: {
+      en: 'How to compare vendors by delivery risk, security posture, cost, and long-term maintainability.',
+      th: 'วิธีเทียบเวนเดอร์ด้วยความเสี่ยงการส่งมอบ ความปลอดภัย ต้นทุน และการดูแลระยะยาว',
+    },
     author: 'CerebraTechAI Team',
     date: '2025-04-10',
     readTime: { en: '8 min read', th: 'อ่าน 8 นาที' },
@@ -286,6 +337,5 @@ export const BLOG_POSTS: BlogPost[] = [
 ];
 
 export function getBlogPostBySlug(slug: string) {
-  return BLOG_POSTS.find((post) => post.slug === slug);
+  return BLOG_POSTS.find(post => post.slug === slug);
 }
-

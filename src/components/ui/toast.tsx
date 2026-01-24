@@ -1,7 +1,8 @@
 import { cn } from '@/lib/utils';
 import * as React from 'react';
 
-export interface ToastProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
+export interface ToastProps
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
   variant?: 'default' | 'destructive' | 'success' | 'warning' | 'info';
   heading?: React.ReactNode;
   description?: React.ReactNode;
@@ -20,18 +21,20 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
           variant === 'success' && 'border-success bg-success text-white',
           variant === 'warning' && 'border-warning bg-warning text-white',
           variant === 'info' && 'border-info bg-info text-white',
-          className,
+          className
         )}
         {...props}
       >
         <div className="grid gap-1">
           {heading && <div className="text-sm font-semibold">{heading}</div>}
-          {description && <div className="text-sm opacity-90">{description}</div>}
+          {description && (
+            <div className="text-sm opacity-90">{description}</div>
+          )}
         </div>
         {action}
       </div>
     );
-  },
+  }
 );
 Toast.displayName = 'Toast';
 

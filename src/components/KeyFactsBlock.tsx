@@ -18,7 +18,7 @@ export default function KeyFactsBlock({
   facts,
   title,
   locale = 'en',
-  className = ''
+  className = '',
 }: KeyFactsBlockProps) {
   const isThai = locale === 'th';
   const defaultTitle = isThai ? 'ข้อมูลสำคัญ' : 'Key Facts';
@@ -33,9 +33,7 @@ export default function KeyFactsBlock({
           {facts.map((fact, index) => (
             <div key={index} className="flex items-start gap-3">
               <div className="flex-shrink-0 mt-0.5">
-                {fact.icon || (
-                  <CheckCircle2 className="h-5 w-5 text-primary" />
-                )}
+                {fact.icon || <CheckCircle2 className="h-5 w-5 text-primary" />}
               </div>
               <div className="flex-1">
                 <div className="text-sm font-medium text-text-muted mb-1">
@@ -50,9 +48,7 @@ export default function KeyFactsBlock({
                     ))}
                   </ul>
                 ) : (
-                  <div className="text-sm text-text">
-                    {fact.value}
-                  </div>
+                  <div className="text-sm text-text">{fact.value}</div>
                 )}
               </div>
             </div>

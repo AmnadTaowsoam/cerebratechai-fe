@@ -56,13 +56,17 @@ export default function PricingCards({ locale = 'en' }: PricingCardsProps) {
           {pkg.recommendAssurance && (
             <div className="mb-4 -mt-2 text-center">
               <span className="inline-block rounded-full bg-amber-500/20 px-3 py-1 text-xs font-medium text-amber-300">
-                {isThai ? 'แนะนำ: Assurance Sprint (+฿260k)' : 'Recommended: Assurance Sprint (+฿260k)'}
+                {isThai
+                  ? 'แนะนำ: Assurance Sprint (+฿260k)'
+                  : 'Recommended: Assurance Sprint (+฿260k)'}
               </span>
             </div>
           )}
 
           <div className="text-center mb-6">
-            <h3 className="text-xl font-bold text-text mb-2">{getText(pkg.title, pkg.titleTh)}</h3>
+            <h3 className="text-xl font-bold text-text mb-2">
+              {getText(pkg.title, pkg.titleTh)}
+            </h3>
             <div className="mb-2">
               <div className="text-sm text-text-muted mb-1">
                 {isThai ? 'เริ่มที่' : 'From'}
@@ -74,7 +78,9 @@ export default function PricingCards({ locale = 'en' }: PricingCardsProps) {
                 {getPriceUnit(pkg.priceUnit)}
               </span>
             </div>
-            <p className="text-sm text-text-muted">{getTimeline(pkg.timeline)}</p>
+            <p className="text-sm text-text-muted">
+              {getTimeline(pkg.timeline)}
+            </p>
           </div>
 
           <div className="space-y-3 mb-6">
@@ -91,7 +97,8 @@ export default function PricingCards({ locale = 'en' }: PricingCardsProps) {
               href={pkgPath(pkg.id, locale) as any}
               className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-3 text-sm font-medium text-white transition-all hover:from-blue-700 hover:to-purple-700 hover:shadow-lg"
             >
-              {getText(pkg.ctaLabel, pkg.ctaLabelTh) || (isThai ? 'ดูรายละเอียด' : 'View details')}
+              {getText(pkg.ctaLabel, pkg.ctaLabelTh) ||
+                (isThai ? 'ดูรายละเอียด' : 'View details')}
             </Link>
           </div>
         </div>

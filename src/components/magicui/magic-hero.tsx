@@ -64,7 +64,12 @@ const MagicHero = ({
         <Particles quantity={64} staticity={36} ease={75} />
       </div>
 
-      <div className={cn('relative z-10 container mx-auto px-6', containerClassName)}>
+      <div
+        className={cn(
+          'relative z-10 container mx-auto px-6',
+          containerClassName
+        )}
+      >
         <div
           className={cn(
             'gap-12',
@@ -75,10 +80,17 @@ const MagicHero = ({
                 : 'max-w-4xl'
           )}
         >
-          <div className={cn(children ? 'flex flex-col space-y-8' : 'space-y-8')}>
+          <div
+            className={cn(children ? 'flex flex-col space-y-8' : 'space-y-8')}
+          >
             {eyebrowNode && <div>{eyebrowNode}</div>}
 
-            <div className={cn('space-y-6', isCentered && 'items-center text-center')}>
+            <div
+              className={cn(
+                'space-y-6',
+                isCentered && 'items-center text-center'
+              )}
+            >
               <h1
                 className={cn(
                   'text-4xl font-bold leading-tight md:text-5xl',
@@ -88,25 +100,36 @@ const MagicHero = ({
                 <SparklesText text={title} className="leading-tight" />
               </h1>
               {description && (
-                <p className="max-w-3xl text-lg text-white/75 md:text-xl">{description}</p>
+                <p className="max-w-3xl text-lg text-white/75 md:text-xl">
+                  {description}
+                </p>
               )}
             </div>
 
-            {actions && <div className="flex flex-wrap items-center gap-4">{actions}</div>}
+            {actions && (
+              <div className="flex flex-wrap items-center gap-4">{actions}</div>
+            )}
 
             {metrics && metrics.length > 0 && (
               <div
                 className={cn(
                   'grid gap-6 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur',
-                  metrics.length > 1 ? 'sm:grid-cols-2 md:grid-cols-3' : 'sm:grid-cols-1'
+                  metrics.length > 1
+                    ? 'sm:grid-cols-2 md:grid-cols-3'
+                    : 'sm:grid-cols-1'
                 )}
               >
-                {metrics.map((metric) => (
-                  <div key={`${metric.label}-${metric.value}`} className={cn(
-                    'space-y-1',
-                    isCentered ? 'text-center' : 'text-left'
-                  )}>
-                    <div className="text-3xl font-semibold md:text-4xl">{metric.value}</div>
+                {metrics.map(metric => (
+                  <div
+                    key={`${metric.label}-${metric.value}`}
+                    className={cn(
+                      'space-y-1',
+                      isCentered ? 'text-center' : 'text-left'
+                    )}
+                  >
+                    <div className="text-3xl font-semibold md:text-4xl">
+                      {metric.value}
+                    </div>
                     <div className="text-xs uppercase tracking-[0.3em] text-white/60">
                       {metric.label}
                     </div>
@@ -133,4 +156,3 @@ const MagicHero = ({
 };
 
 export default MagicHero;
-

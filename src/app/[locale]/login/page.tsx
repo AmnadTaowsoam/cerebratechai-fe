@@ -16,7 +16,9 @@ export default function LoginPage({ params }: { params: { locale: string } }) {
         align="center"
         actions={
           <ShimmerButton asChild className="px-6 py-3 text-sm">
-            <Link href={`${basePath}/register` as any}>Need an account? Create one</Link>
+            <Link href={`${basePath}/register` as any}>
+              Need an account? Create one
+            </Link>
           </ShimmerButton>
         }
       >
@@ -24,7 +26,10 @@ export default function LoginPage({ params }: { params: { locale: string } }) {
           <LoginForm />
           <p className="text-center text-sm text-white/60">
             Need help?{' '}
-            <a href="mailto:hello@cerebratechai.com" className="text-primary hover:text-primary/80">
+            <a
+              href="mailto:hello@cerebratechai.com"
+              className="text-primary hover:text-primary/80"
+            >
               Contact support
             </a>
           </p>

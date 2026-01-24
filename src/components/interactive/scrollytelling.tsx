@@ -25,24 +25,39 @@ const storySteps = [
 ];
 
 interface StoryStepTextProps {
-  step: typeof storySteps[0];
+  step: (typeof storySteps)[0];
   index: number;
   totalSteps: number;
   scrollYProgress: any;
 }
 
-function StoryStepText({ step, index, totalSteps, scrollYProgress }: StoryStepTextProps) {
+function StoryStepText({
+  step,
+  index,
+  totalSteps,
+  scrollYProgress,
+}: StoryStepTextProps) {
   const start = index / totalSteps;
   const end = (index + 1) / totalSteps;
-  const opacity = useTransform(scrollYProgress, [start, start + 0.1, end - 0.1, end], [0, 1, 1, 0]);
-  const y = useTransform(scrollYProgress, [start, start + 0.1, end - 0.1, end], [50, 0, 0, -50]);
+  const opacity = useTransform(
+    scrollYProgress,
+    [start, start + 0.1, end - 0.1, end],
+    [0, 1, 1, 0]
+  );
+  const y = useTransform(
+    scrollYProgress,
+    [start, start + 0.1, end - 0.1, end],
+    [50, 0, 0, -50]
+  );
 
   return (
     <motion.div
       style={{ opacity, y }}
       className="absolute inset-0 flex flex-col justify-center"
     >
-      <span className={`inline-block w-12 h-12 rounded-full ${step.color} mb-4`} />
+      <span
+        className={`inline-block w-12 h-12 rounded-full ${step.color} mb-4`}
+      />
       <h3 className="text-4xl font-bold mb-4">{step.title}</h3>
       <p className="text-xl text-text-muted">{step.desc}</p>
     </motion.div>
@@ -50,16 +65,25 @@ function StoryStepText({ step, index, totalSteps, scrollYProgress }: StoryStepTe
 }
 
 interface StoryStepVisualProps {
-  step: typeof storySteps[0];
+  step: (typeof storySteps)[0];
   index: number;
   totalSteps: number;
   scrollYProgress: any;
 }
 
-function StoryStepVisual({ step, index, totalSteps, scrollYProgress }: StoryStepVisualProps) {
+function StoryStepVisual({
+  step,
+  index,
+  totalSteps,
+  scrollYProgress,
+}: StoryStepVisualProps) {
   const start = index / totalSteps;
   const end = (index + 1) / totalSteps;
-  const opacity = useTransform(scrollYProgress, [start, start + 0.05, end - 0.05, end], [0, 1, 1, 0]);
+  const opacity = useTransform(
+    scrollYProgress,
+    [start, start + 0.05, end - 0.05, end],
+    [0, 1, 1, 0]
+  );
   const scale = useTransform(scrollYProgress, [start, end], [1.1, 1]);
 
   return (
@@ -72,7 +96,9 @@ function StoryStepVisual({ step, index, totalSteps, scrollYProgress }: StoryStep
         style={{ scale }}
         className={`w-full h-full ${step.color} opacity-20 flex items-center justify-center`}
       >
-        <span className="text-9xl opacity-50 font-bold text-white">{index + 1}</span>
+        <span className="text-9xl opacity-50 font-bold text-white">
+          {index + 1}
+        </span>
       </motion.div>
     </motion.div>
   );
@@ -91,7 +117,9 @@ export function Scrollytelling() {
         {/* Progress Bar */}
         <motion.div
           className="absolute top-0 left-0 h-1 bg-primary z-50"
-          style={{ width: useTransform(scrollYProgress, [0, 1], ['0%', '100%']) }}
+          style={{
+            width: useTransform(scrollYProgress, [0, 1], ['0%', '100%']),
+          }}
         />
 
         <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 items-center h-full">

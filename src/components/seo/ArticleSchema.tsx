@@ -22,7 +22,7 @@ export function ArticleSchema({
 }: ArticleSchemaProps) {
   const locale = useLocale();
   const isThai = locale.startsWith('th');
-  
+
   const articleData = {
     '@context': 'https://schema.org',
     '@type': 'Article',

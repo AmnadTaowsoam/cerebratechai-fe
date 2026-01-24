@@ -11,9 +11,21 @@ interface CaseCardProps {
 }
 
 const dataSensitivityLabels = {
-  Public: { th: 'ข้อมูลสาธารณะ', en: 'PUBLIC DATA', color: 'text-sky-300 bg-sky-500/20' },
-  Anonymised: { th: 'ข้อมูลไม่ระบุตัวตน', en: 'ANONYMISED', color: 'text-cyan-300 bg-cyan-500/20' },
-  Synthetic: { th: 'ข้อมูลสังเคราะห์', en: 'SYNTHETIC DATA', color: 'text-purple-300 bg-purple-500/20' },
+  Public: {
+    th: 'ข้อมูลสาธารณะ',
+    en: 'PUBLIC DATA',
+    color: 'text-sky-300 bg-sky-500/20',
+  },
+  Anonymised: {
+    th: 'ข้อมูลไม่ระบุตัวตน',
+    en: 'ANONYMISED',
+    color: 'text-cyan-300 bg-cyan-500/20',
+  },
+  Synthetic: {
+    th: 'ข้อมูลสังเคราะห์',
+    en: 'SYNTHETIC DATA',
+    color: 'text-purple-300 bg-purple-500/20',
+  },
 };
 
 export default function CaseCard({ caseItem, locale = 'en' }: CaseCardProps) {
@@ -30,9 +42,7 @@ export default function CaseCard({ caseItem, locale = 'en' }: CaseCardProps) {
         <CardTitle className="text-lg font-semibold text-text">
           {caseItem.title}
         </CardTitle>
-        <p className="text-sm text-text-muted">
-          {caseItem.subtitle}
-        </p>
+        <p className="text-sm text-text-muted">{caseItem.subtitle}</p>
 
         {/* KPI Chips */}
         <div className="flex flex-wrap gap-2 mt-3">
@@ -41,7 +51,8 @@ export default function CaseCard({ caseItem, locale = 'en' }: CaseCardProps) {
               key={index}
               className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-primary/20 text-primary"
             >
-              {outcome.value} {isThai ? outcome.label : outcome.label.toLowerCase()}
+              {outcome.value}{' '}
+              {isThai ? outcome.label : outcome.label.toLowerCase()}
             </span>
           ))}
         </div>
@@ -64,7 +75,9 @@ export default function CaseCard({ caseItem, locale = 'en' }: CaseCardProps) {
 
         {/* Data Sensitivity Badge */}
         <div className="flex justify-start">
-          <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${badge.color}`}>
+          <span
+            className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${badge.color}`}
+          >
             {isThai ? badge.th : badge.en}
           </span>
         </div>
@@ -75,9 +88,7 @@ export default function CaseCard({ caseItem, locale = 'en' }: CaseCardProps) {
             <div className="flex flex-wrap gap-4 text-xs">
               {caseItem.metricsFooter.map((metric, index) => (
                 <div key={index}>
-                  <p className="font-semibold text-text">
-                    {metric.label}
-                  </p>
+                  <p className="font-semibold text-text">{metric.label}</p>
                   <p className="text-text-muted">{metric.value}</p>
                 </div>
               ))}
@@ -92,7 +103,10 @@ export default function CaseCard({ caseItem, locale = 'en' }: CaseCardProps) {
             className="flex-1 justify-center px-4 py-2 text-sm"
             background="linear-gradient(135deg, rgba(14,165,233,0.9) 0%, rgba(99,102,241,0.9) 45%, rgba(124,58,237,0.9) 100%)"
           >
-            <Link href={`${basePath}/cases/${caseItem.slug}` as any} className="flex items-center gap-2">
+            <Link
+              href={`${basePath}/cases/${caseItem.slug}` as any}
+              className="flex items-center gap-2"
+            >
               {isThai ? 'ดูเรื่องราว' : 'View story'}
               <ArrowRight className="h-4 w-4" />
             </Link>
@@ -104,7 +118,10 @@ export default function CaseCard({ caseItem, locale = 'en' }: CaseCardProps) {
             asChild
             className="px-3 py-2 text-xs"
           >
-            <Link href={`${basePath}/contact?case=${caseItem.slug}` as any} className="flex items-center gap-1">
+            <Link
+              href={`${basePath}/contact?case=${caseItem.slug}` as any}
+              className="flex items-center gap-1"
+            >
               <MessageCircle className="h-3 w-3" />
               {isThai ? 'ขอรายละเอียด' : 'Request'}
             </Link>

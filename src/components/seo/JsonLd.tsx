@@ -11,7 +11,11 @@ export function JsonLd({ data }: JsonLdProps) {
   const nonce = useNonce();
 
   return (
-    <script nonce={nonce} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />
+    <script
+      nonce={nonce}
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
   );
 }
 
@@ -79,8 +83,12 @@ export function OrganizationJsonLd() {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          name: isThai ? 'บริการ AI / Machine Learning' : 'AI and Machine Learning Services',
-          description: isThai ? 'พัฒนาและนำระบบ AI ไปใช้งานจริง' : 'Development and deployment of production-ready AI systems',
+          name: isThai
+            ? 'บริการ AI / Machine Learning'
+            : 'AI and Machine Learning Services',
+          description: isThai
+            ? 'พัฒนาและนำระบบ AI ไปใช้งานจริง'
+            : 'Development and deployment of production-ready AI systems',
         },
       },
       {
@@ -88,7 +96,9 @@ export function OrganizationJsonLd() {
         itemOffered: {
           '@type': 'Service',
           name: isThai ? 'ที่ปรึกษา AI' : 'AI Consulting',
-          description: isThai ? 'ให้คำปรึกษาด้านกลยุทธ์และการนำ AI ไปใช้' : 'AI strategy and implementation consulting',
+          description: isThai
+            ? 'ให้คำปรึกษาด้านกลยุทธ์และการนำ AI ไปใช้'
+            : 'AI strategy and implementation consulting',
         },
       },
       {
@@ -96,7 +106,9 @@ export function OrganizationJsonLd() {
         itemOffered: {
           '@type': 'Service',
           name: isThai ? 'พัฒนา Full-stack' : 'Full-Stack Development',
-          description: isThai ? 'พัฒนาระบบตั้งแต่ Edge ถึง Cloud' : 'End-to-end system development from Edge to Cloud',
+          description: isThai
+            ? 'พัฒนาระบบตั้งแต่ Edge ถึง Cloud'
+            : 'End-to-end system development from Edge to Cloud',
         },
       },
     ],
@@ -116,12 +128,17 @@ export function WebsiteJsonLd() {
     name: 'CerebraTechAI',
     alternateName: 'CerebraTechAI AI Studio',
     url: SITE_URL,
-    description: isThai ? 'Boutique AI Studio ในกรุงเทพฯ สำหรับโซลูชัน AI พร้อมใช้งานจริง' : 'Transform your pain points into production-ready AI systems',
+    description: isThai
+      ? 'Boutique AI Studio ในกรุงเทพฯ สำหรับโซลูชัน AI พร้อมใช้งานจริง'
+      : 'Transform your pain points into production-ready AI systems',
     inLanguage: [locale],
     publisher: {
       '@type': 'Organization',
       name: 'CerebraTechAI',
-      logo: { '@type': 'ImageObject', url: `${SITE_URL}/cerebratechai_logo.png` },
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE_URL}/cerebratechai_logo.png`,
+      },
     },
   };
 
@@ -146,7 +163,9 @@ export function ServiceJsonLd() {
     availableLanguage: ['English', 'Thai'],
     offers: {
       '@type': 'Offer',
-      description: isThai ? 'แพ็กเกจ AI และทางเลือกด้านราคา' : 'Various AI packages and pricing options',
+      description: isThai
+        ? 'แพ็กเกจ AI และทางเลือกด้านราคา'
+        : 'Various AI packages and pricing options',
       priceRange: 'THB 95,000-2,500,000',
       priceCurrency: 'THB',
     },
@@ -160,7 +179,9 @@ export function ServiceJsonLd() {
           itemOffered: {
             '@type': 'Service',
             name: 'Kickstart',
-            description: isThai ? 'เฟสเริ่มต้นเพื่อกำหนดโจทย์และประเมินความเป็นไปได้' : 'Entry-level package for AI exploration',
+            description: isThai
+              ? 'เฟสเริ่มต้นเพื่อกำหนดโจทย์และประเมินความเป็นไปได้'
+              : 'Entry-level package for AI exploration',
           },
           price: '95000',
           priceCurrency: 'THB',
@@ -170,7 +191,9 @@ export function ServiceJsonLd() {
           itemOffered: {
             '@type': 'Service',
             name: 'POC Lab',
-            description: isThai ? 'พัฒนา POC พร้อมประเมินผลและวางแผนการนำไปใช้' : 'POC development package',
+            description: isThai
+              ? 'พัฒนา POC พร้อมประเมินผลและวางแผนการนำไปใช้'
+              : 'POC development package',
           },
           price: '420000',
           priceCurrency: 'THB',
@@ -192,7 +215,9 @@ export function LocalBusinessJsonLd() {
     '@type': 'LocalBusiness',
     '@id': `${SITE_URL}#localbusiness`,
     name: 'CerebraTechAI',
-    description: isThai ? 'Boutique AI Studio ในกรุงเทพฯ' : 'Boutique AI Studio in Bangkok',
+    description: isThai
+      ? 'Boutique AI Studio ในกรุงเทพฯ'
+      : 'Boutique AI Studio in Bangkok',
     url: SITE_URL,
     telephone: '+66-85-662-1113',
     email: 'hello@cerebratechai.com',
@@ -203,7 +228,11 @@ export function LocalBusinessJsonLd() {
       addressRegion: 'Bangkok',
       addressCountryName: isThai ? 'ประเทศไทย' : 'Thailand',
     },
-    geo: { '@type': 'GeoCoordinates', latitude: '13.7563', longitude: '100.5018' },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: '13.7563',
+      longitude: '100.5018',
+    },
     openingHoursSpecification: {
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],

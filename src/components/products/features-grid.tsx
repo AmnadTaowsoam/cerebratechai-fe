@@ -40,10 +40,12 @@ export function FeaturesGrid({ features }: FeaturesGridProps) {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group"
               >
-                <div className={cn(
-                  'h-full p-6 rounded-2xl border border-surface-3 bg-surface/50',
-                  'hover:border-primary/50 hover:shadow-lg transition-all duration-300'
-                )}>
+                <div
+                  className={cn(
+                    'h-full p-6 rounded-2xl border border-surface-3 bg-surface/50',
+                    'hover:border-primary/50 hover:shadow-lg transition-all duration-300'
+                  )}
+                >
                   <div className="flex items-center gap-4 mb-4">
                     <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
                       <Icon className="w-6 h-6 text-primary" />
@@ -52,9 +54,7 @@ export function FeaturesGrid({ features }: FeaturesGridProps) {
                       {feature.title}
                     </h3>
                   </div>
-                  <p className="text-text-muted">
-                    {feature.description}
-                  </p>
+                  <p className="text-text-muted">{feature.description}</p>
                 </div>
               </motion.div>
             );

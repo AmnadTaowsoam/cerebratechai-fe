@@ -26,7 +26,9 @@ export default function CasesPage({ params }: CasesPageProps) {
     let filtered = [...CASES];
 
     if (filters.sector) {
-      filtered = filtered.filter(caseItem => caseItem.sector === filters.sector);
+      filtered = filtered.filter(
+        caseItem => caseItem.sector === filters.sector
+      );
     }
     if (filters.solutionFamily) {
       filtered = filtered.filter(caseItem =>
@@ -34,14 +36,16 @@ export default function CasesPage({ params }: CasesPageProps) {
       );
     }
     if (filters.dataSensitivity) {
-      filtered = filtered.filter(caseItem =>
-        caseItem.dataSensitivity === filters.dataSensitivity
+      filtered = filtered.filter(
+        caseItem => caseItem.dataSensitivity === filters.dataSensitivity
       );
     }
     if (filters.outcomeType) {
       filtered = filtered.filter(caseItem =>
         caseItem.outcomes.some(outcome =>
-          outcome.label.toLowerCase().includes(filters.outcomeType.toLowerCase())
+          outcome.label
+            .toLowerCase()
+            .includes(filters.outcomeType.toLowerCase())
         )
       );
     }
@@ -66,30 +70,50 @@ export default function CasesPage({ params }: CasesPageProps) {
   return (
     <>
       <SeoHead
-        title={isThai ? 'เคสตัวอย่าง AI - งานที่ทำจริง' : 'AI Case Studies - Real Successful Projects'}
-        description={isThai
-          ? 'รวมเคสจริงจากหลายอุตสาหกรรม พร้อมผลลัพธ์เชิงธุรกิจที่วัดได้'
-          : 'Explore real AI case studies we have successfully completed across various industries and solutions.'
+        title={
+          isThai
+            ? 'เคสตัวอย่าง AI - งานที่ทำจริง'
+            : 'AI Case Studies - Real Successful Projects'
         }
-        keywords={isThai
-          ? ['เคสตัวอย่าง AI', 'โปรเจกต์ AI', 'AI ไทย', 'Machine Learning']
-          : ['AI case studies', 'AI projects', 'AI Thailand', 'Machine Learning examples']
+        description={
+          isThai
+            ? 'รวมเคสจริงจากหลายอุตสาหกรรม พร้อมผลลัพธ์เชิงธุรกิจที่วัดได้'
+            : 'Explore real AI case studies we have successfully completed across various industries and solutions.'
+        }
+        keywords={
+          isThai
+            ? ['เคสตัวอย่าง AI', 'โปรเจกต์ AI', 'AI ไทย', 'Machine Learning']
+            : [
+                'AI case studies',
+                'AI projects',
+                'AI Thailand',
+                'Machine Learning examples',
+              ]
         }
         url="/cases"
         type="website"
       />
       <ServiceSchema
         serviceName={isThai ? 'เคสตัวอย่าง AI' : 'AI Case Studies'}
-        description={isThai ? 'ตัวอย่างงานจริงจากโปรเจกต์ AI' : 'Real successful AI case studies'}
+        description={
+          isThai
+            ? 'ตัวอย่างงานจริงจากโปรเจกต์ AI'
+            : 'Real successful AI case studies'
+        }
       />
 
       <div className="bg-bg">
         <MagicHero
           eyebrow={isThai ? 'เคสตัวอย่าง' : 'Case studies'}
-          title={isThai ? 'เรื่องเล่าที่บาลานซ์ความรู้กับความเป็นส่วนตัว' : 'Stories that balance insight with confidentiality'}
-          description={isThai
-            ? 'เรานำเสนอผลลัพธ์ที่วัดได้ พร้อมคงความลับของลูกค้าด้วยข้อมูลที่ผ่านการทำให้ไม่ระบุตัวตนหรือสังเคราะห์'
-            : 'We balance measurable impact with strict confidentiality. Case stories use anonymised, synthetic, and public datasets where needed.'
+          title={
+            isThai
+              ? 'เรื่องเล่าที่บาลานซ์ความรู้กับความเป็นส่วนตัว'
+              : 'Stories that balance insight with confidentiality'
+          }
+          description={
+            isThai
+              ? 'เรานำเสนอผลลัพธ์ที่วัดได้ พร้อมคงความลับของลูกค้าด้วยข้อมูลที่ผ่านการทำให้ไม่ระบุตัวตนหรือสังเคราะห์'
+              : 'We balance measurable impact with strict confidentiality. Case stories use anonymised, synthetic, and public datasets where needed.'
           }
           metrics={metrics}
           align="center"
@@ -100,13 +124,14 @@ export default function CasesPage({ params }: CasesPageProps) {
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto text-center mb-12">
               <h2 className="text-2xl font-bold text-text mb-4">
-                {isThai ? 'กำลังเจอปัญหาใกล้เคียง?' : 'Facing Similar Challenges?'}
+                {isThai
+                  ? 'กำลังเจอปัญหาใกล้เคียง?'
+                  : 'Facing Similar Challenges?'}
               </h2>
               <p className="text-text-muted">
                 {isThai
                   ? 'ดูตัวอย่างเคสที่คล้ายกับโจทย์ของคุณ แล้วเลือกด้วยตัวกรองด้านล่าง'
-                  : 'See how we have helped other organizations solve challenges similar to yours. Use filters below to find case studies that match your needs.'
-                }
+                  : 'See how we have helped other organizations solve challenges similar to yours. Use filters below to find case studies that match your needs.'}
               </p>
             </div>
 
@@ -116,7 +141,9 @@ export default function CasesPage({ params }: CasesPageProps) {
                   {isThai ? 'ลดต้นทุน' : 'Cost Reduction'}
                 </div>
                 <p className="text-sm text-text-muted">
-                  {isThai ? 'เคสที่ช่วยลดต้นทุนการดำเนินงาน' : 'Find cases that reduced operational costs'}
+                  {isThai
+                    ? 'เคสที่ช่วยลดต้นทุนการดำเนินงาน'
+                    : 'Find cases that reduced operational costs'}
                 </p>
               </div>
               <div className="rounded-2xl border border-white/10 bg-surface/80 p-6 text-center">
@@ -124,7 +151,9 @@ export default function CasesPage({ params }: CasesPageProps) {
                   {isThai ? 'เพิ่มประสิทธิภาพ' : 'Efficiency Gains'}
                 </div>
                 <p className="text-sm text-text-muted">
-                  {isThai ? 'เคสที่ทำให้กระบวนการดีขึ้น' : 'See how processes were improved'}
+                  {isThai
+                    ? 'เคสที่ทำให้กระบวนการดีขึ้น'
+                    : 'See how processes were improved'}
                 </p>
               </div>
               <div className="rounded-2xl border border-white/10 bg-surface/80 p-6 text-center">
@@ -132,7 +161,9 @@ export default function CasesPage({ params }: CasesPageProps) {
                   {isThai ? 'ขยายธุรกิจ' : 'Business Growth'}
                 </div>
                 <p className="text-sm text-text-muted">
-                  {isThai ? 'เคสที่ช่วยขยายโอกาสด้วย AI' : 'Learn how AI enabled growth'}
+                  {isThai
+                    ? 'เคสที่ช่วยขยายโอกาสด้วย AI'
+                    : 'Learn how AI enabled growth'}
                 </p>
               </div>
             </div>
@@ -149,7 +180,7 @@ export default function CasesPage({ params }: CasesPageProps) {
 
           <div className="relative z-10 container mx-auto px-6">
             <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-              {filteredCases.map((caseItem) => (
+              {filteredCases.map(caseItem => (
                 <CaseCard
                   key={caseItem.slug}
                   caseItem={caseItem}

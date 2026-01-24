@@ -25,7 +25,7 @@ export const socialLinks = {
 
 export const getLineLink = (product?: string): string => {
   if (!product) return contactLinks.line.consumer;
-  
+
   const productKey = product.toLowerCase() as keyof typeof contactLinks.line;
   return contactLinks.line[productKey] || contactLinks.line.consumer;
 };

@@ -1,38 +1,63 @@
 import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { BarChart, Microscope, Brain, Activity, AlertTriangle, TrendingDown, Factory, CheckCircle2, Package } from 'lucide-react';
+import {
+  BarChart,
+  Microscope,
+  Brain,
+  Activity,
+  AlertTriangle,
+  TrendingDown,
+  Factory,
+  CheckCircle2,
+  Package,
+} from 'lucide-react';
 import { ContactForm } from '@/components/landing/contact-form';
 import { SECTION_SPACING } from '@/lib/constants/spacing';
 import { SeoHead, OrganizationJsonLd } from '@/components/seo';
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
   const isThai = params.locale.startsWith('th');
   return {
-    title: isThai ? 'ChartSentinel - AI-SPC Quality Control | ลดของเสีย 85%' : 'ChartSentinel - AI-SPC Quality Control | Reduce Waste by 85%',
+    title: isThai
+      ? 'ChartSentinel - AI-SPC Quality Control | ลดของเสีย 85%'
+      : 'ChartSentinel - AI-SPC Quality Control | Reduce Waste by 85%',
     description: isThai
       ? 'AI-SPC Platform สำหรับควบคุมคุณภาพในโรงงาน ลดของเสียได้ถึง 85% ด้วย Real-time Signals และ Lab Quality Integration'
       : 'AI-SPC Platform for factory quality control. Reduce waste by up to 85% with Real-time Signals and Lab Quality Integration',
   };
 }
 
-export default async function ChartSentinelPage({ params }: { params: { locale: string } }) {
-  const t = await getTranslations({ locale: params.locale, namespace: 'products.chartsentinel' });
+export default async function ChartSentinelPage({
+  params,
+}: {
+  params: { locale: string };
+}) {
+  const t = await getTranslations({
+    locale: params.locale,
+    namespace: 'products.chartsentinel',
+  });
   const isThai = params.locale.startsWith('th');
   const basePath = `/${params.locale}`;
 
   const heroContent = {
     en: {
-      title: "ChartSentinel",
-      subtitle: "AI-SPC Quality Control Platform",
-      usp: "Reduce Factory Waste by 85%",
-      description: "Real-time anomaly detection and quality control for manufacturing. Integrate AI-SPC with your production line to catch defects before they become costly.",
+      title: 'ChartSentinel',
+      subtitle: 'AI-SPC Quality Control Platform',
+      usp: 'Reduce Factory Waste by 85%',
+      description:
+        'Real-time anomaly detection and quality control for manufacturing. Integrate AI-SPC with your production line to catch defects before they become costly.',
     },
     th: {
-      title: "ChartSentinel",
-      subtitle: "AI-SPC Platform สำหรับควบคุมคุณภาพ",
-      usp: "ลดของเสียในโรงงาน 85%",
-      description: "ตรวจจับความผิดปกติแบบ Real-time และควบคุมคุณภาพในโรงงาน เชื่อมต่อ AI-SPC กับสายการผลิตเพื่อจับข้อบกพร่องก่อนที่จะกลายเป็นต้นทุน",
+      title: 'ChartSentinel',
+      subtitle: 'AI-SPC Platform สำหรับควบคุมคุณภาพ',
+      usp: 'ลดของเสียในโรงงาน 85%',
+      description:
+        'ตรวจจับความผิดปกติแบบ Real-time และควบคุมคุณภาพในโรงงาน เชื่อมต่อ AI-SPC กับสายการผลิตเพื่อจับข้อบกพร่องก่อนที่จะกลายเป็นต้นทุน',
     },
   };
 
@@ -41,41 +66,41 @@ export default async function ChartSentinelPage({ params }: { params: { locale: 
   const problemSolution = {
     en: {
       problem: {
-        title: "The Problem",
+        title: 'The Problem',
         points: [
-          "Traditional SPC charts miss subtle patterns and early warning signals",
-          "Quality issues discovered too late, causing massive waste",
-          "Lab quality data disconnected from real-time process data",
-          "Manual analysis is slow and error-prone",
+          'Traditional SPC charts miss subtle patterns and early warning signals',
+          'Quality issues discovered too late, causing massive waste',
+          'Lab quality data disconnected from real-time process data',
+          'Manual analysis is slow and error-prone',
         ],
       },
       solution: {
-        title: "Our Solution",
+        title: 'Our Solution',
         points: [
-          "AI-powered real-time signal detection catches anomalies instantly",
-          "Dual-mode intelligence: Real-time + Lab Quality integration",
-          "Context Pack technology for domain-specific quality patterns",
-          "Automated alerts prevent defects before they impact production",
+          'AI-powered real-time signal detection catches anomalies instantly',
+          'Dual-mode intelligence: Real-time + Lab Quality integration',
+          'Context Pack technology for domain-specific quality patterns',
+          'Automated alerts prevent defects before they impact production',
         ],
       },
     },
     th: {
       problem: {
-        title: "ปัญหา",
+        title: 'ปัญหา',
         points: [
-          "SPC charts แบบเดิมพลาดสัญญาณเตือนและรูปแบบที่ซับซ้อน",
-          "พบปัญหาคุณภาพช้าเกินไป ทำให้เกิดของเสียจำนวนมาก",
-          "ข้อมูล Lab Quality ไม่เชื่อมต่อกับข้อมูล Process แบบ Real-time",
-          "การวิเคราะห์ด้วยมือช้าและผิดพลาดได้ง่าย",
+          'SPC charts แบบเดิมพลาดสัญญาณเตือนและรูปแบบที่ซับซ้อน',
+          'พบปัญหาคุณภาพช้าเกินไป ทำให้เกิดของเสียจำนวนมาก',
+          'ข้อมูล Lab Quality ไม่เชื่อมต่อกับข้อมูล Process แบบ Real-time',
+          'การวิเคราะห์ด้วยมือช้าและผิดพลาดได้ง่าย',
         ],
       },
       solution: {
-        title: "โซลูชันของเรา",
+        title: 'โซลูชันของเรา',
         points: [
-          "AI ตรวจจับสัญญาณผิดปกติแบบ Real-time ทันที",
-          "Dual-mode Intelligence: รวม Real-time + Lab Quality",
-          "Context Pack สำหรับรูปแบบคุณภาพเฉพาะอุตสาหกรรม",
-          "แจ้งเตือนอัตโนมัติป้องกันข้อบกพร่องก่อนส่งผลกระทบ",
+          'AI ตรวจจับสัญญาณผิดปกติแบบ Real-time ทันที',
+          'Dual-mode Intelligence: รวม Real-time + Lab Quality',
+          'Context Pack สำหรับรูปแบบคุณภาพเฉพาะอุตสาหกรรม',
+          'แจ้งเตือนอัตโนมัติป้องกันข้อบกพร่องก่อนส่งผลกระทบ',
         ],
       },
     },
@@ -160,9 +185,22 @@ export default async function ChartSentinelPage({ params }: { params: { locale: 
       <SeoHead
         title={`${content.title} - ${content.subtitle}`}
         description={content.description}
-        keywords={isThai
-          ? ['AI-SPC', 'Quality Control', 'Manufacturing', 'ลดของเสีย', 'ChartSentinel']
-          : ['AI-SPC', 'Quality Control', 'Manufacturing', 'Waste Reduction', 'ChartSentinel']
+        keywords={
+          isThai
+            ? [
+                'AI-SPC',
+                'Quality Control',
+                'Manufacturing',
+                'ลดของเสีย',
+                'ChartSentinel',
+              ]
+            : [
+                'AI-SPC',
+                'Quality Control',
+                'Manufacturing',
+                'Waste Reduction',
+                'ChartSentinel',
+              ]
         }
         url="/products/chartsentinel"
         type="website"
@@ -171,7 +209,9 @@ export default async function ChartSentinelPage({ params }: { params: { locale: 
 
       <div className="min-h-screen bg-bg">
         {/* Hero Section */}
-        <section className={`${SECTION_SPACING.HERO} relative overflow-hidden bg-gradient-to-br from-orange-500/10 via-red-500/10 to-pink-500/10`}>
+        <section
+          className={`${SECTION_SPACING.HERO} relative overflow-hidden bg-gradient-to-br from-orange-500/10 via-red-500/10 to-pink-500/10`}
+        >
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <div className="inline-block mb-4 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold">
@@ -192,16 +232,10 @@ export default async function ChartSentinelPage({ params }: { params: { locale: 
                 {content.description}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  href="#demo"
-                  className="btn-primary"
-                >
+                <Link href="#demo" className="btn-primary">
                   {isThai ? 'ขอ Demo' : 'Request Demo'}
                 </Link>
-                <Link
-                  href="#features"
-                  className="btn-secondary"
-                >
+                <Link href="#features" className="btn-secondary">
                   {isThai ? 'ดูคุณสมบัติ' : 'View Features'}
                 </Link>
               </div>
@@ -219,7 +253,9 @@ export default async function ChartSentinelPage({ params }: { params: { locale: 
                   <div className="w-12 h-12 rounded-lg bg-red-500/10 flex items-center justify-center">
                     <AlertTriangle className="w-6 h-6 text-red-500" />
                   </div>
-                  <h2 className="text-2xl font-bold">{psContent.problem.title}</h2>
+                  <h2 className="text-2xl font-bold">
+                    {psContent.problem.title}
+                  </h2>
                 </div>
                 <ul className="space-y-4">
                   {psContent.problem.points.map((point, index) => (
@@ -237,7 +273,9 @@ export default async function ChartSentinelPage({ params }: { params: { locale: 
                   <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
                     <CheckCircle2 className="w-6 h-6 text-primary" />
                   </div>
-                  <h2 className="text-2xl font-bold">{psContent.solution.title}</h2>
+                  <h2 className="text-2xl font-bold">
+                    {psContent.solution.title}
+                  </h2>
                 </div>
                 <ul className="space-y-4">
                   {psContent.solution.points.map((point, index) => (
@@ -262,8 +300,7 @@ export default async function ChartSentinelPage({ params }: { params: { locale: 
               <p className="text-text-muted max-w-2xl mx-auto">
                 {isThai
                   ? 'เทคโนโลยีที่ช่วยให้คุณควบคุมคุณภาพได้อย่างมีประสิทธิภาพ'
-                  : 'Technology that helps you control quality effectively'
-                }
+                  : 'Technology that helps you control quality effectively'}
               </p>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -275,7 +312,9 @@ export default async function ChartSentinelPage({ params }: { params: { locale: 
                   <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                     <feature.icon className="w-6 h-6 text-primary" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                  <h3 className="text-xl font-semibold mb-2">
+                    {feature.title}
+                  </h3>
                   <p className="text-text-muted">{feature.description}</p>
                 </div>
               ))}
@@ -300,7 +339,9 @@ export default async function ChartSentinelPage({ params }: { params: { locale: 
                   <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
                     <useCase.icon className="w-8 h-8 text-primary" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">{useCase.title}</h3>
+                  <h3 className="text-xl font-semibold mb-2">
+                    {useCase.title}
+                  </h3>
                   <p className="text-text-muted">{useCase.description}</p>
                 </div>
               ))}
@@ -319,8 +360,12 @@ export default async function ChartSentinelPage({ params }: { params: { locale: 
             <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
               {/* Pilot */}
               <div className="bg-surface p-8 rounded-xl border border-surface-3">
-                <h3 className="text-2xl font-semibold mb-2">{isThai ? 'Pilot' : 'Pilot'}</h3>
-                <div className="text-4xl font-bold mb-4 text-primary">฿99,000</div>
+                <h3 className="text-2xl font-semibold mb-2">
+                  {isThai ? 'Pilot' : 'Pilot'}
+                </h3>
+                <div className="text-4xl font-bold mb-4 text-primary">
+                  ฿99,000
+                </div>
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-center gap-2 text-text-muted">
                     <CheckCircle2 className="w-5 h-5 text-primary" />
@@ -328,7 +373,9 @@ export default async function ChartSentinelPage({ params }: { params: { locale: 
                   </li>
                   <li className="flex items-center gap-2 text-text-muted">
                     <CheckCircle2 className="w-5 h-5 text-primary" />
-                    <span>{isThai ? 'Analytics พื้นฐาน' : 'Basic analytics'}</span>
+                    <span>
+                      {isThai ? 'Analytics พื้นฐาน' : 'Basic analytics'}
+                    </span>
                   </li>
                   <li className="flex items-center gap-2 text-text-muted">
                     <CheckCircle2 className="w-5 h-5 text-primary" />
@@ -348,20 +395,28 @@ export default async function ChartSentinelPage({ params }: { params: { locale: 
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-white text-primary rounded-full text-sm font-semibold">
                   {isThai ? 'แนะนำ' : 'Recommended'}
                 </div>
-                <h3 className="text-2xl font-semibold mb-2">{isThai ? 'Production' : 'Production'}</h3>
+                <h3 className="text-2xl font-semibold mb-2">
+                  {isThai ? 'Production' : 'Production'}
+                </h3>
                 <div className="text-4xl font-bold mb-4">฿249,000</div>
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-5 h-5" />
-                    <span>{isThai ? '5 สายการผลิต' : '5 production lines'}</span>
+                    <span>
+                      {isThai ? '5 สายการผลิต' : '5 production lines'}
+                    </span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-5 h-5" />
-                    <span>{isThai ? 'Analytics ขั้นสูง' : 'Advanced analytics'}</span>
+                    <span>
+                      {isThai ? 'Analytics ขั้นสูง' : 'Advanced analytics'}
+                    </span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-5 h-5" />
-                    <span>{isThai ? 'Priority Support' : 'Priority support'}</span>
+                    <span>
+                      {isThai ? 'Priority Support' : 'Priority support'}
+                    </span>
                   </li>
                 </ul>
                 <Link
@@ -374,20 +429,32 @@ export default async function ChartSentinelPage({ params }: { params: { locale: 
 
               {/* Enterprise */}
               <div className="bg-surface p-8 rounded-xl border border-surface-3">
-                <h3 className="text-2xl font-semibold mb-2">{isThai ? 'Enterprise' : 'Enterprise'}</h3>
-                <div className="text-4xl font-bold mb-4 text-primary">{isThai ? 'Custom' : 'Custom'}</div>
+                <h3 className="text-2xl font-semibold mb-2">
+                  {isThai ? 'Enterprise' : 'Enterprise'}
+                </h3>
+                <div className="text-4xl font-bold mb-4 text-primary">
+                  {isThai ? 'Custom' : 'Custom'}
+                </div>
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-center gap-2 text-text-muted">
                     <CheckCircle2 className="w-5 h-5 text-primary" />
-                    <span>{isThai ? 'สายการผลิตไม่จำกัด' : 'Unlimited lines'}</span>
+                    <span>
+                      {isThai ? 'สายการผลิตไม่จำกัด' : 'Unlimited lines'}
+                    </span>
                   </li>
                   <li className="flex items-center gap-2 text-text-muted">
                     <CheckCircle2 className="w-5 h-5 text-primary" />
-                    <span>{isThai ? 'Custom Integrations' : 'Custom integrations'}</span>
+                    <span>
+                      {isThai ? 'Custom Integrations' : 'Custom integrations'}
+                    </span>
                   </li>
                   <li className="flex items-center gap-2 text-text-muted">
                     <CheckCircle2 className="w-5 h-5 text-primary" />
-                    <span>{isThai ? 'On-premise Deployment' : 'On-premise deployment'}</span>
+                    <span>
+                      {isThai
+                        ? 'On-premise Deployment'
+                        : 'On-premise deployment'}
+                    </span>
                   </li>
                 </ul>
                 <Link
@@ -415,14 +482,20 @@ export default async function ChartSentinelPage({ params }: { params: { locale: 
                   key={index}
                   className="bg-bg p-6 rounded-xl border border-surface-3"
                 >
-                  <p className="text-text-muted mb-4 italic">"{testimonial.quote}"</p>
+                  <p className="text-text-muted mb-4 italic">
+                    "{testimonial.quote}"
+                  </p>
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                      <span className="text-primary font-semibold">{testimonial.author[0]}</span>
+                      <span className="text-primary font-semibold">
+                        {testimonial.author[0]}
+                      </span>
                     </div>
                     <div>
                       <p className="font-semibold">{testimonial.author}</p>
-                      <p className="text-sm text-text-muted">{testimonial.company}</p>
+                      <p className="text-sm text-text-muted">
+                        {testimonial.company}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -437,13 +510,14 @@ export default async function ChartSentinelPage({ params }: { params: { locale: 
             <div className="max-w-2xl mx-auto">
               <div className="text-center mb-8">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  {isThai ? 'ขอ Demo ChartSentinel' : 'Request ChartSentinel Demo'}
+                  {isThai
+                    ? 'ขอ Demo ChartSentinel'
+                    : 'Request ChartSentinel Demo'}
                 </h2>
                 <p className="text-text-muted">
                   {isThai
                     ? 'มาดูว่า ChartSentinel จะช่วยลดของเสียในโรงงานของคุณได้อย่างไร'
-                    : 'See how ChartSentinel can help reduce waste in your factory'
-                  }
+                    : 'See how ChartSentinel can help reduce waste in your factory'}
                 </p>
               </div>
               <ContactForm />
@@ -452,16 +526,19 @@ export default async function ChartSentinelPage({ params }: { params: { locale: 
         </section>
 
         {/* CTA Section */}
-        <section className={`${SECTION_SPACING.CTA} bg-gradient-to-r from-orange-500 to-red-500`}>
+        <section
+          className={`${SECTION_SPACING.CTA} bg-gradient-to-r from-orange-500 to-red-500`}
+        >
           <div className="container mx-auto px-4 text-center text-white">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              {isThai ? 'พร้อมลดของเสียในโรงงานของคุณ?' : 'Ready to Reduce Waste in Your Factory?'}
+              {isThai
+                ? 'พร้อมลดของเสียในโรงงานของคุณ?'
+                : 'Ready to Reduce Waste in Your Factory?'}
             </h2>
             <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
               {isThai
                 ? 'เริ่มต้นใช้งาน ChartSentinel วันนี้และลดของเสียได้ถึง 85%'
-                : 'Start using ChartSentinel today and reduce waste by up to 85%'
-              }
+                : 'Start using ChartSentinel today and reduce waste by up to 85%'}
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link

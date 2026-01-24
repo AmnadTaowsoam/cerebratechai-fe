@@ -20,7 +20,9 @@ export default function PricingPage() {
 
   const faqs = [
     {
-      question: isThai ? 'ควรเริ่มจากแพ็กเกจไหน?' : 'Which package is right for my business?',
+      question: isThai
+        ? 'ควรเริ่มจากแพ็กเกจไหน?'
+        : 'Which package is right for my business?',
       answer: isThai
         ? 'แนะนำเริ่มจาก Kickstart เพื่อประเมินความเป็นไปได้ จากนั้นค่อยขยับไป POC Lab หรือ Pilot ตามเป้าหมาย'
         : 'We recommend starting with Kickstart to explore possibilities, then expanding to POC Lab or Pilot Launch based on your needs.',
@@ -32,7 +34,9 @@ export default function PricingPage() {
         : 'No, there are no hidden costs. The prices shown are final.',
     },
     {
-      question: isThai ? 'ปรับแพ็กเกจตามโจทย์ได้ไหม?' : 'Can packages be customized?',
+      question: isThai
+        ? 'ปรับแพ็กเกจตามโจทย์ได้ไหม?'
+        : 'Can packages be customized?',
       answer: isThai
         ? 'ได้ เราสามารถปรับขอบเขตและ deliverables ให้เหมาะกับโจทย์ของคุณ'
         : 'Yes, we can customize packages to fit your specific needs.',
@@ -47,13 +51,23 @@ export default function PricingPage() {
         ? 'เหมาะสำหรับยืนยัน use-case และ ROI ก่อนขยายสเกล'
         : 'Best for validating the first use-case, ROI, and direction before scaling.',
       bullets: isThai
-        ? ['ขอบเขตเล็ก เห็นผลเร็ว', 'ราคาคงที่ งบชัดเจน', 'มี KPI และแผน 90 วัน']
-        : ['Small scope, fast outcomes', 'Fixed price with clear budget', 'KPI + 90-day plan included'],
+        ? [
+            'ขอบเขตเล็ก เห็นผลเร็ว',
+            'ราคาคงที่ งบชัดเจน',
+            'มี KPI และแผน 90 วัน',
+          ]
+        : [
+            'Small scope, fast outcomes',
+            'Fixed price with clear budget',
+            'KPI + 90-day plan included',
+          ],
       cta: isThai ? 'ดู Starter Packages' : 'Explore starter packages',
     },
     {
       title: isThai ? 'Scale / Enterprise' : 'Scale / Enterprise',
-      subtitle: isThai ? 'Pilot Launch และ Production Scale' : 'Pilot Launch and Production Scale',
+      subtitle: isThai
+        ? 'Pilot Launch และ Production Scale'
+        : 'Pilot Launch and Production Scale',
       description: isThai
         ? 'เหมาะสำหรับ production พร้อม SLA และ compliance'
         : 'For production deployments with SLA, compliance, and enterprise-grade stability.',
@@ -63,7 +77,11 @@ export default function PricingPage() {
             'แผน DR/rollback + hardening',
             'ขยายด้วย Assurance และ Care Plan',
           ]
-        : ['Production rollout + monitoring/guardrails', 'DR/rollback plan and hardening', 'Extend with Assurance and Care Plan'],
+        : [
+            'Production rollout + monitoring/guardrails',
+            'DR/rollback plan and hardening',
+            'Extend with Assurance and Care Plan',
+          ],
       cta: isThai ? 'ดูแพ็กเกจระดับองค์กร' : 'View scale packages',
     },
   ];
@@ -98,7 +116,11 @@ export default function PricingPage() {
   return (
     <>
       <SeoHead
-        title={isThai ? 'ราคาแพ็กเกจ AI - เริ่มที่ ฿95,000' : 'AI Package Pricing - Starting from ฿95,000'}
+        title={
+          isThai
+            ? 'ราคาแพ็กเกจ AI - เริ่มที่ ฿95,000'
+            : 'AI Package Pricing - Starting from ฿95,000'
+        }
         description={
           isThai
             ? 'แพ็กเกจ AI สำหรับทุกขนาดธุรกิจ เริ่มจาก Kickstart ถึง Production Scale'
@@ -106,8 +128,19 @@ export default function PricingPage() {
         }
         keywords={
           isThai
-            ? ['ราคาแพ็กเกจ AI', 'AI packages', 'บริการ AI', 'Machine Learning ราคา']
-            : ['AI pricing', 'AI packages', 'AI Thailand', 'Machine Learning pricing', 'AI consulting pricing']
+            ? [
+                'ราคาแพ็กเกจ AI',
+                'AI packages',
+                'บริการ AI',
+                'Machine Learning ราคา',
+              ]
+            : [
+                'AI pricing',
+                'AI packages',
+                'AI Thailand',
+                'Machine Learning pricing',
+                'AI consulting pricing',
+              ]
         }
         url="/pricing"
         type="website"
@@ -118,7 +151,9 @@ export default function PricingPage() {
       <div className="bg-bg">
         <MagicHero
           eyebrow={isThai ? 'ราคาแบบโปร่งใส' : 'Transparent Pricing'}
-          title={isThai ? 'เลือกเส้นทาง AI ที่เหมาะกับคุณ' : 'Choose Your AI Journey'}
+          title={
+            isThai ? 'เลือกเส้นทาง AI ที่เหมาะกับคุณ' : 'Choose Your AI Journey'
+          }
           description={
             isThai
               ? 'แพ็กเกจถูกออกแบบให้เริ่มได้ง่ายและขยายได้เมื่อพร้อม'
@@ -141,62 +176,79 @@ export default function PricingPage() {
               </h2>
               <div className="grid gap-6 md:grid-cols-3 mb-8">
                 <div className="rounded-2xl border border-hairline bg-surface/80 p-6 text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">Fixed Price</div>
+                  <div className="text-3xl font-bold text-primary mb-2">
+                    Fixed Price
+                  </div>
                   <h3 className="font-semibold text-text mb-2">
                     {isThai ? 'ราคาคงที่' : 'Fixed Price'}
                   </h3>
                   <p className="text-sm text-text-muted">
                     {isThai
                       ? 'ไม่มีค่าใช้จ่ายแฝง ตกลงขอบเขตชัดเจน'
-                      : 'No hidden costs. What you see is what you pay.'
-                    }
+                      : 'No hidden costs. What you see is what you pay.'}
                   </p>
                 </div>
                 <div className="rounded-2xl border border-hairline bg-surface/80 p-6 text-center">
-                  <div className="text-3xl font-bold text-accent mb-2">Transparent</div>
+                  <div className="text-3xl font-bold text-accent mb-2">
+                    Transparent
+                  </div>
                   <h3 className="font-semibold text-text mb-2">
                     {isThai ? 'โปร่งใส' : 'Transparent'}
                   </h3>
                   <p className="text-sm text-text-muted">
                     {isThai
                       ? 'ระบุสิ่งที่รวมไว้ชัดเจนในแพ็กเกจ'
-                      : 'Everything included in the price. No add-ons required.'
-                    }
+                      : 'Everything included in the price. No add-ons required.'}
                   </p>
                 </div>
                 <div className="rounded-2xl border border-hairline bg-surface/80 p-6 text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">Value-based</div>
+                  <div className="text-3xl font-bold text-primary mb-2">
+                    Value-based
+                  </div>
                   <h3 className="font-semibold text-text mb-2">
                     {isThai ? 'ยึดตามคุณค่า' : 'Value-based'}
                   </h3>
                   <p className="text-sm text-text-muted">
                     {isThai
                       ? 'ราคาอ้างอิงตามผลลัพธ์ ไม่ใช่ชั่วโมงทำงาน'
-                      : 'Pricing reflects the value you receive, not just time spent.'
-                    }
+                      : 'Pricing reflects the value you receive, not just time spent.'}
                   </p>
                 </div>
               </div>
               <div className="rounded-2xl border border-hairline bg-surface/80 p-6">
                 <h3 className="font-semibold text-text mb-3">
-                  {isThai ? 'สิ่งที่รวมในราคา' : 'What\'s Included in the Price?'}
+                  {isThai
+                    ? 'สิ่งที่รวมในราคา'
+                    : "What's Included in the Price?"}
                 </h3>
                 <ul className="space-y-2 text-sm text-text-muted">
                   <li className="flex items-start gap-2">
                     <span className="mt-1 h-2 w-2 rounded-full bg-primary flex-shrink-0" />
-                    <span>{isThai ? 'ทีมผู้เชี่ยวชาญและนักวิทยาศาสตร์ข้อมูล' : 'Expert consultants and data scientists'}</span>
+                    <span>
+                      {isThai
+                        ? 'ทีมผู้เชี่ยวชาญและนักวิทยาศาสตร์ข้อมูล'
+                        : 'Expert consultants and data scientists'}
+                    </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="mt-1 h-2 w-2 rounded-full bg-primary flex-shrink-0" />
-                    <span>{isThai ? 'พัฒนาและทดสอบระบบ' : 'Development and testing'}</span>
+                    <span>
+                      {isThai ? 'พัฒนาและทดสอบระบบ' : 'Development and testing'}
+                    </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="mt-1 h-2 w-2 rounded-full bg-primary flex-shrink-0" />
-                    <span>{isThai ? 'เอกสารและการอบรม' : 'Documentation and training'}</span>
+                    <span>
+                      {isThai
+                        ? 'เอกสารและการอบรม'
+                        : 'Documentation and training'}
+                    </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="mt-1 h-2 w-2 rounded-full bg-primary flex-shrink-0" />
-                    <span>{isThai ? 'ติดตั้งและส่งมอบ' : 'Deployment and handover'}</span>
+                    <span>
+                      {isThai ? 'ติดตั้งและส่งมอบ' : 'Deployment and handover'}
+                    </span>
                   </li>
                 </ul>
               </div>
@@ -209,13 +261,14 @@ export default function PricingPage() {
           <div className="container mx-auto px-6">
             <div className="text-center mb-16">
               <h2 className="text-3xl font-bold text-text mb-4">
-                {isThai ? 'แพ็กเกจสำหรับการทำ AI' : 'AI Implementation Packages'}
+                {isThai
+                  ? 'แพ็กเกจสำหรับการทำ AI'
+                  : 'AI Implementation Packages'}
               </h2>
               <p className="text-text-muted max-w-2xl mx-auto">
                 {isThai
                   ? 'เลือกแพ็กเกจที่เหมาะกับโจทย์และงบประมาณของคุณ'
-                  : 'Choose the package that best fits your current needs and budget. All packages include our core expertise and proven methodologies.'
-                }
+                  : 'Choose the package that best fits your current needs and budget. All packages include our core expertise and proven methodologies.'}
               </p>
             </div>
 
@@ -237,15 +290,22 @@ export default function PricingPage() {
               </p>
             </div>
             <div className="grid gap-6 lg:grid-cols-2">
-              {starterVsScale.map((tier) => (
-                <div key={tier.title} className="rounded-2xl border border-hairline bg-surface/80 p-6">
+              {starterVsScale.map(tier => (
+                <div
+                  key={tier.title}
+                  className="rounded-2xl border border-hairline bg-surface/80 p-6"
+                >
                   <div className="flex items-baseline justify-between mb-3">
-                    <h3 className="text-xl font-semibold text-text">{tier.title}</h3>
-                    <span className="text-sm text-text-muted">{tier.subtitle}</span>
+                    <h3 className="text-xl font-semibold text-text">
+                      {tier.title}
+                    </h3>
+                    <span className="text-sm text-text-muted">
+                      {tier.subtitle}
+                    </span>
                   </div>
                   <p className="text-text-muted mb-4">{tier.description}</p>
                   <ul className="space-y-2 text-sm text-text-muted mb-6">
-                    {tier.bullets.map((bullet) => (
+                    {tier.bullets.map(bullet => (
                       <li key={bullet} className="flex items-start gap-2">
                         <span className="mt-1 h-2 w-2 rounded-full bg-primary flex-shrink-0" />
                         <span>{bullet}</span>
@@ -275,10 +335,17 @@ export default function PricingPage() {
               </p>
             </div>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-              {costDrivers.map((driver) => (
-                <div key={driver.title} className="rounded-2xl border border-hairline bg-surface/80 p-5">
-                  <h3 className="text-lg font-semibold text-text mb-2">{driver.title}</h3>
-                  <p className="text-sm text-text-muted">{driver.description}</p>
+              {costDrivers.map(driver => (
+                <div
+                  key={driver.title}
+                  className="rounded-2xl border border-hairline bg-surface/80 p-5"
+                >
+                  <h3 className="text-lg font-semibold text-text mb-2">
+                    {driver.title}
+                  </h3>
+                  <p className="text-sm text-text-muted">
+                    {driver.description}
+                  </p>
                 </div>
               ))}
             </div>
@@ -290,13 +357,14 @@ export default function PricingPage() {
           <div className="container mx-auto px-6">
             <div className="text-center mb-12">
               <h2 className="text-2xl font-bold text-text mb-4">
-                {isThai ? 'สร้างความมั่นใจด้วยผลลัพธ์จริง' : 'Trusted by Industry Leaders'}
+                {isThai
+                  ? 'สร้างความมั่นใจด้วยผลลัพธ์จริง'
+                  : 'Trusted by Industry Leaders'}
               </h2>
               <p className="text-text-muted max-w-2xl mx-auto">
                 {isThai
                   ? 'เราช่วยลูกค้าหลายอุตสาหกรรมยกระดับธุรกิจด้วย AI'
-                  : 'Join hundreds of successful companies who have transformed their business with our AI solutions'
-                }
+                  : 'Join hundreds of successful companies who have transformed their business with our AI solutions'}
               </p>
             </div>
 
@@ -320,10 +388,10 @@ export default function PricingPage() {
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-accent mb-2">Mon-Fri</div>
-                <div className="text-sm text-text-muted">
-                  09:00-18:00
+                <div className="text-3xl font-bold text-accent mb-2">
+                  Mon-Fri
                 </div>
+                <div className="text-sm text-text-muted">09:00-18:00</div>
               </div>
             </div>
           </div>
@@ -348,8 +416,7 @@ export default function PricingPage() {
               <p className="text-text-muted max-w-2xl mx-auto">
                 {isThai
                   ? 'เปรียบเทียบความสามารถสำคัญของแต่ละแพ็กเกจ'
-                  : 'See how our packages compare across key features and capabilities'
-                }
+                  : 'See how our packages compare across key features and capabilities'}
               </p>
             </div>
 
@@ -373,20 +440,20 @@ export default function PricingPage() {
               <p className="text-text-muted max-w-2xl mx-auto">
                 {isThai
                   ? 'รวมคำถามยอดนิยมเกี่ยวกับราคาและแพ็กเกจ'
-                  : 'Have questions about our pricing? Here are answers to the most common questions we receive.'
-                }
+                  : 'Have questions about our pricing? Here are answers to the most common questions we receive.'}
               </p>
             </div>
 
             <div className="max-w-3xl mx-auto space-y-6">
               {faqs.map((faq, index) => (
-                <div key={index} className="rounded-2xl border border-hairline bg-surface/80 p-6">
+                <div
+                  key={index}
+                  className="rounded-2xl border border-hairline bg-surface/80 p-6"
+                >
                   <h3 className="text-lg font-semibold text-text mb-3">
                     {faq.question}
                   </h3>
-                  <p className="text-text-muted">
-                    {faq.answer}
-                  </p>
+                  <p className="text-text-muted">{faq.answer}</p>
                 </div>
               ))}
             </div>
@@ -394,7 +461,9 @@ export default function PricingPage() {
         </section>
 
         {/* CTA Section */}
-        <section className={`${SECTION_SPACING.CTA} bg-gradient-to-br from-primary/10 via-transparent to-accent/10`}>
+        <section
+          className={`${SECTION_SPACING.CTA} bg-gradient-to-br from-primary/10 via-transparent to-accent/10`}
+        >
           <div className="container mx-auto px-6 text-center">
             <h2 className="text-3xl font-bold text-text mb-4">
               {isThai ? 'พร้อมเริ่มต้นหรือยัง?' : 'Ready to Get Started?'}
@@ -402,8 +471,7 @@ export default function PricingPage() {
             <p className="text-text-muted mb-8 max-w-2xl mx-auto">
               {isThai
                 ? 'คุยกับทีมเพื่อประเมินโจทย์และเลือกแพ็กเกจที่เหมาะสม'
-                : 'Not sure which package is right for you? Let\'s discuss your needs and find the perfect solution for your AI journey.'
-              }
+                : "Not sure which package is right for you? Let's discuss your needs and find the perfect solution for your AI journey."}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg">

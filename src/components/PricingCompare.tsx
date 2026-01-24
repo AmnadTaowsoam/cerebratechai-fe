@@ -48,7 +48,10 @@ const featureMap: Record<string, Record<string, { en: string; th: string }>> = {
     kickstart: { en: 'Not included', th: 'ไม่รวม' },
     poc_lab: { en: 'Not included', th: 'ไม่รวม' },
     pilot_launch: { en: 'Basic security', th: 'Security พื้นฐาน' },
-    production_scale: { en: 'Enterprise compliance', th: 'Compliance ระดับองค์กร' },
+    production_scale: {
+      en: 'Enterprise compliance',
+      th: 'Compliance ระดับองค์กร',
+    },
   },
 };
 
@@ -70,7 +73,10 @@ export default function PricingCompare({ locale = 'en' }: PricingCompareProps) {
                 {isThai ? 'ฟีเจอร์' : 'Features'}
               </th>
               {packages.map(pkg => (
-                <th key={pkg.id} className="text-center py-3 px-4 font-semibold text-text min-w-[120px]">
+                <th
+                  key={pkg.id}
+                  className="text-center py-3 px-4 font-semibold text-text min-w-[120px]"
+                >
                   {isThai ? (pkg.titleTh ?? pkg.title) : pkg.title}
                 </th>
               ))}
@@ -83,10 +89,17 @@ export default function PricingCompare({ locale = 'en' }: PricingCompareProps) {
                   {isThai ? feature.nameTh : feature.name}
                 </td>
                 {packages.map(pkg => (
-                  <td key={pkg.id} className="text-center py-3 px-4 text-text-muted">
+                  <td
+                    key={pkg.id}
+                    className="text-center py-3 px-4 text-text-muted"
+                  >
                     {featureMap[feature.key]?.[pkg.id]
-                      ? (isThai ? featureMap[feature.key][pkg.id].th : featureMap[feature.key][pkg.id].en)
-                      : (isThai ? 'ไม่รวม' : 'Not included')}
+                      ? isThai
+                        ? featureMap[feature.key][pkg.id].th
+                        : featureMap[feature.key][pkg.id].en
+                      : isThai
+                        ? 'ไม่รวม'
+                        : 'Not included'}
                   </td>
                 ))}
               </tr>

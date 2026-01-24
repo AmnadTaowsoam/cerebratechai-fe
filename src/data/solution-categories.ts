@@ -26,72 +26,66 @@ export const solutionCategories: SolutionCategory[] = [
     id: 'llm-rag',
     name: {
       en: 'LLM & RAG Solutions',
-      th: 'โซลูชัน LLM และ RAG'
+      th: 'โซลูชัน LLM และ RAG',
     },
     description: {
       en: 'Thai-optimized language models and retrieval-augmented generation for knowledge management and intelligent assistance',
-      th: 'โมเดลภาษาและระบบ RAG ที่ปรับแต่งสำหรับภาษาไทย สำหรับการจัดการความรู้และผู้ช่วยอัจฉริยะ'
+      th: 'โมเดลภาษาและระบบ RAG ที่ปรับแต่งสำหรับภาษาไทย สำหรับการจัดการความรู้และผู้ช่วยอัจฉริยะ',
     },
     type: 'ai-core',
-    solutionSlugs: [
-      'llm-knowledge-assistant',
-      'knowledge-management-solution'
-    ],
-    order: 1
+    solutionSlugs: ['llm-knowledge-assistant', 'knowledge-management-solution'],
+    order: 1,
   },
   {
     id: 'computer-vision',
     name: {
       en: 'Computer Vision',
-      th: 'Computer Vision'
+      th: 'Computer Vision',
     },
     description: {
       en: 'Visual AI for quality inspection, OCR, and object detection with explainable results',
-      th: 'AI ด้านการมองเห็นสำหรับการตรวจสอบคุณภาพ OCR และการตรวจจับวัตถุพร้อมผลลัพธ์ที่อธิบายได้'
+      th: 'AI ด้านการมองเห็นสำหรับการตรวจสอบคุณภาพ OCR และการตรวจจับวัตถุพร้อมผลลัพธ์ที่อธิบายได้',
     },
     type: 'ai-core',
     solutionSlugs: [
       'vision-quality-inspection',
       'ocr-workbench',
       'ocr-dashboard-solution',
-      'depth-camera-solution'
+      'depth-camera-solution',
     ],
-    order: 2
+    order: 2,
   },
   {
     id: 'predictive-analytics',
     name: {
       en: 'Predictive Analytics & ML',
-      th: 'การวิเคราะห์เชิงคาดการณ์และ ML'
+      th: 'การวิเคราะห์เชิงคาดการณ์และ ML',
     },
     description: {
       en: 'Time-series forecasting, anomaly detection, and predictive maintenance for industrial operations',
-      th: 'การพยากรณ์อนุกรมเวลา การตรวจจับความผิดปกติ และการบำรุงรักษาเชิงคาดการณ์สำหรับการดำเนินงานอุตสาหกรรม'
+      th: 'การพยากรณ์อนุกรมเวลา การตรวจจับความผิดปกติ และการบำรุงรักษาเชิงคาดการณ์สำหรับการดำเนินงานอุตสาหกรรม',
     },
     type: 'ai-core',
-    solutionSlugs: [
-      'predictive-maintenance',
-      'analytics-cockpit'
-    ],
-    order: 3
+    solutionSlugs: ['predictive-maintenance', 'analytics-cockpit'],
+    order: 3,
   },
   {
     id: 'edge-ai',
     name: {
       en: 'Edge AI & IoT',
-      th: 'Edge AI และ IoT'
+      th: 'Edge AI และ IoT',
     },
     description: {
       en: 'On-device AI processing for low latency, offline capability, and enhanced privacy',
-      th: 'การประมวลผล AI บนอุปกรณ์สำหรับความเร็วสูง ใช้งานออฟไลน์ได้ และความเป็นส่วนตัวที่ดีขึ้น'
+      th: 'การประมวลผล AI บนอุปกรณ์สำหรับความเร็วสูง ใช้งานออฟไลน์ได้ และความเป็นส่วนตัวที่ดีขึ้น',
     },
     type: 'ai-core',
     solutionSlugs: [
       'edge-computer-solution',
       'nvr-cctv-solution',
-      'aiot-pipeline'
+      'aiot-pipeline',
     ],
-    order: 4
+    order: 4,
   },
 
   // Engineering Accelerators (Supporting Services)
@@ -99,44 +93,39 @@ export const solutionCategories: SolutionCategory[] = [
     id: 'mlops-platform',
     name: {
       en: 'MLOps & Data Platform',
-      th: 'MLOps และแพลตฟอร์มข้อมูล'
+      th: 'MLOps และแพลตฟอร์มข้อมูล',
     },
     description: {
       en: 'Foundation infrastructure for ML operations, data pipelines, and model governance',
-      th: 'โครงสร้างพื้นฐานสำหรับการดำเนินงาน ML ไปป์ไลน์ข้อมูล และการจัดการโมเดล'
+      th: 'โครงสร้างพื้นฐานสำหรับการดำเนินงาน ML ไปป์ไลน์ข้อมูล และการจัดการโมเดล',
     },
     type: 'accelerator',
-    solutionSlugs: [
-      'data-foundation'
-    ],
-    order: 5
+    solutionSlugs: ['data-foundation'],
+    order: 5,
   },
   {
     id: 'engineering-services',
     name: {
       en: 'Engineering Services',
-      th: 'บริการด้านวิศวกรรม'
+      th: 'บริการด้านวิศวกรรม',
     },
     description: {
       en: 'Supporting engineering services for frontend, backend, and infrastructure modernization',
-      th: 'บริการด้านวิศวกรรมสนับสนุนสำหรับ frontend, backend และการปรับปรุงโครงสร้างพื้นฐาน'
+      th: 'บริการด้านวิศวกรรมสนับสนุนสำหรับ frontend, backend และการปรับปรุงโครงสร้างพื้นฐาน',
     },
     type: 'accelerator',
-    solutionSlugs: [
-      'frontend-starter',
-      'backend-modernization'
-    ],
-    order: 6
-  }
+    solutionSlugs: ['frontend-starter', 'backend-modernization'],
+    order: 6,
+  },
 ];
 
 /**
  * Get category for a solution slug
  */
-export function getCategoryForSolution(slug: string): SolutionCategory | undefined {
-  return solutionCategories.find(cat =>
-    cat.solutionSlugs.includes(slug)
-  );
+export function getCategoryForSolution(
+  slug: string
+): SolutionCategory | undefined {
+  return solutionCategories.find(cat => cat.solutionSlugs.includes(slug));
 }
 
 /**

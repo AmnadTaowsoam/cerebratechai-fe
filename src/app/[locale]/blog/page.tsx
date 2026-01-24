@@ -38,7 +38,9 @@ export default function BlogPage() {
               </Link>
             </Button>
             <Button asChild size="lg" variant="outline">
-              <Link href={`${basePath}/contact` as any}>{isThai ? 'ปรึกษาฟรี' : 'Book Free Consult'}</Link>
+              <Link href={`${basePath}/contact` as any}>
+                {isThai ? 'ปรึกษาฟรี' : 'Book Free Consult'}
+              </Link>
             </Button>
           </div>
         }
@@ -48,20 +50,32 @@ export default function BlogPage() {
       <section className="py-20">
         <div className="container mx-auto px-6">
           <div className="mb-10 flex items-end justify-between gap-4">
-            <h2 className="text-2xl font-bold text-text">{isThai ? 'บทความแนะนำ' : 'Featured'}</h2>
-            <a href={`${basePath}/rss.xml`} className="text-sm text-primary hover:text-primary/80 transition-colors">
+            <h2 className="text-2xl font-bold text-text">
+              {isThai ? 'บทความแนะนำ' : 'Featured'}
+            </h2>
+            <a
+              href={`${basePath}/rss.xml`}
+              className="text-sm text-primary hover:text-primary/80 transition-colors"
+            >
               RSS
             </a>
           </div>
 
           <div className="grid gap-6 lg:grid-cols-2">
-            {featuredPosts.map((post) => (
-              <Card key={post.slug} className="border border-hairline bg-surface/80 hover:bg-surface transition-colors">
+            {featuredPosts.map(post => (
+              <Card
+                key={post.slug}
+                className="border border-hairline bg-surface/80 hover:bg-surface transition-colors"
+              >
                 <CardContent className="p-6">
                   <div className="mb-3 flex items-center gap-2 text-xs text-primary">
-                    <span className="rounded-full bg-primary/10 px-2 py-1">{post.category}</span>
+                    <span className="rounded-full bg-primary/10 px-2 py-1">
+                      {post.category}
+                    </span>
                     <span className="text-text-muted">|</span>
-                    <span className="text-text-muted">{isThai ? post.readTime.th : post.readTime.en}</span>
+                    <span className="text-text-muted">
+                      {isThai ? post.readTime.th : post.readTime.en}
+                    </span>
                   </div>
 
                   <h3 className="text-xl font-semibold text-text hover:text-primary transition-colors">
@@ -82,7 +96,9 @@ export default function BlogPage() {
                       </div>
                       <div className="flex items-center gap-1">
                         <Calendar className="h-3 w-3" />
-                        <span>{new Date(post.date).toLocaleDateString(locale)}</span>
+                        <span>
+                          {new Date(post.date).toLocaleDateString(locale)}
+                        </span>
                       </div>
                     </div>
                     <Link
@@ -103,16 +119,25 @@ export default function BlogPage() {
       {/* Latest */}
       <section className="py-20 bg-surface/30">
         <div className="container mx-auto px-6">
-          <h2 className="text-2xl font-bold text-text mb-8">{isThai ? 'บทความล่าสุด' : 'Latest articles'}</h2>
+          <h2 className="text-2xl font-bold text-text mb-8">
+            {isThai ? 'บทความล่าสุด' : 'Latest articles'}
+          </h2>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {regularPosts.map((post) => (
-              <Card key={post.slug} className="border border-hairline bg-surface/80 hover:bg-surface transition-colors">
+            {regularPosts.map(post => (
+              <Card
+                key={post.slug}
+                className="border border-hairline bg-surface/80 hover:bg-surface transition-colors"
+              >
                 <CardContent className="p-6">
                   <div className="flex items-center gap-2 text-xs text-primary mb-3">
-                    <span className="px-2 py-1 rounded-full bg-primary/10 text-primary">{post.category}</span>
+                    <span className="px-2 py-1 rounded-full bg-primary/10 text-primary">
+                      {post.category}
+                    </span>
                     <span className="text-text-muted">|</span>
-                    <span className="text-text-muted">{isThai ? post.readTime.th : post.readTime.en}</span>
+                    <span className="text-text-muted">
+                      {isThai ? post.readTime.th : post.readTime.en}
+                    </span>
                   </div>
 
                   <h3 className="text-lg font-semibold text-text mb-3 hover:text-primary transition-colors">
@@ -133,7 +158,9 @@ export default function BlogPage() {
                       </div>
                       <div className="flex items-center gap-1">
                         <Calendar className="h-3 w-3" />
-                        <span>{new Date(post.date).toLocaleDateString(locale)}</span>
+                        <span>
+                          {new Date(post.date).toLocaleDateString(locale)}
+                        </span>
                       </div>
                     </div>
                     <Link

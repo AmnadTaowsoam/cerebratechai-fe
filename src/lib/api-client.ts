@@ -1,7 +1,8 @@
 import { z } from 'zod';
 
 // Base configuration
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3000/api';
+const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3000/api';
 const API_TIMEOUT = 5000; // 5 seconds (reduced for development)
 
 // Error schema
@@ -100,11 +101,10 @@ export class ApiClient {
   }
 
   // Generic request method
-  async request<T>(
-    endpoint: string,
-    config: RequestConfig = {}
-  ): Promise<T> {
-    const url = endpoint.startsWith('http') ? endpoint : `${this.baseURL}${endpoint}`;
+  async request<T>(endpoint: string, config: RequestConfig = {}): Promise<T> {
+    const url = endpoint.startsWith('http')
+      ? endpoint
+      : `${this.baseURL}${endpoint}`;
     const headers = { ...this.defaultHeaders, ...config.headers };
 
     try {
@@ -188,14 +188,19 @@ export const skillRouter = {
   /**
    * Route query to appropriate skill
    */
-  async route(query: string): Promise<{ ok: boolean; skill: string; confidence: number; lang: string }> {
+  async route(
+    query: string
+  ): Promise<{ ok: boolean; skill: string; confidence: number; lang: string }> {
     return apiClient.post('/api/skills/route', { q: query });
   },
 
   /**
    * Execute tool
    */
-  async execute(tool: string, args: Record<string, any>): Promise<{ ok: boolean; data?: any; error?: string }> {
+  async execute(
+    tool: string,
+    args: Record<string, any>
+  ): Promise<{ ok: boolean; data?: any; error?: string }> {
     return apiClient.post('/api/skills/execute', { tool, args });
   },
 

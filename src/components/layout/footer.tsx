@@ -13,72 +13,80 @@ export function Footer() {
 
   const quickLinks = [
     {
-        name: locale.startsWith('th') ? 'โซลูชัน' : 'Solutions',
-        href: routes.solutions(locale),
-        desc: locale.startsWith('th') ? 'บริการ AI ที่เรามี' : 'Our AI services'
+      name: locale.startsWith('th') ? 'โซลูชัน' : 'Solutions',
+      href: routes.solutions(locale),
+      desc: locale.startsWith('th') ? 'บริการ AI ที่เรามี' : 'Our AI services',
     },
     {
-        name: locale.startsWith('th') ? 'แพ็กเกจ' : 'Packages',
-        href: routes.packages(locale),
-        desc: locale.startsWith('th') ? 'แพ็กเกจราคา' : 'Pricing packages'
+      name: locale.startsWith('th') ? 'แพ็กเกจ' : 'Packages',
+      href: routes.packages(locale),
+      desc: locale.startsWith('th') ? 'แพ็กเกจราคา' : 'Pricing packages',
     },
     {
-        name: locale.startsWith('th') ? 'เคสศึกษา' : 'Case Studies',
-        href: routes.cases(locale),
-        desc: locale.startsWith('th') ? 'ผลงานจริง' : 'Real projects'
+      name: locale.startsWith('th') ? 'เคสศึกษา' : 'Case Studies',
+      href: routes.cases(locale),
+      desc: locale.startsWith('th') ? 'ผลงานจริง' : 'Real projects',
     },
     {
-        name: locale.startsWith('th') ? 'ติดต่อ' : 'Contact',
-        href: routes.contact(locale),
-        desc: locale.startsWith('th') ? 'พูดคุยกับเรา' : 'Get in touch'
+      name: locale.startsWith('th') ? 'ติดต่อ' : 'Contact',
+      href: routes.contact(locale),
+      desc: locale.startsWith('th') ? 'พูดคุยกับเรา' : 'Get in touch',
     },
   ];
 
   const legalLinks = [
     {
-        name: locale.startsWith('th') ? 'ความปลอดภัย & ความน่าเชื่อถือ' : 'Trust & Security',
-        href: routes.trust(locale)
+      name: locale.startsWith('th')
+        ? 'ความปลอดภัย & ความน่าเชื่อถือ'
+        : 'Trust & Security',
+      href: routes.trust(locale),
     },
     {
-        name: locale.startsWith('th') ? 'นโยบายความเป็นส่วนตัว' : 'Privacy Policy',
-        href: routes.legal.privacy(locale)
+      name: locale.startsWith('th')
+        ? 'นโยบายความเป็นส่วนตัว'
+        : 'Privacy Policy',
+      href: routes.legal.privacy(locale),
     },
     {
-        name: locale.startsWith('th') ? 'เงื่อนไขการใช้งาน' : 'Terms of Service',
-        href: routes.legal.terms(locale)
+      name: locale.startsWith('th') ? 'เงื่อนไขการใช้งาน' : 'Terms of Service',
+      href: routes.legal.terms(locale),
     },
     {
-        name: locale.startsWith('th') ? 'นโยบายคุกกี้' : 'Cookie Policy',
-        href: routes.legal.cookies(locale)
+      name: locale.startsWith('th') ? 'นโยบายคุกกี้' : 'Cookie Policy',
+      href: routes.legal.cookies(locale),
     },
     {
-        name: locale.startsWith('th') ? 'นโยบายการคืนเงิน' : 'Refund Policy',
-        href: routes.legal.refund(locale)
+      name: locale.startsWith('th') ? 'นโยบายการคืนเงิน' : 'Refund Policy',
+      href: routes.legal.refund(locale),
     },
     {
-        name: locale.startsWith('th') ? 'ข้อจำกัดความรับผิดชอบ' : 'Disclaimer',
-        href: routes.legal.disclaimer(locale)
+      name: locale.startsWith('th') ? 'ข้อจำกัดความรับผิดชอบ' : 'Disclaimer',
+      href: routes.legal.disclaimer(locale),
     },
     {
-        name: 'PDPA',
-        href: routes.legal.pdpa(locale)
+      name: 'PDPA',
+      href: routes.legal.pdpa(locale),
     },
   ];
 
   const contactDetails = [
     {
-        label: locale.startsWith('th') ? 'อีเมล' : 'Email',
-        value: BRAND_CONFIG.contact.email.general,
-        href: createExternalRoute(`mailto:${BRAND_CONFIG.contact.email.general}`),
+      label: locale.startsWith('th') ? 'อีเมล' : 'Email',
+      value: BRAND_CONFIG.contact.email.general,
+      href: createExternalRoute(`mailto:${BRAND_CONFIG.contact.email.general}`),
     },
     {
-        label: locale.startsWith('th') ? 'โทรศัพท์' : 'Phone',
-        value: BRAND_CONFIG.contact.phone,
-        href: createExternalRoute(`tel:${BRAND_CONFIG.contact.phone.replace(/\s/g, '')}`),
+      label: locale.startsWith('th') ? 'โทรศัพท์' : 'Phone',
+      value: BRAND_CONFIG.contact.phone,
+      href: createExternalRoute(
+        `tel:${BRAND_CONFIG.contact.phone.replace(/\s/g, '')}`
+      ),
     },
     {
-        label: locale.startsWith('th') ? 'เวลาทำการ' : 'Business Hours',
-        value: locale.startsWith('th') ? 'จ-ศ 9:00-18:00 (GMT+7)' : 'Mon-Fri 9:00-18:00 (GMT+7)',
+      label: locale.startsWith('th') ? 'เวลาทำการ' : 'Business Hours',
+      value: locale.startsWith('th')
+        ? 'จ-ศ 9:00-18:00 (GMT+7)'
+        : 'Mon-Fri 9:00-18:00 (GMT+7)',
     },
   ];
 
@@ -93,13 +101,16 @@ export function Footer() {
     <footer className="relative border-t border-hairline/50 bg-gradient-to-b from-surface via-surface to-bg">
       {/* Decorative gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 pointer-events-none" />
-      
+
       <div className="relative container mx-auto px-6 py-16 lg:px-8">
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
           {/* Brand Section - Larger on desktop */}
           <div className="lg:col-span-5 space-y-6">
-            <Link href={routes.home(locale)} className="inline-flex items-center space-x-3 group">
+            <Link
+              href={routes.home(locale)}
+              className="inline-flex items-center space-x-3 group"
+            >
               <div className="relative">
                 <Image
                   src="/cerebratechai_logo.png"
@@ -110,39 +121,61 @@ export function Footer() {
                   priority
                 />
               </div>
-              <span className="text-2xl font-bold text-text tracking-tight">{BRAND_CONFIG.name}</span>
+              <span className="text-2xl font-bold text-text tracking-tight">
+                {BRAND_CONFIG.name}
+              </span>
             </Link>
-            
+
             <div className="space-y-4">
               <p className="text-base leading-relaxed text-text-muted max-w-md">
-                {locale.startsWith('th') 
+                {locale.startsWith('th')
                   ? 'เปลี่ยนปัญหาเป็นระบบ AI พร้อมใช้งานจริง เราสร้างโซลูชัน AI และ full-stack จาก Edge ถึง Cloud ที่พร้อมปล่อยใช้งานจริง'
-                  : 'Transform your pain points into production-ready AI systems. We build AI & full-stack solutions from Edge to Cloud that are ready for deployment.'
-                }
+                  : 'Transform your pain points into production-ready AI systems. We build AI & full-stack solutions from Edge to Cloud that are ready for deployment.'}
               </p>
-              
+
               <div className="rounded-xl border border-hairline/50 bg-gradient-to-br from-surface/80 to-surface/40 p-6 backdrop-blur-sm shadow-sm">
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
-                    <span className="text-lg font-bold text-text tracking-tight">{BRAND_CONFIG.name}</span>
+                    <span className="text-lg font-bold text-text tracking-tight">
+                      {BRAND_CONFIG.name}
+                    </span>
                   </div>
                   <div className="space-y-1">
                     <p className="text-sm font-medium text-text/90">
-                      {locale.startsWith('th') ? 'สตูดิโอ AI แบบบูติก' : 'Boutique AI Studio'}
+                      {locale.startsWith('th')
+                        ? 'สตูดิโอ AI แบบบูติก'
+                        : 'Boutique AI Studio'}
                     </p>
                     <p className="text-xs text-text-muted flex items-center">
-                      <svg className="w-3 h-3 mr-1.5 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                      <svg
+                        className="w-3 h-3 mr-1.5 text-text-muted"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                        />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
                       </svg>
-                      {locale.startsWith('th') ? BRAND_CONFIG.contact.address.th : BRAND_CONFIG.contact.address.en}
+                      {locale.startsWith('th')
+                        ? BRAND_CONFIG.contact.address.th
+                        : BRAND_CONFIG.contact.address.en}
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-            
+
             <div className="pt-2">
               <LocaleSwitcher />
             </div>
@@ -156,7 +189,7 @@ export function Footer() {
                 {locale.startsWith('th') ? 'ลิงก์ด่วน' : 'QUICK LINKS'}
               </h3>
               <ul className="space-y-4">
-                {quickLinks.map((link) => (
+                {quickLinks.map(link => (
                   <li key={link.name}>
                     <Link
                       href={link.href}
@@ -174,14 +207,14 @@ export function Footer() {
                 ))}
               </ul>
             </div>
-            
+
             {/* Legal Links */}
             <div>
               <h3 className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-text/80">
                 {locale.startsWith('th') ? 'กฎหมาย' : 'LEGAL'}
               </h3>
               <ul className="space-y-3">
-                {legalLinks.map((link) => (
+                {legalLinks.map(link => (
                   <li key={link.name}>
                     <Link
                       href={link.href}
@@ -202,33 +235,47 @@ export function Footer() {
                   {locale.startsWith('th') ? 'ติดต่อ' : 'CONTACT'}
                 </h3>
                 <ul className="space-y-4">
-                  {contactDetails.map((item) => (
+                  {contactDetails.map(item => (
                     <li key={item.label} className="group">
-                      <span className="block text-xs font-medium text-text/60 mb-1">{item.label}</span>
+                      <span className="block text-xs font-medium text-text/60 mb-1">
+                        {item.label}
+                      </span>
                       {item.href ? (
                         <Link
                           href={item.href}
                           className="text-sm text-text-muted transition-colors hover:text-primary inline-flex items-center gap-1"
                         >
                           {item.value}
-                          <svg className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          <svg
+                            className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M9 5l7 7-7 7"
+                            />
                           </svg>
                         </Link>
                       ) : (
-                        <span className="text-sm text-text-muted">{item.value}</span>
+                        <span className="text-sm text-text-muted">
+                          {item.value}
+                        </span>
                       )}
                     </li>
                   ))}
                 </ul>
               </div>
-              
+
               <div>
                 <h3 className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-text/80">
                   {locale.startsWith('th') ? 'ติดตามเรา' : 'FOLLOW US'}
                 </h3>
                 <ul className="flex flex-wrap gap-3">
-                  {socials.map((social) => {
+                  {socials.map(social => {
                     const IconComponent = social.icon;
                     return (
                       <li key={social.label}>
@@ -256,27 +303,42 @@ export function Footer() {
           <div className="flex flex-col items-center justify-between gap-6 text-xs text-text-muted sm:flex-row">
             <div className="flex flex-col items-center sm:items-start gap-2">
               <p className="flex items-center gap-2">
-                <span>&copy; {new Date().getFullYear()} {BRAND_CONFIG.name}</span>
+                <span>
+                  &copy; {new Date().getFullYear()} {BRAND_CONFIG.name}
+                </span>
                 <span className="hidden sm:inline">•</span>
-                <span>{locale.startsWith('th') ? 'สงวนลิขสิทธิ์' : 'All rights reserved'}</span>
+                <span>
+                  {locale.startsWith('th')
+                    ? 'สงวนลิขสิทธิ์'
+                    : 'All rights reserved'}
+                </span>
               </p>
               <p className="text-xs text-text-muted/80 text-center sm:text-left">
                 {locale.startsWith('th')
                   ? BRAND_CONFIG.tagline.th
-                  : BRAND_CONFIG.tagline.en
-                }
+                  : BRAND_CONFIG.tagline.en}
               </p>
             </div>
             <div className="flex flex-col items-center sm:items-end gap-2">
               <p className="flex items-center gap-1.5">
-                {locale.startsWith('th') ? 'สร้างด้วย' : 'Made with'} 
-                <svg className="w-4 h-4 text-red-500 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
+                {locale.startsWith('th') ? 'สร้างด้วย' : 'Made with'}
+                <svg
+                  className="w-4 h-4 text-red-500 animate-pulse"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                    clipRule="evenodd"
+                  />
                 </svg>
                 {locale.startsWith('th') ? 'ในประเทศไทย' : 'in Thailand'}
               </p>
               <p className="text-xs text-text-muted/80">
-                {locale.startsWith('th') ? 'พร้อมให้คำปรึกษา จ-ศ 9:00-18:00' : 'Ready to Help Mon-Fri 9:00-18:00'}
+                {locale.startsWith('th')
+                  ? 'พร้อมให้คำปรึกษา จ-ศ 9:00-18:00'
+                  : 'Ready to Help Mon-Fri 9:00-18:00'}
               </p>
             </div>
           </div>

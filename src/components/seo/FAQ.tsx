@@ -18,7 +18,12 @@ interface FAQSectionProps {
   className?: string;
 }
 
-export function FAQSection({ title, description, faqs, className }: FAQSectionProps) {
+export function FAQSection({
+  title,
+  description,
+  faqs,
+  className,
+}: FAQSectionProps) {
   const locale = useLocale();
   const isThai = locale.startsWith('th');
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -36,8 +41,14 @@ export function FAQSection({ title, description, faqs, className }: FAQSectionPr
       <section className={cn('py-20', className)}>
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-text mb-4">{title || defaultTitle}</h2>
-            {defaultDescription ? <p className="text-text-muted max-w-2xl mx-auto">{defaultDescription}</p> : null}
+            <h2 className="text-3xl font-bold text-text mb-4">
+              {title || defaultTitle}
+            </h2>
+            {defaultDescription ? (
+              <p className="text-text-muted max-w-2xl mx-auto">
+                {defaultDescription}
+              </p>
+            ) : null}
           </div>
 
           <div className="max-w-3xl mx-auto space-y-4">
@@ -47,10 +58,14 @@ export function FAQSection({ title, description, faqs, className }: FAQSectionPr
                 className="border border-hairline rounded-xl bg-surface/80 overflow-hidden transition-all"
               >
                 <button
-                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                  onClick={() =>
+                    setOpenIndex(openIndex === index ? null : index)
+                  }
                   className="w-full flex items-center justify-between p-6 text-left hover:bg-surface-2 transition-colors"
                 >
-                  <span className="text-lg font-semibold text-text pr-8">{faq.question}</span>
+                  <span className="text-lg font-semibold text-text pr-8">
+                    {faq.question}
+                  </span>
                   <ChevronDown
                     className={cn(
                       'h-5 w-5 text-text-muted flex-shrink-0 transition-transform duration-200',
@@ -61,7 +76,9 @@ export function FAQSection({ title, description, faqs, className }: FAQSectionPr
 
                 {openIndex === index ? (
                   <div className="px-6 pb-6 pt-0">
-                    <div className="text-text-muted leading-relaxed whitespace-pre-line">{faq.answer}</div>
+                    <div className="text-text-muted leading-relaxed whitespace-pre-line">
+                      {faq.answer}
+                    </div>
                   </div>
                 ) : null}
               </div>

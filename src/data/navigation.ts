@@ -1,8 +1,26 @@
 import {
-  Brain, Eye, Cpu, Wifi, Layers, BarChart, Microscope,
-  Factory, Leaf, Heart, Building2, Sparkles, Users,
-  GraduationCap, Database, Github, Rocket, Settings,
-  Briefcase, Mail, Info, Workflow
+  Brain,
+  Eye,
+  Cpu,
+  Wifi,
+  Layers,
+  BarChart,
+  Microscope,
+  Factory,
+  Leaf,
+  Heart,
+  Building2,
+  Sparkles,
+  Users,
+  GraduationCap,
+  Database,
+  Github,
+  Rocket,
+  Settings,
+  Briefcase,
+  Mail,
+  Info,
+  Workflow,
 } from 'lucide-react';
 
 export interface MegaMenuItem {
@@ -33,23 +51,23 @@ export const navigationData: MegaMenuSection[] = [
       {
         title: 'Our Services',
         items: [
-          { 
-            label: 'AI Consulting', 
-            href: '/services/consulting', 
-            icon: Brain, 
-            description: 'POC/Pilot, Assessment, Strategy' 
+          {
+            label: 'AI Consulting',
+            href: '/services/consulting',
+            icon: Brain,
+            description: 'POC/Pilot, Assessment, Strategy',
           },
-          { 
-            label: 'AI Development', 
-            href: '/services/development', 
-            icon: Cpu, 
-            description: 'Custom AI, Integration, Training' 
+          {
+            label: 'AI Development',
+            href: '/services/development',
+            icon: Cpu,
+            description: 'Custom AI, Integration, Training',
           },
-          { 
-            label: 'AI Deployment', 
-            href: '/services/deployment', 
-            icon: Rocket, 
-            description: 'MLOps, Maintenance, Support' 
+          {
+            label: 'AI Deployment',
+            href: '/services/deployment',
+            icon: Rocket,
+            description: 'MLOps, Maintenance, Support',
           },
         ],
       },
@@ -62,54 +80,55 @@ export const navigationData: MegaMenuSection[] = [
       {
         title: 'Featured Solutions',
         items: [
-          { 
-            label: 'ChartSentinel', 
-            href: '/products/chartsentinel', 
-            icon: BarChart, 
-            badge: 'featured' as const, 
-            description: 'AI-SPC Quality Control - ลดของเสีย 85%' 
+          {
+            label: 'ChartSentinel',
+            href: '/products/chartsentinel',
+            icon: BarChart,
+            badge: 'featured' as const,
+            description: 'AI-SPC Quality Control - ลดของเสีย 85%',
           },
-          { 
-            label: 'CerebraForge', 
-            href: '/products/cerebraforge', 
-            icon: Layers, 
-            badge: 'featured' as const, 
-            description: 'Enterprise RAG Platform - Document AI' 
+          {
+            label: 'CerebraForge',
+            href: '/products/cerebraforge',
+            icon: Layers,
+            badge: 'featured' as const,
+            description: 'Enterprise RAG Platform - Document AI',
           },
-          { 
-            label: 'VetPath AI', 
-            href: '/products/vetpath', 
-            icon: Microscope, 
-            description: 'Digital Pathology Solution' 
+          {
+            label: 'VetPath AI',
+            href: '/products/vetpath',
+            icon: Microscope,
+            description: 'Digital Pathology Solution',
           },
         ],
       },
       {
         title: 'AI Core Technologies',
         items: [
-          { 
-            label: 'LLM & RAG', 
-            href: '/solutions/llm', 
+          {
+            label: 'LLM & RAG',
+            href: '/solutions/llm',
             icon: Brain,
-            description: 'Large Language Models & Retrieval-Augmented Generation'
+            description:
+              'Large Language Models & Retrieval-Augmented Generation',
           },
-          { 
-            label: 'Computer Vision', 
-            href: '/solutions/cv', 
+          {
+            label: 'Computer Vision',
+            href: '/solutions/cv',
             icon: Eye,
-            description: 'Image & Video Analysis'
+            description: 'Image & Video Analysis',
           },
-          { 
-            label: 'Machine Learning', 
-            href: '/solutions/ml', 
+          {
+            label: 'Machine Learning',
+            href: '/solutions/ml',
             icon: Cpu,
-            description: 'Predictive Analytics & Models'
+            description: 'Predictive Analytics & Models',
           },
-          { 
-            label: 'AIoT', 
-            href: '/solutions/aiot', 
+          {
+            label: 'AIoT',
+            href: '/solutions/aiot',
             icon: Wifi,
-            description: 'AI on Edge Devices'
+            description: 'AI on Edge Devices',
           },
         ],
       },
@@ -122,39 +141,39 @@ export const navigationData: MegaMenuSection[] = [
       {
         title: 'Vertical Platforms',
         items: [
-          { 
-            label: 'Phitiai', 
-            href: 'https://www.phithiai.com', 
-            icon: Sparkles, 
-            description: 'AI Festival Platform', 
-            external: true 
+          {
+            label: 'Phitiai',
+            href: 'https://www.phithiai.com',
+            icon: Sparkles,
+            description: 'AI Festival Platform',
+            external: true,
           },
-          { 
-            label: 'Sookwai', 
-            href: 'https://www.sookwei.com', 
-            icon: Heart, 
-            description: 'Elderly Wellness Platform', 
-            external: true 
+          {
+            label: 'Sookwai',
+            href: 'https://www.sookwei.com',
+            icon: Heart,
+            description: 'Elderly Wellness Platform',
+            external: true,
           },
-          { 
-            label: 'PlukTunRaka', 
-            href: 'https://www.pluktunraka.com', 
-            icon: Leaf, 
-            description: 'AgTech Platform', 
-            external: true 
+          {
+            label: 'PlukTunRaka',
+            href: 'https://www.pluktunraka.com',
+            icon: Leaf,
+            description: 'AgTech Platform',
+            external: true,
           },
         ],
       },
       {
         title: 'Developer Tools',
         items: [
-          { 
-            label: 'Agent Skills', 
-            href: 'https://github.com/AmnadTaowsoam/cerebratechai-claude-skills.git', 
-            icon: Github, 
-            description: '400+ Claude Skills for Agentic Development', 
+          {
+            label: 'Agent Skills',
+            href: 'https://github.com/AmnadTaowsoam/cerebratechai-claude-skills.git',
+            icon: Github,
+            description: '400+ Claude Skills for Agentic Development',
             external: true,
-            badge: 'new' as const
+            badge: 'new' as const,
           },
         ],
       },
@@ -167,29 +186,29 @@ export const navigationData: MegaMenuSection[] = [
       {
         title: 'About',
         items: [
-          { 
-            label: 'About Us', 
+          {
+            label: 'About Us',
             href: '/about',
             icon: Info,
-            description: 'Our story, mission & team'
+            description: 'Our story, mission & team',
           },
-          { 
-            label: 'How We Work', 
+          {
+            label: 'How We Work',
             href: '/how-we-work',
             icon: Workflow,
-            description: 'Our process & methodology'
+            description: 'Our process & methodology',
           },
-          { 
-            label: 'Careers', 
+          {
+            label: 'Careers',
             href: '/careers',
             icon: Briefcase,
-            description: 'Join our team'
+            description: 'Join our team',
           },
-          { 
-            label: 'Contact', 
+          {
+            label: 'Contact',
             href: '/contact',
             icon: Mail,
-            description: 'Get in touch'
+            description: 'Get in touch',
           },
         ],
       },

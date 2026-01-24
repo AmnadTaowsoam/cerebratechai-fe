@@ -162,16 +162,44 @@ export const accelerators = [
 
 // Contact form options
 export const budgetRanges = [
-  { value: 'under_100k', labelTh: 'ต่ำกว่า ฿100,000', labelEn: 'Under ฿100,000' },
-  { value: '100k_500k', labelTh: '฿100,000 - ฿500,000', labelEn: '฿100,000 - ฿500,000' },
-  { value: '500k_1m', labelTh: '฿500,000 - ฿1,000,000', labelEn: '฿500,000 - ฿1,000,000' },
-  { value: 'over_1m', labelTh: 'มากกว่า ฿1,000,000', labelEn: 'Over ฿1,000,000' },
+  {
+    value: 'under_100k',
+    labelTh: 'ต่ำกว่า ฿100,000',
+    labelEn: 'Under ฿100,000',
+  },
+  {
+    value: '100k_500k',
+    labelTh: '฿100,000 - ฿500,000',
+    labelEn: '฿100,000 - ฿500,000',
+  },
+  {
+    value: '500k_1m',
+    labelTh: '฿500,000 - ฿1,000,000',
+    labelEn: '฿500,000 - ฿1,000,000',
+  },
+  {
+    value: 'over_1m',
+    labelTh: 'มากกว่า ฿1,000,000',
+    labelEn: 'Over ฿1,000,000',
+  },
 ];
 
 export const timelineTargets = [
-  { value: 'urgent', labelTh: 'เร่งด่วน (2-4 สัปดาห์)', labelEn: 'Urgent (2-4 weeks)' },
-  { value: 'standard', labelTh: 'ปกติ (1-2 เดือน)', labelEn: 'Standard (1-2 months)' },
-  { value: 'flexible', labelTh: 'ยืดหยุ่น (3+ เดือน)', labelEn: 'Flexible (3+ months)' },
+  {
+    value: 'urgent',
+    labelTh: 'เร่งด่วน (2-4 สัปดาห์)',
+    labelEn: 'Urgent (2-4 weeks)',
+  },
+  {
+    value: 'standard',
+    labelTh: 'ปกติ (1-2 เดือน)',
+    labelEn: 'Standard (1-2 months)',
+  },
+  {
+    value: 'flexible',
+    labelTh: 'ยืดหยุ่น (3+ เดือน)',
+    labelEn: 'Flexible (3+ months)',
+  },
 ];
 
 // Terms

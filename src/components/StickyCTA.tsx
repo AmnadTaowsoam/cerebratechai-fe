@@ -20,7 +20,10 @@ export default function StickyCTA({ locale = 'en' }: StickyCTAProps) {
             className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
             size="lg"
           >
-            <Link href={routes.contact(locale)} className="flex items-center justify-center gap-2">
+            <Link
+              href={routes.contact(locale)}
+              className="flex items-center justify-center gap-2"
+            >
               <MessageCircle className="h-5 w-5" />
               {isThai ? 'พูดคุยกับผู้เชี่ยวชาญ' : 'Talk to an expert'}
             </Link>
@@ -30,4 +33,3 @@ export default function StickyCTA({ locale = 'en' }: StickyCTAProps) {
     </div>
   );
 }
-

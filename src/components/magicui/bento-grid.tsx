@@ -62,11 +62,18 @@ const BentoCard = ({
     )}
     role="article"
   >
-    {background && <div className="absolute inset-0 opacity-70" aria-hidden="true">{background}</div>}
+    {background && (
+      <div className="absolute inset-0 opacity-70" aria-hidden="true">
+        {background}
+      </div>
+    )}
 
     <div className="relative z-10 flex flex-1 flex-col gap-4 p-6">
       <div className="flex items-center justify-between">
-        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/10 text-white" aria-hidden="true">
+        <div
+          className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/10 text-white"
+          aria-hidden="true"
+        >
           <Icon className="h-6 w-6" aria-hidden="true" />
         </div>
         {badge}
@@ -107,7 +114,10 @@ const BentoCard = ({
       </a>
     </div>
 
-    <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-br from-white/0 via-white/0 to-white/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" aria-hidden="true" />
+    <div
+      className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-br from-white/0 via-white/0 to-white/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+      aria-hidden="true"
+    />
   </article>
 );
 

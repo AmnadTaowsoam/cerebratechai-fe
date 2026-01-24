@@ -33,7 +33,9 @@ export function RAGDemoSection() {
       setResponse(result);
     } catch (error) {
       setResponse({
-        error: locale.startsWith('th') ? 'เกิดข้อผิดพลาด กรุณาลองใหม่' : 'An error occurred. Please try again.',
+        error: locale.startsWith('th')
+          ? 'เกิดข้อผิดพลาด กรุณาลองใหม่'
+          : 'An error occurred. Please try again.',
       });
     } finally {
       setLoading(false);
@@ -48,7 +50,9 @@ export function RAGDemoSection() {
             {locale.startsWith('th') ? 'เดโม' : 'Demo'}
           </span>
           <h2 className="mt-4 text-3xl font-bold text-text md:text-4xl">
-            {locale.startsWith('th') ? 'ทดลอง RAG Assistant' : 'Try RAG Assistant'}
+            {locale.startsWith('th')
+              ? 'ทดลอง RAG Assistant'
+              : 'Try RAG Assistant'}
           </h2>
           <p className="mt-3 mx-auto max-w-2xl text-text-muted">
             {locale.startsWith('th')
@@ -69,7 +73,7 @@ export function RAGDemoSection() {
               <form onSubmit={handleSubmit} className="space-y-4">
                 <Textarea
                   value={query}
-                  onChange={(e) => setQuery(e.target.value)}
+                  onChange={e => setQuery(e.target.value)}
                   placeholder={
                     locale.startsWith('th')
                       ? 'เช่น: อธิบาย workflow ของ Edge Vision...'
@@ -86,7 +90,9 @@ export function RAGDemoSection() {
                   {loading ? (
                     <>
                       <LoadingSpinner className="mr-2 h-4 w-4" />
-                      {locale.startsWith('th') ? 'กำลังค้นหา...' : 'Searching...'}
+                      {locale.startsWith('th')
+                        ? 'กำลังค้นหา...'
+                        : 'Searching...'}
                     </>
                   ) : (
                     <>
@@ -100,7 +106,9 @@ export function RAGDemoSection() {
               {response && (
                 <div className="mt-6 space-y-4">
                   {response.error ? (
-                    <div className="rounded-lg bg-danger/10 p-4 text-danger">{response.error}</div>
+                    <div className="rounded-lg bg-danger/10 p-4 text-danger">
+                      {response.error}
+                    </div>
                   ) : (
                     <>
                       {response.answer && (
@@ -115,15 +123,21 @@ export function RAGDemoSection() {
                       {response.citations && response.citations.length > 0 && (
                         <div className="space-y-2">
                           <div className="text-sm font-medium text-text-muted">
-                            {locale.startsWith('th') ? 'อ้างอิง:' : 'Citations:'}
+                            {locale.startsWith('th')
+                              ? 'อ้างอิง:'
+                              : 'Citations:'}
                           </div>
                           {response.citations.map((citation, idx) => (
                             <div
                               key={idx}
                               className="rounded-lg border border-hairline bg-surface-2 p-3 text-sm"
                             >
-                              <div className="font-medium text-text">{citation.source}</div>
-                              <div className="mt-1 text-text-subtle">{citation.snippet}</div>
+                              <div className="font-medium text-text">
+                                {citation.source}
+                              </div>
+                              <div className="mt-1 text-text-subtle">
+                                {citation.snippet}
+                              </div>
                             </div>
                           ))}
                         </div>
@@ -145,4 +159,3 @@ export function RAGDemoSection() {
     </section>
   );
 }
-

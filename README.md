@@ -32,7 +32,7 @@ Professional marketing website showcasing AI/ML services and solutions for enter
 
 ### **Prerequisites:**
 
-- Node.js 18+ 
+- Node.js 18+
 - npm or yarn
 - (Optional) PostgreSQL for contact service
 
@@ -67,12 +67,14 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 ## 🛠️ Tech Stack
 
 ### **Core:**
+
 - **Framework:** [Next.js 14](https://nextjs.org/) (App Router)
 - **Language:** [TypeScript 5](https://www.typescriptlang.org/)
 - **Styling:** [Tailwind CSS 3.4](https://tailwindcss.com/)
 - **UI Components:** [shadcn/ui](https://ui.shadcn.com/)
 
 ### **Features:**
+
 - **Internationalization:** [next-intl](https://next-intl-docs.vercel.app/) (EN/TH)
 - **Animations:** [Framer Motion](https://www.framer.com/motion/)
 - **State Management:** [TanStack Query](https://tanstack.com/query) + [Zustand](https://zustand-demo.pmnd.rs/)
@@ -80,6 +82,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 - **Icons:** [Lucide React](https://lucide.dev/)
 
 ### **Development:**
+
 - **Testing:** [Jest](https://jestjs.io/) + [Playwright](https://playwright.dev/)
 - **Linting:** [ESLint](https://eslint.org/) + [Prettier](https://prettier.io/)
 - **Type Safety:** TypeScript strict mode
@@ -89,23 +92,23 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## 📜 Available Scripts
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start development server (port 3000) |
-| `npm run build` | Build for production |
-| `npm start` | Start production server |
-| `npm run lint` | Run ESLint linter |
-| `npm run typecheck` | TypeScript type checking |
-| `npm test` | Run unit tests (Jest) |
-| `npm run test:watch` | Run tests in watch mode |
-| `npm run test:ci` | Run tests with coverage (CI) |
-| `npm run e2e` | Run E2E tests (Playwright) |
-| `npm run e2e:ui` | Run E2E with UI mode |
-| `npm run test:all` | Run all tests (unit + E2E) |
-| `npm run test:a11y` | Run accessibility tests |
-| `npm run analyze` | Analyze bundle size |
-| `npm run format` | Format code with Prettier |
-| `npm run security:audit` | Run security audit |
+| Command                  | Description                          |
+| ------------------------ | ------------------------------------ |
+| `npm run dev`            | Start development server (port 3000) |
+| `npm run build`          | Build for production                 |
+| `npm start`              | Start production server              |
+| `npm run lint`           | Run ESLint linter                    |
+| `npm run typecheck`      | TypeScript type checking             |
+| `npm test`               | Run unit tests (Jest)                |
+| `npm run test:watch`     | Run tests in watch mode              |
+| `npm run test:ci`        | Run tests with coverage (CI)         |
+| `npm run e2e`            | Run E2E tests (Playwright)           |
+| `npm run e2e:ui`         | Run E2E with UI mode                 |
+| `npm run test:all`       | Run all tests (unit + E2E)           |
+| `npm run test:a11y`      | Run accessibility tests              |
+| `npm run analyze`        | Analyze bundle size                  |
+| `npm run format`         | Format code with Prettier            |
+| `npm run security:audit` | Run security audit                   |
 
 ---
 
@@ -196,43 +199,43 @@ apps/web/
 
 ### **Public Pages:**
 
-| Route | Description | i18n |
-|-------|-------------|------|
-| `/` | Homepage - Hero, features, services | ✅ |
-| `/about` | About company | ✅ |
-| `/services` | Services overview | ✅ |
-| `/packages` | Pricing & packages | ✅ |
-| `/packages/[slug]` | Package details | ✅ |
-| `/cases` | Case studies | ✅ |
-| `/cases/[slug]` | Case study details | ✅ |
-| `/solutions` | Solutions overview | ✅ |
-| `/solutions/[slug]` | Solution details | ✅ |
-| `/contact` | Contact form | ✅ |
-| `/blog` | Blog (placeholder) | ✅ |
-| `/careers` | Careers (placeholder) | ✅ |
-| `/partners` | Partners program | ✅ |
-| `/resources` | Resources | ✅ |
-| `/support` | Support | ✅ |
+| Route               | Description                         | i18n |
+| ------------------- | ----------------------------------- | ---- |
+| `/`                 | Homepage - Hero, features, services | ✅   |
+| `/about`            | About company                       | ✅   |
+| `/services`         | Services overview                   | ✅   |
+| `/packages`         | Pricing & packages                  | ✅   |
+| `/packages/[slug]`  | Package details                     | ✅   |
+| `/cases`            | Case studies                        | ✅   |
+| `/cases/[slug]`     | Case study details                  | ✅   |
+| `/solutions`        | Solutions overview                  | ✅   |
+| `/solutions/[slug]` | Solution details                    | ✅   |
+| `/contact`          | Contact form                        | ✅   |
+| `/blog`             | Blog (placeholder)                  | ✅   |
+| `/careers`          | Careers (placeholder)               | ✅   |
+| `/partners`         | Partners program                    | ✅   |
+| `/resources`        | Resources                           | ✅   |
+| `/support`          | Support                             | ✅   |
 
 ### **Legal Pages:**
 
-| Route | Description |
-|-------|-------------|
-| `/legal/privacy` | Privacy Policy |
-| `/legal/terms` | Terms of Service |
-| `/legal/pdpa` | PDPA Compliance |
-| `/legal/cookies` | Cookie Policy |
-| `/legal/disclaimer` | Disclaimer |
-| `/legal/refund` | Refund Policy |
+| Route               | Description      |
+| ------------------- | ---------------- |
+| `/legal/privacy`    | Privacy Policy   |
+| `/legal/terms`      | Terms of Service |
+| `/legal/pdpa`       | PDPA Compliance  |
+| `/legal/cookies`    | Cookie Policy    |
+| `/legal/disclaimer` | Disclaimer       |
+| `/legal/refund`     | Refund Policy    |
 
 ### **API Routes:**
 
-| Route | Method | Description |
-|-------|--------|-------------|
-| `/api/contact` | POST | Submit contact form |
-| `/api/analytics` | POST | Track analytics events |
-| `/api/health` | GET | Health check |
-| `/api/content/services` | GET | Get services (fallback) |
+| Route                   | Method | Description             |
+| ----------------------- | ------ | ----------------------- |
+| `/api/contact`          | POST   | Submit contact form     |
+| `/api/analytics`        | POST   | Track analytics events  |
+| `/api/health`           | GET    | Health check            |
+| `/api/content/services` | GET    | Get services (fallback) |
 
 ---
 
@@ -276,6 +279,7 @@ See `env.example` for full configuration with comments.
 See `env.production.example` for production-ready configuration.
 
 **Key differences:**
+
 - `NEXT_PUBLIC_SITE_URL=https://cerebratechai.com`
 - `CONTACT_SERVICE_URL=<railway-url>`
 - `NODE_ENV=production`
@@ -305,6 +309,7 @@ nano src/data/home.ts
 ```
 
 **Benefits:**
+
 - ✅ **Version controlled** - Track changes in Git
 - ✅ **Type-safe** - TypeScript validation
 - ✅ **Fast** - No database queries
@@ -324,6 +329,7 @@ nano src/data/home.ts
 ## 📱 Features Overview
 
 ### **1. Homepage**
+
 - Hero section with animated gradient
 - Service highlights
 - Value propositions
@@ -334,6 +340,7 @@ nano src/data/home.ts
 - Contact CTA
 
 ### **2. Services Pages**
+
 - AI & Data Platform
 - Backend Development
 - Cloud & DevOps
@@ -342,6 +349,7 @@ nano src/data/home.ts
 - MLOps & Analytics
 
 ### **3. Packages & Pricing**
+
 - Starter Package
 - Professional Package
 - Enterprise Package
@@ -350,6 +358,7 @@ nano src/data/home.ts
 - CTA buttons
 
 ### **4. Case Studies**
+
 - Client success stories
 - Problem/Solution/Results format
 - Metrics & ROI
@@ -357,6 +366,7 @@ nano src/data/home.ts
 - Filterable by industry/service
 
 ### **5. Contact Form**
+
 - Lead capture
 - Service selection
 - Budget range
@@ -366,6 +376,7 @@ nano src/data/home.ts
 - API integration with backend
 
 ### **6. Legal & Compliance**
+
 - Privacy Policy (PDPA)
 - Terms of Service
 - Cookie Policy
@@ -381,6 +392,7 @@ nano src/data/home.ts
 **Endpoint:** `/api/contact`
 
 **Flow:**
+
 ```
 User fills form
     ↓
@@ -402,13 +414,14 @@ const response = await fetch(`${CONTACT_SERVICE_URL}/api/contact`, {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
-    'X-API-Key': CONTACT_API_KEY
+    'X-API-Key': CONTACT_API_KEY,
   },
-  body: JSON.stringify(formData)
+  body: JSON.stringify(formData),
 });
 ```
 
 **Required env vars:**
+
 - `CONTACT_SERVICE_URL` - Backend API URL
 - `CONTACT_API_KEY` - API authentication key
 
@@ -523,6 +536,7 @@ npx lhci autorun
 **Automatic deployment from GitHub:**
 
 1. **Push to GitHub:**
+
    ```bash
    git add .
    git commit -m "Ready for deployment"
@@ -536,6 +550,7 @@ npx lhci autorun
    - **Framework:** Next.js (auto-detected)
 
 3. **Set Environment Variables:**
+
    ```bash
    CONTACT_SERVICE_URL=<railway-backend-url>
    CONTACT_API_KEY=764d0f97...
@@ -579,22 +594,22 @@ docker-compose -f docker-compose.production.yml up -d
 
 ### **Lighthouse Scores (Target):**
 
-| Metric | Target | Current |
-|--------|--------|---------|
-| Performance | 90+ | ✅ 95+ |
-| Accessibility | 90+ | ✅ 100 |
-| Best Practices | 90+ | ✅ 100 |
-| SEO | 90+ | ✅ 100 |
+| Metric         | Target | Current |
+| -------------- | ------ | ------- |
+| Performance    | 90+    | ✅ 95+  |
+| Accessibility  | 90+    | ✅ 100  |
+| Best Practices | 90+    | ✅ 100  |
+| SEO            | 90+    | ✅ 100  |
 
 ### **Core Web Vitals:**
 
-| Metric | Target | Description |
-|--------|--------|-------------|
-| LCP | < 2.5s | Largest Contentful Paint |
-| INP | < 200ms | Interaction to Next Paint |
-| CLS | < 0.1 | Cumulative Layout Shift |
-| FCP | < 1.8s | First Contentful Paint |
-| TTFB | < 600ms | Time to First Byte |
+| Metric | Target  | Description               |
+| ------ | ------- | ------------------------- |
+| LCP    | < 2.5s  | Largest Contentful Paint  |
+| INP    | < 200ms | Interaction to Next Paint |
+| CLS    | < 0.1   | Cumulative Layout Shift   |
+| FCP    | < 1.8s  | First Contentful Paint    |
+| TTFB   | < 600ms | Time to First Byte        |
 
 ---
 
@@ -690,7 +705,7 @@ import { useTranslations } from 'next-intl';
 
 export default function Page() {
   const t = useTranslations('nav');
-  
+
   return <h1>{t('home')}</h1>; // "หน้าแรก" or "Home"
 }
 ```
@@ -776,6 +791,7 @@ Configured in `next.config.ts`:
 ### **Built-in Tracking:**
 
 **Events tracked:**
+
 - Page views
 - CTA clicks
 - Form submissions
@@ -791,17 +807,18 @@ import { useAnalytics } from '@/lib/hooks/use-analytics';
 
 export default function Component() {
   const { trackEvent } = useAnalytics();
-  
+
   const handleClick = () => {
     trackEvent('cta_click', {
       cta_id: 'hero-button',
-      cta_text: 'Get Started'
+      cta_text: 'Get Started',
     });
   };
 }
 ```
 
 **Analytics providers:**
+
 - Google Analytics 4 (GA4)
 - Google Tag Manager (GTM)
 - Custom events to backend
@@ -852,6 +869,7 @@ CMD ["npm", "start"]
 ### **Common Issues:**
 
 #### **1. Port already in use**
+
 ```bash
 # Find process
 lsof -i :3000  # Mac/Linux
@@ -862,6 +880,7 @@ PORT=3001 npm run dev
 ```
 
 #### **2. Contact form not working**
+
 ```bash
 # Check Contact Service is running
 curl http://localhost:7002/health
@@ -873,6 +892,7 @@ grep API_KEY ../../services/contact-service/.env
 ```
 
 #### **3. Build errors**
+
 ```bash
 # Clear Next.js cache
 rm -rf .next
@@ -886,6 +906,7 @@ npm run build
 ```
 
 #### **4. Type errors**
+
 ```bash
 # Generate types
 npm run typecheck
@@ -899,6 +920,7 @@ cat tsconfig.json
 ## 📚 Documentation
 
 ### **In this directory:**
+
 - `ARCHITECTURE.md` - Technical architecture
 - `TESTING.md` - Testing strategies
 - `SECURITY.md` - Security practices
@@ -908,6 +930,7 @@ cat tsconfig.json
 - `DOCKER_DEPLOYMENT_GUIDE.md` - Docker deployment
 
 ### **Root documentation:**
+
 - `../../docs/START_HERE.md` - Getting started
 - `../../docs/CURRENT_ARCHITECTURE.md` - System architecture
 - `../../DEPLOY_CHECKLIST.md` - Deployment guide
@@ -958,16 +981,19 @@ This project is proprietary and confidential.
 ## 📞 Support
 
 ### **For Development Issues:**
+
 - Check `TROUBLESHOOTING.md`
 - Review logs: `npm run dev` output
 - Check TypeScript errors: `npm run typecheck`
 
 ### **For Deployment Issues:**
+
 - Vercel: [vercel.com/support](https://vercel.com/support)
 - Railway: [railway.app/help](https://railway.app/help)
 - Check deployment guides in root directory
 
 ### **For Content Updates:**
+
 - Edit files in `src/data/`
 - Commit & push to GitHub
 - Auto-deploy on Vercel

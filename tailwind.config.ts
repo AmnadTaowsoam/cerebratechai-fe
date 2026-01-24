@@ -78,7 +78,7 @@ const config: Config = {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
         '2xl': '1.25rem',
-        'lgx': '0.75rem',
+        lgx: '0.75rem',
       },
       boxShadow: {
         soft: '0 8px 24px rgba(0,0,0,0.25)',
@@ -88,7 +88,8 @@ const config: Config = {
       },
       backgroundImage: {
         // Cerebrate Gradient (main brand)
-        'grad-hero': 'linear-gradient(135deg, #0EA5E9 0%, #6366F1 55%, #7C3AED 100%)',
+        'grad-hero':
+          'linear-gradient(135deg, #0EA5E9 0%, #6366F1 55%, #7C3AED 100%)',
         'grad-hero-glow': `
           radial-gradient(120% 120% at 70% 0%, #0EA5E9 0%, #6366F1 50%, rgba(12,18,32,0) 100%),
           #0B1220
@@ -101,20 +102,21 @@ const config: Config = {
         'grad-plasma': 'linear-gradient(135deg, #F472B6 0%, #A78BFA 100%)',
         'grad-circuit': 'linear-gradient(135deg, #10B981 0%, #3B82F6 100%)',
         'grad-copper': 'linear-gradient(135deg, #F59E0B 0%, #6D28D9 100%)',
-        'grad-slate': 'linear-gradient(135deg, #0B1220 0%, #111827 50%, #1F2937 100%)',
+        'grad-slate':
+          'linear-gradient(135deg, #0B1220 0%, #111827 50%, #1F2937 100%)',
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
         mono: ['var(--font-mono)', 'monospace'],
       },
       fontSize: {
-        'display': ['3.5rem', { lineHeight: '1.2' }],
-        'h1': ['2.25rem', { lineHeight: '1.2' }],
-        'h2': ['1.75rem', { lineHeight: '1.2' }],
-        'h3': ['1.375rem', { lineHeight: '1.2' }],
-        'body': ['1rem', { lineHeight: '1.55' }],
-        'small': ['0.875rem', { lineHeight: '1.55' }],
-        'micro': ['0.75rem', { lineHeight: '1.55' }],
+        display: ['3.5rem', { lineHeight: '1.2' }],
+        h1: ['2.25rem', { lineHeight: '1.2' }],
+        h2: ['1.75rem', { lineHeight: '1.2' }],
+        h3: ['1.375rem', { lineHeight: '1.2' }],
+        body: ['1rem', { lineHeight: '1.55' }],
+        small: ['0.875rem', { lineHeight: '1.55' }],
+        micro: ['0.75rem', { lineHeight: '1.55' }],
       },
       spacing: {
         '18': '4.5rem',
@@ -128,7 +130,8 @@ const config: Config = {
         'scale-in': 'scaleIn 0.2s ease-out',
         'bounce-gentle': 'bounceGentle 0.6s ease-out',
         shimmer: 'shimmer 8s ease-in-out infinite',
-        'shimmer-slide': 'shimmer-slide var(--speed) ease-in-out infinite alternate',
+        'shimmer-slide':
+          'shimmer-slide var(--speed) ease-in-out infinite alternate',
         'spin-around': 'spin-around calc(var(--speed) * 2) infinite linear',
         gradient: 'gradient 8s linear infinite',
       },
@@ -200,10 +203,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/forms'),
-  ],
+  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')],
 };
 
 export default config;

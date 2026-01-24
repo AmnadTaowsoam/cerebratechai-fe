@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = params;
   const t = await getTranslations(`products.${slug}`);
 
-  const product = products.find((p) => p.slug === slug);
+  const product = products.find(p => p.slug === slug);
 
   if (!product) {
     return {
@@ -33,10 +33,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://cerebratechai.com' },
-      { '@type': 'ListItem', position: 2, name: 'Products', item: 'https://cerebratechai.com/products' },
-      { '@type': 'ListItem', position: 3, name: product.name, item: `https://cerebratechai.com/products/${slug}` }
-    ]
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://cerebratechai.com',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Products',
+        item: 'https://cerebratechai.com/products',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: product.name,
+        item: `https://cerebratechai.com/products/${slug}`,
+      },
+    ],
   };
 
   return {
@@ -52,7 +67,7 @@ export default async function ProductPage({ params }: Props) {
   const { locale, slug } = params;
   const t = await getTranslations(`products.${slug}`);
 
-  const product = products.find((p) => p.slug === slug);
+  const product = products.find(p => p.slug === slug);
 
   if (!product) {
     notFound();
@@ -75,7 +90,7 @@ export default async function ProductPage({ params }: Props) {
 export async function generateStaticParams() {
   const locales = ['en', 'th'];
   return locales.flatMap(locale =>
-    products.map((product) => ({
+    products.map(product => ({
       locale,
       slug: product.slug,
     }))

@@ -5,19 +5,24 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Moon, Sun, Monitor, Zap } from 'lucide-react';
 
 export function DarkModeSection() {
-  const [theme, setTheme] = useState<'light' | 'dark' | 'deep-tech'>('deep-tech');
+  const [theme, setTheme] = useState<'light' | 'dark' | 'deep-tech'>(
+    'deep-tech'
+  );
 
   useEffect(() => {
     // Apply theme to document
     document.documentElement.setAttribute('data-theme', theme);
-    
+
     // Save to localStorage
     localStorage.setItem('theme', theme);
   }, [theme]);
 
   useEffect(() => {
     // Load saved theme on mount
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | 'deep-tech';
+    const savedTheme = localStorage.getItem('theme') as
+      | 'light'
+      | 'dark'
+      | 'deep-tech';
     if (savedTheme) {
       setTheme(savedTheme);
     }
@@ -98,19 +103,21 @@ export function DarkModeSection() {
                       className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-2xl -z-10"
                     />
                   )}
-                  
+
                   <div className="flex flex-col items-center text-center">
                     <div
                       className={`w-16 h-16 rounded-full flex items-center justify-center mb-4 ${
                         isActive ? 'bg-blue-500' : 'bg-slate-800'
                       }`}
                     >
-                      <Icon className={`w-8 h-8 ${isActive ? 'text-white' : 'text-slate-400'}`} />
+                      <Icon
+                        className={`w-8 h-8 ${isActive ? 'text-white' : 'text-slate-400'}`}
+                      />
                     </div>
-                    
+
                     <h3 className="text-xl font-semibold mb-1">{t.name}</h3>
                     <p className="text-sm text-slate-400 mb-3">{t.nameTh}</p>
-                    
+
                     <p className="text-sm text-slate-300">{t.description}</p>
                     <p className="text-sm text-slate-400">{t.descriptionTh}</p>
                   </div>
@@ -139,13 +146,15 @@ export function DarkModeSection() {
             <div className="p-6 border-b border-slate-700">
               <h3 className="text-lg font-semibold">Preview / ตัวอย่าง</h3>
             </div>
-            
+
             <div className="p-6">
               <div className="grid md:grid-cols-2 gap-6">
                 {/* Light Preview */}
                 <div className="bg-white rounded-xl p-6 text-slate-900">
                   <h4 className="font-semibold mb-2">Light Theme</h4>
-                  <p className="text-sm text-slate-600 mb-4">Clean and minimal design</p>
+                  <p className="text-sm text-slate-600 mb-4">
+                    Clean and minimal design
+                  </p>
                   <button className="px-4 py-2 bg-slate-900 text-white rounded-lg text-sm">
                     Button
                   </button>
@@ -154,7 +163,9 @@ export function DarkModeSection() {
                 {/* Dark Preview */}
                 <div className="bg-slate-900 rounded-xl p-6 text-white">
                   <h4 className="font-semibold mb-2">Dark Theme</h4>
-                  <p className="text-sm text-slate-400 mb-4">Easy on the eyes</p>
+                  <p className="text-sm text-slate-400 mb-4">
+                    Easy on the eyes
+                  </p>
                   <button className="px-4 py-2 bg-white text-slate-900 rounded-lg text-sm">
                     Button
                   </button>
@@ -165,7 +176,9 @@ export function DarkModeSection() {
                   <h4 className="font-semibold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
                     Deep Tech Theme
                   </h4>
-                  <p className="text-sm text-slate-300 mb-4">Neon cyberpunk aesthetic with glowing effects</p>
+                  <p className="text-sm text-slate-300 mb-4">
+                    Neon cyberpunk aesthetic with glowing effects
+                  </p>
                   <button className="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg text-sm shadow-lg shadow-purple-500/30">
                     Button
                   </button>
@@ -182,7 +195,8 @@ export function DarkModeSection() {
             className="mt-8 text-center"
           >
             <p className="text-slate-400 text-sm">
-              Your theme preference is saved automatically. / การตั้งค่าธีมของคุณจะถูกบันทึกโดยอัตโนมัติ
+              Your theme preference is saved automatically. /
+              การตั้งค่าธีมของคุณจะถูกบันทึกโดยอัตโนมัติ
             </p>
           </motion.div>
         </div>

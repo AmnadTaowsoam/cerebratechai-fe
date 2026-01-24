@@ -12,8 +12,14 @@ export function TechStackSection({ techStack }: TechStackSectionProps) {
   const getIcon = (tech: string) => {
     const lowerTech = tech.toLowerCase();
     if (lowerTech.includes('next') || lowerTech.includes('react')) return Code2;
-    if (lowerTech.includes('postgres') || lowerTech.includes('sql')) return Database;
-    if (lowerTech.includes('python') || lowerTech.includes('tensorflow') || lowerTech.includes('pytorch')) return Cpu;
+    if (lowerTech.includes('postgres') || lowerTech.includes('sql'))
+      return Database;
+    if (
+      lowerTech.includes('python') ||
+      lowerTech.includes('tensorflow') ||
+      lowerTech.includes('pytorch')
+    )
+      return Cpu;
     return Cloud;
   };
 

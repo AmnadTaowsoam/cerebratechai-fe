@@ -4,7 +4,10 @@ import { useLocale, useTranslations } from 'next-intl';
 import { Rocket, LineChart, Cpu } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { valueCards, getLocalized } from '@/data/content';
-import { getValueCards, getLocalized as getLocalizedApi } from '@/lib/content-api';
+import {
+  getValueCards,
+  getLocalized as getLocalizedApi,
+} from '@/lib/content-api';
 import { useEffect, useState } from 'react';
 
 const iconMap = {
@@ -20,10 +23,10 @@ export function ValueCardsSection() {
 
   useEffect(() => {
     // Fetch dynamic content from API with fallback to static data
-    getValueCards().then((data) => {
+    getValueCards().then(data => {
       if (data && data.length > 0) {
         // Transform API data to match the expected format
-        const transformed = data.map((apiCard) => ({
+        const transformed = data.map(apiCard => ({
           id: apiCard.identifier,
           icon: apiCard.icon as 'rocket' | 'lineChart' | 'cpu',
           title: apiCard.title,
@@ -40,21 +43,24 @@ export function ValueCardsSection() {
       <div className="container mx-auto px-6">
         <div className="mb-12 text-center">
           <span className="inline-flex items-center rounded-full bg-surface-2 px-4 py-1 text-sm font-medium text-primary">
-            {locale.startsWith('th') ? 'เหตุผลที่ SMEs เลือกเรา' : 'Why SMEs choose us'}
+            {locale.startsWith('th')
+              ? 'เหตุผลที่ SMEs เลือกเรา'
+              : 'Why SMEs choose us'}
           </span>
           <h2 className="mt-4 text-3xl font-bold text-text md:text-4xl">
-            {locale.startsWith('th') ? 'รวดเร็ว คุ้มค่า เหมาะกับโครงการเล็ก-กลาง' : 'Fast, affordable, right-sized'}
+            {locale.startsWith('th')
+              ? 'รวดเร็ว คุ้มค่า เหมาะกับโครงการเล็ก-กลาง'
+              : 'Fast, affordable, right-sized'}
           </h2>
           <p className="mt-3 mx-auto max-w-3xl text-text-muted">
-            {locale.startsWith('th') 
+            {locale.startsWith('th')
               ? 'ดูแลโดยทีมเล็กที่มีประสบการณ์ เน้นส่งมอบ POC และ Small Pilot ที่ใช้งานได้จริง ไม่ซับซ้อนเกินไป'
-              : 'Run by a small experienced team focused on delivering POCs and Small Pilots that work—without enterprise complexity.'
-            }
+              : 'Run by a small experienced team focused on delivering POCs and Small Pilots that work—without enterprise complexity.'}
           </p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-3">
-          {cards.map((card) => {
+          {cards.map(card => {
             const Icon = iconMap[card.icon];
             return (
               <Card
@@ -76,7 +82,10 @@ export function ValueCardsSection() {
                   <ul className="mt-6 space-y-2 text-sm text-text-muted">
                     {card.bullets.map((bullet, index) => (
                       <li key={index} className="flex items-start gap-2">
-                        <span className="mt-1 h-2 w-2 rounded-full bg-primary" aria-hidden />
+                        <span
+                          className="mt-1 h-2 w-2 rounded-full bg-primary"
+                          aria-hidden
+                        />
                         <span>{getLocalized(locale, bullet)}</span>
                       </li>
                     ))}

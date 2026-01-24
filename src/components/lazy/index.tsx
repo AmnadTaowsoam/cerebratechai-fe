@@ -12,7 +12,10 @@ const LoadingFallback = () => (
 
 // Lazy load heavy landing page sections
 export const LazyRAGDemoSection = dynamic(
-  () => import('@/components/rag/rag-demo-section').then(mod => ({ default: mod.RAGDemoSection })),
+  () =>
+    import('@/components/rag/rag-demo-section').then(mod => ({
+      default: mod.RAGDemoSection,
+    })),
   {
     loading: LoadingFallback,
     ssr: false, // Don't SSR heavy interactive components
@@ -20,7 +23,10 @@ export const LazyRAGDemoSection = dynamic(
 );
 
 export const LazyChatGPTAppsSection = dynamic(
-  () => import('@/components/landing/chatgpt-apps-section').then(mod => ({ default: mod.ChatGPTAppsSection })),
+  () =>
+    import('@/components/landing/chatgpt-apps-section').then(mod => ({
+      default: mod.ChatGPTAppsSection,
+    })),
   {
     loading: LoadingFallback,
     ssr: false,
@@ -28,21 +34,30 @@ export const LazyChatGPTAppsSection = dynamic(
 );
 
 export const LazyCaseShowcaseSection = dynamic(
-  () => import('@/components/landing/case-showcase-section').then(mod => ({ default: mod.CaseShowcaseSection })),
+  () =>
+    import('@/components/landing/case-showcase-section').then(mod => ({
+      default: mod.CaseShowcaseSection,
+    })),
   {
     loading: LoadingFallback,
   }
 );
 
 export const LazyPackagesPreviewSection = dynamic(
-  () => import('@/components/landing/packages-preview-section').then(mod => ({ default: mod.PackagesPreviewSection })),
+  () =>
+    import('@/components/landing/packages-preview-section').then(mod => ({
+      default: mod.PackagesPreviewSection,
+    })),
   {
     loading: LoadingFallback,
   }
 );
 
 export const LazyWebVitalsClient = dynamic(
-  () => import('@/components/metrics/web-vitals-client').then(mod => ({ default: mod.WebVitalsClient })),
+  () =>
+    import('@/components/metrics/web-vitals-client').then(mod => ({
+      default: mod.WebVitalsClient,
+    })),
   {
     ssr: false,
   }
@@ -50,7 +65,10 @@ export const LazyWebVitalsClient = dynamic(
 
 // Lazy load contact form (below the fold)
 export const LazyContactForm = dynamic(
-  () => import('@/components/landing/contact-form').then(mod => ({ default: mod.ContactForm })),
+  () =>
+    import('@/components/landing/contact-form').then(mod => ({
+      default: mod.ContactForm,
+    })),
   {
     loading: LoadingFallback,
   }

@@ -29,7 +29,9 @@ export const CONTAINER_PADDING = {
 };
 
 // Combined spacing classes
-export const getSectionSpacing = (section: keyof typeof SECTION_SPACING): string => {
+export const getSectionSpacing = (
+  section: keyof typeof SECTION_SPACING
+): string => {
   const vertical = SECTION_SPACING[section];
   const horizontal = SECTION_SPACING[section];
   return `${vertical} ${horizontal}`;
@@ -40,7 +42,9 @@ export const getContainerPadding = (): string => {
   return isMobile ? CONTAINER_PADDING.mobile : CONTAINER_PADDING.desktop;
 };
 
-export const getSectionClassName = (section: keyof typeof SECTION_SPACING): string => {
+export const getSectionClassName = (
+  section: keyof typeof SECTION_SPACING
+): string => {
   const base = getSectionSpacing(section);
   return `${base} ${getContainerPadding()}`;
 };

@@ -88,14 +88,14 @@ export function isValidPhone(phone: string): boolean {
 export function getInitials(name: string): string {
   return name
     .split(' ')
-    .map((word) => word.charAt(0))
+    .map(word => word.charAt(0))
     .join('')
     .toUpperCase()
     .slice(0, 2);
 }
 
 export function sleep(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms));
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 export function capitalizeFirst(str: string): string {
@@ -103,8 +103,9 @@ export function capitalizeFirst(str: string): string {
 }
 
 export function capitalizeWords(str: string): string {
-  return str.replace(/\w\S*/g, (txt) => 
-    txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+  return str.replace(
+    /\w\S*/g,
+    txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
   );
 }
 
@@ -119,7 +120,8 @@ export function getReadingTime(text: string): number {
 }
 
 export function generateRandomString(length: number): string {
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const chars =
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   let result = '';
   for (let i = 0; i < length; i++) {
     result += chars.charAt(Math.floor(Math.random() * chars.length));
@@ -127,7 +129,9 @@ export function generateRandomString(length: number): string {
   return result;
 }
 
-export function parseSearchParams(searchParams: URLSearchParams): Record<string, string> {
+export function parseSearchParams(
+  searchParams: URLSearchParams
+): Record<string, string> {
   const params: Record<string, string> = {};
   for (const [key, value] of searchParams.entries()) {
     params[key] = value;
@@ -135,7 +139,9 @@ export function parseSearchParams(searchParams: URLSearchParams): Record<string,
   return params;
 }
 
-export function buildSearchParams(params: Record<string, string | number | boolean>): URLSearchParams {
+export function buildSearchParams(
+  params: Record<string, string | number | boolean>
+): URLSearchParams {
   const searchParams = new URLSearchParams();
   for (const [key, value] of Object.entries(params)) {
     if (value !== undefined && value !== null && value !== '') {

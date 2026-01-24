@@ -6,7 +6,9 @@ interface CarePlanSectionProps {
   locale?: string;
 }
 
-export default function CarePlanSection({ locale = 'en' }: CarePlanSectionProps) {
+export default function CarePlanSection({
+  locale = 'en',
+}: CarePlanSectionProps) {
   const carePlan = packagesMap.care_plan;
   const isThai = locale === 'th';
 
@@ -21,7 +23,9 @@ export default function CarePlanSection({ locale = 'en' }: CarePlanSectionProps)
               {isThai ? 'ดูแลหลังเปิดใช้งาน' : 'Post-Launch'}
             </span>
             <h2 className="text-3xl font-bold text-text mb-4">
-              {isThai ? 'เลือก Care Plan สำหรับการดูแลต่อเนื่อง' : 'Choose a Care Plan for Ongoing Support'}
+              {isThai
+                ? 'เลือก Care Plan สำหรับการดูแลต่อเนื่อง'
+                : 'Choose a Care Plan for Ongoing Support'}
             </h2>
             <p className="text-text-muted max-w-2xl mx-auto">
               {isThai
@@ -45,17 +49,22 @@ export default function CarePlanSection({ locale = 'en' }: CarePlanSectionProps)
                       {isThai ? 'เริ่มที่' : 'From'}
                     </div>
                     <span className="text-3xl font-bold text-text">
-                      ฿{tier.priceTHB.toLocaleString(isThai ? 'th-TH' : 'en-US')}
+                      ฿
+                      {tier.priceTHB.toLocaleString(isThai ? 'th-TH' : 'en-US')}
                     </span>
                     <span className="text-sm text-text-muted ml-1">
                       {isThai ? '/ เดือน' : '/ month'}
                     </span>
                   </div>
                   <p className="text-sm text-text-muted">
-                    {isThai ? `${tier.hours} ชม./เดือน • SLA ${tier.sla}` : `${tier.hours} hrs/month • SLA ${tier.sla}`}
+                    {isThai
+                      ? `${tier.hours} ชม./เดือน • SLA ${tier.sla}`
+                      : `${tier.hours} hrs/month • SLA ${tier.sla}`}
                   </p>
                   {(isThai ? tier.bonusTh : tier.bonus) && (
-                    <p className="mt-2 text-xs text-emerald-300">{isThai ? tier.bonusTh : tier.bonus}</p>
+                    <p className="mt-2 text-xs text-emerald-300">
+                      {isThai ? tier.bonusTh : tier.bonus}
+                    </p>
                   )}
                 </div>
               </div>

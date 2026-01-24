@@ -2,7 +2,10 @@
 
 import { useLocale, useTranslations } from 'next-intl';
 import { processSteps, getLocalized } from '@/data/content';
-import { getProcessSteps, getLocalized as getLocalizedApi } from '@/lib/content-api';
+import {
+  getProcessSteps,
+  getLocalized as getLocalizedApi,
+} from '@/lib/content-api';
 import { cn } from '@/lib/utils';
 import { useEffect, useState } from 'react';
 
@@ -13,9 +16,9 @@ export function ProcessStepsSection() {
 
   useEffect(() => {
     // Fetch process steps from API
-    getProcessSteps().then((data) => {
+    getProcessSteps().then(data => {
       if (data && data.length > 0) {
-        const transformed = data.map((apiStep) => ({
+        const transformed = data.map(apiStep => ({
           id: apiStep.identifier,
           title: apiStep.title,
           description: apiStep.description,
@@ -39,7 +42,7 @@ export function ProcessStepsSection() {
               <li
                 key={step.id}
                 className={cn(
-                  'relative rounded-2xl border border-hairline bg-surface/70 p-6 transition-all duration-300 hover:border-primary/40 hover:shadow-soft',
+                  'relative rounded-2xl border border-hairline bg-surface/70 p-6 transition-all duration-300 hover:border-primary/40 hover:shadow-soft'
                 )}
               >
                 <div className="mb-3 flex items-center gap-3 text-primary">
@@ -50,7 +53,9 @@ export function ProcessStepsSection() {
                     {getLocalized(locale, step.title)}
                   </h3>
                 </div>
-                <p className="text-text-muted">{getLocalized(locale, step.description)}</p>
+                <p className="text-text-muted">
+                  {getLocalized(locale, step.description)}
+                </p>
               </li>
             ))}
           </ol>

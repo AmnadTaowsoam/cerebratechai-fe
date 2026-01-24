@@ -13,7 +13,13 @@ type DownloadGateModalProps = {
   onConfirm: (payload: { email: string; name?: string }) => void;
 };
 
-export function DownloadGateModal({ open, locale, resource, onClose, onConfirm }: DownloadGateModalProps) {
+export function DownloadGateModal({
+  open,
+  locale,
+  resource,
+  onClose,
+  onConfirm,
+}: DownloadGateModalProps) {
   const isThai = locale.startsWith('th');
 
   const [email, setEmail] = useState('');
@@ -59,7 +65,12 @@ export function DownloadGateModal({ open, locale, resource, onClose, onConfirm }
             <h3 className="text-lg font-semibold text-text">{title}</h3>
             <p className="mt-1 text-sm text-text-muted">{subtitle}</p>
           </div>
-          <Button variant="ghost" size="icon" onClick={onClose} aria-label={isThai ? 'ปิด' : 'Close'}>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={onClose}
+            aria-label={isThai ? 'ปิด' : 'Close'}
+          >
             <X className="h-5 w-5" />
           </Button>
         </div>
@@ -70,26 +81,31 @@ export function DownloadGateModal({ open, locale, resource, onClose, onConfirm }
               {isThai ? resource.title.th : resource.title.en}
             </div>
             <div className="mt-1 text-xs text-text-muted">
-              {isThai ? resource.category.th : resource.category.en} • {resource.type}
+              {isThai ? resource.category.th : resource.category.en} •{' '}
+              {resource.type}
             </div>
           </div>
 
           <div className="mt-5 grid gap-3">
             <label className="grid gap-1">
-              <span className="text-xs font-medium text-text-muted">{isThai ? 'ชื่อ (ไม่บังคับ)' : 'Name (optional)'}</span>
+              <span className="text-xs font-medium text-text-muted">
+                {isThai ? 'ชื่อ (ไม่บังคับ)' : 'Name (optional)'}
+              </span>
               <input
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                onChange={e => setName(e.target.value)}
                 className="w-full rounded-lg border border-hairline bg-surface px-3 py-2 text-sm text-text placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary/50"
                 placeholder={isThai ? 'ชื่อเล่น / ชื่อทีม' : 'Your name / team'}
               />
             </label>
 
             <label className="grid gap-1">
-              <span className="text-xs font-medium text-text-muted">{isThai ? 'อีเมล' : 'Email'}</span>
+              <span className="text-xs font-medium text-text-muted">
+                {isThai ? 'อีเมล' : 'Email'}
+              </span>
               <input
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={e => setEmail(e.target.value)}
                 onBlur={() => setTouched(true)}
                 type="email"
                 required
@@ -97,7 +113,11 @@ export function DownloadGateModal({ open, locale, resource, onClose, onConfirm }
                 placeholder={isThai ? 'you@company.com' : 'you@company.com'}
               />
               {touched && !emailOk ? (
-                <span className="text-xs text-danger">{isThai ? 'กรุณากรอกอีเมลให้ถูกต้อง' : 'Please enter a valid email'}</span>
+                <span className="text-xs text-danger">
+                  {isThai
+                    ? 'กรุณากรอกอีเมลให้ถูกต้อง'
+                    : 'Please enter a valid email'}
+                </span>
               ) : null}
             </label>
           </div>
@@ -110,7 +130,10 @@ export function DownloadGateModal({ open, locale, resource, onClose, onConfirm }
               onClick={() => {
                 setTouched(true);
                 if (!emailOk) return;
-                onConfirm({ email: email.trim(), name: name.trim() || undefined });
+                onConfirm({
+                  email: email.trim(),
+                  name: name.trim() || undefined,
+                });
               }}
             >
               {isThai ? 'ดาวน์โหลด' : 'Download'}

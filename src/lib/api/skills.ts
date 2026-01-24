@@ -37,12 +37,12 @@ export const skillsAPI = {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ q: query }),
     });
-    
+
     if (!response.ok) {
       const error = await response.json();
       throw new Error(error.message || 'Failed to route query');
     }
-    
+
     return response.json();
   },
 
@@ -55,12 +55,12 @@ export const skillsAPI = {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ tool, args }),
     });
-    
+
     if (!response.ok) {
       const error = await response.json();
       throw new Error(error.message || 'Failed to execute tool');
     }
-    
+
     return response.json();
   },
 
@@ -69,11 +69,11 @@ export const skillsAPI = {
    */
   listTools: async (): Promise<{ ok: boolean; tools: Tool[] }> => {
     const response = await fetch(`${API_URL}/api/skills/tools`);
-    
+
     if (!response.ok) {
       throw new Error('Failed to list tools');
     }
-    
+
     return response.json();
   },
 
@@ -83,13 +83,13 @@ export const skillsAPI = {
   smartQuery: async (query: string): Promise<any> => {
     // Step 1: Route to skill
     const routeResult = await skillsAPI.route(query);
-    
+
     if (!routeResult.ok) {
       throw new Error(routeResult.error || 'Routing failed');
     }
-    
+
     const { skill, confidence, lang } = routeResult;
-    
+
     // Step 2: For tool-based skills, execute the tool
     const toolMap: Record<string, string> = {
       Math: 'math.calc',
@@ -100,12 +100,12 @@ export const skillsAPI = {
       Translate: 'translate.th_en',
       RAG: 'rag.search',
     };
-    
+
     if (toolMap[skill]) {
       // Extract args from query (simplified)
       const args = await skillsAPI.parseToolArgs(query, skill);
       const result = await skillsAPI.execute(toolMap[skill], args);
-      
+
       return {
         ...result,
         skill,
@@ -113,7 +113,7 @@ export const skillsAPI = {
         lang,
       };
     }
-    
+
     // For Direct skill, return info to use LLM
     return {
       ok: true,
@@ -134,10 +134,10 @@ export const skillsAPI = {
       case 'Math':
         // Extract mathematical expression
         return { expr: query.replace(/คำนวณ|calculate|compute/gi, '').trim() };
-      
+
       case 'RAG':
         return { q: query, k: 6 };
-      
+
       case 'Translate':
         // Remove translation keywords
         const text = query
@@ -145,19 +145,19 @@ export const skillsAPI = {
           .replace(/[:：]/g, '')
           .trim();
         return { text };
-      
+
       case 'Unit':
         return { query };
-      
+
       case 'Date':
         return { query };
-      
+
       case 'Regex':
         return { query };
-      
+
       case 'Code':
         return { code: query };
-      
+
       default:
         return { query };
     }
@@ -171,4 +171,3 @@ export const skillsAPI = {
     return response.json();
   },
 };
-

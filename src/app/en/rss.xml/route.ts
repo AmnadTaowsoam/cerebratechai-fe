@@ -15,9 +15,15 @@ export async function GET() {
   const locale = 'en';
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 
-  const allItems: Array<{ title: string; link: string; pubDate: string; description: string; category: string }> = [];
+  const allItems: Array<{
+    title: string;
+    link: string;
+    pubDate: string;
+    description: string;
+    category: string;
+  }> = [];
 
-  BLOG_POSTS.forEach((post) => {
+  BLOG_POSTS.forEach(post => {
     allItems.push({
       title: escapeXml(post.title.en),
       link: `${siteUrl}/${locale}/blog/${post.slug}`,
@@ -27,7 +33,7 @@ export async function GET() {
     });
   });
 
-  CASES.forEach((caseItem) => {
+  CASES.forEach(caseItem => {
     allItems.push({
       title: escapeXml(caseItem.title),
       link: `${siteUrl}/${locale}/cases/${caseItem.slug}`,
@@ -37,7 +43,7 @@ export async function GET() {
     });
   });
 
-  RESOURCES.filter((r) => r.date).forEach((resource) => {
+  RESOURCES.filter(r => r.date).forEach(resource => {
     allItems.push({
       title: escapeXml(resource.title.en),
       link: `${siteUrl}/${locale}/resources/${resource.slug}`,
@@ -47,11 +53,13 @@ export async function GET() {
     });
   });
 
-  allItems.sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime());
+  allItems.sort(
+    (a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime()
+  );
 
   const items = allItems
-    .map(
-      (item) => `
+    .map(item =>
+      `
       <item>
         <title>${item.title}</title>
         <link>${item.link}</link>
@@ -64,7 +72,8 @@ export async function GET() {
     )
     .join('\n');
 
-  const lastBuildDate = allItems.length > 0 ? allItems[0].pubDate : new Date().toUTCString();
+  const lastBuildDate =
+    allItems.length > 0 ? allItems[0].pubDate : new Date().toUTCString();
 
   const xml = `
     <?xml version="1.0" encoding="UTF-8"?>
@@ -88,4 +97,3 @@ export async function GET() {
     },
   });
 }
-

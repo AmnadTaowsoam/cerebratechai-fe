@@ -1,6 +1,6 @@
-import Link from 'next/link'
-import { FileQuestion, Home, MessageCircle } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import Link from 'next/link';
+import { FileQuestion, Home, MessageCircle } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 export default function NotFound() {
   return (
@@ -12,7 +12,8 @@ export default function NotFound() {
         404 - Page Not Found
       </h2>
       <p className="text-text-muted max-w-md mb-8 text-lg">
-        ขออภัย เราไม่พบหน้าที่คุณต้องการ อาจมีการย้ายหน้าหรือคุณอาจพิมพ์ URL ผิดพลาด
+        ขออภัย เราไม่พบหน้าที่คุณต้องการ อาจมีการย้ายหน้าหรือคุณอาจพิมพ์ URL
+        ผิดพลาด
       </p>
       <div className="flex gap-4">
         <Button asChild size="lg" className="rounded-xl">
@@ -29,5 +30,5 @@ export default function NotFound() {
         </Button>
       </div>
     </div>
-  )
+  );
 }

@@ -21,13 +21,23 @@ export function generateMetadata({
 }: SEOProps): Metadata {
   const siteName = 'CerebraTechAI';
   const fullTitle = title ? `${title} | ${siteName}` : siteName;
-  const fullDescription = description || 'Transform your pain points into production-ready AI systems. We build AI & full-stack solutions from Edge to Cloud that are ready for deployment.';
+  const fullDescription =
+    description ||
+    'Transform your pain points into production-ready AI systems. We build AI & full-stack solutions from Edge to Cloud that are ready for deployment.';
   const fullUrl = `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}${url}`;
 
   return {
     title: fullTitle,
     description: fullDescription,
-    keywords: [...keywords, 'AI', 'Machine Learning', 'Computer Vision', 'Cloud Computing', 'Full-Stack Development', 'Edge Computing'],
+    keywords: [
+      ...keywords,
+      'AI',
+      'Machine Learning',
+      'Computer Vision',
+      'Cloud Computing',
+      'Full-Stack Development',
+      'Edge Computing',
+    ],
     authors: [{ name: 'CerebraTechAI Team' }],
     creator: siteName,
     publisher: siteName,
@@ -36,12 +46,14 @@ export function generateMetadata({
       address: false,
       telephone: false,
     },
-    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+    metadataBase: new URL(
+      process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+    ),
     alternates: {
       canonical: url,
       languages: {
-        'en': `/en${url}`,
-        'th': `/th${url}`,
+        en: `/en${url}`,
+        th: `/th${url}`,
       },
     },
     openGraph: {

@@ -22,10 +22,10 @@ export type PackageConfig = {
   titleTh?: string;
   priceFromTHB?: number;
   priceUnit?: 'one_time' | 'per_env' | 'per_rollout' | 'monthly';
-  timeline?: string;            // e.g. "2–4" (weeks)
-  highlight?: string;           // badge e.g. "Most Popular"
+  timeline?: string; // e.g. "2–4" (weeks)
+  highlight?: string; // badge e.g. "Most Popular"
   highlightTh?: string;
-  bullets?: string[];           // short selling points (for Pricing cards)
+  bullets?: string[]; // short selling points (for Pricing cards)
   bulletsTh?: string[];
   inScope?: string[];
   inScopeTh?: string[];
@@ -35,11 +35,11 @@ export type PackageConfig = {
   deliverablesTh?: string[];
   addons?: string[];
   addonsTh?: string[];
-  tiers?: CarePlanTier[];       // for care_plan
-  crossCutting?: boolean;       // Assurance sprint
-  postLaunch?: boolean;         // Care plan
+  tiers?: CarePlanTier[]; // for care_plan
+  crossCutting?: boolean; // Assurance sprint
+  postLaunch?: boolean; // Care plan
   recommendAssurance?: boolean; // Show "Recommended: Assurance" badge
   ctaLabel?: string;
   ctaLabelTh?: string;
-  ctaHref?: string;             // override
+  ctaHref?: string; // override
 };

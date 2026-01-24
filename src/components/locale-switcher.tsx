@@ -20,8 +20,8 @@ export function LocaleSwitcher() {
       <button
         onClick={() => switchLocale('th')}
         className={`transition-colors ${
-          locale === 'th' 
-            ? 'text-primary font-semibold' 
+          locale === 'th'
+            ? 'text-primary font-semibold'
             : 'text-text-muted hover:text-text'
         }`}
         aria-label="Switch to Thai"
@@ -32,8 +32,8 @@ export function LocaleSwitcher() {
       <button
         onClick={() => switchLocale('en')}
         className={`transition-colors ${
-          locale === 'en' 
-            ? 'text-primary font-semibold' 
+          locale === 'en'
+            ? 'text-primary font-semibold'
             : 'text-text-muted hover:text-text'
         }`}
         aria-label="Switch to English"

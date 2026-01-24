@@ -74,9 +74,7 @@ export function HowItWorksSection({ steps }: HowItWorksSectionProps) {
                 <h3 className="text-xl font-semibold text-text mb-2">
                   {step.title}
                 </h3>
-                <p className="text-text-muted">
-                  {step.description}
-                </p>
+                <p className="text-text-muted">{step.description}</p>
               </div>
             </motion.div>
           ))}

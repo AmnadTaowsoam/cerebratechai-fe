@@ -7,7 +7,10 @@ interface LoadingSpinnerProps {
   className?: string;
 }
 
-export function LoadingSpinner({ size = 'md', className }: LoadingSpinnerProps) {
+export function LoadingSpinner({
+  size = 'md',
+  className,
+}: LoadingSpinnerProps) {
   const sizeClasses = {
     sm: 'h-4 w-4',
     md: 'h-6 w-6',
@@ -44,16 +47,16 @@ interface LoadingSkeletonProps {
   lines?: number;
 }
 
-export function LoadingSkeleton({ className, lines = 1 }: LoadingSkeletonProps) {
+export function LoadingSkeleton({
+  className,
+  lines = 1,
+}: LoadingSkeletonProps) {
   return (
     <div className={cn('animate-pulse', className)}>
       {Array.from({ length: lines }).map((_, i) => (
         <div
           key={i}
-          className={cn(
-            'h-4 bg-surface rounded',
-            i < lines - 1 && 'mb-2'
-          )}
+          className={cn('h-4 bg-surface rounded', i < lines - 1 && 'mb-2')}
         />
       ))}
     </div>

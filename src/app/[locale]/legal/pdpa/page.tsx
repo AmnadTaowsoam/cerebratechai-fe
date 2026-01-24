@@ -138,7 +138,8 @@ const content = {
         ],
       },
       {
-        heading: '9. การแจ้งเหตุละเมิดข้อมูล (Data Breach Notification - มาตรา 37)',
+        heading:
+          '9. การแจ้งเหตุละเมิดข้อมูล (Data Breach Notification - มาตรา 37)',
         body: [
           'หากเกิดการละเมิดข้อมูลส่วนบุคคล (Data Breach):',
           'เราจะแจ้ง สำนักงาน สคส. ภายใน 72 ชั่วโมง',
@@ -182,51 +183,70 @@ export default function PdpaPage({ params }: PdpaPageProps) {
   return (
     <>
       <SeoHead
-        title={isThai ? 'PDPA Notice - CerebraTechAI' : 'PDPA Notice - CerebraTechAI'}
-        description={isThai 
-          ? 'ประกาศ PDPA ของ CerebraTechAI เกี่ยวกับการปฏิบัติตามพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล'
-          : 'CerebraTechAI PDPA notice on compliance with Personal Data Protection Act (Thailand).'
+        title={
+          isThai ? 'PDPA Notice - CerebraTechAI' : 'PDPA Notice - CerebraTechAI'
         }
-        keywords={isThai 
-          ? ['PDPA', 'พรบ. คุ้มครองข้อมูลส่วนบุคคล', 'ข้อมูลส่วนบุคคล', 'Privacy']
-          : ['PDPA', 'Personal Data Protection Act', 'Thailand Privacy Law', 'Data Protection']
+        description={
+          isThai
+            ? 'ประกาศ PDPA ของ CerebraTechAI เกี่ยวกับการปฏิบัติตามพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล'
+            : 'CerebraTechAI PDPA notice on compliance with Personal Data Protection Act (Thailand).'
+        }
+        keywords={
+          isThai
+            ? [
+                'PDPA',
+                'พรบ. คุ้มครองข้อมูลส่วนบุคคล',
+                'ข้อมูลส่วนบุคคล',
+                'Privacy',
+              ]
+            : [
+                'PDPA',
+                'Personal Data Protection Act',
+                'Thailand Privacy Law',
+                'Data Protection',
+              ]
         }
         url="/legal/pdpa"
         noindex={false}
       />
-      
+
       <div className="bg-bg">
-      <section className="border-b border-hairline bg-surface py-16">
-        <div className="container mx-auto px-6">
-          <h1 className="text-3xl font-bold text-text md:text-4xl">{copy.title}</h1>
-          <p className="mt-3 max-w-3xl text-text-muted">{copy.description}</p>
-          <p className="mt-4 text-sm text-text-muted">{copy.updated}</p>
-        </div>
-      </section>
-      <section className="py-8">
-        <div className="container mx-auto px-6">
-          <TLDRBlock summary={copy.tldr} locale={locale} />
-        </div>
-      </section>
-      <section className="py-16">
-        <div className="container mx-auto px-6">
-          <div className="space-y-10 text-text">
-            {copy.sections.map((section) => (
-              <article key={section.heading} className="space-y-4">
-                <h2 className="text-2xl font-semibold">{section.heading}</h2>
-                <ul className="space-y-2 text-sm text-text-muted">
-                  {section.body.map((item, index) => (
-                    <li key={index} className="flex items-start gap-2">
-                      <span className="mt-1 h-2 w-2 rounded-full bg-primary" aria-hidden />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            ))}
+        <section className="border-b border-hairline bg-surface py-16">
+          <div className="container mx-auto px-6">
+            <h1 className="text-3xl font-bold text-text md:text-4xl">
+              {copy.title}
+            </h1>
+            <p className="mt-3 max-w-3xl text-text-muted">{copy.description}</p>
+            <p className="mt-4 text-sm text-text-muted">{copy.updated}</p>
           </div>
-        </div>
-      </section>
+        </section>
+        <section className="py-8">
+          <div className="container mx-auto px-6">
+            <TLDRBlock summary={copy.tldr} locale={locale} />
+          </div>
+        </section>
+        <section className="py-16">
+          <div className="container mx-auto px-6">
+            <div className="space-y-10 text-text">
+              {copy.sections.map(section => (
+                <article key={section.heading} className="space-y-4">
+                  <h2 className="text-2xl font-semibold">{section.heading}</h2>
+                  <ul className="space-y-2 text-sm text-text-muted">
+                    {section.body.map((item, index) => (
+                      <li key={index} className="flex items-start gap-2">
+                        <span
+                          className="mt-1 h-2 w-2 rounded-full bg-primary"
+                          aria-hidden
+                        />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
       </div>
     </>
   );

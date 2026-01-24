@@ -82,7 +82,10 @@ export const RESOURCES: ResourceItem[] = [
   {
     slug: 'llm-thai-optimization',
     type: 'webinar',
-    title: { en: 'LLM Optimization for Thai Language Processing', th: 'ปรับ LLM ให้เข้าใจภาษาไทย: เทคนิคและแนวทางประเมินผล' },
+    title: {
+      en: 'LLM Optimization for Thai Language Processing',
+      th: 'ปรับ LLM ให้เข้าใจภาษาไทย: เทคนิคและแนวทางประเมินผล',
+    },
     description: {
       en: 'Technical deep dive into practical evaluation and optimization patterns for Thai language.',
       th: 'เจาะลึกการประเมิน (evaluation) และการปรับจูนให้เหมาะกับภาษาไทยแบบใช้งานจริง',
@@ -96,7 +99,10 @@ export const RESOURCES: ResourceItem[] = [
   {
     slug: 'ai-roi-guide',
     type: 'ebook',
-    title: { en: 'The Complete Guide to AI ROI Measurement', th: 'คู่มือวัดผล ROI ของ AI แบบครบถ้วน' },
+    title: {
+      en: 'The Complete Guide to AI ROI Measurement',
+      th: 'คู่มือวัดผล ROI ของ AI แบบครบถ้วน',
+    },
     description: {
       en: 'How to measure and communicate AI business value: a practical ROI checklist.',
       th: 'แนวทางวัดผลและสื่อสารมูลค่าทางธุรกิจของ AI พร้อม checklist ที่นำไปใช้ได้จริง',
@@ -111,7 +117,10 @@ export const RESOURCES: ResourceItem[] = [
   {
     slug: 'edge-ai-deployment',
     type: 'whitepaper',
-    title: { en: 'Edge AI Deployment: Bringing Intelligence to the Edge', th: 'การ Deploy Edge AI: นำความฉลาดไปอยู่ที่หน้างาน' },
+    title: {
+      en: 'Edge AI Deployment: Bringing Intelligence to the Edge',
+      th: 'การ Deploy Edge AI: นำความฉลาดไปอยู่ที่หน้างาน',
+    },
     description: {
       en: 'Guide to deploying AI models at the edge, including hardware constraints and optimization techniques.',
       th: 'แนวทาง deploy โมเดลที่ edge รวมข้อจำกัดด้านฮาร์ดแวร์ ความหน่วง และการ optimize ให้เหมาะกับหน้างาน',
@@ -141,7 +150,10 @@ export const RESOURCES: ResourceItem[] = [
   {
     slug: 'ai-project-template',
     type: 'template',
-    title: { en: 'AI Project Template', th: 'เทมเพลตโปรเจกต์ AI (ขอบเขต งานส่งมอบ และแผนงาน)' },
+    title: {
+      en: 'AI Project Template',
+      th: 'เทมเพลตโปรเจกต์ AI (ขอบเขต งานส่งมอบ และแผนงาน)',
+    },
     description: {
       en: 'A ready-to-use project template: scope, requirements, milestones, and deliverables.',
       th: 'เทมเพลตเริ่มโปรเจกต์: scope, requirement, milestone และ deliverable ที่ชัดเจน',
@@ -155,7 +167,10 @@ export const RESOURCES: ResourceItem[] = [
   {
     slug: 'vendor-selection-scorecard',
     type: 'template',
-    title: { en: 'AI Vendor Selection Scorecard', th: 'ตารางให้คะแนนเลือกผู้ให้บริการ/เวนเดอร์ AI' },
+    title: {
+      en: 'AI Vendor Selection Scorecard',
+      th: 'ตารางให้คะแนนเลือกผู้ให้บริการ/เวนเดอร์ AI',
+    },
     description: {
       en: 'A scorecard template to compare AI vendors: delivery risk, security, cost, and capability fit.',
       th: 'เทมเพลตเปรียบเทียบเวนเดอร์ AI: ความเสี่ยงการส่งมอบ ความปลอดภัย ค่าใช้จ่าย และความเหมาะสม',
@@ -169,7 +184,10 @@ export const RESOURCES: ResourceItem[] = [
   {
     slug: 'rag-readiness-assessment',
     type: 'template',
-    title: { en: 'RAG Readiness Assessment', th: 'แบบประเมินความพร้อมสำหรับทำ RAG' },
+    title: {
+      en: 'RAG Readiness Assessment',
+      th: 'แบบประเมินความพร้อมสำหรับทำ RAG',
+    },
     description: {
       en: 'Assess if your organization is ready for RAG implementation: document quality, use cases, and infrastructure requirements.',
       th: 'ประเมินความพร้อมก่อนทำ RAG: คุณภาพเอกสาร use case ที่ชัด และความต้องการด้าน infra',
@@ -184,7 +202,10 @@ export const RESOURCES: ResourceItem[] = [
   {
     slug: 'rag-evaluation-kit',
     type: 'template',
-    title: { en: 'RAG Evaluation Kit', th: 'ชุดเครื่องมือประเมิน RAG (Evaluation Kit)' },
+    title: {
+      en: 'RAG Evaluation Kit',
+      th: 'ชุดเครื่องมือประเมิน RAG (Evaluation Kit)',
+    },
     description: {
       en: 'A starter kit to evaluate RAG quality: datasets, scoring rubric, and regression checklist.',
       th: 'ชุดเริ่มต้นสำหรับประเมินคุณภาพ RAG: ชุดคำถาม, rubric ให้คะแนน และเช็กลิสต์ regression',
@@ -198,7 +219,10 @@ export const RESOURCES: ResourceItem[] = [
   {
     slug: 'computer-vision-dataset-guide',
     type: 'ebook',
-    title: { en: 'Computer Vision Dataset Guide', th: 'คู่มือทำ Dataset สำหรับ Computer Vision' },
+    title: {
+      en: 'Computer Vision Dataset Guide',
+      th: 'คู่มือทำ Dataset สำหรับ Computer Vision',
+    },
     description: {
       en: 'Best practices for collecting, labeling, and managing computer vision datasets for quality and production readiness.',
       th: 'แนวทางเก็บข้อมูล ตีกรอบ label และจัดการ dataset สำหรับงาน vision ให้พร้อมขึ้น production',
@@ -213,7 +237,10 @@ export const RESOURCES: ResourceItem[] = [
   {
     slug: 'ai-spc-starter-kit',
     type: 'template',
-    title: { en: 'AI-SPC Starter Kit', th: 'ชุดเริ่มต้น AI-SPC (เทมเพลตและแนวทาง)' },
+    title: {
+      en: 'AI-SPC Starter Kit',
+      th: 'ชุดเริ่มต้น AI-SPC (เทมเพลตและแนวทาง)',
+    },
     description: {
       en: 'Templates and guidelines for implementing AI-powered Statistical Process Control in manufacturing environments.',
       th: 'เทมเพลตและแนวทางทำ SPC แบบใช้ AI ช่วย (เหมาะกับสภาพแวดล้อมโรงงาน)',
@@ -227,7 +254,10 @@ export const RESOURCES: ResourceItem[] = [
   {
     slug: 'cost-of-llm-in-production-thai',
     type: 'whitepaper',
-    title: { en: 'Cost of LLM in Production (Thai Edition)', th: 'ต้นทุน LLM ใน Production (ฉบับภาษาไทย)' },
+    title: {
+      en: 'Cost of LLM in Production (Thai Edition)',
+      th: 'ต้นทุน LLM ใน Production (ฉบับภาษาไทย)',
+    },
     description: {
       en: 'A practical cost framework for LLM systems in production: measurement and optimization levers (Thai language).',
       th: 'เฟรมเวิร์กคำนวณต้นทุน LLM ในระบบจริง: วิธีวัด และตัวคันโยกสำหรับ optimize (ภาษาไทย)',
@@ -242,7 +272,10 @@ export const RESOURCES: ResourceItem[] = [
   {
     slug: 'security-posture-overview',
     type: 'whitepaper',
-    title: { en: 'AI Security Posture Overview', th: 'ภาพรวมความปลอดภัยของระบบ AI (Security Posture)' },
+    title: {
+      en: 'AI Security Posture Overview',
+      th: 'ภาพรวมความปลอดภัยของระบบ AI (Security Posture)',
+    },
     description: {
       en: 'Best-practice security controls overview for AI services (no certification claims).',
       th: 'ภาพรวม control ด้านความปลอดภัยที่ควรมีสำหรับบริการ AI (ไม่ใช่การรับรองมาตรฐาน)',
@@ -257,7 +290,10 @@ export const RESOURCES: ResourceItem[] = [
   {
     slug: 'pdpa-data-handling-checklist',
     type: 'whitepaper',
-    title: { en: 'PDPA Data Handling Checklist for AI', th: 'เช็กลิสต์ PDPA สำหรับการจัดการข้อมูลในโปรเจกต์ AI' },
+    title: {
+      en: 'PDPA Data Handling Checklist for AI',
+      th: 'เช็กลิสต์ PDPA สำหรับการจัดการข้อมูลในโปรเจกต์ AI',
+    },
     description: {
       en: 'Operational checklist to align Legal/Compliance with Engineering (not legal advice).',
       th: 'เช็กลิสต์สำหรับทำงานร่วมกันระหว่าง Legal/Compliance และทีมวิศวกรรม (ไม่ใช่คำปรึกษากฎหมาย)',
@@ -286,7 +322,10 @@ export const RESOURCES: ResourceItem[] = [
   {
     slug: 'mlops-templates',
     type: 'template',
-    title: { en: 'MLOps Templates Pack', th: 'แพ็กเทมเพลต MLOps (monitoring / CI-CD / registry)' },
+    title: {
+      en: 'MLOps Templates Pack',
+      th: 'แพ็กเทมเพลต MLOps (monitoring / CI-CD / registry)',
+    },
     description: {
       en: 'Starter templates for model registry, monitoring dashboards, and CI/CD workflows.',
       th: 'ชุดเทมเพลตเริ่มต้นสำหรับ model registry, monitoring dashboard และ workflow CI/CD',
@@ -300,6 +339,5 @@ export const RESOURCES: ResourceItem[] = [
 ];
 
 export function getResourceBySlug(slug: string) {
-  return RESOURCES.find((r) => r.slug === slug);
+  return RESOURCES.find(r => r.slug === slug);
 }
-

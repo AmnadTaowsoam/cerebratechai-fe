@@ -184,51 +184,72 @@ export default function TermsPage({ params }: TermsPageProps) {
   return (
     <>
       <SeoHead
-        title={isThai ? 'เงื่อนไขการใช้งาน - CerebraTechAI' : 'Terms of Service - CerebraTechAI'}
-        description={isThai 
-          ? 'เงื่อนไขการใช้บริการของ CerebraTechAI และความรับผิดชอบของแต่ละฝ่าย'
-          : 'CerebraTechAI terms of service and responsibilities of each party.'
+        title={
+          isThai
+            ? 'เงื่อนไขการใช้งาน - CerebraTechAI'
+            : 'Terms of Service - CerebraTechAI'
         }
-        keywords={isThai 
-          ? ['เงื่อนไขการใช้งาน', 'Terms of Service', 'ข้อตกลง', 'ความรับผิดชอบ']
-          : ['Terms of Service', 'Terms and Conditions', 'Agreement', 'Responsibilities']
+        description={
+          isThai
+            ? 'เงื่อนไขการใช้บริการของ CerebraTechAI และความรับผิดชอบของแต่ละฝ่าย'
+            : 'CerebraTechAI terms of service and responsibilities of each party.'
+        }
+        keywords={
+          isThai
+            ? [
+                'เงื่อนไขการใช้งาน',
+                'Terms of Service',
+                'ข้อตกลง',
+                'ความรับผิดชอบ',
+              ]
+            : [
+                'Terms of Service',
+                'Terms and Conditions',
+                'Agreement',
+                'Responsibilities',
+              ]
         }
         url="/legal/terms"
         noindex={false}
       />
-      
+
       <div className="bg-bg">
-      <section className="border-b border-hairline bg-surface py-16">
-        <div className="container mx-auto px-6">
-          <h1 className="text-3xl font-bold text-text md:text-4xl">{copy.title}</h1>
-          <p className="mt-3 max-w-3xl text-text-muted">{copy.description}</p>
-          <p className="mt-4 text-sm text-text-muted">{copy.updated}</p>
-        </div>
-      </section>
-      <section className="py-8">
-        <div className="container mx-auto px-6">
-          <TLDRBlock summary={copy.tldr} locale={locale} />
-        </div>
-      </section>
-      <section className="py-16">
-        <div className="container mx-auto px-6">
-          <div className="space-y-10 text-text">
-            {copy.sections.map((section) => (
-              <article key={section.heading} className="space-y-4">
-                <h2 className="text-2xl font-semibold">{section.heading}</h2>
-                <ul className="space-y-2 text-sm text-text-muted">
-                  {section.body.map((item, index) => (
-                    <li key={index} className="flex items-start gap-2">
-                      <span className="mt-1 h-2 w-2 rounded-full bg-primary" aria-hidden />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            ))}
+        <section className="border-b border-hairline bg-surface py-16">
+          <div className="container mx-auto px-6">
+            <h1 className="text-3xl font-bold text-text md:text-4xl">
+              {copy.title}
+            </h1>
+            <p className="mt-3 max-w-3xl text-text-muted">{copy.description}</p>
+            <p className="mt-4 text-sm text-text-muted">{copy.updated}</p>
           </div>
-        </div>
-      </section>
+        </section>
+        <section className="py-8">
+          <div className="container mx-auto px-6">
+            <TLDRBlock summary={copy.tldr} locale={locale} />
+          </div>
+        </section>
+        <section className="py-16">
+          <div className="container mx-auto px-6">
+            <div className="space-y-10 text-text">
+              {copy.sections.map(section => (
+                <article key={section.heading} className="space-y-4">
+                  <h2 className="text-2xl font-semibold">{section.heading}</h2>
+                  <ul className="space-y-2 text-sm text-text-muted">
+                    {section.body.map((item, index) => (
+                      <li key={index} className="flex items-start gap-2">
+                        <span
+                          className="mt-1 h-2 w-2 rounded-full bg-primary"
+                          aria-hidden
+                        />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
       </div>
     </>
   );

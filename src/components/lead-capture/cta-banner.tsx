@@ -28,7 +28,7 @@ export function CTABanner({
   description,
   primaryAction,
   secondaryAction,
-  className = ''
+  className = '',
 }: CTABannerProps) {
   const locale = useLocale();
   const isThai = locale.startsWith('th');
@@ -44,12 +44,12 @@ export function CTABanner({
 
   const defaultPrimaryAction = {
     label: isThai ? 'คุยกับทีมเรา' : 'Talk to Our Team',
-    href: `${basePath}/contact`
+    href: `${basePath}/contact`,
   };
 
   const defaultSecondaryAction = {
     label: isThai ? 'ดูแพ็กเกจ' : 'View Packages',
-    href: `${basePath}/packages`
+    href: `${basePath}/packages`,
   };
 
   if (variant === 'minimal') {
@@ -65,13 +65,22 @@ export function CTABanner({
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg">
-                <Link href={(primaryAction?.href || defaultPrimaryAction.href) as any}>
+                <Link
+                  href={
+                    (primaryAction?.href || defaultPrimaryAction.href) as any
+                  }
+                >
                   {primaryAction?.label || defaultPrimaryAction.label}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg">
-                <Link href={(secondaryAction?.href || defaultSecondaryAction.href) as any}>
+                <Link
+                  href={
+                    (secondaryAction?.href ||
+                      defaultSecondaryAction.href) as any
+                  }
+                >
                   {secondaryAction?.label || defaultSecondaryAction.label}
                 </Link>
               </Button>
@@ -102,13 +111,24 @@ export function CTABanner({
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3 md:flex-shrink-0">
                   <ShimmerButton asChild className="px-6 py-3">
-                    <Link href={(primaryAction?.href || defaultPrimaryAction.href) as any} className="inline-flex items-center gap-2">
+                    <Link
+                      href={
+                        (primaryAction?.href ||
+                          defaultPrimaryAction.href) as any
+                      }
+                      className="inline-flex items-center gap-2"
+                    >
                       {primaryAction?.label || defaultPrimaryAction.label}
                       <ArrowRight className="h-4 w-4" />
                     </Link>
                   </ShimmerButton>
                   <Button asChild variant="outline" size="lg">
-                    <Link href={(secondaryAction?.href || defaultSecondaryAction.href) as any}>
+                    <Link
+                      href={
+                        (secondaryAction?.href ||
+                          defaultSecondaryAction.href) as any
+                      }
+                    >
                       {secondaryAction?.label || defaultSecondaryAction.label}
                     </Link>
                   </Button>
@@ -146,8 +166,7 @@ export function CTABanner({
               <p className="text-sm text-text-muted mb-4">
                 {isThai
                   ? 'ส่งข้อความมาคุยกับทีม เราตอบกลับภายใน 24 ชั่วโมง'
-                  : 'Send us a message. We respond within 24 hours.'
-                }
+                  : 'Send us a message. We respond within 24 hours.'}
               </p>
               <Button asChild className="w-full">
                 <Link href={`${basePath}/contact` as any}>
@@ -168,8 +187,7 @@ export function CTABanner({
               <p className="text-sm text-text-muted mb-4">
                 {isThai
                   ? 'โทรคุยโดยตรง จ-ศ 9:00-18:00'
-                  : 'Speak directly. Mon-Fri 9:00-18:00'
-                }
+                  : 'Speak directly. Mon-Fri 9:00-18:00'}
               </p>
               <Button asChild variant="outline" className="w-full">
                 <a href="tel:+66856621113">085-662-1113</a>
@@ -188,8 +206,7 @@ export function CTABanner({
               <p className="text-sm text-text-muted mb-4">
                 {isThai
                   ? 'ดูแพ็กเกจและราคาของเรา'
-                  : 'Explore our packages and pricing'
-                }
+                  : 'Explore our packages and pricing'}
               </p>
               <Button asChild variant="outline" className="w-full">
                 <Link href={`${basePath}/packages` as any}>

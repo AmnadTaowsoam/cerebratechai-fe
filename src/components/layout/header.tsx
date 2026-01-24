@@ -35,19 +35,21 @@ export function Header() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link 
-            href={routes.home(locale)} 
+          <Link
+            href={routes.home(locale)}
             className="flex items-center space-x-2.5 hover:opacity-80 transition-opacity duration-200"
           >
-            <Image 
-              src="/cerebratechai_logo.png" 
-              alt={`${BRAND_CONFIG.name} logo`} 
-              width={36} 
-              height={36} 
-              priority 
+            <Image
+              src="/cerebratechai_logo.png"
+              alt={`${BRAND_CONFIG.name} logo`}
+              width={36}
+              height={36}
+              priority
               className="rounded-lg"
             />
-            <span className="text-xl font-bold text-text hidden sm:inline-block">{BRAND_CONFIG.name}</span>
+            <span className="text-xl font-bold text-text hidden sm:inline-block">
+              {BRAND_CONFIG.name}
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -66,11 +68,15 @@ export function Header() {
             <Button
               variant="ghost"
               size="icon"
-              onClick={() => setIsMenuOpen((prev) => !prev)}
+              onClick={() => setIsMenuOpen(prev => !prev)}
               aria-label="Toggle menu"
               className="hover:bg-surface-2"
             >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </Button>
           </div>
         </div>
@@ -85,16 +91,16 @@ export function Header() {
               transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
               className="lg:hidden border-t border-hairline bg-bg/98 backdrop-blur-md overflow-hidden"
             >
-            <div className="px-2 pt-3 pb-4 space-y-1">
-              <MegaMenu sections={navigationData} locale={locale} />
+              <div className="px-2 pt-3 pb-4 space-y-1">
+                <MegaMenu sections={navigationData} locale={locale} />
 
-              <div className="flex items-center justify-between px-3 py-3 mt-4 border-t border-surface-2/50">
-                <LocaleSwitcher />
-                <Button size="sm" className="ml-2 font-semibold" asChild>
-                  <Link href={routes.contact(locale)}>{tNav('contact')}</Link>
-                </Button>
+                <div className="flex items-center justify-between px-3 py-3 mt-4 border-t border-surface-2/50">
+                  <LocaleSwitcher />
+                  <Button size="sm" className="ml-2 font-semibold" asChild>
+                    <Link href={routes.contact(locale)}>{tNav('contact')}</Link>
+                  </Button>
+                </div>
               </div>
-            </div>
             </motion.div>
           )}
         </AnimatePresence>
@@ -102,4 +108,3 @@ export function Header() {
     </header>
   );
 }
-

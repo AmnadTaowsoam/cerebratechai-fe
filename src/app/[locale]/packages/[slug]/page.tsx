@@ -36,17 +36,21 @@ const copy = {
 } as const;
 
 type PackageParams = {
-  params: Promise<{ locale: string; slug: string }> | { locale: string; slug: string };
+  params:
+    | Promise<{ locale: string; slug: string }>
+    | { locale: string; slug: string };
 };
 
 export async function generateStaticParams() {
-  return Object.keys(packagesMap).flatMap((id) => [
+  return Object.keys(packagesMap).flatMap(id => [
     { locale: 'en', slug: id },
     { locale: 'th', slug: id },
   ]);
 }
 
-export async function generateMetadata({ params }: PackageParams): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PackageParams): Promise<Metadata> {
   const resolvedParams = await Promise.resolve(params);
 
   if (!resolvedParams || !resolvedParams.locale || !resolvedParams.slug) {
@@ -89,7 +93,11 @@ export default async function PackageDetailPage({ params }: PackageParams) {
   const messages = copy[locale];
   const basePath = `/${locale}`;
   const isThai = locale === 'th';
-  const priceAmount = pkg.priceFromTHB ? pkg.priceFromTHB.toLocaleString(isThai ? 'th-TH' : 'en-US') : (isThai ? 'ติดต่อทีม' : 'Contact us');
+  const priceAmount = pkg.priceFromTHB
+    ? pkg.priceFromTHB.toLocaleString(isThai ? 'th-TH' : 'en-US')
+    : isThai
+      ? 'ติดต่อทีม'
+      : 'Contact us';
 
   const getText = (value?: string, valueTh?: string) => {
     if (isThai && valueTh) return valueTh;
@@ -146,7 +154,8 @@ export default async function PackageDetailPage({ params }: PackageParams) {
               {pkg.priceFromTHB && (
                 <span className="inline-flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-primary" />
-                  {isThai ? 'เริ่มที่' : 'From'} ฿{priceAmount}{getPriceUnit()}
+                  {isThai ? 'เริ่มที่' : 'From'} ฿{priceAmount}
+                  {getPriceUnit()}
                 </span>
               )}
             </div>
@@ -162,14 +171,21 @@ export default async function PackageDetailPage({ params }: PackageParams) {
                 <Card className="border border-hairline bg-surface">
                   <CardContent className="space-y-6 p-8">
                     <div>
-                      <h2 className="text-xl font-semibold text-text">{messages.inScope}</h2>
+                      <h2 className="text-xl font-semibold text-text">
+                        {messages.inScope}
+                      </h2>
                       <ul className="mt-4 space-y-3 text-sm text-text-muted">
-                        {getList(pkg.inScope, pkg.inScopeTh).map((item, index) => (
-                          <li key={index} className="flex items-start gap-2">
-                            <span className="mt-1 h-2 w-2 rounded-full bg-green-500" aria-hidden />
-                            <span>{item}</span>
-                          </li>
-                        ))}
+                        {getList(pkg.inScope, pkg.inScopeTh).map(
+                          (item, index) => (
+                            <li key={index} className="flex items-start gap-2">
+                              <span
+                                className="mt-1 h-2 w-2 rounded-full bg-green-500"
+                                aria-hidden
+                              />
+                              <span>{item}</span>
+                            </li>
+                          )
+                        )}
                       </ul>
                     </div>
                   </CardContent>
@@ -180,14 +196,21 @@ export default async function PackageDetailPage({ params }: PackageParams) {
                 <Card className="border border-hairline bg-surface">
                   <CardContent className="space-y-6 p-8">
                     <div>
-                      <h2 className="text-xl font-semibold text-text">{messages.outOfScope}</h2>
+                      <h2 className="text-xl font-semibold text-text">
+                        {messages.outOfScope}
+                      </h2>
                       <ul className="mt-4 space-y-3 text-sm text-text-muted">
-                        {getList(pkg.outOfScope, pkg.outOfScopeTh).map((item, index) => (
-                          <li key={index} className="flex items-start gap-2">
-                            <span className="mt-1 h-2 w-2 rounded-full bg-red-500" aria-hidden />
-                            <span>{item}</span>
-                          </li>
-                        ))}
+                        {getList(pkg.outOfScope, pkg.outOfScopeTh).map(
+                          (item, index) => (
+                            <li key={index} className="flex items-start gap-2">
+                              <span
+                                className="mt-1 h-2 w-2 rounded-full bg-red-500"
+                                aria-hidden
+                              />
+                              <span>{item}</span>
+                            </li>
+                          )
+                        )}
                       </ul>
                     </div>
                   </CardContent>
@@ -198,14 +221,21 @@ export default async function PackageDetailPage({ params }: PackageParams) {
                 <Card className="border border-hairline bg-surface">
                   <CardContent className="space-y-6 p-8">
                     <div>
-                      <h2 className="text-xl font-semibold text-text">{messages.deliverables}</h2>
+                      <h2 className="text-xl font-semibold text-text">
+                        {messages.deliverables}
+                      </h2>
                       <ul className="mt-4 space-y-3 text-sm text-text-muted">
-                        {getList(pkg.deliverables, pkg.deliverablesTh).map((deliverable, index) => (
-                          <li key={index} className="flex items-start gap-2">
-                            <span className="mt-1 h-2 w-2 rounded-full bg-primary" aria-hidden />
-                            <span>{deliverable}</span>
-                          </li>
-                        ))}
+                        {getList(pkg.deliverables, pkg.deliverablesTh).map(
+                          (deliverable, index) => (
+                            <li key={index} className="flex items-start gap-2">
+                              <span
+                                className="mt-1 h-2 w-2 rounded-full bg-primary"
+                                aria-hidden
+                              />
+                              <span>{deliverable}</span>
+                            </li>
+                          )
+                        )}
                       </ul>
                     </div>
                   </CardContent>
@@ -216,14 +246,21 @@ export default async function PackageDetailPage({ params }: PackageParams) {
                 <Card className="border border-hairline bg-surface">
                   <CardContent className="space-y-6 p-8">
                     <div>
-                      <h2 className="text-xl font-semibold text-text">{messages.addOns}</h2>
+                      <h2 className="text-xl font-semibold text-text">
+                        {messages.addOns}
+                      </h2>
                       <ul className="mt-4 space-y-3 text-sm text-text-muted">
-                        {getList(pkg.addons, pkg.addonsTh).map((addon, index) => (
-                          <li key={index} className="flex items-start gap-2">
-                            <span className="mt-1 h-2 w-2 rounded-full bg-secondary" aria-hidden />
-                            <span>{addon}</span>
-                          </li>
-                        ))}
+                        {getList(pkg.addons, pkg.addonsTh).map(
+                          (addon, index) => (
+                            <li key={index} className="flex items-start gap-2">
+                              <span
+                                className="mt-1 h-2 w-2 rounded-full bg-secondary"
+                                aria-hidden
+                              />
+                              <span>{addon}</span>
+                            </li>
+                          )
+                        )}
                       </ul>
                     </div>
                   </CardContent>
@@ -239,16 +276,32 @@ export default async function PackageDetailPage({ params }: PackageParams) {
                       </h2>
                       <div className="mt-4 grid gap-4 md:grid-cols-3">
                         {pkg.tiers.map(tier => (
-                          <div key={tier.name} className="rounded-xl border border-white/10 bg-surface/40 p-4">
+                          <div
+                            key={tier.name}
+                            className="rounded-xl border border-white/10 bg-surface/40 p-4"
+                          >
                             <div className="flex items-baseline justify-between mb-2">
-                              <div className="text-text font-semibold">{isThai ? (tier.nameTh ?? tier.name) : tier.name}</div>
-                              <div className="text-text font-bold">฿{tier.priceTHB.toLocaleString(isThai ? 'th-TH' : 'en-US')}</div>
+                              <div className="text-text font-semibold">
+                                {isThai
+                                  ? (tier.nameTh ?? tier.name)
+                                  : tier.name}
+                              </div>
+                              <div className="text-text font-bold">
+                                ฿
+                                {tier.priceTHB.toLocaleString(
+                                  isThai ? 'th-TH' : 'en-US'
+                                )}
+                              </div>
                             </div>
                             <div className="text-sm text-text-muted">
-                              {isThai ? `${tier.hours} ชม./เดือน • SLA ${tier.sla}` : `${tier.hours} hrs / mo • SLA ${tier.sla}`}
+                              {isThai
+                                ? `${tier.hours} ชม./เดือน • SLA ${tier.sla}`
+                                : `${tier.hours} hrs / mo • SLA ${tier.sla}`}
                             </div>
                             {(isThai ? tier.bonusTh : tier.bonus) && (
-                              <div className="mt-1 text-xs text-primary">{isThai ? tier.bonusTh : tier.bonus}</div>
+                              <div className="mt-1 text-xs text-primary">
+                                {isThai ? tier.bonusTh : tier.bonus}
+                              </div>
                             )}
                           </div>
                         ))}
@@ -262,25 +315,35 @@ export default async function PackageDetailPage({ params }: PackageParams) {
             <Card className="border border-hairline bg-surface">
               <CardContent className="space-y-6 p-8">
                 <div>
-                  <h2 className="text-xl font-semibold text-text">{messages.pricing}</h2>
+                  <h2 className="text-xl font-semibold text-text">
+                    {messages.pricing}
+                  </h2>
                   <div className="mt-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-right text-sm text-text-muted">
                     <div className="text-3xl font-bold text-text">
                       {pkg.priceFromTHB ? (
                         <>
                           {isThai ? 'เริ่มที่' : 'From'} ฿{priceAmount}
                         </>
+                      ) : isThai ? (
+                        'ติดต่อทีม'
                       ) : (
-                        isThai ? 'ติดต่อทีม' : 'Contact us'
+                        'Contact us'
                       )}
                     </div>
-                    <div>{getPriceUnit() || (isThai ? 'ราคาแบบครั้งเดียว' : 'One-time')}</div>
+                    <div>
+                      {getPriceUnit() ||
+                        (isThai ? 'ราคาแบบครั้งเดียว' : 'One-time')}
+                    </div>
                   </div>
                 </div>
 
                 <p className="text-sm text-text-muted">{messages.disclaimer}</p>
 
                 <Button asChild>
-                  <Link href={`${basePath}/contact` as any} className="inline-flex items-center gap-2">
+                  <Link
+                    href={`${basePath}/contact` as any}
+                    className="inline-flex items-center gap-2"
+                  >
                     {messages.cta}
                     <ArrowRight className="h-4 w-4" />
                   </Link>

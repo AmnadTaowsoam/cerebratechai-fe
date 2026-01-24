@@ -13,7 +13,8 @@ type ServicesPageProps = {
 
 export const metadata: Metadata = {
   title: 'CerebraTechAI - AI Services',
-  description: 'Comprehensive AI services: Consulting, Development, and Deployment for your business.',
+  description:
+    'Comprehensive AI services: Consulting, Development, and Deployment for your business.',
 };
 
 export default function ServicesPage({ params }: ServicesPageProps) {
@@ -80,15 +81,30 @@ export default function ServicesPage({ params }: ServicesPageProps) {
   return (
     <>
       <SeoHead
-        title={t('บริการ AI - Consulting, Development, Deployment', 'AI Services - Consulting, Development, Deployment')}
+        title={t(
+          'บริการ AI - Consulting, Development, Deployment',
+          'AI Services - Consulting, Development, Deployment'
+        )}
         description={t(
           'บริการ AI ครบวงจร: ให้คำปรึกษา พัฒนา และนำไปใช้งานจริง พร้อม MLOps และการสนับสนุนอย่างต่อเนื่อง',
           'Comprehensive AI services: Consulting, Development, and Deployment with MLOps and ongoing support.'
         )}
         keywords={
           isThai
-            ? ['บริการ AI', 'AI Consulting', 'AI Development', 'AI Deployment', 'MLOps']
-            : ['AI services', 'AI Consulting', 'AI Development', 'AI Deployment', 'MLOps']
+            ? [
+                'บริการ AI',
+                'AI Consulting',
+                'AI Development',
+                'AI Deployment',
+                'MLOps',
+              ]
+            : [
+                'AI services',
+                'AI Consulting',
+                'AI Development',
+                'AI Deployment',
+                'MLOps',
+              ]
         }
         url="/services"
         type="website"
@@ -96,13 +112,19 @@ export default function ServicesPage({ params }: ServicesPageProps) {
 
       <ServiceSchema
         serviceName={t('บริการ AI', 'AI Services')}
-        description={t('บริการ AI ครบวงจรสำหรับธุรกิจทุกขนาด', 'Comprehensive AI services for businesses of all sizes')}
+        description={t(
+          'บริการ AI ครบวงจรสำหรับธุรกิจทุกขนาด',
+          'Comprehensive AI services for businesses of all sizes'
+        )}
       />
 
       <div className="bg-bg">
         <MagicHero
           eyebrow={t('บริการ AI', 'AI Services')}
-          title={t('บริการ AI ครบวงจร: จากแนวคิดสู่การใช้งานจริง', 'End-to-End AI Services: From Concept to Production')}
+          title={t(
+            'บริการ AI ครบวงจร: จากแนวคิดสู่การใช้งานจริง',
+            'End-to-End AI Services: From Concept to Production'
+          )}
           description={t(
             'เราให้บริการครบวงจรตั้งแต่การให้คำปรึกษา การพัฒนา ไปจนถึงการนำไปใช้งานจริง พร้อม MLOps และการสนับสนุนอย่างต่อเนื่อง',
             'We provide comprehensive services from consulting and development to production deployment, with MLOps and ongoing support.'
@@ -114,7 +136,7 @@ export default function ServicesPage({ params }: ServicesPageProps) {
         <section className={SECTION_SPACING.FEATURES}>
           <div className="container mx-auto px-6">
             <div className="grid gap-8 md:grid-cols-3">
-              {services.map((service) => {
+              {services.map(service => {
                 const IconComponent = service.icon;
                 return (
                   <Card
@@ -125,18 +147,28 @@ export default function ServicesPage({ params }: ServicesPageProps) {
                       <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20">
                         <IconComponent className="h-8 w-8 text-primary" />
                       </div>
-                      <h3 className="mb-3 text-xl font-semibold text-text">{service.title}</h3>
-                      <p className="mb-6 text-text-muted leading-relaxed">{service.description}</p>
+                      <h3 className="mb-3 text-xl font-semibold text-text">
+                        {service.title}
+                      </h3>
+                      <p className="mb-6 text-text-muted leading-relaxed">
+                        {service.description}
+                      </p>
                       <ul className="mb-6 space-y-2">
                         {service.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-start gap-2 text-sm text-text-muted">
+                          <li
+                            key={idx}
+                            className="flex items-start gap-2 text-sm text-text-muted"
+                          >
                             <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary" />
                             {feature}
                           </li>
                         ))}
                       </ul>
                       <ShimmerButton asChild className="w-full">
-                        <Link href={service.href as any} className="inline-flex items-center justify-center gap-2">
+                        <Link
+                          href={service.href as any}
+                          className="inline-flex items-center justify-center gap-2"
+                        >
                           {t('เรียนรู้เพิ่มเติม', 'Learn more')}
                           <ArrowRight className="h-4 w-4" />
                         </Link>
@@ -160,7 +192,10 @@ export default function ServicesPage({ params }: ServicesPageProps) {
             <div className="flex flex-col gap-6 rounded-3xl border border-white/10 bg-surface-2/80 p-8 backdrop-blur md:flex-row md:items-center md:justify-between">
               <div className="max-w-3xl">
                 <h2 className="text-2xl font-semibold text-text">
-                  {t('พร้อมเริ่มโครงการ AI ของคุณ?', 'Ready to start your AI project?')}
+                  {t(
+                    'พร้อมเริ่มโครงการ AI ของคุณ?',
+                    'Ready to start your AI project?'
+                  )}
                 </h2>
                 <p className="mt-2 text-text-muted">
                   {t(
@@ -170,7 +205,10 @@ export default function ServicesPage({ params }: ServicesPageProps) {
                 </p>
               </div>
               <ShimmerButton asChild className="px-8 py-4 text-sm">
-                <Link href={`/${locale}/contact` as any} className="inline-flex items-center gap-2">
+                <Link
+                  href={`/${locale}/contact` as any}
+                  className="inline-flex items-center gap-2"
+                >
                   {t('ติดต่อเรา', 'Contact us')}
                   <ArrowRight className="h-4 w-4" />
                 </Link>

@@ -3,7 +3,16 @@
 import { useLocale } from 'next-intl';
 import { MagicHero, Particles, ShimmerButton } from '@/components/magicui';
 import { Card, CardContent } from '@/components/ui/card';
-import { ArrowRight, Rocket, Settings, Activity, RefreshCw, LifeBuoy, GitBranch, Shield } from 'lucide-react';
+import {
+  ArrowRight,
+  Rocket,
+  Settings,
+  Activity,
+  RefreshCw,
+  LifeBuoy,
+  GitBranch,
+  Shield,
+} from 'lucide-react';
 import Link from 'next/link';
 import { SeoHead, ServiceSchema, FAQSection } from '@/components/seo';
 import TLDRBlock from '@/components/TLDRBlock';
@@ -71,14 +80,20 @@ export default function DeploymentPage() {
 
   const faqs = [
     {
-      question: t('AI Deployment ใช้เวลานานแค่ไหน?', 'How long does AI Deployment take?'),
+      question: t(
+        'AI Deployment ใช้เวลานานแค่ไหน?',
+        'How long does AI Deployment take?'
+      ),
       answer: t(
         'ระยะเวลาขึ้นอยู่กับความซับซ้อนของระบบ โดยทั่วไปใช้เวลา 2-4 สัปดาห์ สำหรับการ deploy และ setup',
         'Duration depends on system complexity. Typically 2-4 weeks for deployment and setup.'
       ),
     },
     {
-      question: t('AI Deployment มีค่าใช้จ่ายเท่าไหร่?', 'How much does AI Deployment cost?'),
+      question: t(
+        'AI Deployment มีค่าใช้จ่ายเท่าไหร่?',
+        'How much does AI Deployment cost?'
+      ),
       answer: t(
         'ค่าใช้จ่ายขึ้นอยู่กับ infrastructure และความซับซ้อนของระบบ รวมถึงค่าใช้จ่ายรายเดือนสำหรับ maintenance และ support',
         'Cost depends on infrastructure and system complexity, including monthly costs for maintenance and support.'
@@ -96,7 +111,10 @@ export default function DeploymentPage() {
   return (
     <>
       <SeoHead
-        title={t('AI Deployment - นำระบบ AI ไปใช้งานจริง', 'AI Deployment - Production AI Deployment')}
+        title={t(
+          'AI Deployment - นำระบบ AI ไปใช้งานจริง',
+          'AI Deployment - Production AI Deployment'
+        )}
         description={t(
           'บริการนำระบบ AI ไปใช้งานจริง: MLOps, Monitoring, Maintenance และ 24/7 Support',
           'Production AI deployment services: MLOps, Monitoring, Maintenance, and 24/7 Support.'
@@ -112,7 +130,10 @@ export default function DeploymentPage() {
 
       <ServiceSchema
         serviceName={t('AI Deployment', 'AI Deployment')}
-        description={t('บริการนำระบบ AI ไปใช้งานจริงพร้อม MLOps และการสนับสนุน', 'Production AI deployment services with MLOps and support')}
+        description={t(
+          'บริการนำระบบ AI ไปใช้งานจริงพร้อม MLOps และการสนับสนุน',
+          'Production AI deployment services with MLOps and support'
+        )}
       />
 
       <div className="bg-bg">
@@ -134,7 +155,9 @@ export default function DeploymentPage() {
         <section className={SECTION_SPACING.FEATURES}>
           <div className="container mx-auto px-6">
             <div className="mb-12 text-center">
-              <h2 className="mb-4 text-3xl font-bold text-text">{t('บริการของเรา', 'Our Services')}</h2>
+              <h2 className="mb-4 text-3xl font-bold text-text">
+                {t('บริการของเรา', 'Our Services')}
+              </h2>
               <p className="mx-auto max-w-2xl text-text-muted">
                 {t(
                   'เรามอบบริการ deployment ครบวงจรเพื่อให้ระบบ AI ของคุณทำงานได้อย่างราบรื่นใน production',
@@ -143,16 +166,23 @@ export default function DeploymentPage() {
               </p>
             </div>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-              {services.map((service) => {
+              {services.map(service => {
                 const IconComponent = service.icon;
                 return (
-                  <Card key={service.title} className="border border-hairline bg-surface/80">
+                  <Card
+                    key={service.title}
+                    className="border border-hairline bg-surface/80"
+                  >
                     <CardContent className="p-6">
                       <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-accent/20">
                         <IconComponent className="h-6 w-6 text-primary" />
                       </div>
-                      <h3 className="mb-2 text-lg font-semibold text-text">{service.title}</h3>
-                      <p className="text-sm text-text-muted leading-relaxed">{service.description}</p>
+                      <h3 className="mb-2 text-lg font-semibold text-text">
+                        {service.title}
+                      </h3>
+                      <p className="text-sm text-text-muted leading-relaxed">
+                        {service.description}
+                      </p>
                     </CardContent>
                   </Card>
                 );
@@ -173,10 +203,22 @@ export default function DeploymentPage() {
               />
               <KeyFactsBlock
                 facts={[
-                  { label: t('ระยะเวลา', 'Duration'), value: t('2-4 สัปดาห์', '2-4 weeks') },
+                  {
+                    label: t('ระยะเวลา', 'Duration'),
+                    value: t('2-4 สัปดาห์', '2-4 weeks'),
+                  },
                   { label: t('คุณสมบัติ', 'Features'), value: features },
-                  { label: t('สิ่งที่ได้รับ', 'Deliverables'), value: deliverables },
-                  { label: t('การสนับสนุน', 'Support'), value: t('24/7 Technical Support', '24/7 Technical Support') },
+                  {
+                    label: t('สิ่งที่ได้รับ', 'Deliverables'),
+                    value: deliverables,
+                  },
+                  {
+                    label: t('การสนับสนุน', 'Support'),
+                    value: t(
+                      '24/7 Technical Support',
+                      '24/7 Technical Support'
+                    ),
+                  },
                 ]}
                 locale={schemaLocale}
               />
@@ -186,7 +228,7 @@ export default function DeploymentPage() {
 
         <FAQSection
           title={t('คำถามที่พบบ่อย', 'Frequently Asked Questions')}
-          faqs={faqs.map((faq) => ({
+          faqs={faqs.map(faq => ({
             question: faq.question,
             answer: faq.answer,
           }))}
@@ -213,7 +255,10 @@ export default function DeploymentPage() {
                 </p>
               </div>
               <ShimmerButton asChild className="px-8 py-4 text-sm">
-                <Link href={`/${locale}/contact` as any} className="inline-flex items-center gap-2">
+                <Link
+                  href={`/${locale}/contact` as any}
+                  className="inline-flex items-center gap-2"
+                >
                   {t('ติดต่อเรา', 'Contact us')}
                   <ArrowRight className="h-4 w-4" />
                 </Link>

@@ -152,7 +152,9 @@ export default function DisclaimerPage({ params }: DisclaimerPageProps) {
     <div className="bg-bg">
       <section className="border-b border-hairline bg-surface py-16">
         <div className="container mx-auto px-6">
-          <h1 className="text-3xl font-bold text-text md:text-4xl">{copy.title}</h1>
+          <h1 className="text-3xl font-bold text-text md:text-4xl">
+            {copy.title}
+          </h1>
           <p className="mt-3 max-w-3xl text-text-muted">{copy.description}</p>
           <p className="mt-4 text-sm text-text-muted">{copy.updated}</p>
         </div>
@@ -165,13 +167,16 @@ export default function DisclaimerPage({ params }: DisclaimerPageProps) {
       <section className="py-16">
         <div className="container mx-auto px-6">
           <div className="space-y-10 text-text">
-            {copy.sections.map((section) => (
+            {copy.sections.map(section => (
               <article key={section.heading} className="space-y-4">
                 <h2 className="text-2xl font-semibold">{section.heading}</h2>
                 <ul className="space-y-2 text-sm text-text-muted">
                   {section.body.map((item, index) => (
                     <li key={index} className="flex items-start gap-2">
-                      <span className="mt-1 h-2 w-2 rounded-full bg-primary" aria-hidden />
+                      <span
+                        className="mt-1 h-2 w-2 rounded-full bg-primary"
+                        aria-hidden
+                      />
                       <span>{item}</span>
                     </li>
                   ))}

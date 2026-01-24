@@ -10,9 +10,14 @@ type NonceProviderProps = {
 };
 
 export function NonceProvider({ nonce, children }: NonceProviderProps) {
-  const value = useMemo(() => (nonce && nonce.length > 0 ? nonce : undefined), [nonce]);
+  const value = useMemo(
+    () => (nonce && nonce.length > 0 ? nonce : undefined),
+    [nonce]
+  );
 
-  return <NonceContext.Provider value={value}>{children}</NonceContext.Provider>;
+  return (
+    <NonceContext.Provider value={value}>{children}</NonceContext.Provider>
+  );
 }
 
 export function useNonce() {

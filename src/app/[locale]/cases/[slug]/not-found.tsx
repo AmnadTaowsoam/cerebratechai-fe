@@ -2,7 +2,11 @@ import Link from 'next/link';
 import { ArrowLeft, Home } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-export default function CaseNotFound({ params }: { params?: { locale?: string } }) {
+export default function CaseNotFound({
+  params,
+}: {
+  params?: { locale?: string };
+}) {
   const locale = params?.locale?.startsWith('th') ? 'th' : 'en';
   const basePath = `/${locale}`;
 
@@ -15,13 +19,17 @@ export default function CaseNotFound({ params }: { params?: { locale?: string } 
             Case Study Not Found
           </h2>
           <p className="text-text-muted">
-            The case study you&apos;re looking for doesn&apos;t exist or has been moved.
+            The case study you&apos;re looking for doesn&apos;t exist or has
+            been moved.
           </p>
         </div>
 
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Button asChild variant="default">
-            <Link href={`${basePath}/cases` as any} className="flex items-center gap-2">
+            <Link
+              href={`${basePath}/cases` as any}
+              className="flex items-center gap-2"
+            >
               <ArrowLeft className="h-4 w-4" />
               Back to Cases
             </Link>

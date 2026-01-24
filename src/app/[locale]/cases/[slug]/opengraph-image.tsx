@@ -8,7 +8,7 @@ export default async function GET(
   { params }: { params: { slug: string } }
 ) {
   const caseItem = getCaseBySlug(params.slug);
-  
+
   if (!caseItem) {
     return new Response('Case not found', { status: 404 });
   }
@@ -49,7 +49,7 @@ export default async function GET(
           >
             {caseItem.title}
           </div>
-          
+
           <div
             style={{
               fontSize: '24px',

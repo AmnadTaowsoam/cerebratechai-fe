@@ -64,13 +64,15 @@ export class PerformanceMonitor {
 
     // Core Web Vitals observer
     try {
-      const observer = new PerformanceObserver((list) => {
+      const observer = new PerformanceObserver(list => {
         for (const entry of list.getEntries()) {
           this.handleMetric(entry);
         }
       });
 
-      observer.observe({ entryTypes: ['largest-contentful-paint', 'first-input', 'layout-shift'] });
+      observer.observe({
+        entryTypes: ['largest-contentful-paint', 'first-input', 'layout-shift'],
+      });
       this.observers.push(observer);
     } catch (error) {
       console.warn('Performance Observer not supported:', error);
@@ -116,7 +118,9 @@ export class PerformanceMonitor {
   analyzeResourceTiming() {
     if (typeof window === 'undefined') return {};
 
-    const resources = performance.getEntriesByType('resource') as PerformanceResourceTiming[];
+    const resources = performance.getEntriesByType(
+      'resource'
+    ) as PerformanceResourceTiming[];
     const analysis = {
       total: resources.length,
       byType: {} as Record<string, number>,
@@ -128,7 +132,7 @@ export class PerformanceMonitor {
       slow: [] as PerformanceResourceTiming[],
     };
 
-    resources.forEach((resource) => {
+    resources.forEach(resource => {
       const type = resource.initiatorType;
       const size = resource.transferSize || 0;
 
@@ -150,8 +154,12 @@ export class PerformanceMonitor {
   analyzeBundleSize() {
     if (typeof window === 'undefined') return {};
 
-    const scripts = Array.from(document.querySelectorAll('script[src]')) as HTMLScriptElement[];
-    const stylesheets = Array.from(document.querySelectorAll('link[rel="stylesheet"]')) as HTMLLinkElement[];
+    const scripts = Array.from(
+      document.querySelectorAll('script[src]')
+    ) as HTMLScriptElement[];
+    const stylesheets = Array.from(
+      document.querySelectorAll('link[rel="stylesheet"]')
+    ) as HTMLLinkElement[];
 
     const analysis = {
       scripts: {
@@ -169,7 +177,7 @@ export class PerformanceMonitor {
     };
 
     // Analyze scripts
-    scripts.forEach((script) => {
+    scripts.forEach(script => {
       if (script.src) {
         analysis.scripts.external++;
         // Note: Actual size would need to be fetched
@@ -180,7 +188,7 @@ export class PerformanceMonitor {
     });
 
     // Analyze stylesheets
-    stylesheets.forEach((link) => {
+    stylesheets.forEach(link => {
       if (link.href) {
         analysis.stylesheets.external++;
         // Note: Actual size would need to be fetched
@@ -195,7 +203,8 @@ export class PerformanceMonitor {
 
   // Memory usage analysis
   analyzeMemoryUsage() {
-    if (typeof window === 'undefined' || !(window as any).performance.memory) return null;
+    if (typeof window === 'undefined' || !(window as any).performance.memory)
+      return null;
 
     const memory = (window as any).performance.memory;
     return {
@@ -208,7 +217,7 @@ export class PerformanceMonitor {
 
   // Cleanup
   destroy() {
-    this.observers.forEach((observer) => observer.disconnect());
+    this.observers.forEach(observer => observer.disconnect());
     this.observers = [];
     this.metrics.clear();
   }
@@ -241,8 +250,8 @@ export function optimizeImages() {
   if (typeof window === 'undefined') return;
 
   const images = document.querySelectorAll('img[data-src]');
-  const imageObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
+  const imageObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
       if (entry.isIntersecting) {
         const img = entry.target as HTMLImageElement;
         img.src = img.dataset.src || '';
@@ -252,7 +261,7 @@ export function optimizeImages() {
     });
   });
 
-  images.forEach((img) => imageObserver.observe(img));
+  images.forEach(img => imageObserver.observe(img));
 }
 
 export function debounce<T extends (...args: any[]) => any>(

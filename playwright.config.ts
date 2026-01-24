@@ -4,7 +4,9 @@ const port = Number(process.env.PLAYWRIGHT_PORT || 3100);
 const baseURL = process.env.BASE_URL || `http://localhost:${port}`;
 const defaultChannel = process.platform === 'win32' ? 'msedge' : undefined;
 const channel = process.env.PLAYWRIGHT_CHANNEL || defaultChannel;
-const videoSetting = process.env.PLAYWRIGHT_VIDEO || (process.env.CI ? 'retain-on-failure' : 'off');
+const videoSetting =
+  process.env.PLAYWRIGHT_VIDEO ||
+  (process.env.CI ? 'retain-on-failure' : 'off');
 
 export default defineConfig({
   testDir: './e2e',
@@ -21,7 +23,11 @@ export default defineConfig({
     baseURL,
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
-    video: videoSetting as 'off' | 'on' | 'retain-on-failure' | 'on-first-retry',
+    video: videoSetting as
+      | 'off'
+      | 'on'
+      | 'retain-on-failure'
+      | 'on-first-retry',
   },
   projects: [
     // Smoke tests - run on Chromium only for speed

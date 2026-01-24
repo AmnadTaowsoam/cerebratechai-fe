@@ -16,94 +16,94 @@ const INDUSTRY_DATA = {
     name: { en: 'Manufacturing', th: 'การผลิตและโรงงาน' },
     description: {
       en: 'AI-powered solutions for quality inspection, predictive maintenance, and production optimization',
-      th: 'โซลูชัน AI สำหรับการตรวจสอบคุณภาพ การบำรุงรักษาเชิงคาดการณ์ และการเพิ่มประสิทธิภาพการผลิต'
+      th: 'โซลูชัน AI สำหรับการตรวจสอบคุณภาพ การบำรุงรักษาเชิงคาดการณ์ และการเพิ่มประสิทธิภาพการผลิต',
     },
     challenges: {
       en: [
         'Ensuring consistent product quality at scale',
         'Minimizing unplanned downtime',
         'Optimizing production efficiency',
-        'Managing complex supply chains'
+        'Managing complex supply chains',
       ],
       th: [
         'การรักษาคุณภาพผลิตภัณฑ์ที่สม่ำเสมอในระดับใหญ่',
         'ลดการหยุดทำงานที่ไม่ได้วางแผน',
         'เพิ่มประสิทธิภาพการผลิต',
-        'การจัดการห่วงโซ่อุปทานที่ซับซ้อน'
-      ]
+        'การจัดการห่วงโซ่อุปทานที่ซับซ้อน',
+      ],
     },
     solutions: ['Computer Vision', 'Predictive Analytics', 'Edge AI'],
-    sectorMatch: 'Manufacturing'
+    sectorMatch: 'Manufacturing',
   },
   healthcare: {
     name: { en: 'Healthcare & Wellness', th: 'สุขภาพและการแพทย์' },
     description: {
       en: 'AI solutions for diagnostics, patient data management, and health advisory systems',
-      th: 'โซลูชัน AI สำหรับการวินิจฉัย การจัดการข้อมูลผู้ป่วย และระบบให้คำปรึกษาสุขภาพ'
+      th: 'โซลูชัน AI สำหรับการวินิจฉัย การจัดการข้อมูลผู้ป่วย และระบบให้คำปรึกษาสุขภาพ',
     },
     challenges: {
       en: [
         'Managing sensitive patient data securely',
         'Improving diagnostic accuracy',
         'Personalizing treatment recommendations',
-        'Streamlining administrative workflows'
+        'Streamlining administrative workflows',
       ],
       th: [
         'การจัดการข้อมูลผู้ป่วยที่ละเอียดอ่อนอย่างปลอดภัย',
         'เพิ่มความแม่นยำในการวินิจฉัย',
         'การให้คำแนะนำการรักษาแบบเฉพาะบุคคล',
-        'ปรับปรุงกระบวนการทางธุรการ'
-      ]
+        'ปรับปรุงกระบวนการทางธุรการ',
+      ],
     },
     solutions: ['LLM & RAG', 'Computer Vision', 'Predictive Analytics'],
-    sectorMatch: 'Healthcare'
+    sectorMatch: 'Healthcare',
   },
   agriculture: {
     name: { en: 'Agriculture', th: 'เกษตรกรรม' },
     description: {
       en: 'AI-powered solutions for crop monitoring, yield prediction, and smart farming',
-      th: 'โซลูชัน AI สำหรับการติดตามพืชผล การพยากรณ์ผลผลิต และการเกษตรอัจฉริยะ'
+      th: 'โซลูชัน AI สำหรับการติดตามพืชผล การพยากรณ์ผลผลิต และการเกษตรอัจฉริยะ',
     },
     challenges: {
       en: [
         'Monitoring crop health and growth',
         'Predicting optimal harvest times',
         'Managing water and fertilizer usage',
-        'Reducing crop loss and waste'
+        'Reducing crop loss and waste',
       ],
       th: [
         'การติดตามสุขภาพและการเจริญเติบโตของพืช',
         'การพยากรณ์เวลาเก็บเกี่ยวที่เหมาะสม',
         'การจัดการการใช้น้ำและปุ๋ย',
-        'ลดการสูญเสียพืชผลและของเสีย'
-      ]
+        'ลดการสูญเสียพืชผลและของเสีย',
+      ],
     },
     solutions: ['Computer Vision', 'Edge AI', 'Predictive Analytics'],
-    sectorMatch: 'Agriculture'
+    sectorMatch: 'Agriculture',
   },
   enterprise: {
     name: { en: 'Enterprise', th: 'องค์กรขนาดใหญ่' },
     description: {
       en: 'AI for knowledge management, intelligent chatbots, and analytics systems',
-      th: 'AI สำหรับการจัดการความรู้ ระบบ chatbot อัจฉริยะ และระบบวิเคราะห์ข้อมูล'
+      th: 'AI สำหรับการจัดการความรู้ ระบบ chatbot อัจฉริยะ และระบบวิเคราะห์ข้อมูล',
     },
     challenges: {
       en: [
         'Managing vast amounts of institutional knowledge',
         'Automating customer support',
         'Extracting insights from data',
-        'Improving decision-making processes'
+        'Improving decision-making processes',
       ],
       th: [
         'การจัดการความรู้ขององค์กรจำนวนมหาศาล',
         'การทำให้การสนับสนุนลูกค้าเป็นอัตโนมัติ',
         'การดึงข้อมูลเชิงลึกจากข้อมูล',
-        'ปรับปรุงกระบวนการตัดสินใจ'
-      ]
+        'ปรับปรุงกระบวนการตัดสินใจ',
+      ],
     },
     solutions: ['LLM & RAG', 'Predictive Analytics', 'MLOps'],
-    sectorMatch: 'Enterprise'
-  }
+    sectorMatch: 'Enterprise',
+  },
 };
 
 export async function generateStaticParams() {
@@ -120,7 +120,9 @@ export async function generateStaticParams() {
   return params;
 }
 
-export async function generateMetadata({ params }: IndustryDetailProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: IndustryDetailProps): Promise<Metadata> {
   const { locale, slug } = params;
 
   if (!locale || !slug) {
@@ -143,7 +145,9 @@ export async function generateMetadata({ params }: IndustryDetailProps): Promise
   };
 }
 
-export default async function IndustryDetailPage({ params }: IndustryDetailProps) {
+export default async function IndustryDetailPage({
+  params,
+}: IndustryDetailProps) {
   const { locale, slug } = params;
 
   if (!locale || !slug) {
@@ -160,7 +164,9 @@ export default async function IndustryDetailPage({ params }: IndustryDetailProps
   }
 
   // Get related cases
-  const relatedCases = CASES.filter(c => c.sector === industry.sectorMatch).slice(0, 6);
+  const relatedCases = CASES.filter(
+    c => c.sector === industry.sectorMatch
+  ).slice(0, 6);
 
   return (
     <div className="bg-bg">
@@ -207,14 +213,16 @@ export default async function IndustryDetailPage({ params }: IndustryDetailProps
             <Card className="border border-hairline bg-surface">
               <CardContent className="p-8">
                 <ul className="space-y-3">
-                  {industry.challenges[normalizedLocale].map((challenge, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center text-sm font-medium mt-0.5">
-                        {index + 1}
-                      </span>
-                      <span className="text-text-muted">{challenge}</span>
-                    </li>
-                  ))}
+                  {industry.challenges[normalizedLocale].map(
+                    (challenge, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center text-sm font-medium mt-0.5">
+                          {index + 1}
+                        </span>
+                        <span className="text-text-muted">{challenge}</span>
+                      </li>
+                    )
+                  )}
                 </ul>
               </CardContent>
             </Card>
@@ -230,7 +238,7 @@ export default async function IndustryDetailPage({ params }: IndustryDetailProps
               {isThai ? 'กรณีศึกษา' : 'Case Studies'}
             </h2>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {relatedCases.map((caseItem) => (
+              {relatedCases.map(caseItem => (
                 <Card
                   key={caseItem.slug}
                   className="border border-hairline bg-surface hover:shadow-xl transition-all group"
@@ -268,13 +276,14 @@ export default async function IndustryDetailPage({ params }: IndustryDetailProps
       <section className="py-20">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold text-text mb-4">
-            {isThai ? 'พร้อมที่จะเริ่มต้นแล้วหรือยัง?' : 'Ready to Get Started?'}
+            {isThai
+              ? 'พร้อมที่จะเริ่มต้นแล้วหรือยัง?'
+              : 'Ready to Get Started?'}
           </h2>
           <p className="text-text-muted mb-8 max-w-2xl mx-auto">
             {isThai
               ? 'พูดคุยกับทีมผู้เชี่ยวชาญของเราเพื่อหารือเกี่ยวกับโครงการของคุณ'
-              : 'Talk to our expert team to discuss your project needs.'
-            }
+              : 'Talk to our expert team to discuss your project needs.'}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg">

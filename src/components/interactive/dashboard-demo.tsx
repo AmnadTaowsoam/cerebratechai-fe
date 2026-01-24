@@ -9,9 +9,10 @@ interface DashboardDemoProps {
 }
 
 export function DashboardDemo({ type = 'default' }: DashboardDemoProps) {
-  const videoSrc = type === 'sookwai' 
-    ? '/demos/sookwai-demo.svg' // Replace with .mp4 or .gif when available
-    : '/demos/smartfarm-demo.svg'; 
+  const videoSrc =
+    type === 'sookwai'
+      ? '/demos/sookwai-demo.svg' // Replace with .mp4 or .gif when available
+      : '/demos/smartfarm-demo.svg';
 
   return (
     <div className="w-full max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-2xl border border-white/10 bg-surface-2 relative group">
@@ -33,16 +34,19 @@ export function DashboardDemo({ type = 'default' }: DashboardDemoProps) {
            Using img tag for SVG/GIF placeholders. 
            In production, use <video> tag for mp4/webm with fallback.
         */}
-        <img 
-          src={videoSrc} 
+        <img
+          src={videoSrc}
           alt={`${type} demo`}
           className="w-full h-full object-cover opacity-90 transition-opacity group-hover:opacity-100"
         />
-        
+
         {/* Overlay Play Button (Optional - for video feel) */}
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
           <div className="w-16 h-16 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20">
-            <svg className="w-6 h-6 text-white fill-current ml-1" viewBox="0 0 24 24">
+            <svg
+              className="w-6 h-6 text-white fill-current ml-1"
+              viewBox="0 0 24 24"
+            >
               <path d="M8 5v14l11-7z" />
             </svg>
           </div>

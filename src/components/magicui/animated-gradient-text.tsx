@@ -7,7 +7,10 @@ interface AnimatedGradientTextProps {
   className?: string;
 }
 
-const AnimatedGradientText = ({ children, className }: AnimatedGradientTextProps) => {
+const AnimatedGradientText = ({
+  children,
+  className,
+}: AnimatedGradientTextProps) => {
   return (
     <div
       className={cn(
@@ -30,4 +33,3 @@ const AnimatedGradientText = ({ children, className }: AnimatedGradientTextProps
 };
 
 export default AnimatedGradientText;
-

@@ -50,12 +50,12 @@ export function PricingSection({ pricing }: PricingSectionProps) {
                   </span>
                 </div>
               )}
-              <h3 className="text-2xl font-bold text-text mb-2">
-                {tier.name}
-              </h3>
+              <h3 className="text-2xl font-bold text-text mb-2">{tier.name}</h3>
               <div className="mb-6">
                 <span className="text-4xl font-bold text-text">
-                  {typeof tier.price === 'number' ? `฿${tier.price.toLocaleString()}` : tier.price}
+                  {typeof tier.price === 'number'
+                    ? `฿${tier.price.toLocaleString()}`
+                    : tier.price}
                 </span>
                 {tier.period && (
                   <span className="text-text-muted ml-2">{tier.period}</span>
@@ -69,12 +69,14 @@ export function PricingSection({ pricing }: PricingSectionProps) {
                   </li>
                 ))}
               </ul>
-              <button className={cn(
-                'w-full py-3 rounded-lg font-medium transition-colors',
-                tier.highlighted
-                  ? 'bg-primary text-white hover:bg-primary/90'
-                  : 'bg-surface-2 text-text hover:bg-surface-3'
-              )}>
+              <button
+                className={cn(
+                  'w-full py-3 rounded-lg font-medium transition-colors',
+                  tier.highlighted
+                    ? 'bg-primary text-white hover:bg-primary/90'
+                    : 'bg-surface-2 text-text hover:bg-surface-3'
+                )}
+              >
                 {tier.highlighted ? 'Get Started' : 'Contact Us'}
               </button>
             </motion.div>

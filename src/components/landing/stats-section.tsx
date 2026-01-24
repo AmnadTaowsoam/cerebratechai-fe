@@ -13,7 +13,9 @@ export function StatsSection() {
       icon: TrendingUp,
       value: '9+',
       label: isThai ? 'โครงการ' : 'Projects',
-      description: isThai ? 'โครงการ AI ที่ส่งมอบจริง' : 'AI projects delivered',
+      description: isThai
+        ? 'โครงการ AI ที่ส่งมอบจริง'
+        : 'AI projects delivered',
       color: 'text-primary',
       bgColor: 'bg-primary/10',
     },
@@ -21,7 +23,9 @@ export function StatsSection() {
       icon: Users,
       value: '3+',
       label: isThai ? 'แพลตฟอร์ม' : 'Platforms',
-      description: isThai ? 'แพลตฟอร์มที่พัฒนา (malAI, DulaeDee, CerebraForge)' : 'Platforms developed (malAI, DulaeDee, CerebraForge)',
+      description: isThai
+        ? 'แพลตฟอร์มที่พัฒนา (malAI, DulaeDee, CerebraForge)'
+        : 'Platforms developed (malAI, DulaeDee, CerebraForge)',
       color: 'text-accent',
       bgColor: 'bg-accent/10',
     },
@@ -101,11 +105,27 @@ export function StatsSection() {
   ];
 
   const industries = [
-    { nameEn: 'Event Management', nameTh: 'งานพิธีและอีเวนต์', count: '1,200+' },
-    { nameEn: 'Healthcare & Wellness', nameTh: 'สุขภาพและเวลเนส', count: '2,500+' },
+    {
+      nameEn: 'Event Management',
+      nameTh: 'งานพิธีและอีเวนต์',
+      count: '1,200+',
+    },
+    {
+      nameEn: 'Healthcare & Wellness',
+      nameTh: 'สุขภาพและเวลเนส',
+      count: '2,500+',
+    },
     { nameEn: 'Enterprise Software', nameTh: 'ซอฟต์แวร์องค์กร', count: '50K+' },
-    { nameEn: 'Security & Surveillance', nameTh: 'ความปลอดภัยและเฝ้าระวัง', count: '150+' },
-    { nameEn: 'Logistics & Agriculture', nameTh: 'โลจิสติกส์และเกษตร', count: '10K+' },
+    {
+      nameEn: 'Security & Surveillance',
+      nameTh: 'ความปลอดภัยและเฝ้าระวัง',
+      count: '150+',
+    },
+    {
+      nameEn: 'Logistics & Agriculture',
+      nameTh: 'โลจิสติกส์และเกษตร',
+      count: '10K+',
+    },
   ];
 
   return (
@@ -118,34 +138,43 @@ export function StatsSection() {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-text mb-4">
-            {isThai ? 'โครงการและโซลูชันที่พัฒนาแล้ว' : 'Projects & Solutions Developed'}
+            {isThai
+              ? 'โครงการและโซลูชันที่พัฒนาแล้ว'
+              : 'Projects & Solutions Developed'}
           </h2>
           <p className="text-text-muted max-w-2xl mx-auto">
             {isThai
               ? 'ผลงานของเราครอบคลุมหลายอุตสาหกรรม ตั้งแต่ระบบอีเวนต์ไปจนถึง Edge Computing และ Knowledge Management'
-              : 'AI solutions we develop span multiple industries, from event management to edge computing and knowledge management.'
-            }
+              : 'AI solutions we develop span multiple industries, from event management to edge computing and knowledge management.'}
           </p>
           <p className="text-xs text-text-muted/70 mt-4 max-w-3xl mx-auto">
             {isThai
               ? '* ตัวเลขและผลลัพธ์อ้างอิงจากโครงการจริงและข้อมูลสังเคราะห์เพื่อการสาธิต ผลลัพธ์จริงอาจแตกต่างตามบริบท'
-              : '* Figures and outcomes shown are based on actual projects and synthetic data for demonstration. Actual results may vary based on multiple factors.'
-            }
+              : '* Figures and outcomes shown are based on actual projects and synthetic data for demonstration. Actual results may vary based on multiple factors.'}
           </p>
         </div>
 
         {/* Key Stats Grid */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mb-16">
-          {stats.map((stat) => {
+          {stats.map(stat => {
             const IconComponent = stat.icon;
             return (
-              <Card key={stat.label} className="border border-hairline bg-surface/80 backdrop-blur hover:shadow-lg transition-all">
+              <Card
+                key={stat.label}
+                className="border border-hairline bg-surface/80 backdrop-blur hover:shadow-lg transition-all"
+              >
                 <CardContent className="p-6 text-center">
-                  <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl ${stat.bgColor} ${stat.color} mb-4`}>
+                  <div
+                    className={`inline-flex items-center justify-center w-12 h-12 rounded-xl ${stat.bgColor} ${stat.color} mb-4`}
+                  >
                     <IconComponent className="h-6 w-6" />
                   </div>
-                  <div className="text-3xl font-bold text-text mb-2">{stat.value}</div>
-                  <h3 className="text-lg font-semibold text-text mb-2">{stat.label}</h3>
+                  <div className="text-3xl font-bold text-text mb-2">
+                    {stat.value}
+                  </div>
+                  <h3 className="text-lg font-semibold text-text mb-2">
+                    {stat.label}
+                  </h3>
                   <p className="text-sm text-text-muted">{stat.description}</p>
                 </CardContent>
               </Card>
@@ -160,15 +189,22 @@ export function StatsSection() {
           </h3>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {achievements.map((achievement, index) => (
-              <Card key={index} className="border border-hairline bg-surface/80 backdrop-blur hover:shadow-lg transition-all">
+              <Card
+                key={index}
+                className="border border-hairline bg-surface/80 backdrop-blur hover:shadow-lg transition-all"
+              >
                 <CardContent className="p-6">
                   <h4 className="text-lg font-semibold text-text mb-3">
                     {isThai ? achievement.titleTh : achievement.titleEn}
                   </h4>
                   <div className="flex items-baseline gap-2 mb-3">
-                    <span className="text-4xl font-bold text-primary">{achievement.metric}</span>
+                    <span className="text-4xl font-bold text-primary">
+                      {achievement.metric}
+                    </span>
                     <span className="text-sm text-text-muted">
-                      {isThai ? achievement.descriptionTh : achievement.descriptionEn}
+                      {isThai
+                        ? achievement.descriptionTh
+                        : achievement.descriptionEn}
                     </span>
                   </div>
                   <p className="text-sm text-text-muted">
@@ -187,9 +223,11 @@ export function StatsSection() {
               {isThai ? 'อุตสาหกรรมที่เราให้บริการ' : 'Industries We Serve'}
             </h3>
             <div className="grid gap-6 md:grid-cols-3 lg:grid-cols-5">
-              {industries.map((industry) => (
+              {industries.map(industry => (
                 <div key={industry.nameEn} className="text-center">
-                  <div className="text-2xl font-bold text-primary mb-2">{industry.count}</div>
+                  <div className="text-2xl font-bold text-primary mb-2">
+                    {industry.count}
+                  </div>
                   <p className="text-sm text-text-muted">
                     {isThai ? industry.nameTh : industry.nameEn}
                   </p>

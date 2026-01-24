@@ -13,7 +13,8 @@ type SolutionsPageProps = {
 
 export const metadata: Metadata = {
   title: 'CerebraTechAI - Solutions',
-  description: 'Explore production-ready AI, data, and software solutions from CerebraTechAI.',
+  description:
+    'Explore production-ready AI, data, and software solutions from CerebraTechAI.',
 };
 
 export default function SolutionsPage({ params }: SolutionsPageProps) {
@@ -31,26 +32,49 @@ export default function SolutionsPage({ params }: SolutionsPageProps) {
   const pricingHighlights = [
     {
       value: '฿260,000',
-      note: t('จุดเริ่มต้นสำหรับงาน Computer Vision', 'Starting point for Computer Vision'),
+      note: t(
+        'จุดเริ่มต้นสำหรับงาน Computer Vision',
+        'Starting point for Computer Vision'
+      ),
     },
     {
       value: '฿420,000',
-      note: t('จุดเริ่มต้นสำหรับงาน Predictive/ML', 'Starting point for Predictive/ML'),
+      note: t(
+        'จุดเริ่มต้นสำหรับงาน Predictive/ML',
+        'Starting point for Predictive/ML'
+      ),
     },
   ];
 
   return (
     <>
       <SeoHead
-        title={t('โซลูชัน AI - Machine Learning, Computer Vision, LLM', 'AI Solutions - Machine Learning, Computer Vision, LLM')}
+        title={t(
+          'โซลูชัน AI - Machine Learning, Computer Vision, LLM',
+          'AI Solutions - Machine Learning, Computer Vision, LLM'
+        )}
         description={t(
           'โซลูชัน AI สำหรับธุรกิจ: Machine Learning, Computer Vision, LLM & RAG, AIoT และ Edge AI พร้อมบริการ MLOps และ Engineering',
           'Comprehensive AI solutions for businesses including Machine Learning, Computer Vision, LLM, AIoT, and Edge AI with MLOps and Engineering support.'
         )}
         keywords={
           isThai
-            ? ['โซลูชัน AI', 'Machine Learning', 'Computer Vision', 'LLM', 'AIoT', 'Edge AI']
-            : ['AI solutions', 'Machine Learning', 'Computer Vision', 'LLM', 'AIoT', 'Edge AI']
+            ? [
+                'โซลูชัน AI',
+                'Machine Learning',
+                'Computer Vision',
+                'LLM',
+                'AIoT',
+                'Edge AI',
+              ]
+            : [
+                'AI solutions',
+                'Machine Learning',
+                'Computer Vision',
+                'LLM',
+                'AIoT',
+                'Edge AI',
+              ]
         }
         url="/solutions"
         type="website"
@@ -58,13 +82,19 @@ export default function SolutionsPage({ params }: SolutionsPageProps) {
 
       <ServiceSchema
         serviceName={t('โซลูชัน AI', 'AI Solutions')}
-        description={t('โซลูชัน AI สำหรับธุรกิจทุกขนาด', 'Comprehensive AI solutions for businesses of all sizes')}
+        description={t(
+          'โซลูชัน AI สำหรับธุรกิจทุกขนาด',
+          'Comprehensive AI solutions for businesses of all sizes'
+        )}
       />
 
       <div className="bg-bg">
         <MagicHero
           eyebrow={t('โซลูชัน AI', 'AI Solutions')}
-          title={t('โซลูชัน AI พร้อมส่งมอบสำหรับ SME และโปรเจกต์ขนาดกลาง', 'Production-Ready AI Solutions for SMEs and Mid-Size Projects')}
+          title={t(
+            'โซลูชัน AI พร้อมส่งมอบสำหรับ SME และโปรเจกต์ขนาดกลาง',
+            'Production-Ready AI Solutions for SMEs and Mid-Size Projects'
+          )}
           description={t(
             'โซลูชันหลักของเรา: LLM & RAG, Computer Vision, Predictive Analytics และ Edge AI พร้อมบริการ MLOps และ Engineering เพื่อใช้งานจริงได้เร็ว',
             'Our AI Core Solutions: LLM & RAG, Computer Vision, Predictive Analytics, and Edge AI—with MLOps and Engineering support services.'
@@ -78,7 +108,9 @@ export default function SolutionsPage({ params }: SolutionsPageProps) {
             <div className="rounded-3xl border border-white/10 bg-surface/80 p-6 backdrop-blur">
               <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                 <div className="space-y-2">
-                  <h2 className="text-xl font-semibold text-text">{t('ราคาเริ่มต้นโดยประมาณ', 'Where pricing starts')}</h2>
+                  <h2 className="text-xl font-semibold text-text">
+                    {t('ราคาเริ่มต้นโดยประมาณ', 'Where pricing starts')}
+                  </h2>
                   <p className="text-text-muted">
                     {t(
                       'ราคาขึ้นอยู่กับความซับซ้อนและความพร้อมของข้อมูล ตัวเลขนี้ช่วยตั้งความคาดหวังเบื้องต้น (ทีมงานจะประเมินแบบมีขอบเขตเมื่อทราบบริบทเพิ่มเติม)',
@@ -87,9 +119,14 @@ export default function SolutionsPage({ params }: SolutionsPageProps) {
                   </p>
                 </div>
                 <div className="grid gap-4 sm:grid-cols-2">
-                  {pricingHighlights.map((item) => (
-                    <div key={item.value} className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4">
-                      <div className="text-2xl font-bold text-text">{item.value}</div>
+                  {pricingHighlights.map(item => (
+                    <div
+                      key={item.value}
+                      className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4"
+                    >
+                      <div className="text-2xl font-bold text-text">
+                        {item.value}
+                      </div>
                       <div className="text-xs text-text-muted">{item.note}</div>
                     </div>
                   ))}
@@ -97,7 +134,10 @@ export default function SolutionsPage({ params }: SolutionsPageProps) {
               </div>
               <div className="mt-4 flex flex-wrap items-center gap-3">
                 <span className="text-xs text-text-muted">
-                  {t('ต้องการใบเสนอราคาแบบเจาะจง? ส่งบริบทคร่าว ๆ เพื่อประเมินขอบเขตงาน', 'Need a tailored quote? Share your context for a scoped estimate.')}
+                  {t(
+                    'ต้องการใบเสนอราคาแบบเจาะจง? ส่งบริบทคร่าว ๆ เพื่อประเมินขอบเขตงาน',
+                    'Need a tailored quote? Share your context for a scoped estimate.'
+                  )}
                 </span>
                 <Link
                   href={`/${locale}/contact` as any}
@@ -119,7 +159,10 @@ export default function SolutionsPage({ params }: SolutionsPageProps) {
                 {t('ภาพรวม Ecosystem', 'Ecosystem Overview')}
               </span>
               <h2 className="mt-4 text-3xl font-bold text-text md:text-4xl">
-                {t('Cerebra: แพลตฟอร์ม AI และ IoT แบบ Private-First', 'Cerebra: The Private-First AI & IoT Platform')}
+                {t(
+                  'Cerebra: แพลตฟอร์ม AI และ IoT แบบ Private-First',
+                  'Cerebra: The Private-First AI & IoT Platform'
+                )}
               </h2>
               <p className="mt-3 mx-auto max-w-3xl text-text-muted">
                 {t(
@@ -134,14 +177,20 @@ export default function SolutionsPage({ params }: SolutionsPageProps) {
               <div className="overflow-hidden rounded-3xl border border-white/10 bg-surface/60 p-4 backdrop-blur">
                 <Image
                   src="/cerebra-ecosystem-pitch.png"
-                  alt={t('Cerebra Ecosystem Overview - แพลตฟอร์ม AI และ IoT', 'Cerebra Ecosystem Overview - AI & IoT Platform')}
+                  alt={t(
+                    'Cerebra Ecosystem Overview - แพลตฟอร์ม AI และ IoT',
+                    'Cerebra Ecosystem Overview - AI & IoT Platform'
+                  )}
                   width={1200}
                   height={675}
                   className="w-full rounded-2xl"
                   priority
                 />
                 <p className="mt-4 text-center text-sm text-text-muted">
-                  {t('CerebraLoLM, CerebraForge & Agent, CerebraCV & IoT และ Solution Packages', 'CerebraLoLM, CerebraForge & Agent, CerebraCV & IoT and Solution Packages')}
+                  {t(
+                    'CerebraLoLM, CerebraForge & Agent, CerebraCV & IoT และ Solution Packages',
+                    'CerebraLoLM, CerebraForge & Agent, CerebraCV & IoT and Solution Packages'
+                  )}
                 </p>
               </div>
 
@@ -150,26 +199,38 @@ export default function SolutionsPage({ params }: SolutionsPageProps) {
                 <div className="overflow-hidden rounded-3xl border border-white/10 bg-surface/60 p-4 backdrop-blur">
                   <Image
                     src="/cerebra-ecosystem-training-2.png"
-                    alt={t('Core Value Propositions และ Success Metrics', 'Core Value Propositions and Success Metrics')}
+                    alt={t(
+                      'Core Value Propositions และ Success Metrics',
+                      'Core Value Propositions and Success Metrics'
+                    )}
                     width={800}
                     height={600}
                     className="w-full rounded-2xl"
                   />
                   <p className="mt-4 text-center text-sm text-text-muted">
-                    {t('Core Value Propositions: Private-First, Modular Design, Local LLM', 'Core Value Propositions: Private-First, Modular Design, Local LLM')}
+                    {t(
+                      'Core Value Propositions: Private-First, Modular Design, Local LLM',
+                      'Core Value Propositions: Private-First, Modular Design, Local LLM'
+                    )}
                   </p>
                 </div>
 
                 <div className="overflow-hidden rounded-3xl border border-white/10 bg-surface/60 p-4 backdrop-blur">
                   <Image
                     src="/cerebra-ecosystem-training.png"
-                    alt={t('Platform Overview และ Solution Packages', 'Platform Overview and Solution Packages')}
+                    alt={t(
+                      'Platform Overview และ Solution Packages',
+                      'Platform Overview and Solution Packages'
+                    )}
                     width={800}
                     height={600}
                     className="w-full rounded-2xl"
                   />
                   <p className="mt-4 text-center text-sm text-text-muted">
-                    {t('Solution Packages: Smart Document, Smart Factory, Smart Farm', 'Solution Packages: Smart Document, Smart Factory, Smart Farm')}
+                    {t(
+                      'Solution Packages: Smart Document, Smart Factory, Smart Farm',
+                      'Solution Packages: Smart Document, Smart Factory, Smart Farm'
+                    )}
                   </p>
                 </div>
               </div>
@@ -190,7 +251,10 @@ export default function SolutionsPage({ params }: SolutionsPageProps) {
             <div className="flex flex-col gap-6 rounded-3xl border border-white/10 bg-surface-2/80 p-8 backdrop-blur md:flex-row md:items-center md:justify-between">
               <div className="max-w-3xl">
                 <h2 className="text-2xl font-semibold text-text">
-                  {t('ต้องการเวอร์ชันเฉพาะหรือเพิ่มความสามารถใหม่?', 'Need a bespoke variant or new capability?')}
+                  {t(
+                    'ต้องการเวอร์ชันเฉพาะหรือเพิ่มความสามารถใหม่?',
+                    'Need a bespoke variant or new capability?'
+                  )}
                 </h2>
                 <p className="mt-2 text-text-muted">
                   {t(
@@ -200,7 +264,10 @@ export default function SolutionsPage({ params }: SolutionsPageProps) {
                 </p>
               </div>
               <ShimmerButton asChild className="px-8 py-4 text-sm">
-                <Link href={`/${locale}/contact` as any} className="inline-flex items-center gap-2">
+                <Link
+                  href={`/${locale}/contact` as any}
+                  className="inline-flex items-center gap-2"
+                >
                   {t('คุยกับทีม', 'Talk to our team')}
                   <ArrowRight className="h-4 w-4" />
                 </Link>
@@ -212,4 +279,3 @@ export default function SolutionsPage({ params }: SolutionsPageProps) {
     </>
   );
 }
-

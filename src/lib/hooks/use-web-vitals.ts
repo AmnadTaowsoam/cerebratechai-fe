@@ -13,10 +13,10 @@ export function useWebVitals() {
     if (typeof window === 'undefined') return;
 
     // Track web vitals
-    getCLS((metric) => trackWebVitals('CLS', metric.value));
-    getFID((metric) => trackWebVitals('FID', metric.value));
-    getFCP((metric) => trackWebVitals('FCP', metric.value));
-    getLCP((metric) => trackWebVitals('LCP', metric.value));
-    getTTFB((metric) => trackWebVitals('TTFB', metric.value));
+    getCLS(metric => trackWebVitals('CLS', metric.value));
+    getFID(metric => trackWebVitals('FID', metric.value));
+    getFCP(metric => trackWebVitals('FCP', metric.value));
+    getLCP(metric => trackWebVitals('LCP', metric.value));
+    getTTFB(metric => trackWebVitals('TTFB', metric.value));
   }, [trackWebVitals]);
 }

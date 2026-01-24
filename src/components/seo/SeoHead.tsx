@@ -1,7 +1,12 @@
 'use client';
 
 import { useLocale } from 'next-intl';
-import { OrganizationJsonLd, WebsiteJsonLd, ServiceJsonLd, LocalBusinessJsonLd } from './JsonLd';
+import {
+  OrganizationJsonLd,
+  WebsiteJsonLd,
+  ServiceJsonLd,
+  LocalBusinessJsonLd,
+} from './JsonLd';
 import { Hreflang } from './Hreflang';
 
 interface SeoHeadProps {
@@ -75,7 +80,10 @@ export function SeoHead({
       <meta name="description" content={fullDescription} />
       <meta name="keywords" content={allKeywords.join(', ')} />
       <meta name="author" content="CerebraTechAI Team" />
-      <meta name="robots" content={noindex ? 'noindex,nofollow' : 'index,follow'} />
+      <meta
+        name="robots"
+        content={noindex ? 'noindex,nofollow' : 'index,follow'}
+      />
       <link rel="canonical" href={canonicalUrl} />
 
       {/* Open Graph */}

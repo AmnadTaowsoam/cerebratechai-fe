@@ -6,7 +6,11 @@ import { QueryProvider } from '@/components/providers/query-provider';
 import { NonceProvider } from '@/components/providers/nonce-provider';
 import { Analytics } from '@/components/analytics/Analytics';
 import { Toaster } from '@/components/ui/toaster';
-import { PerformanceOptimizations, WebVitalsScript, ResourceHints } from '@/components/seo';
+import {
+  PerformanceOptimizations,
+  WebVitalsScript,
+  ResourceHints,
+} from '@/components/seo';
 import { ScrollObserver } from '@/lib/scroll-observer';
 import './globals.css';
 
@@ -18,7 +22,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: 'CerebraTechAI - Turn Pain Points into Production-Ready AI Systems',
+    default:
+      'CerebraTechAI - Turn Pain Points into Production-Ready AI Systems',
     template: '%s | CerebraTechAI',
   },
   keywords: [
@@ -51,7 +56,9 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+  ),
   alternates: {
     languages: {
       th: '/th',
@@ -63,7 +70,8 @@ export const metadata: Metadata = {
     // Locale will be set dynamically by locale-specific layouts
     url: '/',
     title: 'CerebraTechAI - Turn Pain Points into Production-Ready AI Systems',
-    description: 'Transform your pain points into production-ready AI systems. We build AI & full-stack solutions from Edge to Cloud with guardrails and playbooks, ready for production deployment.',
+    description:
+      'Transform your pain points into production-ready AI systems. We build AI & full-stack solutions from Edge to Cloud with guardrails and playbooks, ready for production deployment.',
     siteName: 'CerebraTechAI',
     images: [
       {
@@ -77,7 +85,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'CerebraTechAI - Turn Pain Points into Production-Ready AI Systems',
-    description: 'Transform your pain points into production-ready AI systems. We build AI & full-stack solutions from Edge to Cloud with guardrails and playbooks.',
+    description:
+      'Transform your pain points into production-ready AI systems. We build AI & full-stack solutions from Edge to Cloud with guardrails and playbooks.',
     images: ['/cerebratechai_logo.png'],
     creator: '@cerebratechai',
     site: '@cerebratechai',
@@ -97,13 +106,24 @@ export const metadata: Metadata = {
     google: process.env.GOOGLE_SITE_VERIFICATION,
     yandex: process.env.YANDEX_VERIFICATION,
     yahoo: process.env.YAHOO_VERIFICATION,
-    ...(process.env.FACEBOOK_DOMAIN_VERIFICATION || process.env.PINTEREST_VERIFICATION || process.env.BING_VERIFICATION ? {
-      other: {
-        ...(process.env.FACEBOOK_DOMAIN_VERIFICATION && { 'facebook-domain-verification': process.env.FACEBOOK_DOMAIN_VERIFICATION }),
-        ...(process.env.PINTEREST_VERIFICATION && { 'pinterest-site-verification': process.env.PINTEREST_VERIFICATION }),
-        ...(process.env.BING_VERIFICATION && { 'msvalidate.01': process.env.BING_VERIFICATION }),
-      },
-    } : {}),
+    ...(process.env.FACEBOOK_DOMAIN_VERIFICATION ||
+    process.env.PINTEREST_VERIFICATION ||
+    process.env.BING_VERIFICATION
+      ? {
+          other: {
+            ...(process.env.FACEBOOK_DOMAIN_VERIFICATION && {
+              'facebook-domain-verification':
+                process.env.FACEBOOK_DOMAIN_VERIFICATION,
+            }),
+            ...(process.env.PINTEREST_VERIFICATION && {
+              'pinterest-site-verification': process.env.PINTEREST_VERIFICATION,
+            }),
+            ...(process.env.BING_VERIFICATION && {
+              'msvalidate.01': process.env.BING_VERIFICATION,
+            }),
+          },
+        }
+      : {}),
   },
   icons: {
     icon: [
@@ -130,23 +150,38 @@ export default async function RootLayout({
   const locale = requestHeaders.get('x-next-intl-locale') ?? 'en';
 
   return (
-    <html lang={locale} dir="ltr" className={cn(inter.variable)} suppressHydrationWarning>
+    <html
+      lang={locale}
+      dir="ltr"
+      className={cn(inter.variable)}
+      suppressHydrationWarning
+    >
       <head>
         <link rel="icon" type="image/png" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/favicon.png" />
         <meta name="theme-color" content="#0B1220" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent"
+        />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="msapplication-TileColor" content="#0B1220" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
         {nonce ? <meta name="csp-nonce" content={nonce} /> : null}
-        
+
         {/* Preconnect to external domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+
         {/* DNS prefetch for performance */}
         <link rel="dns-prefetch" href="//www.google-analytics.com" />
         <link rel="dns-prefetch" href="//www.googletagmanager.com" />
@@ -160,17 +195,14 @@ export default async function RootLayout({
             <WebVitalsScript />
             <ResourceHints />
             <ScrollObserver />
-            
+
             {/* Skip link for accessibility */}
-            <a
-              href="#main"
-              className="skip-link"
-            >
+            <a href="#main" className="skip-link">
               Skip to main content
             </a>
-            
+
             {children}
-            
+
             <Toaster />
             <Analytics />
           </QueryProvider>

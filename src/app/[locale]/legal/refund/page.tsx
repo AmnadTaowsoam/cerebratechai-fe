@@ -185,7 +185,11 @@ export const metadata: Metadata = {
   description: 'Learn about our refund and cancellation policies.',
 };
 
-export default function RefundPolicyPage({ params: { locale } }: { params: { locale: string } }) {
+export default function RefundPolicyPage({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
   const isThai = locale === 'th';
   const c = isThai ? content.th : content.en;
 
@@ -208,7 +212,9 @@ export default function RefundPolicyPage({ params: { locale } }: { params: { loc
         <div className="space-y-8">
           {c.sections.map((section, idx) => (
             <section key={idx} className="prose prose-lg max-w-none">
-              <h2 className="text-2xl font-semibold text-text mb-4">{section.heading}</h2>
+              <h2 className="text-2xl font-semibold text-text mb-4">
+                {section.heading}
+              </h2>
               <div className="space-y-3 text-text-muted">
                 {section.body.map((paragraph, pIdx) => (
                   <p key={pIdx} className="leading-relaxed">
@@ -221,7 +227,9 @@ export default function RefundPolicyPage({ params: { locale } }: { params: { loc
 
           {/* Contact Section */}
           <section className="mt-12 p-6 bg-surface rounded-lg border border-hairline">
-            <h3 className="text-xl font-semibold text-text mb-3">{c.contact.heading}</h3>
+            <h3 className="text-xl font-semibold text-text mb-3">
+              {c.contact.heading}
+            </h3>
             <p className="text-text-muted">{c.contact.body}</p>
           </section>
         </div>
@@ -229,4 +237,3 @@ export default function RefundPolicyPage({ params: { locale } }: { params: { loc
     </div>
   );
 }
-

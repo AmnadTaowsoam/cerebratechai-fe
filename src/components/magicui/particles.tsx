@@ -150,8 +150,10 @@ const Particles = ({
 
       circle.x += circle.dx;
       circle.y += circle.dy;
-      circle.translateX += (circle.dx * staticity) / 100 - circle.translateX / ease;
-      circle.translateY += (circle.dy * staticity) / 100 - circle.translateY / ease;
+      circle.translateX +=
+        (circle.dx * staticity) / 100 - circle.translateX / ease;
+      circle.translateY +=
+        (circle.dy * staticity) / 100 - circle.translateY / ease;
 
       if (
         circle.x < -circle.size ||
@@ -181,11 +183,13 @@ const Particles = ({
   };
 
   return (
-    <div className={cn('relative h-full w-full', className)} ref={canvasContainerRef}>
+    <div
+      className={cn('relative h-full w-full', className)}
+      ref={canvasContainerRef}
+    >
       <canvas ref={canvasRef} className="h-full w-full" />
     </div>
   );
 };
 
 export default Particles;
-

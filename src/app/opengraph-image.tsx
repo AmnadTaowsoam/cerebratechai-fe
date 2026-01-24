@@ -7,7 +7,9 @@ async function handler(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const title = searchParams.get('title') || 'CerebraTechAI';
-    const description = searchParams.get('description') || 'Turn Pain Points into Production-Ready AI Systems';
+    const description =
+      searchParams.get('description') ||
+      'Turn Pain Points into Production-Ready AI Systems';
     const locale = searchParams.get('locale') || 'en';
 
     const isThai = locale.startsWith('th');
@@ -23,7 +25,8 @@ async function handler(request: NextRequest) {
             alignItems: 'center',
             justifyContent: 'center',
             backgroundColor: '#0B1220',
-            backgroundImage: 'linear-gradient(135deg, #0B1220 0%, #1a1a2e 50%, #16213e 100%)',
+            backgroundImage:
+              'linear-gradient(135deg, #0B1220 0%, #1a1a2e 50%, #16213e 100%)',
             fontFamily: 'Inter, sans-serif',
           }}
         >
@@ -35,10 +38,11 @@ async function handler(request: NextRequest) {
               left: 0,
               right: 0,
               bottom: 0,
-              background: 'radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%)',
+              background:
+                'radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%)',
             }}
           />
-          
+
           {/* Main Content */}
           <div
             style={{
@@ -64,7 +68,8 @@ async function handler(request: NextRequest) {
                   width: '80px',
                   height: '80px',
                   borderRadius: '20px',
-                  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                  background:
+                    'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -131,7 +136,9 @@ async function handler(request: NextRequest) {
                 textAlign: 'center',
               }}
             >
-              {isThai ? 'สตูดิโอ AI แบบบูติก • กรุงเทพฯ, ประเทศไทย' : 'Boutique AI Studio • Bangkok, Thailand'}
+              {isThai
+                ? 'สตูดิโอ AI แบบบูติก • กรุงเทพฯ, ประเทศไทย'
+                : 'Boutique AI Studio • Bangkok, Thailand'}
             </div>
           </div>
 
@@ -143,7 +150,8 @@ async function handler(request: NextRequest) {
               left: '0',
               right: '0',
               height: '8px',
-              background: 'linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%)',
+              background:
+                'linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%)',
             }}
           />
         </div>

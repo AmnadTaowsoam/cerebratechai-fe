@@ -10,16 +10,46 @@ import { AlertCircle, CheckCircle2 } from 'lucide-react';
 const content = {
   en: {
     title: 'Data Subject Access Request (DSAR)',
-    description: 'Exercise your rights under the Personal Data Protection Act (PDPA) by submitting a request to access, correct, delete, or restrict the processing of your personal data.',
+    description:
+      'Exercise your rights under the Personal Data Protection Act (PDPA) by submitting a request to access, correct, delete, or restrict the processing of your personal data.',
     subtitle: 'Submit a request to exercise your data protection rights',
     requestTypes: [
-      { value: 'access', label: 'Access my data', description: 'Request a copy of the personal data we hold about you' },
-      { value: 'rectify', label: 'Correct my data', description: 'Request correction of inaccurate or incomplete data' },
-      { value: 'erase', label: 'Delete my data', description: 'Request deletion of your personal data (Right to be Forgotten)' },
-      { value: 'restrict', label: 'Restrict processing', description: 'Request temporary suspension of data processing' },
-      { value: 'object', label: 'Object to processing', description: 'Object to certain types of data processing' },
-      { value: 'portability', label: 'Data portability', description: 'Request your data in a machine-readable format' },
-      { value: 'withdraw', label: 'Withdraw consent', description: 'Withdraw your consent for data processing' },
+      {
+        value: 'access',
+        label: 'Access my data',
+        description: 'Request a copy of the personal data we hold about you',
+      },
+      {
+        value: 'rectify',
+        label: 'Correct my data',
+        description: 'Request correction of inaccurate or incomplete data',
+      },
+      {
+        value: 'erase',
+        label: 'Delete my data',
+        description:
+          'Request deletion of your personal data (Right to be Forgotten)',
+      },
+      {
+        value: 'restrict',
+        label: 'Restrict processing',
+        description: 'Request temporary suspension of data processing',
+      },
+      {
+        value: 'object',
+        label: 'Object to processing',
+        description: 'Object to certain types of data processing',
+      },
+      {
+        value: 'portability',
+        label: 'Data portability',
+        description: 'Request your data in a machine-readable format',
+      },
+      {
+        value: 'withdraw',
+        label: 'Withdraw consent',
+        description: 'Withdraw your consent for data processing',
+      },
     ],
     formLabels: {
       requestType: 'Type of Request',
@@ -29,7 +59,8 @@ const content = {
       details: 'Request Details',
       detailsPlaceholder: 'Please provide details about your request...',
       verification: 'Identity Verification',
-      verificationHelp: 'To protect your privacy, we may need to verify your identity before processing your request.',
+      verificationHelp:
+        'To protect your privacy, we may need to verify your identity before processing your request.',
       idDocument: 'ID Document Type',
       idNumber: 'ID Number (last 4 digits only)',
       submit: 'Submit Request',
@@ -40,23 +71,56 @@ const content = {
       { value: 'passport', label: 'Passport' },
       { value: 'drivers_license', label: "Driver's License" },
     ],
-    processingTime: 'Processing Time: We will respond within 30 days as required by PDPA.',
-    privacyNotice: 'Your request will be handled confidentially and securely. Information submitted will only be used to process your DSAR.',
-    successMessage: 'Your request has been submitted successfully. We will respond to your email within 30 days.',
-    errorMessage: 'Failed to submit request. Please try again or contact privacy@cerebratechai.com directly.',
+    processingTime:
+      'Processing Time: We will respond within 30 days as required by PDPA.',
+    privacyNotice:
+      'Your request will be handled confidentially and securely. Information submitted will only be used to process your DSAR.',
+    successMessage:
+      'Your request has been submitted successfully. We will respond to your email within 30 days.',
+    errorMessage:
+      'Failed to submit request. Please try again or contact privacy@cerebratechai.com directly.',
   },
   th: {
     title: 'แบบฟอร์มขอใช้สิทธิเจ้าของข้อมูล (DSAR)',
-    description: 'ใช้สิทธิของคุณตาม พ.ร.บ. คุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 โดยส่งคำขอเข้าถึง แก้ไข ลบ หรือระงับการประมวลผลข้อมูลส่วนบุคคลของคุณ',
+    description:
+      'ใช้สิทธิของคุณตาม พ.ร.บ. คุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 โดยส่งคำขอเข้าถึง แก้ไข ลบ หรือระงับการประมวลผลข้อมูลส่วนบุคคลของคุณ',
     subtitle: 'ส่งคำขอเพื่อใช้สิทธิตาม PDPA',
     requestTypes: [
-      { value: 'access', label: 'เข้าถึงข้อมูล', description: 'ขอรับสำเนาข้อมูลส่วนบุคคลที่เราเก็บรักษา' },
-      { value: 'rectify', label: 'แก้ไขข้อมูล', description: 'ขอแก้ไขข้อมูลที่ไม่ถูกต้องหรือไม่สมบูรณ์' },
-      { value: 'erase', label: 'ลบข้อมูล', description: 'ขอลบข้อมูลส่วนบุคคล (สิทธิถูกลืม)' },
-      { value: 'restrict', label: 'ระงับการใช้', description: 'ขอระงับการประมวลผลข้อมูลชั่วคราว' },
-      { value: 'object', label: 'คัดค้าน', description: 'คัดค้านการประมวลผลข้อมูลบางประเภท' },
-      { value: 'portability', label: 'โอนย้ายข้อมูล', description: 'ขอข้อมูลในรูปแบบที่อ่านได้ด้วยเครื่อง' },
-      { value: 'withdraw', label: 'ถอนความยินยอม', description: 'ถอนความยินยอมในการประมวลผลข้อมูล' },
+      {
+        value: 'access',
+        label: 'เข้าถึงข้อมูล',
+        description: 'ขอรับสำเนาข้อมูลส่วนบุคคลที่เราเก็บรักษา',
+      },
+      {
+        value: 'rectify',
+        label: 'แก้ไขข้อมูล',
+        description: 'ขอแก้ไขข้อมูลที่ไม่ถูกต้องหรือไม่สมบูรณ์',
+      },
+      {
+        value: 'erase',
+        label: 'ลบข้อมูล',
+        description: 'ขอลบข้อมูลส่วนบุคคล (สิทธิถูกลืม)',
+      },
+      {
+        value: 'restrict',
+        label: 'ระงับการใช้',
+        description: 'ขอระงับการประมวลผลข้อมูลชั่วคราว',
+      },
+      {
+        value: 'object',
+        label: 'คัดค้าน',
+        description: 'คัดค้านการประมวลผลข้อมูลบางประเภท',
+      },
+      {
+        value: 'portability',
+        label: 'โอนย้ายข้อมูล',
+        description: 'ขอข้อมูลในรูปแบบที่อ่านได้ด้วยเครื่อง',
+      },
+      {
+        value: 'withdraw',
+        label: 'ถอนความยินยอม',
+        description: 'ถอนความยินยอมในการประมวลผลข้อมูล',
+      },
     ],
     formLabels: {
       requestType: 'ประเภทคำขอ',
@@ -66,7 +130,8 @@ const content = {
       details: 'รายละเอียดคำขอ',
       detailsPlaceholder: 'กรุณาระบุรายละเอียดคำขอของคุณ...',
       verification: 'การยืนยันตัวตน',
-      verificationHelp: 'เพื่อปกป้องความเป็นส่วนตัว เราอาจต้องยืนยันตัวตนก่อนดำเนินการ',
+      verificationHelp:
+        'เพื่อปกป้องความเป็นส่วนตัว เราอาจต้องยืนยันตัวตนก่อนดำเนินการ',
       idDocument: 'ประเภทเอกสาร',
       idNumber: 'เลขที่บัตร (4 หลักสุดท้ายเท่านั้น)',
       submit: 'ส่งคำขอ',
@@ -77,10 +142,13 @@ const content = {
       { value: 'passport', label: 'พาสปอร์ต' },
       { value: 'drivers_license', label: 'ใบขับขี่' },
     ],
-    processingTime: 'ระยะเวลาดำเนินการ: เราจะตอบกลับภายใน 30 วัน ตามที่ PDPA กำหนด',
-    privacyNotice: 'คำขอของคุณจะได้รับการจัดการอย่างเป็นความลับและปลอดภัย ข้อมูลจะใช้เพื่อดำเนินการตามคำขอเท่านั้น',
+    processingTime:
+      'ระยะเวลาดำเนินการ: เราจะตอบกลับภายใน 30 วัน ตามที่ PDPA กำหนด',
+    privacyNotice:
+      'คำขอของคุณจะได้รับการจัดการอย่างเป็นความลับและปลอดภัย ข้อมูลจะใช้เพื่อดำเนินการตามคำขอเท่านั้น',
     successMessage: 'ส่งคำขอเรียบร้อยแล้ว เราจะตอบกลับทางอีเมลภายใน 30 วัน',
-    errorMessage: 'ไม่สามารถส่งคำขอได้ กรุณาลองใหม่หรือติดต่อ privacy@cerebratechai.com โดยตรง',
+    errorMessage:
+      'ไม่สามารถส่งคำขอได้ กรุณาลองใหม่หรือติดต่อ privacy@cerebratechai.com โดยตรง',
   },
 };
 
@@ -99,7 +167,9 @@ export default function DSARPage({ params }: { params: { locale: string } }) {
     idNumber: '',
   });
 
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<
+    'idle' | 'loading' | 'success' | 'error'
+  >('idle');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -127,7 +197,11 @@ export default function DSARPage({ params }: { params: { locale: string } }) {
     }, 1500);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     setFormData(prev => ({
       ...prev,
       [e.target.name]: e.target.value,
@@ -137,7 +211,9 @@ export default function DSARPage({ params }: { params: { locale: string } }) {
   return (
     <>
       <SeoHead
-        title={isThai ? 'แบบฟอร์ม DSAR - CerebraTechAI' : 'DSAR Form - CerebraTechAI'}
+        title={
+          isThai ? 'แบบฟอร์ม DSAR - CerebraTechAI' : 'DSAR Form - CerebraTechAI'
+        }
         description={copy.description}
         url="/legal/dsar"
         noindex={true}
@@ -146,7 +222,9 @@ export default function DSARPage({ params }: { params: { locale: string } }) {
       <div className="bg-bg min-h-screen">
         <section className="border-b border-hairline bg-surface py-16">
           <div className="container mx-auto px-6">
-            <h1 className="text-3xl font-bold text-text md:text-4xl">{copy.title}</h1>
+            <h1 className="text-3xl font-bold text-text md:text-4xl">
+              {copy.title}
+            </h1>
             <p className="mt-3 max-w-3xl text-text-muted">{copy.description}</p>
           </div>
         </section>
@@ -159,11 +237,15 @@ export default function DSARPage({ params }: { params: { locale: string } }) {
                   {/* Request Type */}
                   <div>
                     <label className="block text-sm font-medium text-text mb-3">
-                      {copy.formLabels.requestType} <span className="text-red-500">*</span>
+                      {copy.formLabels.requestType}{' '}
+                      <span className="text-red-500">*</span>
                     </label>
                     <div className="space-y-2">
-                      {copy.requestTypes.map((type) => (
-                        <label key={type.value} className="flex items-start gap-3 p-3 rounded-lg border border-hairline hover:bg-bg/50 cursor-pointer transition-colors">
+                      {copy.requestTypes.map(type => (
+                        <label
+                          key={type.value}
+                          className="flex items-start gap-3 p-3 rounded-lg border border-hairline hover:bg-bg/50 cursor-pointer transition-colors"
+                        >
                           <input
                             type="radio"
                             name="requestType"
@@ -174,8 +256,12 @@ export default function DSARPage({ params }: { params: { locale: string } }) {
                             required
                           />
                           <div>
-                            <div className="font-medium text-text">{type.label}</div>
-                            <div className="text-sm text-text-muted">{type.description}</div>
+                            <div className="font-medium text-text">
+                              {type.label}
+                            </div>
+                            <div className="text-sm text-text-muted">
+                              {type.description}
+                            </div>
                           </div>
                         </label>
                       ))}
@@ -185,7 +271,8 @@ export default function DSARPage({ params }: { params: { locale: string } }) {
                   {/* Full Name */}
                   <div>
                     <label className="block text-sm font-medium text-text mb-2">
-                      {copy.formLabels.fullName} <span className="text-red-500">*</span>
+                      {copy.formLabels.fullName}{' '}
+                      <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
@@ -200,7 +287,8 @@ export default function DSARPage({ params }: { params: { locale: string } }) {
                   {/* Email */}
                   <div>
                     <label className="block text-sm font-medium text-text mb-2">
-                      {copy.formLabels.email} <span className="text-red-500">*</span>
+                      {copy.formLabels.email}{' '}
+                      <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="email"
@@ -229,7 +317,8 @@ export default function DSARPage({ params }: { params: { locale: string } }) {
                   {/* Request Details */}
                   <div>
                     <label className="block text-sm font-medium text-text mb-2">
-                      {copy.formLabels.details} <span className="text-red-500">*</span>
+                      {copy.formLabels.details}{' '}
+                      <span className="text-red-500">*</span>
                     </label>
                     <textarea
                       name="details"
@@ -263,7 +352,7 @@ export default function DSARPage({ params }: { params: { locale: string } }) {
                           className="w-full px-4 py-2 bg-bg border border-hairline rounded-lg text-text focus:outline-none focus:ring-2 focus:ring-primary"
                         >
                           <option value="">Select...</option>
-                          {copy.idTypes.map((type) => (
+                          {copy.idTypes.map(type => (
                             <option key={type.value} value={type.value}>
                               {type.label}
                             </option>
@@ -292,10 +381,14 @@ export default function DSARPage({ params }: { params: { locale: string } }) {
                   <div className="pt-4">
                     <Button
                       type="submit"
-                      disabled={submitStatus === 'loading' || submitStatus === 'success'}
+                      disabled={
+                        submitStatus === 'loading' || submitStatus === 'success'
+                      }
                       className="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      {submitStatus === 'loading' ? copy.formLabels.submitting : copy.formLabels.submit}
+                      {submitStatus === 'loading'
+                        ? copy.formLabels.submitting
+                        : copy.formLabels.submit}
                     </Button>
                   </div>
 
@@ -303,7 +396,9 @@ export default function DSARPage({ params }: { params: { locale: string } }) {
                   {submitStatus === 'success' && (
                     <div className="flex items-start gap-3 p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
                       <CheckCircle2 className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
-                      <p className="text-sm text-green-500">{copy.successMessage}</p>
+                      <p className="text-sm text-green-500">
+                        {copy.successMessage}
+                      </p>
                     </div>
                   )}
 
@@ -311,7 +406,9 @@ export default function DSARPage({ params }: { params: { locale: string } }) {
                   {submitStatus === 'error' && (
                     <div className="flex items-start gap-3 p-4 bg-red-500/10 border border-red-500/30 rounded-lg">
                       <AlertCircle className="h-5 w-5 text-red-500 flex-shrink-0 mt-0.5" />
-                      <p className="text-sm text-red-500">{copy.errorMessage}</p>
+                      <p className="text-sm text-red-500">
+                        {copy.errorMessage}
+                      </p>
                     </div>
                   )}
 
@@ -334,11 +431,17 @@ export default function DSARPage({ params }: { params: { locale: string } }) {
             <div className="mt-8 text-center">
               <p className="text-sm text-text-muted">
                 {isThai ? 'หากมีคำถาม ติดต่อ: ' : 'Questions? Contact: '}
-                <a href="mailto:privacy@cerebratechai.com" className="text-primary hover:underline">
+                <a
+                  href="mailto:privacy@cerebratechai.com"
+                  className="text-primary hover:underline"
+                >
                   privacy@cerebratechai.com
                 </a>
                 {isThai ? ' | โทร: ' : ' | Tel: '}
-                <a href="tel:+66856621113" className="text-primary hover:underline">
+                <a
+                  href="tel:+66856621113"
+                  className="text-primary hover:underline"
+                >
                   085-662-1113
                 </a>
               </p>

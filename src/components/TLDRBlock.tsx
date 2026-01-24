@@ -7,7 +7,11 @@ type TLDRBlockProps = {
   className?: string;
 };
 
-export default function TLDRBlock({ summary, locale = 'en', className = '' }: TLDRBlockProps) {
+export default function TLDRBlock({
+  summary,
+  locale = 'en',
+  className = '',
+}: TLDRBlockProps) {
   const isThai = locale === 'th';
 
   return (
@@ -23,9 +27,7 @@ export default function TLDRBlock({ summary, locale = 'en', className = '' }: TL
             <h3 className="text-sm font-semibold uppercase tracking-wider text-primary mb-2">
               {isThai ? 'สรุปสั้น (TL;DR)' : 'TL;DR'}
             </h3>
-            <p className="text-text leading-relaxed">
-              {summary}
-            </p>
+            <p className="text-text leading-relaxed">{summary}</p>
           </div>
         </div>
       </CardContent>

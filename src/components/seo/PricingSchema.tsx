@@ -12,18 +12,18 @@ export function PricingSchema() {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: isThai ? 'แพ็กเกจ AI Solutions' : 'AI Solutions Packages',
-    description: isThai 
+    description: isThai
       ? 'แพ็กเกจโซลูชัน AI หลากหลายราคาสำหรับธุรกิจทุกขนาด'
       : 'Various AI solution packages for businesses of all sizes',
     brand: {
       '@type': 'Brand',
-      name: 'CerebraTechAI'
+      name: 'CerebraTechAI',
     },
     offers: [
       {
         '@type': 'Offer',
         name: isThai ? 'Kickstart Package' : 'Kickstart Package',
-        description: isThai 
+        description: isThai
           ? 'แพ็กเกจเริ่มต้นสำหรับการสำรวจ AI'
           : 'Entry-level package for AI exploration',
         price: '95000',
@@ -34,13 +34,13 @@ export function PricingSchema() {
         seller: {
           '@type': 'Organization',
           name: 'CerebraTechAI',
-          url: baseUrl
-        }
+          url: baseUrl,
+        },
       },
       {
         '@type': 'Offer',
         name: isThai ? 'POC Lab Package' : 'POC Lab Package',
-        description: isThai 
+        description: isThai
           ? 'แพ็กเกจพัฒนาระบบ POC'
           : 'POC development package',
         price: '420000',
@@ -51,13 +51,13 @@ export function PricingSchema() {
         seller: {
           '@type': 'Organization',
           name: 'CerebraTechAI',
-          url: baseUrl
-        }
+          url: baseUrl,
+        },
       },
       {
         '@type': 'Offer',
         name: isThai ? 'Pilot Launch Package' : 'Pilot Launch Package',
-        description: isThai 
+        description: isThai
           ? 'แพ็กเกจปล่อยใช้งานจริงแบบจำกัด'
           : 'Limited production deployment package',
         price: '1200000',
@@ -68,13 +68,13 @@ export function PricingSchema() {
         seller: {
           '@type': 'Organization',
           name: 'CerebraTechAI',
-          url: baseUrl
-        }
+          url: baseUrl,
+        },
       },
       {
         '@type': 'Offer',
         name: isThai ? 'Production Scale Package' : 'Production Scale Package',
-        description: isThai 
+        description: isThai
           ? 'แพ็กเกจระบบ AI ขนาดใหญ่'
           : 'Large-scale AI system package',
         price: '2500000',
@@ -85,30 +85,30 @@ export function PricingSchema() {
         seller: {
           '@type': 'Organization',
           name: 'CerebraTechAI',
-          url: baseUrl
-        }
-      }
+          url: baseUrl,
+        },
+      },
     ],
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: '4.8',
       reviewCount: '24',
       bestRating: '5',
-      worstRating: '1'
-    }
+      worstRating: '1',
+    },
   };
 
   return <JsonLd data={pricingData} />;
 }
 
-export function ServiceSchema({ 
-  serviceName, 
-  description, 
-  price 
-}: { 
-  serviceName: string; 
-  description: string; 
-  price?: number; 
+export function ServiceSchema({
+  serviceName,
+  description,
+  price,
+}: {
+  serviceName: string;
+  description: string;
+  price?: number;
 }) {
   const locale = useLocale();
   const isThai = locale.startsWith('th');
@@ -126,13 +126,13 @@ export function ServiceSchema({
       address: {
         '@type': 'PostalAddress',
         addressCountry: 'TH',
-        addressLocality: 'Bangkok'
-      }
+        addressLocality: 'Bangkok',
+      },
     },
     serviceType: 'AI & Machine Learning Services',
     areaServed: {
       '@type': 'Country',
-      name: 'Thailand'
+      name: 'Thailand',
     },
     availableLanguage: ['English', 'Thai'],
     ...(price && {
@@ -140,18 +140,18 @@ export function ServiceSchema({
         '@type': 'Offer',
         price: price.toString(),
         priceCurrency: 'THB',
-        availability: 'https://schema.org/InStock'
-      }
-    })
+        availability: 'https://schema.org/InStock',
+      },
+    }),
   };
 
   return <JsonLd data={serviceData} />;
 }
 
-export function FAQSchema({ 
-  faqs 
-}: { 
-  faqs: Array<{ question: string; answer: string }> 
+export function FAQSchema({
+  faqs,
+}: {
+  faqs: Array<{ question: string; answer: string }>;
 }) {
   const locale = useLocale();
   const isThai = locale.startsWith('th');
@@ -165,9 +165,9 @@ export function FAQSchema({
       name: faq.question,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: faq.answer
-      }
-    }))
+        text: faq.answer,
+      },
+    })),
   };
 
   return <JsonLd data={faqData} />;

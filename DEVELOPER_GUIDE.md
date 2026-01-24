@@ -22,6 +22,7 @@
 ### **System Design:**
 
 **Stack:**
+
 - **Framework:** Next.js 14 (App Router)
 - **Language:** TypeScript 5 (Strict mode)
 - **Styling:** Tailwind CSS 3.4
@@ -75,14 +76,14 @@ src/
 
 ### **Rendering Strategy:**
 
-| Page Type | Strategy | Why |
-|-----------|----------|-----|
-| Homepage | Static (SSG) | Fast load, rarely changes |
-| Services | Static (SSG) | SEO, fast |
-| Packages | Static (SSG) | SEO, fast |
-| Cases | Static (SSG) | SEO, fast |
-| Contact | Server (SSR) | Dynamic, form |
-| API Routes | Server | Backend logic |
+| Page Type  | Strategy     | Why                       |
+| ---------- | ------------ | ------------------------- |
+| Homepage   | Static (SSG) | Fast load, rarely changes |
+| Services   | Static (SSG) | SEO, fast                 |
+| Packages   | Static (SSG) | SEO, fast                 |
+| Cases      | Static (SSG) | SEO, fast                 |
+| Contact    | Server (SSR) | Dynamic, form             |
+| API Routes | Server       | Backend logic             |
 
 ### **Data Flow:**
 
@@ -105,20 +106,22 @@ Success response
 ### **State Management:**
 
 **Server State (TanStack Query):**
+
 ```typescript
 // For API data fetching
 const { data, isLoading } = useQuery({
   queryKey: ['leads'],
-  queryFn: fetchLeads
+  queryFn: fetchLeads,
 });
 ```
 
 **Client State (Zustand):**
+
 ```typescript
 // For UI state
-const useUIStore = create((set) => ({
+const useUIStore = create(set => ({
   theme: 'light',
-  setTheme: (theme) => set({ theme })
+  setTheme: theme => set({ theme }),
 }));
 ```
 
@@ -128,12 +131,12 @@ const useUIStore = create((set) => ({
 
 ### **Testing Strategy:**
 
-| Type | Tool | Coverage | Files |
-|------|------|----------|-------|
-| **Unit Tests** | Jest | 80%+ | `*.test.ts(x)` |
-| **E2E Tests** | Playwright | Critical paths | `*.spec.ts` |
-| **A11y Tests** | jest-axe | All components | `*.a11y.test.tsx` |
-| **Type Tests** | TypeScript | 100% | All `.ts(x)` |
+| Type           | Tool       | Coverage       | Files             |
+| -------------- | ---------- | -------------- | ----------------- |
+| **Unit Tests** | Jest       | 80%+           | `*.test.ts(x)`    |
+| **E2E Tests**  | Playwright | Critical paths | `*.spec.ts`       |
+| **A11y Tests** | jest-axe   | All components | `*.a11y.test.tsx` |
+| **Type Tests** | TypeScript | 100%           | All `.ts(x)`      |
 
 ### **Unit Testing (Jest):**
 
@@ -152,6 +155,7 @@ npm run test:ci
 ```
 
 **Example Test:**
+
 ```typescript
 // src/components/landing/contact-form.test.tsx
 import { render, screen } from '@testing-library/react';
@@ -163,7 +167,7 @@ describe('ContactForm', () => {
     expect(screen.getByLabelText(/name/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/email/i)).toBeInTheDocument();
   });
-  
+
   it('validates email format', async () => {
     render(<ContactForm />);
     // ... test validation
@@ -185,19 +189,20 @@ npm run e2e:headed
 ```
 
 **Example E2E:**
+
 ```typescript
 // e2e/contact-form.spec.ts
 import { test, expect } from '@playwright/test';
 
 test('submit contact form', async ({ page }) => {
   await page.goto('/contact');
-  
+
   await page.fill('[name="name"]', 'Test User');
   await page.fill('[name="email"]', 'test@example.com');
   await page.fill('[name="message"]', 'Test message');
-  
+
   await page.click('button[type="submit"]');
-  
+
   await expect(page.locator('.success-message')).toBeVisible();
 });
 ```
@@ -210,6 +215,7 @@ npm run test:a11y
 ```
 
 **Example A11y Test:**
+
 ```typescript
 import { render } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
@@ -234,6 +240,7 @@ npm run analyze
 ```
 
 **Target Metrics:**
+
 - Performance: 90+
 - Accessibility: 100
 - Best Practices: 100
@@ -262,7 +269,7 @@ Configured in `next.config.ts`:
 
 ```typescript
 // Restrict resource loading
-Content-Security-Policy: 
+Content-Security-Policy:
   default-src 'self';
   script-src 'self' 'unsafe-inline' 'unsafe-eval' *.googletagmanager.com;
   style-src 'self' 'unsafe-inline';
@@ -274,12 +281,13 @@ Content-Security-Policy:
 ### **API Security:**
 
 **Contact Form:**
+
 ```typescript
 // Client-side validation (Zod)
 const schema = z.object({
   name: z.string().min(2).max(100),
   email: z.string().email(),
-  message: z.string().min(10).max(1000)
+  message: z.string().min(10).max(1000),
 });
 
 // API route validation
@@ -287,7 +295,7 @@ const validated = schema.parse(body);
 
 // Forward to backend with API key
 fetch(CONTACT_SERVICE_URL, {
-  headers: { 'X-API-Key': API_KEY }
+  headers: { 'X-API-Key': API_KEY },
 });
 ```
 
@@ -335,12 +343,14 @@ npm outdated
 ### **Visual Accessibility:**
 
 **Color Contrast:**
+
 - Normal text: **4.5:1** minimum
 - Large text (18px+): **3:1** minimum
 - UI components: **3:1** minimum
 - Never rely on color alone
 
 **Typography:**
+
 - Minimum body text: **16px**
 - Line height: **1.5** (body), **1.2** (headings)
 - Support **200% zoom** without horizontal scroll
@@ -349,6 +359,7 @@ npm outdated
 ### **Keyboard Navigation:**
 
 **Requirements:**
+
 - ✅ **Tab order** - Logical sequence
 - ✅ **Focus indicators** - 2px solid outline, visible
 - ✅ **Skip links** - Jump to main content
@@ -356,9 +367,10 @@ npm outdated
 - ✅ **All functionality** accessible via keyboard
 
 **Implementation:**
+
 ```tsx
 // Focus management
-<button 
+<button
   className="focus:ring-2 focus:ring-blue-500 focus:outline-none"
   aria-label="Submit contact form"
 >
@@ -378,6 +390,7 @@ npm outdated
 ### **Screen Reader Support:**
 
 **ARIA Labels:**
+
 ```tsx
 <button aria-label="Open navigation menu">
   <MenuIcon aria-hidden="true" />
@@ -389,6 +402,7 @@ npm outdated
 ```
 
 **Live Regions:**
+
 ```tsx
 <div role="alert" aria-live="polite">
   Form submitted successfully!
@@ -439,6 +453,7 @@ npm run test:a11y
 **Target:** 100
 
 **Common Issues:**
+
 - Missing alt text → Add alt to all images
 - Poor contrast → Use accessible colors
 - Missing ARIA labels → Add labels to interactive elements
@@ -451,6 +466,7 @@ npm run test:a11y
 ### **Code Formatting:**
 
 **Prettier Configuration:**
+
 ```json
 {
   "semi": true,
@@ -463,6 +479,7 @@ npm run test:a11y
 ```
 
 **Commands:**
+
 ```bash
 # Format all files
 npm run format
@@ -474,21 +491,25 @@ npm run format:check
 ### **TypeScript Guidelines:**
 
 **Naming Conventions:**
+
 ```typescript
 // ✅ Good
 const userName: string = 'John';
 const UserProfile: React.FC = () => {};
 const API_KEY = process.env.API_KEY;
 type UserData = { name: string };
-interface ButtonProps { onClick: () => void }
+interface ButtonProps {
+  onClick: () => void;
+}
 
 // ❌ Bad
-const UserName: string = 'John';  // Should be camelCase
-const userprofile: React.FC = () => {};  // Should be PascalCase
-const apiKey = 'xxx';  // Constants should be UPPER_CASE
+const UserName: string = 'John'; // Should be camelCase
+const userprofile: React.FC = () => {}; // Should be PascalCase
+const apiKey = 'xxx'; // Constants should be UPPER_CASE
 ```
 
 **Type Annotations:**
+
 ```typescript
 // ✅ Explicit types for public APIs
 export function submitForm(data: ContactFormData): Promise<Response> {
@@ -496,16 +517,17 @@ export function submitForm(data: ContactFormData): Promise<Response> {
 }
 
 // ✅ Inferred types for local variables
-const name = data.name;  // Type inferred as string
+const name = data.name; // Type inferred as string
 
 // ❌ Avoid 'any'
-const data: any = await fetch();  // Bad!
-const data: ContactData = await fetch();  // Good!
+const data: any = await fetch(); // Bad!
+const data: ContactData = await fetch(); // Good!
 ```
 
 ### **React Component Guidelines:**
 
 **Component Structure:**
+
 ```tsx
 // 1. Imports
 import { useState } from 'react';
@@ -521,17 +543,17 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
   // 3.1 Hooks
   const [name, setName] = useState('');
   const { t } = useTranslations();
-  
+
   // 3.2 Handlers
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     onSubmit({ name });
   };
-  
+
   // 3.3 Render
   return (
     <form onSubmit={handleSubmit}>
-      <input value={name} onChange={(e) => setName(e.target.value)} />
+      <input value={name} onChange={e => setName(e.target.value)} />
       <Button type="submit">{t('submit')}</Button>
     </form>
   );
@@ -539,6 +561,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
 ```
 
 **Naming:**
+
 - Components: `PascalCase` (e.g., `ContactForm`)
 - Files: `kebab-case.tsx` (e.g., `contact-form.tsx`)
 - Hooks: `use` prefix (e.g., `useAnalytics`)
@@ -547,6 +570,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
 ### **Tailwind CSS Guidelines:**
 
 **Order of Classes:**
+
 ```tsx
 // 1. Layout (display, position)
 // 2. Box model (width, height, padding, margin)
@@ -564,6 +588,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
 ```
 
 **Use @apply for repeated patterns:**
+
 ```css
 /* globals.css */
 @layer components {
@@ -636,6 +661,7 @@ setName(value);
 ### **Design System:**
 
 **Colors:**
+
 ```typescript
 // Primary
 primary: {
@@ -652,6 +678,7 @@ info: '#3b82f6'
 ```
 
 **Spacing:**
+
 ```typescript
 // 4px base unit
 spacing: {
@@ -663,6 +690,7 @@ spacing: {
 ```
 
 **Typography:**
+
 ```css
 /* Headings */
 h1: text-4xl font-bold (36px)
@@ -688,6 +716,7 @@ screens: {
 ```
 
 **Usage:**
+
 ```tsx
 <div className="
   w-full              // Mobile: full width
@@ -699,6 +728,7 @@ screens: {
 ### **Component Patterns:**
 
 **Button Variants:**
+
 ```tsx
 <Button variant="default">Primary Action</Button>
 <Button variant="secondary">Secondary Action</Button>
@@ -708,12 +738,13 @@ screens: {
 ```
 
 **Form Fields:**
+
 ```tsx
 <div className="space-y-2">
   <Label htmlFor="email">Email</Label>
-  <Input 
-    id="email" 
-    type="email" 
+  <Input
+    id="email"
+    type="email"
     placeholder="you@example.com"
     aria-describedby="email-error"
   />
@@ -726,6 +757,7 @@ screens: {
 ### **Animation:**
 
 **Framer Motion:**
+
 ```tsx
 <motion.div
   initial={{ opacity: 0, y: 20 }}
@@ -737,11 +769,14 @@ screens: {
 ```
 
 **Tailwind Transitions:**
+
 ```tsx
-<button className="
+<button
+  className="
   transition-all duration-300
   hover:scale-105 hover:shadow-lg
-">
+"
+>
   Hover me
 </button>
 ```
@@ -749,42 +784,48 @@ screens: {
 ### **Loading States:**
 
 ```tsx
-{isLoading ? (
-  <div className="flex items-center justify-center p-8">
-    <LoadingSpinner />
-    <span className="ml-2">Loading...</span>
-  </div>
-) : (
-  <Content data={data} />
-)}
+{
+  isLoading ? (
+    <div className="flex items-center justify-center p-8">
+      <LoadingSpinner />
+      <span className="ml-2">Loading...</span>
+    </div>
+  ) : (
+    <Content data={data} />
+  );
+}
 ```
 
 ### **Error States:**
 
 ```tsx
-{error ? (
-  <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
-    <p className="text-red-800">{error.message}</p>
-    <Button onClick={retry}>Try Again</Button>
-  </div>
-) : (
-  <Content />
-)}
+{
+  error ? (
+    <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+      <p className="text-red-800">{error.message}</p>
+      <Button onClick={retry}>Try Again</Button>
+    </div>
+  ) : (
+    <Content />
+  );
+}
 ```
 
 ### **Empty States:**
 
 ```tsx
-{items.length === 0 ? (
-  <EmptyState
-    icon={<InboxIcon />}
-    title="No items found"
-    description="Try adjusting your filters"
-    action={<Button>Clear Filters</Button>}
-  />
-) : (
-  <ItemList items={items} />
-)}
+{
+  items.length === 0 ? (
+    <EmptyState
+      icon={<InboxIcon />}
+      title="No items found"
+      description="Try adjusting your filters"
+      action={<Button>Clear Filters</Button>}
+    />
+  ) : (
+    <ItemList items={items} />
+  );
+}
 ```
 
 ---
@@ -794,18 +835,20 @@ screens: {
 ### **Performance:**
 
 1. **Use Server Components by default**
+
    ```tsx
    // app/page.tsx (Server Component)
    export default async function Page() {
-     const data = await fetchData();  // Server-side
+     const data = await fetchData(); // Server-side
      return <Content data={data} />;
    }
    ```
 
 2. **Client Components only when needed**
+
    ```tsx
-   'use client'  // Only for interactivity, hooks
-   
+   'use client'; // Only for interactivity, hooks
+
    export default function InteractiveButton() {
      const [count, setCount] = useState(0);
      return <button onClick={() => setCount(c => c + 1)}>{count}</button>;
@@ -813,31 +856,34 @@ screens: {
    ```
 
 3. **Image Optimization**
+
    ```tsx
    import Image from 'next/image';
-   
+
    <Image
      src="/logo.png"
      alt="CerebraTechAI Logo"
      width={200}
      height={50}
-     priority  // For above-fold images
-   />
+     priority // For above-fold images
+   />;
    ```
 
 4. **Font Optimization**
+
    ```tsx
    import { Inter } from 'next/font/google';
-   
+
    const inter = Inter({ subsets: ['latin'] });
    ```
 
 5. **Code Splitting**
+
    ```tsx
    import dynamic from 'next/dynamic';
-   
+
    const HeavyComponent = dynamic(() => import('./heavy-component'), {
-     loading: () => <LoadingSpinner />
+     loading: () => <LoadingSpinner />,
    });
    ```
 
@@ -851,8 +897,8 @@ export const metadata = {
   openGraph: {
     title: 'AI Solutions for Business',
     description: '...',
-    images: ['/og-image.png']
-  }
+    images: ['/og-image.png'],
+  },
 };
 ```
 
@@ -860,7 +906,7 @@ export const metadata = {
 
 ```tsx
 // app/error.tsx (Error Boundary)
-'use client'
+'use client';
 
 export default function Error({ error, reset }) {
   return (
@@ -879,7 +925,7 @@ import { useTranslations } from 'next-intl';
 
 export default function Component() {
   const t = useTranslations('nav');
-  
+
   return (
     <nav>
       <Link href="/">{t('home')}</Link>
@@ -987,6 +1033,7 @@ git push origin feature/new-contact-field
 ## 🔗 Resources
 
 ### **Documentation:**
+
 - [Next.js Docs](https://nextjs.org/docs)
 - [React Docs](https://react.dev)
 - [TypeScript Handbook](https://www.typescriptlang.org/docs/)
@@ -994,6 +1041,7 @@ git push origin feature/new-contact-field
 - [Prisma Docs](https://www.prisma.io/docs)
 
 ### **Tools:**
+
 - [shadcn/ui](https://ui.shadcn.com/) - UI components
 - [Framer Motion](https://www.framer.com/motion/) - Animations
 - [next-intl](https://next-intl-docs.vercel.app/) - i18n
@@ -1001,6 +1049,7 @@ git push origin feature/new-contact-field
 - [Playwright](https://playwright.dev/) - E2E testing
 
 ### **Accessibility:**
+
 - [WCAG Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
 - [axe DevTools](https://www.deque.com/axe/devtools/)
 - [WAVE Extension](https://wave.webaim.org/extension/)
@@ -1010,6 +1059,7 @@ git push origin feature/new-contact-field
 ## 📞 Getting Help
 
 ### **Issues:**
+
 1. Check this guide first
 2. Review [README.md](README.md)
 3. Check [troubleshooting section](#-troubleshooting)
@@ -1017,6 +1067,7 @@ git push origin feature/new-contact-field
 5. Ask team on Slack/Discord
 
 ### **External Resources:**
+
 - Next.js Discord
 - Stack Overflow
 - GitHub Discussions
@@ -1030,4 +1081,3 @@ git push origin feature/new-contact-field
 ---
 
 **Happy Coding! 🚀**
-

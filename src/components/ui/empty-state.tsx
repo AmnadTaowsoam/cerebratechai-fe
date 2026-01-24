@@ -14,32 +14,20 @@ interface EmptyStateProps {
   className?: string;
 }
 
-export function EmptyState({ 
-  icon, 
-  title, 
-  description, 
-  action, 
-  className 
+export function EmptyState({
+  icon,
+  title,
+  description,
+  action,
+  className,
 }: EmptyStateProps) {
   return (
     <Card className={cn('border-hairline bg-surface2', className)}>
       <CardContent className="flex flex-col items-center justify-center py-12 text-center">
-        {icon && (
-          <div className="mb-4 text-text-muted">
-            {icon}
-          </div>
-        )}
-        <h3 className="text-lg font-semibold text-text mb-2">
-          {title}
-        </h3>
-        <p className="text-text-muted mb-6 max-w-md">
-          {description}
-        </p>
-        {action && (
-          <Button onClick={action.onClick}>
-            {action.label}
-          </Button>
-        )}
+        {icon && <div className="mb-4 text-text-muted">{icon}</div>}
+        <h3 className="text-lg font-semibold text-text mb-2">{title}</h3>
+        <p className="text-text-muted mb-6 max-w-md">{description}</p>
+        {action && <Button onClick={action.onClick}>{action.label}</Button>}
       </CardContent>
     </Card>
   );

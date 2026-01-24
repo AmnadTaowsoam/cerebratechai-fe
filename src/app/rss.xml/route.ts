@@ -14,10 +14,16 @@ function escapeXml(value: string) {
 export function GET() {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 
-  const allItems: Array<{ title: string; link: string; pubDate: string; description: string; category: string }> = [];
+  const allItems: Array<{
+    title: string;
+    link: string;
+    pubDate: string;
+    description: string;
+    category: string;
+  }> = [];
 
   // Blog posts
-  BLOG_POSTS.forEach((post) => {
+  BLOG_POSTS.forEach(post => {
     allItems.push({
       title: escapeXml(post.title.en),
       link: `${siteUrl}/en/blog/${post.slug}`,
@@ -28,7 +34,7 @@ export function GET() {
   });
 
   // Case studies (use current date as they don't have dates in data)
-  CASES.forEach((caseItem) => {
+  CASES.forEach(caseItem => {
     allItems.push({
       title: escapeXml(caseItem.title),
       link: `${siteUrl}/en/cases/${caseItem.slug}`,
@@ -39,7 +45,7 @@ export function GET() {
   });
 
   // Resources (only those with dates)
-  RESOURCES.filter(r => r.date).forEach((resource) => {
+  RESOURCES.filter(r => r.date).forEach(resource => {
     allItems.push({
       title: escapeXml(resource.title.en),
       link: `${siteUrl}/en/resources/${resource.slug}`,
@@ -50,9 +56,13 @@ export function GET() {
   });
 
   // Sort by date descending
-  allItems.sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime());
+  allItems.sort(
+    (a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime()
+  );
 
-  const items = allItems.map((item) => `
+  const items = allItems
+    .map(item =>
+      `
       <item>
         <title>${item.title}</title>
         <link>${item.link}</link>
@@ -61,11 +71,12 @@ export function GET() {
         <description>${item.description}</description>
         <category>${item.category}</category>
       </item>
-    `.trim()).join('\n');
+    `.trim()
+    )
+    .join('\n');
 
-  const lastBuildDate = allItems.length > 0
-    ? allItems[0].pubDate
-    : new Date().toUTCString();
+  const lastBuildDate =
+    allItems.length > 0 ? allItems[0].pubDate : new Date().toUTCString();
 
   const xml = `
     <?xml version="1.0" encoding="UTF-8"?>
@@ -89,4 +100,3 @@ export function GET() {
     },
   });
 }
-

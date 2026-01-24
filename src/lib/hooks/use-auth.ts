@@ -16,7 +16,11 @@ export function useAuth() {
     return authService.login(email, password);
   };
 
-  const register = async (userData: { name: string; email: string; password: string }) => {
+  const register = async (userData: {
+    name: string;
+    email: string;
+    password: string;
+  }) => {
     return authService.register(userData);
   };
 

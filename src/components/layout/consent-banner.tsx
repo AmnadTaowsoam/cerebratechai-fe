@@ -39,8 +39,19 @@ export function ConsentBanner() {
 
     // Respect Do Not Track
     if (navigator.doNotTrack === '1') {
-      setConsent({ necessary: true, analytics: false, timestamp: new Date().toISOString() });
-      localStorage.setItem(CONSENT_KEY, JSON.stringify({ necessary: true, analytics: false, timestamp: new Date().toISOString() }));
+      setConsent({
+        necessary: true,
+        analytics: false,
+        timestamp: new Date().toISOString(),
+      });
+      localStorage.setItem(
+        CONSENT_KEY,
+        JSON.stringify({
+          necessary: true,
+          analytics: false,
+          timestamp: new Date().toISOString(),
+        })
+      );
       setShowBanner(false);
     }
   }, []);
@@ -103,7 +114,12 @@ export function ConsentBanner() {
                           : 'Required for website functionality'}
                       </div>
                     </div>
-                    <input type="checkbox" checked disabled className="h-5 w-5" />
+                    <input
+                      type="checkbox"
+                      checked
+                      disabled
+                      className="h-5 w-5"
+                    />
                   </div>
                   <div className="flex items-center justify-between">
                     <div>
@@ -119,7 +135,9 @@ export function ConsentBanner() {
                     <input
                       type="checkbox"
                       checked={consent.analytics}
-                      onChange={(e) => setConsent({ ...consent, analytics: e.target.checked })}
+                      onChange={e =>
+                        setConsent({ ...consent, analytics: e.target.checked })
+                      }
                       className="h-5 w-5"
                     />
                   </div>
@@ -127,10 +145,17 @@ export function ConsentBanner() {
               )}
 
               <div className="flex flex-wrap gap-2">
-                <Button onClick={acceptAll} className="bg-gradient-to-tr from-cyan-400 via-blue-600 to-indigo-600 text-white">
+                <Button
+                  onClick={acceptAll}
+                  className="bg-gradient-to-tr from-cyan-400 via-blue-600 to-indigo-600 text-white"
+                >
                   {locale === 'th' ? 'ยอมรับทั้งหมด' : 'Accept All'}
                 </Button>
-                <Button onClick={rejectAnalytics} variant="outline" className="border-hairline">
+                <Button
+                  onClick={rejectAnalytics}
+                  variant="outline"
+                  className="border-hairline"
+                >
                   {locale === 'th' ? 'จำเป็นเท่านั้น' : 'Necessary Only'}
                 </Button>
                 <Button
@@ -167,4 +192,3 @@ export function ConsentBanner() {
     </div>
   );
 }
-

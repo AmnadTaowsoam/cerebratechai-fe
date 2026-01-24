@@ -16,8 +16,8 @@ export function OptimizedImage({
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <div 
-      className={cn("relative overflow-hidden bg-surface-3", className)}
+    <div
+      className={cn('relative overflow-hidden bg-surface-3', className)}
       style={{ aspectRatio: width && height ? `${width}/${height}` : 'auto' }}
     >
       <Image
@@ -26,8 +26,10 @@ export function OptimizedImage({
         width={width}
         height={height}
         className={cn(
-          "duration-700 ease-in-out",
-          isLoading ? "scale-110 blur-xl grayscale" : "scale-100 blur-0 grayscale-0"
+          'duration-700 ease-in-out',
+          isLoading
+            ? 'scale-110 blur-xl grayscale'
+            : 'scale-100 blur-0 grayscale-0'
         )}
         onLoad={() => setIsLoading(false)}
         loading="lazy"

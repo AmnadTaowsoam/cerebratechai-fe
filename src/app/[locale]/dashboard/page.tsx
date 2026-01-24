@@ -1,8 +1,19 @@
 import { LogOut, Settings, Upload, User } from 'lucide-react';
 
 import { AuthGuard } from '@/components/auth/auth-guard';
-import { ShimmerButton, MagicHero, AnimatedGradientText, Particles } from '@/components/magicui';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  ShimmerButton,
+  MagicHero,
+  AnimatedGradientText,
+  Particles,
+} from '@/components/magicui';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/lib/hooks/use-auth';
 
@@ -22,7 +33,11 @@ function DashboardContent() {
         title={`Welcome back, ${user?.name ?? 'Operator'}`}
         description="Review your workspace shortcuts, manage preferences, and jump directly into the tools you use most."
         actions={
-          <ShimmerButton type="button" onClick={logout} className="px-6 py-3 text-sm">
+          <ShimmerButton
+            type="button"
+            onClick={logout}
+            className="px-6 py-3 text-sm"
+          >
             <LogOut className="h-4 w-4" />
             Sign out
           </ShimmerButton>
@@ -42,12 +57,17 @@ function DashboardContent() {
               <AnimatedGradientText className="px-4 py-2 text-[0.6rem] uppercase tracking-[0.35em] text-white/80">
                 CONTROL CENTRE
               </AnimatedGradientText>
-              <h2 className="mt-4 text-3xl font-semibold text-text">Stay on top of your workspace</h2>
+              <h2 className="mt-4 text-3xl font-semibold text-text">
+                Stay on top of your workspace
+              </h2>
               <p className="text-sm text-text-muted">
                 Quick links to your profile, recent uploads, and settings.
               </p>
             </div>
-            <Button variant="outline" className="border-white/20 bg-white/5 text-white backdrop-blur">
+            <Button
+              variant="outline"
+              className="border-white/20 bg-white/5 text-white backdrop-blur"
+            >
               Need help?
             </Button>
           </div>
@@ -72,7 +92,7 @@ function DashboardContent() {
                 icon: Settings,
                 action: 'Open Settings',
               },
-            ].map((item) => (
+            ].map(item => (
               <Card
                 key={item.title}
                 className="group relative overflow-hidden border border-white/10 bg-surface/80 backdrop-blur transition hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_24px_64px_rgba(8,23,45,0.45)]"
@@ -88,7 +108,10 @@ function DashboardContent() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <Button variant="outline" className="w-full border-white/10 bg-white/5 text-text">
+                  <Button
+                    variant="outline"
+                    className="w-full border-white/10 bg-white/5 text-text"
+                  >
                     {item.action}
                   </Button>
                 </CardContent>

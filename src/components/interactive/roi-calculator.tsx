@@ -33,10 +33,12 @@ export function ROICalculator() {
       <div className="grid md:grid-cols-2 gap-8">
         <div className="space-y-6">
           <div className="space-y-2">
-            <label className="text-sm font-medium text-white/80">Province</label>
+            <label className="text-sm font-medium text-white/80">
+              Province
+            </label>
             <select
               value={province}
-              onChange={(e) => setProvince(e.target.value)}
+              onChange={e => setProvince(e.target.value)}
               className="w-full bg-surface border border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-green-500/50 outline-none transition-all"
             >
               <option value="">Select Province</option>
@@ -47,10 +49,12 @@ export function ROICalculator() {
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-medium text-white/80">Crop Type</label>
+            <label className="text-sm font-medium text-white/80">
+              Crop Type
+            </label>
             <select
               value={crop}
-              onChange={(e) => setCrop(e.target.value)}
+              onChange={e => setCrop(e.target.value)}
               className="w-full bg-surface border border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-green-500/50 outline-none transition-all"
             >
               <option value="">Select Crop</option>
@@ -62,11 +66,13 @@ export function ROICalculator() {
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-medium text-white/80">Land Size (Rai)</label>
+            <label className="text-sm font-medium text-white/80">
+              Land Size (Rai)
+            </label>
             <input
               type="number"
               value={rai}
-              onChange={(e) => setRai(Number(e.target.value))}
+              onChange={e => setRai(Number(e.target.value))}
               placeholder="Ex. 50"
               className="w-full bg-surface border border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-green-500/50 outline-none transition-all"
             />
@@ -94,19 +100,25 @@ export function ROICalculator() {
               <div className="text-6xl font-bold text-white mb-2 tracking-tight">
                 {roi}%
               </div>
-              <div className="text-green-400 font-medium mb-6">Estimated ROI Increase</div>
-              
+              <div className="text-green-400 font-medium mb-6">
+                Estimated ROI Increase
+              </div>
+
               <div className="grid grid-cols-2 gap-4 w-full text-left">
                 <div className="bg-surface-2 p-4 rounded-xl border border-white/5">
-                  <div className="text-white/40 text-xs uppercase font-bold mb-1">Savings</div>
+                  <div className="text-white/40 text-xs uppercase font-bold mb-1">
+                    Savings
+                  </div>
                   <div className="text-xl font-bold text-emerald-400 flex items-center gap-1">
-                     <DollarSign className="w-4 h-4" /> 125k
+                    <DollarSign className="w-4 h-4" /> 125k
                   </div>
                 </div>
                 <div className="bg-surface-2 p-4 rounded-xl border border-white/5">
-                  <div className="text-white/40 text-xs uppercase font-bold mb-1">Yield</div>
+                  <div className="text-white/40 text-xs uppercase font-bold mb-1">
+                    Yield
+                  </div>
                   <div className="text-xl font-bold text-emerald-400 flex items-center gap-1">
-                     <Sprout className="w-4 h-4" /> +15%
+                    <Sprout className="w-4 h-4" /> +15%
                   </div>
                 </div>
               </div>
@@ -117,7 +129,7 @@ export function ROICalculator() {
               <p>Enter your farm details to see your potential earnings.</p>
             </div>
           )}
-          
+
           {/* Background Glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-green-500/10 blur-[60px] rounded-full pointer-events-none" />
         </div>

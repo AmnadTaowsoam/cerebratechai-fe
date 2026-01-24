@@ -51,11 +51,18 @@ interface AccordionContentProps {
   className?: string;
 }
 
-const Accordion = ({ children, className, type = 'single', collapsible = true }: AccordionProps) => {
+const Accordion = ({
+  children,
+  className,
+  type = 'single',
+  collapsible = true,
+}: AccordionProps) => {
   const [openItems, setOpenItems] = React.useState<string[]>([]);
 
   return (
-    <AccordionContext.Provider value={{ openItems, setOpenItems, type, collapsible }}>
+    <AccordionContext.Provider
+      value={{ openItems, setOpenItems, type, collapsible }}
+    >
       <div className={cn('space-y-1', className)}>{children}</div>
     </AccordionContext.Provider>
   );
@@ -72,13 +79,18 @@ const AccordionItem = ({ value, children, className }: AccordionItemProps) => {
 };
 
 const AccordionTrigger = ({ children, className }: AccordionTriggerProps) => {
-  const { openItems, setOpenItems, type, collapsible } = React.useContext(AccordionContext);
+  const { openItems, setOpenItems, type, collapsible } =
+    React.useContext(AccordionContext);
   const itemValue = useAccordionItem();
   const isOpen = openItems.includes(itemValue);
 
   const toggleItem = () => {
     if (type === 'multiple') {
-      setOpenItems(isOpen ? openItems.filter((item) => item !== itemValue) : [...openItems, itemValue]);
+      setOpenItems(
+        isOpen
+          ? openItems.filter(item => item !== itemValue)
+          : [...openItems, itemValue]
+      );
       return;
     }
     if (isOpen) {

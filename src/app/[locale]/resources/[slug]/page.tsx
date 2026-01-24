@@ -9,14 +9,21 @@ import { ArticleSchema } from '@/components/seo';
 import { RESOURCES, getResourceBySlug } from '@/data/resources';
 
 type ResourceDetailPageProps = {
-  params: Promise<{ locale: string; slug: string }> | { locale: string; slug: string };
+  params:
+    | Promise<{ locale: string; slug: string }>
+    | { locale: string; slug: string };
 };
 
 export async function generateStaticParams() {
-  return RESOURCES.flatMap((r) => [{ locale: 'en', slug: r.slug }, { locale: 'th', slug: r.slug }]);
+  return RESOURCES.flatMap(r => [
+    { locale: 'en', slug: r.slug },
+    { locale: 'th', slug: r.slug },
+  ]);
 }
 
-export async function generateMetadata({ params }: ResourceDetailPageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: ResourceDetailPageProps): Promise<Metadata> {
   const resolvedParams = await Promise.resolve(params);
 
   if (!resolvedParams || !resolvedParams.locale || !resolvedParams.slug) {
@@ -31,12 +38,15 @@ export async function generateMetadata({ params }: ResourceDetailPageProps): Pro
   if (!resource) return {};
 
   const title = locale === 'th' ? resource.title.th : resource.title.en;
-  const description = locale === 'th' ? resource.description.th : resource.description.en;
+  const description =
+    locale === 'th' ? resource.description.th : resource.description.en;
 
   return { title: `${title} | CerebraTechAI`, description };
 }
 
-export default async function ResourceDetailPage({ params }: ResourceDetailPageProps) {
+export default async function ResourceDetailPage({
+  params,
+}: ResourceDetailPageProps) {
   const resolvedParams = await Promise.resolve(params);
 
   if (!resolvedParams || !resolvedParams.locale || !resolvedParams.slug) {
@@ -51,7 +61,9 @@ export default async function ResourceDetailPage({ params }: ResourceDetailPageP
   if (!resource) notFound();
 
   const title = isThai ? resource.title.th : resource.title.en;
-  const description = isThai ? resource.description.th : resource.description.en;
+  const description = isThai
+    ? resource.description.th
+    : resource.description.en;
 
   const typeLabel =
     resource.type === 'whitepaper'
@@ -72,7 +84,11 @@ export default async function ResourceDetailPage({ params }: ResourceDetailPageP
 
   return (
     <div className="bg-bg">
-      <ArticleSchema headline={title} articleBody={description} author="CerebraTechAI" />
+      <ArticleSchema
+        headline={title}
+        articleBody={description}
+        author="CerebraTechAI"
+      />
 
       <MagicHero
         eyebrow={
@@ -102,7 +118,9 @@ export default async function ResourceDetailPage({ params }: ResourceDetailPageP
                 {resource.date ? (
                   <>
                     <span>•</span>
-                    <span>{new Date(resource.date).toLocaleDateString(locale)}</span>
+                    <span>
+                      {new Date(resource.date).toLocaleDateString(locale)}
+                    </span>
                   </>
                 ) : null}
                 {resource.duration ? (
@@ -152,4 +170,3 @@ export default async function ResourceDetailPage({ params }: ResourceDetailPageP
     </div>
   );
 }
-

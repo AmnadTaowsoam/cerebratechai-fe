@@ -8,7 +8,10 @@ export async function POST(request: NextRequest) {
     // Validate required fields
     if (!email || !projectType) {
       return NextResponse.json(
-        { success: false, message: 'Email and project description are required' },
+        {
+          success: false,
+          message: 'Email and project description are required',
+        },
         { status: 400 }
       );
     }
@@ -33,18 +36,22 @@ export async function POST(request: NextRequest) {
     };
 
     // Send to backend API
-    const backendUrl = process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_BACKEND_API_URL;
+    const backendUrl =
+      process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_BACKEND_API_URL;
 
     if (backendUrl) {
       try {
-        const backendResponse = await fetch(`${backendUrl}/api/v1/leads/quote`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${process.env.BACKEND_API_KEY || ''}`,
-          },
-          body: JSON.stringify(quoteData),
-        });
+        const backendResponse = await fetch(
+          `${backendUrl}/api/v1/leads/quote`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${process.env.BACKEND_API_KEY || ''}`,
+            },
+            body: JSON.stringify(quoteData),
+          }
+        );
 
         if (!backendResponse.ok) {
           console.error('Backend API error:', await backendResponse.text());
@@ -81,17 +88,18 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      message: locale === 'th'
-        ? 'เราได้รับคำขอของคุณแล้ว จะส่งใบเสนอราคาให้ภายใน 24 ชั่วโมง'
-        : 'Quote request received. We\'ll send you a preliminary quote within 24 hours.',
+      message:
+        locale === 'th'
+          ? 'เราได้รับคำขอของคุณแล้ว จะส่งใบเสนอราคาให้ภายใน 24 ชั่วโมง'
+          : "Quote request received. We'll send you a preliminary quote within 24 hours.",
     });
-
   } catch (error) {
     console.error('Quote API error:', error);
     return NextResponse.json(
       {
         success: false,
-        message: error instanceof Error ? error.message : 'Internal server error'
+        message:
+          error instanceof Error ? error.message : 'Internal server error',
       },
       { status: 500 }
     );

@@ -9,7 +9,7 @@ export function PerformanceOptimizations() {
       const criticalImages = [
         '/cerebratechai_logo.png',
         '/cerebratechai_logo.png', // Using logo as og-image fallback
-        '/favicon.png'
+        '/favicon.png',
       ];
 
       criticalImages.forEach(src => {
@@ -27,7 +27,7 @@ export function PerformanceOptimizations() {
         'https://fonts.googleapis.com',
         'https://fonts.gstatic.com',
         'https://www.google-analytics.com',
-        'https://www.googletagmanager.com'
+        'https://www.googletagmanager.com',
       ];
 
       domains.forEach(domain => {
@@ -47,7 +47,7 @@ export function PerformanceOptimizations() {
         '//www.google-analytics.com',
         '//www.googletagmanager.com',
         '//fonts.googleapis.com',
-        '//fonts.gstatic.com'
+        '//fonts.gstatic.com',
       ];
 
       domains.forEach(domain => {
@@ -101,7 +101,6 @@ export function PerformanceOptimizations() {
 
     // Initialize prefetching
     prefetchOnHover();
-
   }, []);
 
   return null;

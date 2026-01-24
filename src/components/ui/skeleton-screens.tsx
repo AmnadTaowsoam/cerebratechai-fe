@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils"
+import { cn } from '@/lib/utils';
 
 function Skeleton({
   className,
@@ -6,13 +6,13 @@ function Skeleton({
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={cn("animate-pulse rounded-md bg-surface-3", className)}
+      className={cn('animate-pulse rounded-md bg-surface-3', className)}
       {...props}
     />
-  )
+  );
 }
 
-export { Skeleton }
+export { Skeleton };
 
 export function CardSkeleton() {
   return (
@@ -23,7 +23,7 @@ export function CardSkeleton() {
         <Skeleton className="h-4 w-[200px]" />
       </div>
     </div>
-  )
+  );
 }
 
 export function ProfileSkeleton() {
@@ -35,7 +35,7 @@ export function ProfileSkeleton() {
         <Skeleton className="h-4 w-[200px]" />
       </div>
     </div>
-  )
+  );
 }
 
 export function ProductPageSkeleton() {
@@ -53,7 +53,7 @@ export function ProductPageSkeleton() {
 
       {/* Grid Section */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-        {[1, 2, 3].map((i) => (
+        {[1, 2, 3].map(i => (
           <div key={i} className="space-y-4">
             <Skeleton className="h-48 w-full rounded-xl" />
             <Skeleton className="h-8 w-3/4" />
@@ -63,5 +63,5 @@ export function ProductPageSkeleton() {
         ))}
       </div>
     </div>
-  )
+  );
 }

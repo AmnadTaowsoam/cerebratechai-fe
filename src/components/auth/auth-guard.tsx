@@ -12,11 +12,11 @@ interface AuthGuardProps {
   redirectTo?: string;
 }
 
-export function AuthGuard({ 
-  children, 
-  requireAuth = true, 
+export function AuthGuard({
+  children,
+  requireAuth = true,
   requireRole,
-  redirectTo = '/login' 
+  redirectTo = '/login',
 }: AuthGuardProps) {
   const { isAuthenticated, isLoading, hasRole } = useAuth();
   const router = useRouter();
@@ -33,7 +33,15 @@ export function AuthGuard({
       router.push('/unauthorized' as any);
       return;
     }
-  }, [isAuthenticated, isLoading, requireAuth, requireRole, redirectTo, router, hasRole]);
+  }, [
+    isAuthenticated,
+    isLoading,
+    requireAuth,
+    requireRole,
+    redirectTo,
+    router,
+    hasRole,
+  ]);
 
   if (isLoading) {
     return (

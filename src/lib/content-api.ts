@@ -1,15 +1,17 @@
 // Content API client for fetching dynamic content from CMS
 // With fallback to local data/content.ts
 
-import { 
-  valueCards, 
-  processSteps, 
-  services, 
-  packages, 
-  caseStudies 
+import {
+  valueCards,
+  processSteps,
+  services,
+  packages,
+  caseStudies,
 } from '@/data/content';
 
-const CONTENT_API_URL = process.env.NEXT_PUBLIC_CONTENT_API_URL || 'https://cerebratechai-production.up.railway.app/api/content';
+const CONTENT_API_URL =
+  process.env.NEXT_PUBLIC_CONTENT_API_URL ||
+  'https://cerebratechai-production.up.railway.app/api/content';
 
 // Types
 export type LocaleValue = {
@@ -64,7 +66,9 @@ async function fetchWithFallback<T>(
 ): Promise<T> {
   if (DISABLED_REMOTE_ENDPOINTS.has(endpoint)) {
     if (process.env.NODE_ENV !== 'production') {
-      console.log(`Skipping remote fetch for ${endpoint}; using bundled fallback data`);
+      console.log(
+        `Skipping remote fetch for ${endpoint}; using bundled fallback data`
+      );
     }
     return fallbackData;
   }
@@ -86,7 +90,9 @@ async function fetchWithFallback<T>(
     });
 
     if (!response.ok) {
-      console.warn(`Content API ${endpoint} failed with status ${response.status}, using fallback`);
+      console.warn(
+        `Content API ${endpoint} failed with status ${response.status}, using fallback`
+      );
       return fallbackData;
     }
 
@@ -134,36 +140,36 @@ export async function getFeatures(): Promise<Feature[]> {
       id: 'machine-learning',
       identifier: 'machine-learning',
       title: { en: 'Machine Learning', th: 'Machine Learning' },
-      description: { 
-        en: 'Advanced ML models for predictive analytics and intelligent automation', 
-        th: 'โมเดล ML ขั้นสูงสำหรับการวิเคราะห์เชิงคาดการณ์และระบบอัตโนมัติอัจฉริยะ' 
+      description: {
+        en: 'Advanced ML models for predictive analytics and intelligent automation',
+        th: 'โมเดล ML ขั้นสูงสำหรับการวิเคราะห์เชิงคาดการณ์และระบบอัตโนมัติอัจฉริยะ',
       },
       icon: 'brain',
       gradient: 'from-cyan-500/30 via-transparent to-indigo-600/20',
       benefits: [
         { en: 'Predictive Analytics', th: 'การวิเคราะห์เชิงคาดการณ์' },
         { en: 'Automated Decision Making', th: 'การตัดสินใจอัตโนมัติ' },
-        { en: 'Pattern Recognition', th: 'การรู้จำรูปแบบ' }
+        { en: 'Pattern Recognition', th: 'การรู้จำรูปแบบ' },
       ],
-      display_order: 1
+      display_order: 1,
     },
     {
       id: 'computer-vision',
       identifier: 'computer-vision',
       title: { en: 'Computer Vision', th: 'Computer Vision' },
-      description: { 
-        en: 'State-of-the-art image and video processing capabilities', 
-        th: 'ความสามารถในการประมวลผลภาพและวิดีโอระดับล้ำสมัย' 
+      description: {
+        en: 'State-of-the-art image and video processing capabilities',
+        th: 'ความสามารถในการประมวลผลภาพและวิดีโอระดับล้ำสมัย',
       },
       icon: 'cpu',
       gradient: 'from-purple-500/20 via-transparent to-fuchsia-500/20',
       benefits: [
         { en: 'Object Detection', th: 'การตรวจจับวัตถุ' },
         { en: 'Image Classification', th: 'การจำแนกประเภทภาพ' },
-        { en: 'Real-time Processing', th: 'การประมวลผลแบบเรียลไทม์' }
+        { en: 'Real-time Processing', th: 'การประมวลผลแบบเรียลไทม์' },
       ],
-      display_order: 2
-    }
+      display_order: 2,
+    },
   ];
 
   return fetchWithFallback<Feature[]>('/features', defaultFeatures);
@@ -177,73 +183,98 @@ export async function getHeroStats(): Promise<HeroStat[]> {
       identifier: 'pocs-delivered',
       value: '12+',
       label: { en: 'POCs Delivered', th: 'POCs ที่ส่งมอบ' },
-      display_order: 1
+      display_order: 1,
     },
     {
       id: 'average-time',
       identifier: 'average-time',
       value: '4-8',
       label: { en: 'Weeks Average', th: 'สัปดาห์เฉลี่ย' },
-      display_order: 2
+      display_order: 2,
     },
     {
       id: 'starting-price',
       identifier: 'starting-price',
       value: '80K',
       label: { en: 'Starting From (฿)', th: 'เริ่มต้น (฿)' },
-      display_order: 3
-    }
+      display_order: 3,
+    },
   ];
 
   return fetchWithFallback<HeroStat[]>('/hero-stats', defaultStats);
 }
 
 // Services API (existing endpoint)
-export async function getServices(params?: { 
-  limit?: number; 
-  featured?: boolean; 
-  category?: string 
+export async function getServices(params?: {
+  limit?: number;
+  featured?: boolean;
+  category?: string;
 }) {
   const queryParams = new URLSearchParams();
   if (params?.limit) queryParams.set('limit', params.limit.toString());
-  if (params?.featured !== undefined) queryParams.set('featured', params.featured.toString());
+  if (params?.featured !== undefined)
+    queryParams.set('featured', params.featured.toString());
   if (params?.category) queryParams.set('category', params.category);
 
   const endpoint = `/services${queryParams.toString() ? `?${queryParams}` : ''}`;
-  const fallback = { 
-    data: services.slice(0, params?.limit || 10), 
-    pagination: { page: 1, limit: params?.limit || 10, total: services.length, pages: 1 } 
+  const fallback = {
+    data: services.slice(0, params?.limit || 10),
+    pagination: {
+      page: 1,
+      limit: params?.limit || 10,
+      total: services.length,
+      pages: 1,
+    },
   };
 
   return fetchWithFallback(endpoint, fallback);
 }
 
 // Packages API (existing endpoint)
-export async function getPackages(params?: { limit?: number; featured?: boolean }) {
+export async function getPackages(params?: {
+  limit?: number;
+  featured?: boolean;
+}) {
   const queryParams = new URLSearchParams();
   if (params?.limit) queryParams.set('limit', params.limit.toString());
-  if (params?.featured !== undefined) queryParams.set('featured', params.featured.toString());
+  if (params?.featured !== undefined)
+    queryParams.set('featured', params.featured.toString());
 
   const endpoint = `/packages${queryParams.toString() ? `?${queryParams}` : ''}`;
-  const fallback = { 
-    data: packages.slice(0, params?.limit || 10), 
-    pagination: { page: 1, limit: params?.limit || 10, total: packages.length, pages: 1 } 
+  const fallback = {
+    data: packages.slice(0, params?.limit || 10),
+    pagination: {
+      page: 1,
+      limit: params?.limit || 10,
+      total: packages.length,
+      pages: 1,
+    },
   };
 
   return fetchWithFallback(endpoint, fallback);
 }
 
 // Case Studies API (existing endpoint)
-export async function getCaseStudies(params?: { limit?: number; featured?: boolean; category?: string }) {
+export async function getCaseStudies(params?: {
+  limit?: number;
+  featured?: boolean;
+  category?: string;
+}) {
   const queryParams = new URLSearchParams();
   if (params?.limit) queryParams.set('limit', params.limit.toString());
-  if (params?.featured !== undefined) queryParams.set('featured', params.featured.toString());
+  if (params?.featured !== undefined)
+    queryParams.set('featured', params.featured.toString());
   if (params?.category) queryParams.set('category', params.category);
 
   const endpoint = `/cases${queryParams.toString() ? `?${queryParams}` : ''}`;
-  const fallback = { 
-    data: caseStudies.slice(0, params?.limit || 10), 
-    pagination: { page: 1, limit: params?.limit || 10, total: caseStudies.length, pages: 1 } 
+  const fallback = {
+    data: caseStudies.slice(0, params?.limit || 10),
+    pagination: {
+      page: 1,
+      limit: params?.limit || 10,
+      total: caseStudies.length,
+      pages: 1,
+    },
   };
 
   return fetchWithFallback(endpoint, fallback);
@@ -253,4 +284,3 @@ export async function getCaseStudies(params?: { limit?: number; featured?: boole
 export const getLocalized = (locale: string, value: LocaleValue): string => {
   return locale.startsWith('th') ? value.th : value.en;
 };
-

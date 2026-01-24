@@ -2,20 +2,24 @@
 export const ANALYTICS_CONFIG = {
   // Google Analytics 4
   GA4_MEASUREMENT_ID: process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID,
-  
+
   // PostHog
   POSTHOG_KEY: process.env.NEXT_PUBLIC_POSTHOG_KEY,
-  POSTHOG_HOST: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://app.posthog.com',
-  
+  POSTHOG_HOST:
+    process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://app.posthog.com',
+
   // Vercel Analytics
   VERCEL_ANALYTICS: process.env.NEXT_PUBLIC_VERCEL_ANALYTICS === 'true',
-  
+
   // Custom analytics endpoint
   CUSTOM_ENDPOINT: process.env.NEXT_PUBLIC_ANALYTICS_ENDPOINT,
 };
 
 // Event tracking functions
-export const trackEvent = (eventName: string, properties?: Record<string, any>) => {
+export const trackEvent = (
+  eventName: string,
+  properties?: Record<string, any>
+) => {
   if (typeof window === 'undefined') return;
 
   // Google Analytics 4
@@ -60,7 +64,11 @@ export const trackPageView = (url: string, title?: string) => {
 };
 
 // E-commerce tracking
-export const trackPurchase = (transactionId: string, value: number, currency: string = 'THB') => {
+export const trackPurchase = (
+  transactionId: string,
+  value: number,
+  currency: string = 'THB'
+) => {
   if (typeof window === 'undefined') return;
 
   // Google Analytics 4
@@ -105,7 +113,11 @@ export const trackError = (error: Error, context?: string) => {
 };
 
 // Performance tracking
-export const trackPerformance = (metricName: string, value: number, unit: string = 'ms') => {
+export const trackPerformance = (
+  metricName: string,
+  value: number,
+  unit: string = 'ms'
+) => {
   trackEvent('performance', {
     metric_name: metricName,
     value,
@@ -114,7 +126,10 @@ export const trackPerformance = (metricName: string, value: number, unit: string
 };
 
 // User identification
-export const identifyUser = (userId: string, userProperties?: Record<string, any>) => {
+export const identifyUser = (
+  userId: string,
+  userProperties?: Record<string, any>
+) => {
   if (typeof window === 'undefined') return;
 
   // PostHog

@@ -68,9 +68,7 @@ export function FAQSection({ faq }: FAQSectionProps) {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <p className="pt-4 text-text-muted">
-                        {item.answer}
-                      </p>
+                      <p className="pt-4 text-text-muted">{item.answer}</p>
                     </motion.div>
                   )}
                 </AnimatePresence>

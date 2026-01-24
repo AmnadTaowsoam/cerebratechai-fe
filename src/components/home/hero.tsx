@@ -33,7 +33,7 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-br from-[rgba(8,25,47,0.98)] via-[rgba(12,18,32,0.95)] to-[rgba(9,17,30,0.98)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(14,165,233,0.15),_transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_rgba(99,102,241,0.12),_transparent_50%)]" />
-      
+
       {/* Mesh grid overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_100%)]" />
 
@@ -85,7 +85,9 @@ export function Hero() {
 
           {/* Small trust note */}
           <p className="pt-4 text-xs text-white/40">
-            {isThai ? '* ข้อมูลจากโครงการที่ส่งมอบแล้ว' : '* Based on delivered projects'}
+            {isThai
+              ? '* ข้อมูลจากโครงการที่ส่งมอบแล้ว'
+              : '* Based on delivered projects'}
           </p>
         </div>
       </div>

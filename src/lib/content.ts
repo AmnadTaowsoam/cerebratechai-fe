@@ -21,7 +21,7 @@ export async function listServices(options?: {
   let filtered = [...services];
 
   if (options?.category) {
-    filtered = filtered.filter((s) => s.category === options.category);
+    filtered = filtered.filter(s => s.category === options.category);
   }
 
   if (options?.limit) {
@@ -32,7 +32,7 @@ export async function listServices(options?: {
 }
 
 export async function getServiceBySlug(slug: string) {
-  return services.find((s) => s.slug === slug) || null;
+  return services.find(s => s.slug === slug) || null;
 }
 
 // Package loaders
@@ -47,7 +47,7 @@ export async function listPackages(options?: { limit?: number }) {
 }
 
 export async function getPackageBySlug(slug: string) {
-  return packages.find((p) => p.slug === slug) || null;
+  return packages.find(p => p.slug === slug) || null;
 }
 
 // Case study loaders
@@ -62,7 +62,7 @@ export async function listCaseStudies(options?: { limit?: number }) {
 }
 
 export async function getCaseStudyBySlug(slug: string) {
-  return caseStudies.find((c) => c.slug === slug) || null;
+  return caseStudies.find(c => c.slug === slug) || null;
 }
 
 // Type exports
@@ -74,4 +74,3 @@ export type {
   ValueCard,
   LocaleValue,
 } from '@/data/content';
-

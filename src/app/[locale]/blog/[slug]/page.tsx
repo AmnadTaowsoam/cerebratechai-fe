@@ -9,14 +9,21 @@ import { ArticleSchema } from '@/components/seo';
 import { BLOG_POSTS, getBlogPostBySlug } from '@/data/blog';
 
 type BlogDetailPageProps = {
-  params: Promise<{ locale: string; slug: string }> | { locale: string; slug: string };
+  params:
+    | Promise<{ locale: string; slug: string }>
+    | { locale: string; slug: string };
 };
 
 export async function generateStaticParams() {
-  return BLOG_POSTS.flatMap((post) => [{ locale: 'en', slug: post.slug }, { locale: 'th', slug: post.slug }]);
+  return BLOG_POSTS.flatMap(post => [
+    { locale: 'en', slug: post.slug },
+    { locale: 'th', slug: post.slug },
+  ]);
 }
 
-export async function generateMetadata({ params }: BlogDetailPageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: BlogDetailPageProps): Promise<Metadata> {
   const resolvedParams = await Promise.resolve(params);
 
   if (!resolvedParams || !resolvedParams.locale || !resolvedParams.slug) {
@@ -56,7 +63,12 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
 
   return (
     <div className="bg-bg">
-      <ArticleSchema headline={title} articleBody={[excerpt, ...content].join('\n')} author={post.author} datePublished={post.date} />
+      <ArticleSchema
+        headline={title}
+        articleBody={[excerpt, ...content].join('\n')}
+        author={post.author}
+        datePublished={post.date}
+      />
 
       <MagicHero
         eyebrow={
@@ -78,7 +90,9 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
           <Card className="border border-hairline bg-surface/80">
             <CardContent className="p-8">
               <div className="flex flex-wrap items-center gap-3 text-sm text-text-muted">
-                <span className="rounded-full bg-primary/10 px-3 py-1 text-primary">{post.category}</span>
+                <span className="rounded-full bg-primary/10 px-3 py-1 text-primary">
+                  {post.category}
+                </span>
                 <span className="flex items-center gap-1">
                   <User className="h-4 w-4" />
                   {post.author}
@@ -103,4 +117,3 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
     </div>
   );
 }
-

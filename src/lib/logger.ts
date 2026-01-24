@@ -44,8 +44,8 @@ class Logger {
     if (this.isDevelopment) {
       const colors = {
         debug: '\x1b[36m', // Cyan
-        info: '\x1b[32m',  // Green
-        warn: '\x1b[33m',  // Yellow
+        info: '\x1b[32m', // Green
+        warn: '\x1b[33m', // Yellow
         error: '\x1b[31m', // Red
       };
       const reset = '\x1b[0m';
@@ -120,8 +120,15 @@ class Logger {
   /**
    * Log HTTP response
    */
-  logResponse(method: string, path: string, statusCode: number, duration: number, context?: LogContext) {
-    const level = statusCode >= 500 ? 'error' : statusCode >= 400 ? 'warn' : 'info';
+  logResponse(
+    method: string,
+    path: string,
+    statusCode: number,
+    duration: number,
+    context?: LogContext
+  ) {
+    const level =
+      statusCode >= 500 ? 'error' : statusCode >= 400 ? 'warn' : 'info';
 
     this.log(level, `${method} ${path} ${statusCode} ${duration}ms`, {
       ...context,

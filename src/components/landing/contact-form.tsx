@@ -6,17 +6,42 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useLocale } from 'next-intl';
 import { ContactFormSchema, ContactFormData } from '@/lib/schemas/contact';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
 import { useAnalytics } from '@/lib/hooks/use-analytics';
-import { Loader2, Send, CheckCircle, Shield, Clock, DollarSign, Sparkles } from 'lucide-react';
+import {
+  Loader2,
+  Send,
+  CheckCircle,
+  Shield,
+  Clock,
+  DollarSign,
+  Sparkles,
+} from 'lucide-react';
 import { budgetRanges, timelineTargets } from '@/data/home';
-import { dataReadinessOptions, packageInterestOptions, preferredContactOptions, useCaseOptions } from '@/data/contact';
+import {
+  dataReadinessOptions,
+  packageInterestOptions,
+  preferredContactOptions,
+  useCaseOptions,
+} from '@/data/contact';
 import { cn } from '@/lib/utils';
 
 export function ContactForm() {
@@ -57,7 +82,10 @@ export function ContactForm() {
         ...data,
         locale: locale.startsWith('th') ? 'th' : 'en',
         hp_field: '', // Honeypot field (must be empty)
-        user_agent: typeof window !== 'undefined' ? window.navigator.userAgent : undefined,
+        user_agent:
+          typeof window !== 'undefined'
+            ? window.navigator.userAgent
+            : undefined,
       };
 
       // Only add hp_time if form was filled for reasonable time (> 6 seconds as required by backend)
@@ -82,21 +110,25 @@ export function ContactForm() {
           title: isThai ? 'สำเร็จ!' : 'Success!',
           description: isThai
             ? 'ส่งข้อความเรียบร้อยแล้ว เราจะติดต่อกลับภายใน 24 ชั่วโมง'
-            : 'Your message has been sent successfully. We\'ll get back to you within 24 hours.',
+            : "Your message has been sent successfully. We'll get back to you within 24 hours.",
         });
       } else {
         throw new Error(result.message || 'Failed to send message');
       }
     } catch (error) {
       // Show detailed error message
-      const errorMessage = error instanceof Error ? error.message : 'Failed to send message. Please try again.';
+      const errorMessage =
+        error instanceof Error
+          ? error.message
+          : 'Failed to send message. Please try again.';
       console.error('Contact form submission error:', error);
 
       toast('error', {
         title: isThai ? 'เกิดข้อผิดพลาด' : 'Error',
-        description: errorMessage.length > 150
-          ? `${errorMessage.substring(0, 150)}...`
-          : errorMessage,
+        description:
+          errorMessage.length > 150
+            ? `${errorMessage.substring(0, 150)}...`
+            : errorMessage,
       });
     } finally {
       setIsSubmitting(false);
@@ -121,8 +153,7 @@ export function ContactForm() {
             <p className="text-text-muted mb-8 max-w-md mx-auto leading-relaxed">
               {isThai
                 ? 'ส่งข้อความเรียบร้อยแล้ว เราจะติดต่อกลับภายใน 24 ชั่วโมง'
-                : 'Your message has been sent successfully. We\'ll get back to you within 24 hours.'
-              }
+                : "Your message has been sent successfully. We'll get back to you within 24 hours."}
             </p>
             <Button
               onClick={() => setIsSuccess(false)}
@@ -155,8 +186,7 @@ export function ContactForm() {
         <CardDescription className="text-text-muted/80">
           {isThai
             ? 'เล่าคร่าว ๆ เกี่ยวกับโปรเจกต์ของคุณ แล้วทีมงานจะติดต่อกลับเร็ว ๆ นี้'
-            : 'Tell us a bit about your project and we\'ll reach out shortly.'
-          }
+            : "Tell us a bit about your project and we'll reach out shortly."}
         </CardDescription>
       </CardHeader>
 
@@ -165,17 +195,23 @@ export function ContactForm() {
           {/* Name & Email */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="name" className="text-sm font-medium text-text/90">
-                {isThai ? 'ชื่อ-นามสกุล' : 'Name'} <span className="text-primary">*</span>
+              <Label
+                htmlFor="name"
+                className="text-sm font-medium text-text/90"
+              >
+                {isThai ? 'ชื่อ-นามสกุล' : 'Name'}{' '}
+                <span className="text-primary">*</span>
               </Label>
               <Input
                 id="name"
                 {...register('name')}
                 className={cn(
-                  "bg-surface-2/50 border-white/10 focus:border-primary/50 focus:ring-primary/20 transition-all duration-200",
+                  'bg-surface-2/50 border-white/10 focus:border-primary/50 focus:ring-primary/20 transition-all duration-200',
                   errors.name && 'border-red-500/50 focus:border-red-500'
                 )}
-                placeholder={isThai ? 'กรอกชื่อ-นามสกุล' : 'Enter your full name'}
+                placeholder={
+                  isThai ? 'กรอกชื่อ-นามสกุล' : 'Enter your full name'
+                }
               />
               {errors.name && (
                 <p className="text-sm text-red-400/90">{errors.name.message}</p>
@@ -183,21 +219,27 @@ export function ContactForm() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-sm font-medium text-text/90">
-                {isThai ? 'อีเมล' : 'Email'} <span className="text-primary">*</span>
+              <Label
+                htmlFor="email"
+                className="text-sm font-medium text-text/90"
+              >
+                {isThai ? 'อีเมล' : 'Email'}{' '}
+                <span className="text-primary">*</span>
               </Label>
               <Input
                 id="email"
                 type="email"
                 {...register('email')}
                 className={cn(
-                  "bg-surface-2/50 border-white/10 focus:border-primary/50 focus:ring-primary/20 transition-all duration-200",
+                  'bg-surface-2/50 border-white/10 focus:border-primary/50 focus:ring-primary/20 transition-all duration-200',
                   errors.email && 'border-red-500/50 focus:border-red-500'
                 )}
                 placeholder={isThai ? 'กรอกอีเมล' : 'Enter your email'}
               />
               {errors.email && (
-                <p className="text-sm text-red-400/90">{errors.email.message}</p>
+                <p className="text-sm text-red-400/90">
+                  {errors.email.message}
+                </p>
               )}
             </div>
           </div>
@@ -205,19 +247,27 @@ export function ContactForm() {
           {/* Company & Phone */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="company" className="text-sm font-medium text-text/90">
+              <Label
+                htmlFor="company"
+                className="text-sm font-medium text-text/90"
+              >
                 {isThai ? 'บริษัท' : 'Company'}
               </Label>
               <Input
                 id="company"
                 {...register('company')}
                 className="bg-surface-2/50 border-white/10 focus:border-primary/50 focus:ring-primary/20 transition-all duration-200"
-                placeholder={isThai ? 'กรอกชื่อบริษัท' : 'Enter your company name'}
+                placeholder={
+                  isThai ? 'กรอกชื่อบริษัท' : 'Enter your company name'
+                }
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="phone" className="text-sm font-medium text-text/90">
+              <Label
+                htmlFor="phone"
+                className="text-sm font-medium text-text/90"
+              >
                 {isThai ? 'โทรศัพท์' : 'Phone'}
               </Label>
               <Input
@@ -225,7 +275,9 @@ export function ContactForm() {
                 type="tel"
                 {...register('phone')}
                 className="bg-surface-2/50 border-white/10 focus:border-primary/50 focus:ring-primary/20 transition-all duration-200"
-                placeholder={isThai ? 'กรอกเบอร์โทรศัพท์' : 'Enter your phone number'}
+                placeholder={
+                  isThai ? 'กรอกเบอร์โทรศัพท์' : 'Enter your phone number'
+                }
               />
             </div>
           </div>
@@ -239,7 +291,11 @@ export function ContactForm() {
               id="role"
               {...register('role')}
               className="bg-surface-2/50 border-white/10 focus:border-primary/50 focus:ring-primary/20 transition-all duration-200"
-              placeholder={isThai ? 'เช่น ผู้จัดการฝ่ายปฏิบัติการ, Data Lead' : 'e.g. Ops Manager, Data Lead'}
+              placeholder={
+                isThai
+                  ? 'เช่น ผู้จัดการฝ่ายปฏิบัติการ, Data Lead'
+                  : 'e.g. Ops Manager, Data Lead'
+              }
             />
           </div>
 
@@ -255,17 +311,19 @@ export function ContactForm() {
                 const selected = Array.isArray(field.value) ? field.value : [];
                 return (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    {useCaseOptions.map((option) => (
+                    {useCaseOptions.map(option => (
                       <label
                         key={option.value}
                         className="flex items-center gap-3 rounded-xl border border-white/10 bg-surface-2/30 px-4 py-3 text-sm text-text-muted/90"
                       >
                         <Checkbox
                           checked={selected.includes(option.value)}
-                          onCheckedChange={(checked) => {
+                          onCheckedChange={checked => {
                             const next = checked
                               ? [...selected, option.value]
-                              : selected.filter((value) => value !== option.value);
+                              : selected.filter(
+                                  value => value !== option.value
+                                );
                             field.onChange(next);
                           }}
                           className="border-white/20 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
@@ -281,19 +339,31 @@ export function ContactForm() {
 
           {/* Data Readiness */}
           <div className="space-y-2">
-            <Label htmlFor="data_readiness" className="text-sm font-medium text-text/90">
+            <Label
+              htmlFor="data_readiness"
+              className="text-sm font-medium text-text/90"
+            >
               {isThai ? 'ความพร้อมของข้อมูล' : 'Data readiness'}
             </Label>
             <Controller
               name="data_readiness"
               control={control}
               render={({ field }) => (
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
                   <SelectTrigger className="bg-surface-2/50 border-white/10 focus:border-primary/50 focus:ring-primary/20 transition-all duration-200">
-                    <SelectValue placeholder={isThai ? 'เลือกความพร้อมของข้อมูล' : 'Select data readiness'} />
+                    <SelectValue
+                      placeholder={
+                        isThai
+                          ? 'เลือกความพร้อมของข้อมูล'
+                          : 'Select data readiness'
+                      }
+                    />
                   </SelectTrigger>
                   <SelectContent className="bg-surface-2 border-white/10">
-                    {dataReadinessOptions.map((option) => (
+                    {dataReadinessOptions.map(option => (
                       <SelectItem key={option.value} value={option.value}>
                         {isThai ? option.labelTh : option.labelEn}
                       </SelectItem>
@@ -306,19 +376,29 @@ export function ContactForm() {
 
           {/* Preferred Contact */}
           <div className="space-y-2">
-            <Label htmlFor="preferred_contact" className="text-sm font-medium text-text/90">
+            <Label
+              htmlFor="preferred_contact"
+              className="text-sm font-medium text-text/90"
+            >
               {isThai ? 'ช่องทางติดต่อที่สะดวก' : 'Preferred contact'}
             </Label>
             <Controller
               name="preferred_contact"
               control={control}
               render={({ field }) => (
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
                   <SelectTrigger className="bg-surface-2/50 border-white/10 focus:border-primary/50 focus:ring-primary/20 transition-all duration-200">
-                    <SelectValue placeholder={isThai ? 'เลือกช่องทางติดต่อ' : 'Select a channel'} />
+                    <SelectValue
+                      placeholder={
+                        isThai ? 'เลือกช่องทางติดต่อ' : 'Select a channel'
+                      }
+                    />
                   </SelectTrigger>
                   <SelectContent className="bg-surface-2 border-white/10">
-                    {preferredContactOptions.map((option) => (
+                    {preferredContactOptions.map(option => (
                       <SelectItem key={option.value} value={option.value}>
                         {isThai ? option.labelTh : option.labelEn}
                       </SelectItem>
@@ -331,19 +411,31 @@ export function ContactForm() {
 
           {/* Package Interest */}
           <div className="space-y-2">
-            <Label htmlFor="package_id" className="text-sm font-medium text-text/90">
+            <Label
+              htmlFor="package_id"
+              className="text-sm font-medium text-text/90"
+            >
               {isThai ? 'สนใจแพ็กเกจ' : 'Package interest'}
             </Label>
             <Controller
               name="package_id"
               control={control}
               render={({ field }) => (
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
                   <SelectTrigger className="bg-surface-2/50 border-white/10 focus:border-primary/50 focus:ring-primary/20 transition-all duration-200">
-                    <SelectValue placeholder={isThai ? 'เลือกแพ็กเกจ (ไม่บังคับ)' : 'Select a package (optional)'} />
+                    <SelectValue
+                      placeholder={
+                        isThai
+                          ? 'เลือกแพ็กเกจ (ไม่บังคับ)'
+                          : 'Select a package (optional)'
+                      }
+                    />
                   </SelectTrigger>
                   <SelectContent className="bg-surface-2 border-white/10">
-                    {packageInterestOptions.map((option) => (
+                    {packageInterestOptions.map(option => (
                       <SelectItem key={option.value} value={option.value}>
                         {isThai ? option.labelTh : option.labelEn}
                       </SelectItem>
@@ -356,7 +448,10 @@ export function ContactForm() {
 
           {/* Budget Range */}
           <div className="space-y-2">
-            <Label htmlFor="budget_range" className="text-sm font-medium text-text/90 flex items-center gap-2">
+            <Label
+              htmlFor="budget_range"
+              className="text-sm font-medium text-text/90 flex items-center gap-2"
+            >
               <DollarSign className="h-4 w-4 text-primary/70" />
               {isThai ? 'งบประมาณ' : 'Budget Range'}
             </Label>
@@ -364,12 +459,19 @@ export function ContactForm() {
               name="budget_range"
               control={control}
               render={({ field }) => (
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
                   <SelectTrigger className="bg-surface-2/50 border-white/10 focus:border-primary/50 focus:ring-primary/20 transition-all duration-200">
-                    <SelectValue placeholder={isThai ? 'เลือกช่วงงบประมาณ' : 'Select budget range'} />
+                    <SelectValue
+                      placeholder={
+                        isThai ? 'เลือกช่วงงบประมาณ' : 'Select budget range'
+                      }
+                    />
                   </SelectTrigger>
                   <SelectContent className="bg-surface-2 border-white/10">
-                    {budgetRanges.map((range) => (
+                    {budgetRanges.map(range => (
                       <SelectItem key={range.value} value={range.value}>
                         {isThai ? range.labelTh : range.labelEn}
                       </SelectItem>
@@ -382,7 +484,10 @@ export function ContactForm() {
 
           {/* Timeline Target */}
           <div className="space-y-2">
-            <Label htmlFor="timeline_target" className="text-sm font-medium text-text/90 flex items-center gap-2">
+            <Label
+              htmlFor="timeline_target"
+              className="text-sm font-medium text-text/90 flex items-center gap-2"
+            >
               <Clock className="h-4 w-4 text-primary/70" />
               {isThai ? 'ระยะเวลาเป้าหมาย' : 'Timeline'}
             </Label>
@@ -390,12 +495,17 @@ export function ContactForm() {
               name="timeline_target"
               control={control}
               render={({ field }) => (
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
                   <SelectTrigger className="bg-surface-2/50 border-white/10 focus:border-primary/50 focus:ring-primary/20 transition-all duration-200">
-                    <SelectValue placeholder={isThai ? 'เลือกช่วงเวลา' : 'Select timeline'} />
+                    <SelectValue
+                      placeholder={isThai ? 'เลือกช่วงเวลา' : 'Select timeline'}
+                    />
                   </SelectTrigger>
                   <SelectContent className="bg-surface-2 border-white/10">
-                    {timelineTargets.map((timeline) => (
+                    {timelineTargets.map(timeline => (
                       <SelectItem key={timeline.value} value={timeline.value}>
                         {isThai ? timeline.labelTh : timeline.labelEn}
                       </SelectItem>
@@ -409,16 +519,21 @@ export function ContactForm() {
           {/* Goal/Challenge */}
           <div className="space-y-2">
             <Label htmlFor="goal" className="text-sm font-medium text-text/90">
-              {isThai ? 'เป้าหมาย/ปัญหาที่อยากแก้' : 'Your Goal/Challenge'} <span className="text-primary">*</span>
+              {isThai ? 'เป้าหมาย/ปัญหาที่อยากแก้' : 'Your Goal/Challenge'}{' '}
+              <span className="text-primary">*</span>
             </Label>
             <Textarea
               id="goal"
               {...register('goal')}
               className={cn(
-                "bg-surface-2/50 border-white/10 focus:border-primary/50 focus:ring-primary/20 transition-all duration-200 resize-none",
+                'bg-surface-2/50 border-white/10 focus:border-primary/50 focus:ring-primary/20 transition-all duration-200 resize-none',
                 errors.goal && 'border-red-500/50 focus:border-red-500'
               )}
-              placeholder={isThai ? 'อธิบายเป้าหมาย ปัญหา หรือความต้องการของโปรเจกต์...' : 'Describe your project goals, challenges, or requirements...'}
+              placeholder={
+                isThai
+                  ? 'อธิบายเป้าหมาย ปัญหา หรือความต้องการของโปรเจกต์...'
+                  : 'Describe your project goals, challenges, or requirements...'
+              }
               rows={4}
             />
             {errors.goal && (
@@ -435,21 +550,25 @@ export function ContactForm() {
                 <Checkbox
                   id="nda"
                   checked={field.value}
-                  onCheckedChange={(checked) => field.onChange(checked === true)}
+                  onCheckedChange={checked => field.onChange(checked === true)}
                   className="mt-0.5 border-white/20 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
                 />
               )}
             />
             <div className="space-y-1">
-              <Label htmlFor="nda" className="text-sm text-text/90 cursor-pointer flex items-center gap-2">
+              <Label
+                htmlFor="nda"
+                className="text-sm text-text/90 cursor-pointer flex items-center gap-2"
+              >
                 <Shield className="h-4 w-4 text-primary/70" />
-                {isThai ? 'ต้องการ NDA (ข้อตกลงไม่เปิดเผยข้อมูล)' : 'Request NDA (Non-Disclosure Agreement)'}
+                {isThai
+                  ? 'ต้องการ NDA (ข้อตกลงไม่เปิดเผยข้อมูล)'
+                  : 'Request NDA (Non-Disclosure Agreement)'}
               </Label>
               <p className="text-xs text-text-muted/70">
                 {isThai
                   ? 'หากโปรเจกต์มีข้อมูลลับ เราสามารถเซ็น NDA ได้'
-                  : 'If your project contains confidential information, we can sign an NDA'
-                }
+                  : 'If your project contains confidential information, we can sign an NDA'}
               </p>
             </div>
           </div>
@@ -463,20 +582,28 @@ export function ContactForm() {
                 <Checkbox
                   id="consent"
                   checked={field.value}
-                  onCheckedChange={(checked) => field.onChange(checked === true)}
+                  onCheckedChange={checked => field.onChange(checked === true)}
                   className={cn(
-                    "mt-0.5 border-white/20 data-[state=checked]:bg-primary data-[state=checked]:border-primary",
+                    'mt-0.5 border-white/20 data-[state=checked]:bg-primary data-[state=checked]:border-primary',
                     errors.consent && 'border-red-500/50'
                   )}
                 />
               )}
             />
             <div className="space-y-1">
-              <Label htmlFor="consent" className="text-sm text-text-muted/80 cursor-pointer">
-                {isThai ? 'ยินยอมให้ CerebraTechAI ติดต่อกลับ' : 'I consent to CerebraTechAI contacting me'} <span className="text-primary">*</span>
+              <Label
+                htmlFor="consent"
+                className="text-sm text-text-muted/80 cursor-pointer"
+              >
+                {isThai
+                  ? 'ยินยอมให้ CerebraTechAI ติดต่อกลับ'
+                  : 'I consent to CerebraTechAI contacting me'}{' '}
+                <span className="text-primary">*</span>
               </Label>
               {errors.consent && (
-                <p className="text-sm text-red-400/90">{errors.consent.message}</p>
+                <p className="text-sm text-red-400/90">
+                  {errors.consent.message}
+                </p>
               )}
             </div>
           </div>
@@ -504,8 +631,7 @@ export function ContactForm() {
           <p className="text-xs text-text-muted/60 text-center">
             {isThai
               ? 'ข้อมูลของคุณจะถูกเก็บเป็นความลับ และใช้สำหรับติดต่อกลับเท่านั้น'
-              : 'Your information will be kept confidential and used only for follow-up purposes.'
-            }
+              : 'Your information will be kept confidential and used only for follow-up purposes.'}
           </p>
         </form>
       </CardContent>

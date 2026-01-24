@@ -11,7 +11,9 @@ import { ArticleSchema } from '@/components/seo';
 import { CASES, getCaseBySlug } from '@/data/cases';
 
 type CasePageProps = {
-  params: Promise<{ locale: string; slug: string }> | { locale: string; slug: string };
+  params:
+    | Promise<{ locale: string; slug: string }>
+    | { locale: string; slug: string };
 };
 
 const dataSensitivityLabels = {
@@ -21,13 +23,15 @@ const dataSensitivityLabels = {
 };
 
 export async function generateStaticParams() {
-  return CASES.flatMap((caseItem) => [
+  return CASES.flatMap(caseItem => [
     { locale: 'en', slug: caseItem.slug },
     { locale: 'th', slug: caseItem.slug },
   ]);
 }
 
-export async function generateMetadata({ params }: CasePageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: CasePageProps): Promise<Metadata> {
   // Await params to ensure it's resolved
   const resolvedParams = await Promise.resolve(params);
 
@@ -45,14 +49,21 @@ export async function generateMetadata({ params }: CasePageProps): Promise<Metad
   const caseItem = getCaseBySlug(slug);
   if (!caseItem) {
     return {
-      title: locale === 'th' ? 'ไม่พบเคสตัวอย่าง | CerebraTechAI' : 'Case Study Not Found | CerebraTechAI',
-      description: locale === 'th' ? 'ไม่พบเคสตัวอย่างที่ค้นหา' : 'The case study you are looking for was not found',
+      title:
+        locale === 'th'
+          ? 'ไม่พบเคสตัวอย่าง | CerebraTechAI'
+          : 'Case Study Not Found | CerebraTechAI',
+      description:
+        locale === 'th'
+          ? 'ไม่พบเคสตัวอย่างที่ค้นหา'
+          : 'The case study you are looking for was not found',
     };
   }
 
-  const title = locale === 'th'
-    ? `กรณีศึกษา: ${caseItem.title} | CerebraTechAI`
-    : `${caseItem.title} | CerebraTechAI`;
+  const title =
+    locale === 'th'
+      ? `กรณีศึกษา: ${caseItem.title} | CerebraTechAI`
+      : `${caseItem.title} | CerebraTechAI`;
   const description = caseItem.subtitle || caseItem.challenge;
 
   return {
@@ -84,14 +95,21 @@ export default async function CaseDetailPage({ params }: CasePageProps) {
 
   const t = (th: string, en: string) => (isThai ? th : en);
 
-  const relatedCases = CASES.filter((item) =>
-    item.slug !== caseItem.slug &&
-    item.solutionFamily.some(family => caseItem.solutionFamily.includes(family))
+  const relatedCases = CASES.filter(
+    item =>
+      item.slug !== caseItem.slug &&
+      item.solutionFamily.some(family =>
+        caseItem.solutionFamily.includes(family)
+      )
   ).slice(0, 3);
 
   return (
     <div className="bg-bg">
-      <ArticleSchema headline={caseItem.title} articleBody={caseItem.subtitle || caseItem.challenge} author="CerebraTechAI" />
+      <ArticleSchema
+        headline={caseItem.title}
+        articleBody={caseItem.subtitle || caseItem.challenge}
+        author="CerebraTechAI"
+      />
 
       <MagicHero
         eyebrow={
@@ -118,7 +136,8 @@ export default async function CaseDetailPage({ params }: CasePageProps) {
           },
           {
             value: caseItem.outcomes[0]?.value || '—',
-            label: caseItem.outcomes[0]?.label || t('ผลลัพธ์หลัก', 'Key outcome'),
+            label:
+              caseItem.outcomes[0]?.label || t('ผลลัพธ์หลัก', 'Key outcome'),
           },
         ]}
         align="center"
@@ -138,7 +157,10 @@ export default async function CaseDetailPage({ params }: CasePageProps) {
             <KeyFactsBlock
               facts={[
                 { label: t('อุตสาหกรรม', 'Industry'), value: caseItem.sector },
-                { label: t('กลุ่มโซลูชัน', 'Solution family'), value: caseItem.solutionFamily.join(', ') },
+                {
+                  label: t('กลุ่มโซลูชัน', 'Solution family'),
+                  value: caseItem.solutionFamily.join(', '),
+                },
                 {
                   label: t('ข้อมูล', 'Data'),
                   value: isThai
@@ -147,13 +169,17 @@ export default async function CaseDetailPage({ params }: CasePageProps) {
                 },
                 {
                   label: t('ผลลัพธ์หลัก', 'Key outcomes'),
-                  value: caseItem.outcomes.slice(0, 3).map((o) => `${o.label}: ${o.value}`),
+                  value: caseItem.outcomes
+                    .slice(0, 3)
+                    .map(o => `${o.label}: ${o.value}`),
                 },
                 ...(caseItem.metricsFooter?.length
                   ? [
                       {
                         label: t('ตัวชี้วัดเพิ่มเติม', 'Extra metrics'),
-                        value: caseItem.metricsFooter.map((m) => `${m.label}: ${m.value}`),
+                        value: caseItem.metricsFooter.map(
+                          m => `${m.label}: ${m.value}`
+                        ),
                       },
                     ]
                   : []),
@@ -202,9 +228,16 @@ export default async function CaseDetailPage({ params }: CasePageProps) {
                 </h2>
                 <div className="grid gap-4 sm:grid-cols-2">
                   {caseItem.outcomes.map((outcome, index) => (
-                    <div key={index} className="rounded-2xl border border-hairline bg-surface-2/50 p-4">
-                      <div className="text-2xl font-bold text-primary">{outcome.value}</div>
-                      <div className="text-sm text-text-muted">{outcome.label}</div>
+                    <div
+                      key={index}
+                      className="rounded-2xl border border-hairline bg-surface-2/50 p-4"
+                    >
+                      <div className="text-2xl font-bold text-primary">
+                        {outcome.value}
+                      </div>
+                      <div className="text-sm text-text-muted">
+                        {outcome.label}
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -219,15 +252,25 @@ export default async function CaseDetailPage({ params }: CasePageProps) {
                 {caseItem.metricsFooter ? (
                   <div className="grid gap-4 sm:grid-cols-2">
                     {caseItem.metricsFooter.map((metric, index) => (
-                      <div key={index} className="rounded-2xl border border-hairline bg-surface-2/50 p-4">
-                        <div className="text-lg font-semibold text-text">{metric.value}</div>
-                        <div className="text-sm text-text-muted">{metric.label}</div>
+                      <div
+                        key={index}
+                        className="rounded-2xl border border-hairline bg-surface-2/50 p-4"
+                      >
+                        <div className="text-lg font-semibold text-text">
+                          {metric.value}
+                        </div>
+                        <div className="text-sm text-text-muted">
+                          {metric.label}
+                        </div>
                       </div>
                     ))}
                   </div>
                 ) : (
                   <p className="text-text-muted">
-                    {t('ยังไม่มีข้อมูลเพิ่มเติมสำหรับเคสนี้', 'No additional metrics available for this case.')}
+                    {t(
+                      'ยังไม่มีข้อมูลเพิ่มเติมสำหรับเคสนี้',
+                      'No additional metrics available for this case.'
+                    )}
                   </p>
                 )}
                 <div className="rounded-2xl border border-primary/20 bg-primary/10 p-4 text-sm text-text-muted">
@@ -235,7 +278,9 @@ export default async function CaseDetailPage({ params }: CasePageProps) {
                     {t('ระดับข้อมูล', 'Data sensitivity')}
                   </p>
                   <p className="mt-2">
-                    {isThai ? dataSensitivityLabels[caseItem.dataSensitivity].th : dataSensitivityLabels[caseItem.dataSensitivity].en}
+                    {isThai
+                      ? dataSensitivityLabels[caseItem.dataSensitivity].th
+                      : dataSensitivityLabels[caseItem.dataSensitivity].en}
                   </p>
                 </div>
               </CardContent>
@@ -252,7 +297,10 @@ export default async function CaseDetailPage({ params }: CasePageProps) {
                 {t('อยากทำเคสคล้ายกัน?', 'Want a similar outcome?')}
               </h2>
               <p className="text-text-muted mb-6">
-                {t('แชร์โจทย์ของคุณเพื่อประเมินแนวทางและงบประมาณที่เหมาะสม', 'Share your context to receive a scoped plan and estimate.')}
+                {t(
+                  'แชร์โจทย์ของคุณเพื่อประเมินแนวทางและงบประมาณที่เหมาะสม',
+                  'Share your context to receive a scoped plan and estimate.'
+                )}
               </p>
               <Link
                 href={`${basePath}/contact?case=${caseItem.slug}` as any}
@@ -273,8 +321,11 @@ export default async function CaseDetailPage({ params }: CasePageProps) {
               {t('เคสที่เกี่ยวข้อง', 'Related Case Studies')}
             </h2>
             <div className="grid gap-6 md:grid-cols-3">
-              {relatedCases.map((item) => (
-                <Card key={item.slug} className="border border-hairline bg-surface/80 hover:shadow-xl transition-all group">
+              {relatedCases.map(item => (
+                <Card
+                  key={item.slug}
+                  className="border border-hairline bg-surface/80 hover:shadow-xl transition-all group"
+                >
                   <CardContent className="p-6">
                     <div className="mb-4">
                       <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary/20 text-primary">
@@ -289,9 +340,16 @@ export default async function CaseDetailPage({ params }: CasePageProps) {
                     </p>
                     <div className="grid grid-cols-2 gap-3 mb-4">
                       {item.outcomes.slice(0, 2).map((outcome, idx) => (
-                        <div key={idx} className="text-center p-2 rounded-xl bg-primary/10">
-                          <div className="text-lg font-bold text-primary">{outcome.value}</div>
-                          <div className="text-xs text-text-muted">{outcome.label}</div>
+                        <div
+                          key={idx}
+                          className="text-center p-2 rounded-xl bg-primary/10"
+                        >
+                          <div className="text-lg font-bold text-primary">
+                            {outcome.value}
+                          </div>
+                          <div className="text-xs text-text-muted">
+                            {outcome.label}
+                          </div>
                         </div>
                       ))}
                     </div>

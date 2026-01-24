@@ -16,14 +16,16 @@ export function CookieConsent() {
   const content = {
     th: {
       title: 'เราใช้คุกกี้',
-      description: 'เราใช้คุกกี้เพื่อปรับปรุงประสบการณ์การใช้งานของคุณ วิเคราะห์การเข้าชม และให้บริการที่ดีขึ้น',
+      description:
+        'เราใช้คุกกี้เพื่อปรับปรุงประสบการณ์การใช้งานของคุณ วิเคราะห์การเข้าชม และให้บริการที่ดีขึ้น',
       learnMore: 'เรียนรู้เพิ่มเติม',
       acceptAll: 'ยอมรับทั้งหมด',
       acceptEssential: 'ยอมรับเฉพาะที่จำเป็น',
     },
     en: {
       title: 'We Use Cookies',
-      description: 'We use cookies to improve your experience, analyze site traffic, and provide better services.',
+      description:
+        'We use cookies to improve your experience, analyze site traffic, and provide better services.',
       learnMore: 'Learn More',
       acceptAll: 'Accept All',
       acceptEssential: 'Essential Only',
@@ -105,7 +107,9 @@ export function CookieConsent() {
 
                 {/* Content */}
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-lg font-semibold text-text mb-2">{c.title}</h3>
+                  <h3 className="text-lg font-semibold text-text mb-2">
+                    {c.title}
+                  </h3>
                   <p className="text-sm text-text-muted mb-3">
                     {c.description}{' '}
                     <Link
@@ -149,4 +153,3 @@ export function CookieConsent() {
     </>
   );
 }
-

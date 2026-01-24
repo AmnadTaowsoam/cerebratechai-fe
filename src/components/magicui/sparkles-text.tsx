@@ -42,7 +42,7 @@ const SparklesText = ({
 
     const interval = setInterval(() => {
       const newSparkle = generateSparkle();
-      setSparkles((prev) => [...prev.slice(-sparklesCount + 1), newSparkle]);
+      setSparkles(prev => [...prev.slice(-sparklesCount + 1), newSparkle]);
     }, 200);
 
     return () => clearInterval(interval);
@@ -50,7 +50,7 @@ const SparklesText = ({
 
   return (
     <span className={cn('relative inline-block', className)}>
-      {sparkles.map((sparkle) => (
+      {sparkles.map(sparkle => (
         <motion.svg
           key={sparkle.id}
           className="pointer-events-none absolute z-10"

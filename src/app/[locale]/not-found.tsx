@@ -27,8 +27,7 @@ export default function NotFound() {
         <p className="text-lg text-text-muted mb-8">
           {isThai
             ? 'ขออภัยหน้าที่คุณค้นหาไม่พบ กรุณาตรวจสอบ URL หรือกลับไปหน้าแรก'
-            : 'Sorry, page you are looking for could not be found. Please check the URL or return to the homepage.'
-          }
+            : 'Sorry, page you are looking for could not be found. Please check the URL or return to the homepage.'}
         </p>
 
         {/* Action Buttons */}
@@ -65,8 +64,7 @@ export default function NotFound() {
               <p className="text-sm text-text-muted">
                 {isThai
                   ? 'ใช้งานค้นหาของเราเพื่อหาข้อมูลที่คุณต้องการ'
-                  : 'Use our search to find information you need'
-                }
+                  : 'Use our search to find information you need'}
               </p>
             </div>
 
@@ -80,8 +78,7 @@ export default function NotFound() {
               <p className="text-sm text-text-muted">
                 {isThai
                   ? 'หากคุณยังไม่พบสิ่งที่ต้องการ ติดต่อเราได้เลย'
-                  : 'If you still can\'t find what you\'re looking for, contact us'
-                }
+                  : "If you still can't find what you're looking for, contact us"}
               </p>
             </div>
           </div>

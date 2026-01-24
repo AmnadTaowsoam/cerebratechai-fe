@@ -10,13 +10,15 @@ export async function GET(
     const { searchParams } = new URL(request.url);
     const locale = searchParams.get('locale') || 'en';
 
-    const response = await apiClient.get(`/api/content/services/${params.slug}?locale=${locale}`);
+    const response = await apiClient.get(
+      `/api/content/services/${params.slug}?locale=${locale}`
+    );
     const validatedResponse = ContentResponseSchema.parse(response);
 
     return NextResponse.json(validatedResponse);
   } catch (error) {
     console.error('Content service error:', error);
-    
+
     if (error instanceof Error) {
       return NextResponse.json(
         { success: false, message: error.message },

@@ -28,7 +28,8 @@ POC Lab, Pilot Launch และ Production Scale เริ่มที่ ฿420
     {
       id: 'nda',
       question: 'สามารถเซ็น NDA ได้ไหม?',
-      answer: 'ได้ เราเข้าใจความสำคัญของความลับทางธุรกิจและยินดีเซ็น NDA ก่อนเริ่มงาน',
+      answer:
+        'ได้ เราเข้าใจความสำคัญของความลับทางธุรกิจและยินดีเซ็น NDA ก่อนเริ่มงาน',
     },
   ],
   en: [
@@ -114,19 +115,47 @@ export const contactSocialProof = {
 };
 
 export const useCaseOptions = [
-  { value: 'llm_rag', labelEn: 'LLM / RAG assistant', labelTh: 'ผู้ช่วย LLM / RAG' },
-  { value: 'computer_vision', labelEn: 'Computer vision inspection', labelTh: 'ตรวจสอบด้วย Computer Vision' },
-  { value: 'predictive', labelEn: 'Predictive analytics / forecasting', labelTh: 'วิเคราะห์เชิงคาดการณ์ / พยากรณ์' },
+  {
+    value: 'llm_rag',
+    labelEn: 'LLM / RAG assistant',
+    labelTh: 'ผู้ช่วย LLM / RAG',
+  },
+  {
+    value: 'computer_vision',
+    labelEn: 'Computer vision inspection',
+    labelTh: 'ตรวจสอบด้วย Computer Vision',
+  },
+  {
+    value: 'predictive',
+    labelEn: 'Predictive analytics / forecasting',
+    labelTh: 'วิเคราะห์เชิงคาดการณ์ / พยากรณ์',
+  },
   { value: 'aiot_edge', labelEn: 'Edge AI / AIoT', labelTh: 'Edge AI / AIoT' },
-  { value: 'data_platform', labelEn: 'Data platform / MLOps', labelTh: 'Data Platform / MLOps' },
-  { value: 'automation', labelEn: 'Process automation', labelTh: 'ทำงานอัตโนมัติ' },
+  {
+    value: 'data_platform',
+    labelEn: 'Data platform / MLOps',
+    labelTh: 'Data Platform / MLOps',
+  },
+  {
+    value: 'automation',
+    labelEn: 'Process automation',
+    labelTh: 'ทำงานอัตโนมัติ',
+  },
   { value: 'other', labelEn: 'Other', labelTh: 'อื่น ๆ' },
 ];
 
 export const dataReadinessOptions = [
   { value: 'none', labelEn: 'No data yet', labelTh: 'ยังไม่มีข้อมูล' },
-  { value: 'scattered', labelEn: 'Scattered data', labelTh: 'ข้อมูลกระจัดกระจาย' },
-  { value: 'partial', labelEn: 'Some cleaned data', labelTh: 'มีข้อมูลที่ทำความสะอาดแล้วบางส่วน' },
+  {
+    value: 'scattered',
+    labelEn: 'Scattered data',
+    labelTh: 'ข้อมูลกระจัดกระจาย',
+  },
+  {
+    value: 'partial',
+    labelEn: 'Some cleaned data',
+    labelTh: 'มีข้อมูลที่ทำความสะอาดแล้วบางส่วน',
+  },
   { value: 'ready', labelEn: 'Ready to use', labelTh: 'พร้อมใช้งาน' },
 ];
 
@@ -141,6 +170,10 @@ export const packageInterestOptions = [
   { value: 'kickstart', labelEn: 'Kickstart', labelTh: 'Kickstart' },
   { value: 'poc', labelEn: 'POC Lab', labelTh: 'POC Lab' },
   { value: 'pilot', labelEn: 'Pilot Launch', labelTh: 'Pilot Launch' },
-  { value: 'production', labelEn: 'Production Scale', labelTh: 'Production Scale' },
+  {
+    value: 'production',
+    labelEn: 'Production Scale',
+    labelTh: 'Production Scale',
+  },
   { value: 'care', labelEn: 'Care Plan', labelTh: 'Care Plan' },
 ];

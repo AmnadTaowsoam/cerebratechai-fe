@@ -100,10 +100,10 @@
 
     /* Deep Tech specific variables */
     --bg-deep: #050505;
-    --accent-neon: #00F0FF;
-    --accent-electric: #6366F1;
-    --accent-purple: #8B5CF6;
-    --accent-pink: #EC4899;
+    --accent-neon: #00f0ff;
+    --accent-electric: #6366f1;
+    --accent-purple: #8b5cf6;
+    --accent-pink: #ec4899;
   }
 }
 
@@ -114,7 +114,9 @@
 
   body {
     @apply bg-bg text-text antialiased;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
   }
 
   html {
@@ -146,7 +148,6 @@
 
   /* Reduced motion support */
   @media (prefers-reduced-motion: reduce) {
-
     *,
     *::before,
     *::after {
@@ -159,7 +160,6 @@
 }
 
 @layer components {
-
   /* Skip link for accessibility - Enhanced visibility */
   .skip-link {
     @apply sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[9999] focus:px-6 focus:py-3 focus:bg-primary focus:text-white focus:rounded-lg focus:font-semibold focus:shadow-2xl focus:ring-4 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-bg;
@@ -207,7 +207,7 @@
   }
 
   .scrim-overlay::after {
-    content: "";
+    content: '';
     position: absolute;
     inset: 0;
     background: var(--scrim-strong);
@@ -243,7 +243,6 @@
 }
 
 @layer utilities {
-
   /* Animation utilities */
   .animate-fade-in-up {
     animation: fadeInUp 0.4s ease-out;
@@ -324,9 +323,9 @@
 
 /* Deep Tech Dark Mode */
 .deep-tech-section {
-  --bg-deep: #0F0F0F;
-  --accent-neon: #00F0FF;
-  --accent-electric: #6366F1;
+  --bg-deep: #0f0f0f;
+  --accent-neon: #00f0ff;
+  --accent-electric: #6366f1;
 }
 
 .deep-tech-section {
@@ -344,9 +343,9 @@
 
 /* High Contrast Mode */
 .high-contrast {
-  --text: #FFFFFF;
+  --text: #ffffff;
   --bg: #000000;
-  --primary: #FFFF00;
+  --primary: #ffff00;
 }
 
 .high-contrast * {
@@ -420,7 +419,6 @@
 }
 
 @keyframes bounceGentle {
-
   0%,
   100% {
     transform: translateY(-5%);

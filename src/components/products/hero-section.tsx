@@ -15,7 +15,12 @@ export function HeroSection({ product, locale }: HeroSectionProps) {
   return (
     <section className="relative overflow-hidden">
       {/* Background Gradient */}
-      <div className={cn('absolute inset-0 bg-gradient-to-br', product.hero.gradient)} />
+      <div
+        className={cn(
+          'absolute inset-0 bg-gradient-to-br',
+          product.hero.gradient
+        )}
+      />
       <div className="absolute inset-0 bg-black/30" />
 
       {/* Content */}

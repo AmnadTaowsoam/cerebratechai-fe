@@ -65,18 +65,19 @@ export function ChatGPTAppsSection() {
             {locale.startsWith('th') ? 'ทดลองใน ChatGPT' : 'Try in ChatGPT'}
           </h2>
           <p className="mt-3 mx-auto max-w-2xl text-text-muted">
-            {locale.startsWith('th') 
+            {locale.startsWith('th')
               ? 'เช็คความเป็นไปได้และความพร้อมแบบรวดเร็ว ทุกเดโมใช้ข้อมูล synthetic/public เท่านั้น'
-              : 'Quick feasibility checks and readiness estimators. All demos use synthetic/public data only.'
-            }
+              : 'Quick feasibility checks and readiness estimators. All demos use synthetic/public data only.'}
           </p>
         </div>
 
         <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
-          {apps.map((app) => {
+          {apps.map(app => {
             const Icon = iconMap[app.icon];
             const title = locale.startsWith('th') ? app.title.th : app.title.en;
-            const description = locale.startsWith('th') ? app.description.th : app.description.en;
+            const description = locale.startsWith('th')
+              ? app.description.th
+              : app.description.en;
 
             return (
               <Card
@@ -98,12 +99,22 @@ export function ChatGPTAppsSection() {
                       asChild
                       className="flex-1 bg-gradient-to-tr from-cyan-400 via-blue-600 to-indigo-600 text-white hover:opacity-90"
                     >
-                      <a href={app.deepLink} target="_blank" rel="noopener noreferrer">
+                      <a
+                        href={app.deepLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <ExternalLink className="mr-2 h-4 w-4" />
-                        {locale.startsWith('th') ? 'เปิดใน ChatGPT' : 'Try in ChatGPT'}
+                        {locale.startsWith('th')
+                          ? 'เปิดใน ChatGPT'
+                          : 'Try in ChatGPT'}
                       </a>
                     </Button>
-                    <Button asChild variant="outline" className="border-hairline">
+                    <Button
+                      asChild
+                      variant="outline"
+                      className="border-hairline"
+                    >
                       <a href={app.fallbackUrl}>
                         {locale.startsWith('th') ? 'นัดคุย' : 'Book consult'}
                       </a>
@@ -126,4 +137,3 @@ export function ChatGPTAppsSection() {
     </section>
   );
 }
-

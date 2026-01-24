@@ -61,7 +61,7 @@ export class AuthService {
   private setToken(token: string | null) {
     this.authState.token = token;
     this.authState.isAuthenticated = !!token;
-    
+
     if (token) {
       apiClient.setAuthToken(token);
       if (typeof window !== 'undefined') {
@@ -85,12 +85,18 @@ export class AuthService {
   }
 
   // Public methods
-  async login(email: string, password: string): Promise<{ success: boolean; message: string }> {
+  async login(
+    email: string,
+    password: string
+  ): Promise<{ success: boolean; message: string }> {
     try {
       this.setLoading(true);
-      
-      const response = await apiClient.post('/auth/login', { email, password }) as any;
-      
+
+      const response = (await apiClient.post('/auth/login', {
+        email,
+        password,
+      })) as any;
+
       if (response.success && response.token) {
         this.setToken(response.token);
         this.setUser(response.user);
@@ -99,32 +105,42 @@ export class AuthService {
         return { success: false, message: response.message || 'Login failed' };
       }
     } catch (error) {
-      return { 
-        success: false, 
-        message: error instanceof Error ? error.message : 'Login failed' 
+      return {
+        success: false,
+        message: error instanceof Error ? error.message : 'Login failed',
       };
     } finally {
       this.setLoading(false);
     }
   }
 
-  async register(userData: { name: string; email: string; password: string }): Promise<{ success: boolean; message: string }> {
+  async register(userData: {
+    name: string;
+    email: string;
+    password: string;
+  }): Promise<{ success: boolean; message: string }> {
     try {
       this.setLoading(true);
-      
-      const response = await apiClient.post('/auth/register', userData) as any;
-      
+
+      const response = (await apiClient.post(
+        '/auth/register',
+        userData
+      )) as any;
+
       if (response.success && response.token) {
         this.setToken(response.token);
         this.setUser(response.user);
         return { success: true, message: 'Registration successful' };
       } else {
-        return { success: false, message: response.message || 'Registration failed' };
+        return {
+          success: false,
+          message: response.message || 'Registration failed',
+        };
       }
     } catch (error) {
-      return { 
-        success: false, 
-        message: error instanceof Error ? error.message : 'Registration failed' 
+      return {
+        success: false,
+        message: error instanceof Error ? error.message : 'Registration failed',
       };
     } finally {
       this.setLoading(false);
@@ -144,8 +160,8 @@ export class AuthService {
 
   async validateToken(): Promise<boolean> {
     try {
-      const response = await apiClient.get('/auth/me') as any;
-      
+      const response = (await apiClient.get('/auth/me')) as any;
+
       if (response.success && response.user) {
         this.setUser(response.user);
         return true;

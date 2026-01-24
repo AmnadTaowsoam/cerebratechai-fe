@@ -3,7 +3,11 @@ import { useState } from 'react';
 import { Filter, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { getAllSectors, getAllSolutionFamilies, getAllDataSensitivities } from '@/data/cases';
+import {
+  getAllSectors,
+  getAllSolutionFamilies,
+  getAllDataSensitivities,
+} from '@/data/cases';
 
 interface CaseFiltersProps {
   locale?: string;
@@ -22,16 +26,31 @@ const outcomeTypes = [
   { value: 'Accuracy', labelEn: 'Accuracy', labelTh: 'ความแม่นยำ' },
   { value: 'Time', labelEn: 'Time', labelTh: 'เวลา' },
   { value: 'Cost', labelEn: 'Cost', labelTh: 'ต้นทุน' },
-  { value: 'Compliance', labelEn: 'Compliance', labelTh: 'การปฏิบัติตามข้อกำหนด' },
+  {
+    value: 'Compliance',
+    labelEn: 'Compliance',
+    labelTh: 'การปฏิบัติตามข้อกำหนด',
+  },
 ];
 
 const sortOptions = [
-  { value: 'Most relevant', labelEn: 'Most relevant', labelTh: 'เกี่ยวข้องที่สุด' },
+  {
+    value: 'Most relevant',
+    labelEn: 'Most relevant',
+    labelTh: 'เกี่ยวข้องที่สุด',
+  },
   { value: 'Newest', labelEn: 'Newest', labelTh: 'ล่าสุด' },
-  { value: 'Highest impact', labelEn: 'Highest impact', labelTh: 'ผลกระทบสูงสุด' },
+  {
+    value: 'Highest impact',
+    labelEn: 'Highest impact',
+    labelTh: 'ผลกระทบสูงสุด',
+  },
 ];
 
-export default function CaseFilters({ locale = 'en', onFilterChange }: CaseFiltersProps) {
+export default function CaseFilters({
+  locale = 'en',
+  onFilterChange,
+}: CaseFiltersProps) {
   const isThai = locale === 'th';
   const [isOpen, setIsOpen] = useState(false);
   const [filters, setFilters] = useState<FilterState>({
@@ -64,7 +83,9 @@ export default function CaseFilters({ locale = 'en', onFilterChange }: CaseFilte
     onFilterChange(clearedFilters);
   };
 
-  const hasActiveFilters = Object.values(filters).some(value => value && value !== 'Most relevant');
+  const hasActiveFilters = Object.values(filters).some(
+    value => value && value !== 'Most relevant'
+  );
 
   return (
     <>
@@ -97,10 +118,12 @@ export default function CaseFilters({ locale = 'en', onFilterChange }: CaseFilte
             </div>
 
             <div className="flex items-center gap-2">
-              <span className="text-sm text-text-muted">{isThai ? 'เรียงตาม:' : 'Sort by:'}</span>
+              <span className="text-sm text-text-muted">
+                {isThai ? 'เรียงตาม:' : 'Sort by:'}
+              </span>
               <select
                 value={filters.sort}
-                onChange={(e) => handleFilterChange('sort', e.target.value)}
+                onChange={e => handleFilterChange('sort', e.target.value)}
                 className="bg-surface border border-white/10 rounded px-3 py-1 text-sm text-text"
               >
                 {sortOptions.map(option => (
@@ -123,12 +146,18 @@ export default function CaseFilters({ locale = 'en', onFilterChange }: CaseFilte
                     </label>
                     <select
                       value={filters.sector}
-                      onChange={(e) => handleFilterChange('sector', e.target.value)}
+                      onChange={e =>
+                        handleFilterChange('sector', e.target.value)
+                      }
                       className="w-full bg-surface border border-white/10 rounded px-3 py-2 text-sm text-text"
                     >
-                      <option value="">{isThai ? 'ทุกอุตสาหกรรม' : 'All sectors'}</option>
+                      <option value="">
+                        {isThai ? 'ทุกอุตสาหกรรม' : 'All sectors'}
+                      </option>
                       {sectors.map(sector => (
-                        <option key={sector} value={sector}>{sector}</option>
+                        <option key={sector} value={sector}>
+                          {sector}
+                        </option>
                       ))}
                     </select>
                   </div>
@@ -140,12 +169,18 @@ export default function CaseFilters({ locale = 'en', onFilterChange }: CaseFilte
                     </label>
                     <select
                       value={filters.solutionFamily}
-                      onChange={(e) => handleFilterChange('solutionFamily', e.target.value)}
+                      onChange={e =>
+                        handleFilterChange('solutionFamily', e.target.value)
+                      }
                       className="w-full bg-surface border border-white/10 rounded px-3 py-2 text-sm text-text"
                     >
-                      <option value="">{isThai ? 'ทุกโซลูชัน' : 'All solutions'}</option>
+                      <option value="">
+                        {isThai ? 'ทุกโซลูชัน' : 'All solutions'}
+                      </option>
                       {solutionFamilies.map(family => (
-                        <option key={family} value={family}>{family}</option>
+                        <option key={family} value={family}>
+                          {family}
+                        </option>
                       ))}
                     </select>
                   </div>
@@ -153,16 +188,24 @@ export default function CaseFilters({ locale = 'en', onFilterChange }: CaseFilte
                   {/* Data Sensitivity Filter */}
                   <div>
                     <label className="block text-sm font-medium text-text mb-2">
-                      {isThai ? 'ระดับความอ่อนไหวของข้อมูล' : 'Data Sensitivity'}
+                      {isThai
+                        ? 'ระดับความอ่อนไหวของข้อมูล'
+                        : 'Data Sensitivity'}
                     </label>
                     <select
                       value={filters.dataSensitivity}
-                      onChange={(e) => handleFilterChange('dataSensitivity', e.target.value)}
+                      onChange={e =>
+                        handleFilterChange('dataSensitivity', e.target.value)
+                      }
                       className="w-full bg-surface border border-white/10 rounded px-3 py-2 text-sm text-text"
                     >
-                      <option value="">{isThai ? 'ทุกประเภท' : 'All types'}</option>
+                      <option value="">
+                        {isThai ? 'ทุกประเภท' : 'All types'}
+                      </option>
                       {dataSensitivities.map(sensitivity => (
-                        <option key={sensitivity} value={sensitivity}>{sensitivity}</option>
+                        <option key={sensitivity} value={sensitivity}>
+                          {sensitivity}
+                        </option>
                       ))}
                     </select>
                   </div>
@@ -174,10 +217,14 @@ export default function CaseFilters({ locale = 'en', onFilterChange }: CaseFilte
                     </label>
                     <select
                       value={filters.outcomeType}
-                      onChange={(e) => handleFilterChange('outcomeType', e.target.value)}
+                      onChange={e =>
+                        handleFilterChange('outcomeType', e.target.value)
+                      }
                       className="w-full bg-surface border border-white/10 rounded px-3 py-2 text-sm text-text"
                     >
-                      <option value="">{isThai ? 'ทุกผลลัพธ์' : 'All outcomes'}</option>
+                      <option value="">
+                        {isThai ? 'ทุกผลลัพธ์' : 'All outcomes'}
+                      </option>
                       {outcomeTypes.map(type => (
                         <option key={type.value} value={type.value}>
                           {isThai ? type.labelTh : type.labelEn}
@@ -209,7 +256,7 @@ export default function CaseFilters({ locale = 'en', onFilterChange }: CaseFilte
             <div className="flex items-center gap-2">
               <select
                 value={filters.sort}
-                onChange={(e) => handleFilterChange('sort', e.target.value)}
+                onChange={e => handleFilterChange('sort', e.target.value)}
                 className="bg-surface border border-white/10 rounded px-2 py-1 text-xs text-text"
               >
                 {sortOptions.map(option => (
@@ -226,23 +273,29 @@ export default function CaseFilters({ locale = 'en', onFilterChange }: CaseFilte
               <div className="grid grid-cols-2 gap-3">
                 <select
                   value={filters.sector}
-                  onChange={(e) => handleFilterChange('sector', e.target.value)}
+                  onChange={e => handleFilterChange('sector', e.target.value)}
                   className="w-full bg-surface border border-white/10 rounded px-2 py-2 text-xs text-text"
                 >
                   <option value="">{isThai ? 'อุตสาหกรรม' : 'Sector'}</option>
                   {sectors.map(sector => (
-                    <option key={sector} value={sector}>{sector}</option>
+                    <option key={sector} value={sector}>
+                      {sector}
+                    </option>
                   ))}
                 </select>
 
                 <select
                   value={filters.solutionFamily}
-                  onChange={(e) => handleFilterChange('solutionFamily', e.target.value)}
+                  onChange={e =>
+                    handleFilterChange('solutionFamily', e.target.value)
+                  }
                   className="w-full bg-surface border border-white/10 rounded px-2 py-2 text-xs text-text"
                 >
                   <option value="">{isThai ? 'โซลูชัน' : 'Solution'}</option>
                   {solutionFamilies.map(family => (
-                    <option key={family} value={family}>{family}</option>
+                    <option key={family} value={family}>
+                      {family}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -250,18 +303,24 @@ export default function CaseFilters({ locale = 'en', onFilterChange }: CaseFilte
               <div className="grid grid-cols-2 gap-3">
                 <select
                   value={filters.dataSensitivity}
-                  onChange={(e) => handleFilterChange('dataSensitivity', e.target.value)}
+                  onChange={e =>
+                    handleFilterChange('dataSensitivity', e.target.value)
+                  }
                   className="w-full bg-surface border border-white/10 rounded px-2 py-2 text-xs text-text"
                 >
                   <option value="">{isThai ? 'ข้อมูล' : 'Data'}</option>
                   {dataSensitivities.map(sensitivity => (
-                    <option key={sensitivity} value={sensitivity}>{sensitivity}</option>
+                    <option key={sensitivity} value={sensitivity}>
+                      {sensitivity}
+                    </option>
                   ))}
                 </select>
 
                 <select
                   value={filters.outcomeType}
-                  onChange={(e) => handleFilterChange('outcomeType', e.target.value)}
+                  onChange={e =>
+                    handleFilterChange('outcomeType', e.target.value)
+                  }
                   className="w-full bg-surface border border-white/10 rounded px-2 py-2 text-xs text-text"
                 >
                   <option value="">{isThai ? 'ผลลัพธ์' : 'Outcome'}</option>

@@ -20,13 +20,15 @@ export async function GET(request: NextRequest) {
       ...(category && { category }),
     });
 
-    const response = await apiClient.get(`/api/content/services?${queryParams}`);
+    const response = await apiClient.get(
+      `/api/content/services?${queryParams}`
+    );
     const validatedResponse = ContentListResponseSchema.parse(response);
 
     return NextResponse.json(validatedResponse);
   } catch (error) {
     console.error('Content services error:', error);
-    
+
     if (error instanceof Error) {
       return NextResponse.json(
         { success: false, message: error.message },

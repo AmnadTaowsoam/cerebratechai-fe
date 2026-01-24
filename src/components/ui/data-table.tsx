@@ -4,28 +4,28 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { 
-  Table, 
-  TableBody, 
-  TableCell, 
-  TableHead, 
-  TableHeader, 
-  TableRow 
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
 } from '@/components/ui/table';
-import { 
+import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { 
-  ChevronLeft, 
-  ChevronRight, 
-  Search, 
+import {
+  ChevronLeft,
+  ChevronRight,
+  Search,
   Filter,
   Download,
-  MoreHorizontal
+  MoreHorizontal,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -53,7 +53,7 @@ export function DataTable<T extends Record<string, any>>({
   filterable = true,
   exportable = true,
   pageSize = 10,
-  className
+  className,
 }: DataTableProps<T>) {
   const [searchTerm, setSearchTerm] = useState('');
   const [sortKey, setSortKey] = useState<keyof T | null>(null);
@@ -70,10 +70,10 @@ export function DataTable<T extends Record<string, any>>({
   // Sort data
   const sortedData = [...filteredData].sort((a, b) => {
     if (!sortKey) return 0;
-    
+
     const aValue = a[sortKey];
     const bValue = b[sortKey];
-    
+
     if (aValue < bValue) return sortDirection === 'asc' ? -1 : 1;
     if (aValue > bValue) return sortDirection === 'asc' ? 1 : -1;
     return 0;
@@ -97,11 +97,11 @@ export function DataTable<T extends Record<string, any>>({
   const handleExport = () => {
     const csvContent = [
       columns.map(col => col.label).join(','),
-      ...data.map(row => 
+      ...data.map(row =>
         columns.map(col => `"${row[col.key] || ''}"`).join(',')
-      )
+      ),
     ].join('\n');
-    
+
     const blob = new Blob([csvContent], { type: 'text/csv' });
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -144,7 +144,7 @@ export function DataTable<T extends Record<string, any>>({
                 <Input
                   placeholder="Search..."
                   value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
+                  onChange={e => setSearchTerm(e.target.value)}
                   className="pl-10"
                 />
               </div>
@@ -168,7 +168,7 @@ export function DataTable<T extends Record<string, any>>({
             <Table>
               <TableHeader>
                 <TableRow>
-                  {columns.map((column) => (
+                  {columns.map(column => (
                     <TableHead
                       key={String(column.key)}
                       className={cn(
@@ -192,12 +192,11 @@ export function DataTable<T extends Record<string, any>>({
               <TableBody>
                 {paginatedData.map((row, index) => (
                   <TableRow key={index} className="hover:bg-surface3">
-                    {columns.map((column) => (
+                    {columns.map(column => (
                       <TableCell key={String(column.key)} className="text-text">
-                        {column.render 
+                        {column.render
                           ? column.render(row[column.key], row)
-                          : String(row[column.key] || '')
-                        }
+                          : String(row[column.key] || '')}
                       </TableCell>
                     ))}
                   </TableRow>
@@ -209,7 +208,9 @@ export function DataTable<T extends Record<string, any>>({
           {/* Pagination */}
           <div className="flex items-center justify-between">
             <div className="text-sm text-text-muted">
-              Showing {startIndex + 1} to {Math.min(endIndex, sortedData.length)} of {sortedData.length} entries
+              Showing {startIndex + 1} to{' '}
+              {Math.min(endIndex, sortedData.length)} of {sortedData.length}{' '}
+              entries
             </div>
             <div className="flex items-center space-x-2">
               <Button
@@ -226,7 +227,9 @@ export function DataTable<T extends Record<string, any>>({
               <Button
                 variant="outline"
                 size="sm"
-                onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                onClick={() =>
+                  setCurrentPage(prev => Math.min(prev + 1, totalPages))
+                }
                 disabled={currentPage === totalPages}
               >
                 <ChevronRight className="h-4 w-4" />

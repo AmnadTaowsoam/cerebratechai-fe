@@ -7,7 +7,7 @@ export function ScrollObserver() {
     if (typeof window === 'undefined') return;
 
     const observer = new IntersectionObserver(
-      (entries) => {
+      entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');

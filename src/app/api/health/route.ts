@@ -16,9 +16,9 @@ export async function GET() {
         memory: {
           used: Math.round(process.memoryUsage().heapUsed / 1024 / 1024),
           total: Math.round(process.memoryUsage().heapTotal / 1024 / 1024),
-          unit: 'MB'
-        }
-      }
+          unit: 'MB',
+        },
+      },
     };
 
     return NextResponse.json(health, { status: 200 });
@@ -27,7 +27,7 @@ export async function GET() {
       {
         status: 'error',
         timestamp: new Date().toISOString(),
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       },
       { status: 503 }
     );
@@ -38,4 +38,3 @@ export async function GET() {
 export async function HEAD() {
   return new NextResponse(null, { status: 200 });
 }
-

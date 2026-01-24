@@ -6,50 +6,54 @@ interface CaseSchemaProps {
   locale?: string;
 }
 
-export default function CaseSchema({ caseItem, locale = 'en' }: CaseSchemaProps) {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://cerebratechai.com';
+export default function CaseSchema({
+  caseItem,
+  locale = 'en',
+}: CaseSchemaProps) {
+  const baseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL || 'https://cerebratechai.com';
   const caseUrl = `${baseUrl}/${locale}/cases/${caseItem.slug}`;
   const nonce = headers().get('x-nonce') ?? undefined;
 
   const schema = {
-    "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    "name": caseItem.title,
-    "description": caseItem.solution,
-    "url": caseUrl,
-    "inLanguage": locale,
-    "about": {
-      "@type": "Thing",
-      "name": caseItem.sector
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: caseItem.title,
+    description: caseItem.solution,
+    url: caseUrl,
+    inLanguage: locale,
+    about: {
+      '@type': 'Thing',
+      name: caseItem.sector,
     },
-    "genre": caseItem.solutionFamily.join(", "),
-    "keywords": [
+    genre: caseItem.solutionFamily.join(', '),
+    keywords: [
       caseItem.sector,
       ...caseItem.solutionFamily,
       caseItem.dataSensitivity,
-      "AI",
-      "Machine Learning",
-      "Case Study"
+      'AI',
+      'Machine Learning',
+      'Case Study',
     ],
-    "creator": {
-      "@type": "Organization",
-      "name": "CerebraTechAI",
-      "url": baseUrl
+    creator: {
+      '@type': 'Organization',
+      name: 'CerebraTechAI',
+      url: baseUrl,
     },
-    "datePublished": "2024-01-01",
-    "dateModified": new Date().toISOString().split('T')[0],
-    "image": caseItem.heroImage ? `${baseUrl}${caseItem.heroImage}` : undefined,
-    "mainEntity": {
-      "@type": "Project",
-      "name": caseItem.title,
-      "description": caseItem.solution,
-      "category": caseItem.sector,
-      "outcome": caseItem.outcomes.map(outcome => ({
-        "@type": "QuantitativeValue",
-        "name": outcome.label,
-        "value": outcome.value
-      }))
-    }
+    datePublished: '2024-01-01',
+    dateModified: new Date().toISOString().split('T')[0],
+    image: caseItem.heroImage ? `${baseUrl}${caseItem.heroImage}` : undefined,
+    mainEntity: {
+      '@type': 'Project',
+      name: caseItem.title,
+      description: caseItem.solution,
+      category: caseItem.sector,
+      outcome: caseItem.outcomes.map(outcome => ({
+        '@type': 'QuantitativeValue',
+        name: outcome.label,
+        value: outcome.value,
+      })),
+    },
   };
 
   return (
@@ -60,4 +64,3 @@ export default function CaseSchema({ caseItem, locale = 'en' }: CaseSchemaProps)
     />
   );
 }
-

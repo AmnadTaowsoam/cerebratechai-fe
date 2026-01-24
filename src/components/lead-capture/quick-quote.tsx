@@ -16,7 +16,9 @@ import { Loader2, Send, CheckCircle, ArrowRight } from 'lucide-react';
 
 const QuickQuoteSchema = z.object({
   email: z.string().email('Invalid email address'),
-  projectType: z.string().min(10, 'Please describe your project (min 10 characters)'),
+  projectType: z
+    .string()
+    .min(10, 'Please describe your project (min 10 characters)'),
 });
 
 type QuickQuoteData = z.infer<typeof QuickQuoteSchema>;
@@ -27,7 +29,11 @@ interface QuickQuoteProps {
   className?: string;
 }
 
-export function QuickQuote({ source = 'unknown', variant = 'default', className = '' }: QuickQuoteProps) {
+export function QuickQuote({
+  source = 'unknown',
+  variant = 'default',
+  className = '',
+}: QuickQuoteProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const locale = useLocale();
@@ -70,7 +76,7 @@ export function QuickQuote({ source = 'unknown', variant = 'default', className 
           title: isThai ? 'สำเร็จ!' : 'Success!',
           description: isThai
             ? 'เราจะส่งใบเสนอราคาเบื้องต้นให้คุณภายใน 24 ชั่วโมง'
-            : 'We\'ll send you a preliminary quote within 24 hours.',
+            : "We'll send you a preliminary quote within 24 hours.",
         });
       } else {
         throw new Error(result.message || 'Failed to send request');
@@ -100,8 +106,7 @@ export function QuickQuote({ source = 'unknown', variant = 'default', className 
             <p className="text-sm text-text-muted mb-4">
               {isThai
                 ? 'เราจะส่งใบเสนอราคาเบื้องต้นให้คุณภายใน 24 ชั่วโมง'
-                : 'We\'ll send you a preliminary quote within 24 hours.'
-              }
+                : "We'll send you a preliminary quote within 24 hours."}
             </p>
             <Button
               onClick={() => setIsSuccess(false)}
@@ -126,8 +131,7 @@ export function QuickQuote({ source = 'unknown', variant = 'default', className 
           <p className="text-sm text-text-muted mb-4">
             {isThai
               ? 'บอกเราสั้น ๆ ว่าต้องการอะไร เราจะส่งใบเสนอราคาให้ภายใน 24 ชม.'
-              : 'Tell us what you need and we\'ll send a quote within 24 hours.'
-            }
+              : "Tell us what you need and we'll send a quote within 24 hours."}
           </p>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div className="space-y-2">
@@ -146,19 +150,21 @@ export function QuickQuote({ source = 'unknown', variant = 'default', className 
               <Textarea
                 {...register('projectType')}
                 className={errors.projectType ? 'border-red-500' : ''}
-                placeholder={isThai ? 'โปรเจกต์ของคุณเป็นอย่างไร? (เช่น ระบบ AI สำหรับตรวจสอบคุณภาพ)' : 'What\'s your project? (e.g. AI for quality inspection)'}
+                placeholder={
+                  isThai
+                    ? 'โปรเจกต์ของคุณเป็นอย่างไร? (เช่น ระบบ AI สำหรับตรวจสอบคุณภาพ)'
+                    : "What's your project? (e.g. AI for quality inspection)"
+                }
                 rows={3}
               />
               {errors.projectType && (
-                <p className="text-xs text-red-500">{errors.projectType.message}</p>
+                <p className="text-xs text-red-500">
+                  {errors.projectType.message}
+                </p>
               )}
             </div>
 
-            <Button
-              type="submit"
-              className="w-full"
-              disabled={isSubmitting}
-            >
+            <Button type="submit" className="w-full" disabled={isSubmitting}>
               {isSubmitting ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -188,8 +194,7 @@ export function QuickQuote({ source = 'unknown', variant = 'default', className 
           <p className="text-text-muted">
             {isThai
               ? 'บอกเราสั้น ๆ ว่าต้องการอะไร เราจะส่งใบเสนอราคาและแผนเบื้องต้นให้คุณภายใน 24 ชั่วโมง'
-              : 'Tell us what you need and we\'ll send a preliminary quote and plan within 24 hours.'
-            }
+              : "Tell us what you need and we'll send a preliminary quote and plan within 24 hours."}
           </p>
         </div>
 
@@ -210,20 +215,23 @@ export function QuickQuote({ source = 'unknown', variant = 'default', className 
 
           <div className="space-y-2">
             <Label htmlFor="projectType">
-              {isThai ? 'โปรเจกต์ของคุณเป็นอย่างไร?' : 'What\'s your project?'} *
+              {isThai ? 'โปรเจกต์ของคุณเป็นอย่างไร?' : "What's your project?"} *
             </Label>
             <Textarea
               id="projectType"
               {...register('projectType')}
               className={errors.projectType ? 'border-red-500' : ''}
-              placeholder={isThai
-                ? 'เช่น "ต้องการระบบ AI สำหรับตรวจสอบคุณภาพผลิตภัณฑ์บนสายการผลิต"'
-                : 'e.g. "Need AI system for quality inspection on production line"'
+              placeholder={
+                isThai
+                  ? 'เช่น "ต้องการระบบ AI สำหรับตรวจสอบคุณภาพผลิตภัณฑ์บนสายการผลิต"'
+                  : 'e.g. "Need AI system for quality inspection on production line"'
               }
               rows={4}
             />
             {errors.projectType && (
-              <p className="text-sm text-red-500">{errors.projectType.message}</p>
+              <p className="text-sm text-red-500">
+                {errors.projectType.message}
+              </p>
             )}
           </div>
 
@@ -248,8 +256,7 @@ export function QuickQuote({ source = 'unknown', variant = 'default', className 
           <p className="text-xs text-center text-text-muted">
             {isThai
               ? 'เราจะตอบกลับภายใน 24 ชั่วโมง (จ-ศ 9:00-18:00)'
-              : 'We respond within 24 hours (Mon-Fri 9:00-18:00)'
-            }
+              : 'We respond within 24 hours (Mon-Fri 9:00-18:00)'}
           </p>
         </form>
       </CardContent>

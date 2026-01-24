@@ -1,38 +1,65 @@
 import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { Layers, Brain, Shield, Database, FileText, Users, Search, Zap, Package, CheckCircle2, AlertTriangle } from 'lucide-react';
+import {
+  Layers,
+  Brain,
+  Shield,
+  Database,
+  FileText,
+  Users,
+  Search,
+  Zap,
+  Package,
+  CheckCircle2,
+  AlertTriangle,
+} from 'lucide-react';
 import { ContactForm } from '@/components/landing/contact-form';
 import { SECTION_SPACING } from '@/lib/constants/spacing';
 import { SeoHead, OrganizationJsonLd } from '@/components/seo';
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
   const isThai = params.locale.startsWith('th');
   return {
-    title: isThai ? 'CerebraForge - Enterprise RAG Platform | Document AI' : 'CerebraForge - Enterprise RAG Platform | Document AI',
+    title: isThai
+      ? 'CerebraForge - Enterprise RAG Platform | Document AI'
+      : 'CerebraForge - Enterprise RAG Platform | Document AI',
     description: isThai
       ? 'Enterprise RAG Platform ที่เข้าใจเอกสารองค์กร สร้าง RAG Application ที่พร้อมใช้งานในไม่กี่สัปดาห์'
       : 'Enterprise RAG Platform that understands organizational documents. Build production-ready RAG applications in weeks.',
   };
 }
 
-export default async function CerebraForgePage({ params }: { params: { locale: string } }) {
-  const t = await getTranslations({ locale: params.locale, namespace: 'products.cerebraforge' });
+export default async function CerebraForgePage({
+  params,
+}: {
+  params: { locale: string };
+}) {
+  const t = await getTranslations({
+    locale: params.locale,
+    namespace: 'products.cerebraforge',
+  });
   const isThai = params.locale.startsWith('th');
   const basePath = `/${params.locale}`;
 
   const heroContent = {
     en: {
-      title: "CerebraForge",
-      subtitle: "Enterprise RAG Platform",
-      usp: "Enterprise RAG That Understands Your Documents",
-      description: "Build production-ready RAG applications in weeks, not months. Complete infrastructure for document intelligence and knowledge management.",
+      title: 'CerebraForge',
+      subtitle: 'Enterprise RAG Platform',
+      usp: 'Enterprise RAG That Understands Your Documents',
+      description:
+        'Build production-ready RAG applications in weeks, not months. Complete infrastructure for document intelligence and knowledge management.',
     },
     th: {
-      title: "CerebraForge",
-      subtitle: "Enterprise RAG Platform",
-      usp: "Enterprise RAG ที่เข้าใจเอกสารองค์กร",
-      description: "สร้าง RAG Application ที่พร้อมใช้งานในไม่กี่สัปดาห์ ไม่ใช่หลายเดือน Infrastructure ครบชุดสำหรับ Document Intelligence และ Knowledge Management",
+      title: 'CerebraForge',
+      subtitle: 'Enterprise RAG Platform',
+      usp: 'Enterprise RAG ที่เข้าใจเอกสารองค์กร',
+      description:
+        'สร้าง RAG Application ที่พร้อมใช้งานในไม่กี่สัปดาห์ ไม่ใช่หลายเดือน Infrastructure ครบชุดสำหรับ Document Intelligence และ Knowledge Management',
     },
   };
 
@@ -41,41 +68,41 @@ export default async function CerebraForgePage({ params }: { params: { locale: s
   const problemSolution = {
     en: {
       problem: {
-        title: "The Problem",
+        title: 'The Problem',
         points: [
-          "Building RAG from scratch takes months of development",
-          "Complex infrastructure setup (Vector DB, embeddings, LLM integration)",
-          "Document parsing and chunking challenges",
-          "Security and multi-tenant requirements are complex",
+          'Building RAG from scratch takes months of development',
+          'Complex infrastructure setup (Vector DB, embeddings, LLM integration)',
+          'Document parsing and chunking challenges',
+          'Security and multi-tenant requirements are complex',
         ],
       },
       solution: {
-        title: "Our Solution",
+        title: 'Our Solution',
         points: [
-          "Complete RAG infrastructure ready to deploy",
-          "Multi-model LLM support (OpenAI, Anthropic, Local)",
-          "Enterprise security with RBAC and audit logs",
-          "Multi-tenant architecture out of the box",
+          'Complete RAG infrastructure ready to deploy',
+          'Multi-model LLM support (OpenAI, Anthropic, Local)',
+          'Enterprise security with RBAC and audit logs',
+          'Multi-tenant architecture out of the box',
         ],
       },
     },
     th: {
       problem: {
-        title: "ปัญหา",
+        title: 'ปัญหา',
         points: [
-          "การสร้าง RAG จากศูนย์ใช้เวลาหลายเดือน",
-          "การตั้งค่า Infrastructure ซับซ้อน (Vector DB, Embeddings, LLM)",
-          "ความท้าทายในการ Parse และ Chunk เอกสาร",
-          "ความต้องการ Security และ Multi-tenant ซับซ้อน",
+          'การสร้าง RAG จากศูนย์ใช้เวลาหลายเดือน',
+          'การตั้งค่า Infrastructure ซับซ้อน (Vector DB, Embeddings, LLM)',
+          'ความท้าทายในการ Parse และ Chunk เอกสาร',
+          'ความต้องการ Security และ Multi-tenant ซับซ้อน',
         ],
       },
       solution: {
-        title: "โซลูชันของเรา",
+        title: 'โซลูชันของเรา',
         points: [
-          "RAG Infrastructure ครบชุดพร้อมใช้งาน",
-          "รองรับหลาย LLM Models (OpenAI, Anthropic, Local)",
-          "Enterprise Security พร้อม RBAC และ Audit Logs",
-          "Multi-tenant Architecture พร้อมใช้งาน",
+          'RAG Infrastructure ครบชุดพร้อมใช้งาน',
+          'รองรับหลาย LLM Models (OpenAI, Anthropic, Local)',
+          'Enterprise Security พร้อม RBAC และ Audit Logs',
+          'Multi-tenant Architecture พร้อมใช้งาน',
         ],
       },
     },
@@ -184,9 +211,22 @@ export default async function CerebraForgePage({ params }: { params: { locale: s
       <SeoHead
         title={`${content.title} - ${content.subtitle}`}
         description={content.description}
-        keywords={isThai
-          ? ['RAG', 'Enterprise RAG', 'Document AI', 'Knowledge Management', 'CerebraForge']
-          : ['RAG', 'Enterprise RAG', 'Document AI', 'Knowledge Management', 'CerebraForge']
+        keywords={
+          isThai
+            ? [
+                'RAG',
+                'Enterprise RAG',
+                'Document AI',
+                'Knowledge Management',
+                'CerebraForge',
+              ]
+            : [
+                'RAG',
+                'Enterprise RAG',
+                'Document AI',
+                'Knowledge Management',
+                'CerebraForge',
+              ]
         }
         url="/products/cerebraforge"
         type="website"
@@ -195,7 +235,9 @@ export default async function CerebraForgePage({ params }: { params: { locale: s
 
       <div className="min-h-screen bg-bg">
         {/* Hero Section */}
-        <section className={`${SECTION_SPACING.HERO} relative overflow-hidden bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-rose-500/10`}>
+        <section
+          className={`${SECTION_SPACING.HERO} relative overflow-hidden bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-rose-500/10`}
+        >
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <div className="inline-block mb-4 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold">
@@ -216,16 +258,10 @@ export default async function CerebraForgePage({ params }: { params: { locale: s
                 {content.description}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  href="#demo"
-                  className="btn-primary"
-                >
+                <Link href="#demo" className="btn-primary">
                   {isThai ? 'ขอ Demo' : 'Request Demo'}
                 </Link>
-                <Link
-                  href="#features"
-                  className="btn-secondary"
-                >
+                <Link href="#features" className="btn-secondary">
                   {isThai ? 'ดูคุณสมบัติ' : 'View Features'}
                 </Link>
               </div>
@@ -243,7 +279,9 @@ export default async function CerebraForgePage({ params }: { params: { locale: s
                   <div className="w-12 h-12 rounded-lg bg-red-500/10 flex items-center justify-center">
                     <AlertTriangle className="w-6 h-6 text-red-500" />
                   </div>
-                  <h2 className="text-2xl font-bold">{psContent.problem.title}</h2>
+                  <h2 className="text-2xl font-bold">
+                    {psContent.problem.title}
+                  </h2>
                 </div>
                 <ul className="space-y-4">
                   {psContent.problem.points.map((point, index) => (
@@ -261,7 +299,9 @@ export default async function CerebraForgePage({ params }: { params: { locale: s
                   <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
                     <CheckCircle2 className="w-6 h-6 text-primary" />
                   </div>
-                  <h2 className="text-2xl font-bold">{psContent.solution.title}</h2>
+                  <h2 className="text-2xl font-bold">
+                    {psContent.solution.title}
+                  </h2>
                 </div>
                 <ul className="space-y-4">
                   {psContent.solution.points.map((point, index) => (
@@ -286,8 +326,7 @@ export default async function CerebraForgePage({ params }: { params: { locale: s
               <p className="text-text-muted max-w-2xl mx-auto">
                 {isThai
                   ? 'ทุกสิ่งที่คุณต้องการสำหรับ RAG Application ระดับ Enterprise'
-                  : 'Everything you need for enterprise-grade RAG applications'
-                }
+                  : 'Everything you need for enterprise-grade RAG applications'}
               </p>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -299,7 +338,9 @@ export default async function CerebraForgePage({ params }: { params: { locale: s
                   <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                     <feature.icon className="w-6 h-6 text-primary" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                  <h3 className="text-xl font-semibold mb-2">
+                    {feature.title}
+                  </h3>
                   <p className="text-text-muted">{feature.description}</p>
                 </div>
               ))}
@@ -324,7 +365,9 @@ export default async function CerebraForgePage({ params }: { params: { locale: s
                   <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
                     <useCase.icon className="w-8 h-8 text-primary" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">{useCase.title}</h3>
+                  <h3 className="text-xl font-semibold mb-2">
+                    {useCase.title}
+                  </h3>
                   <p className="text-text-muted">{useCase.description}</p>
                 </div>
               ))}
@@ -346,10 +389,15 @@ export default async function CerebraForgePage({ params }: { params: { locale: s
                   key={index}
                   className="bg-surface p-6 rounded-xl border border-surface-3"
                 >
-                  <h3 className="text-xl font-semibold mb-4">{spec.category}</h3>
+                  <h3 className="text-xl font-semibold mb-4">
+                    {spec.category}
+                  </h3>
                   <ul className="space-y-2">
                     {spec.items.map((item, itemIndex) => (
-                      <li key={itemIndex} className="flex items-center gap-2 text-text-muted">
+                      <li
+                        key={itemIndex}
+                        className="flex items-center gap-2 text-text-muted"
+                      >
                         <Zap className="w-4 h-4 text-primary" />
                         <span>{item}</span>
                       </li>
@@ -372,12 +420,18 @@ export default async function CerebraForgePage({ params }: { params: { locale: s
             <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
               {/* Starter */}
               <div className="bg-bg p-8 rounded-xl border border-surface-3">
-                <h3 className="text-2xl font-semibold mb-2">{isThai ? 'Starter' : 'Starter'}</h3>
-                <div className="text-4xl font-bold mb-4 text-primary">฿49,000<span className="text-lg text-text-muted">/ปี</span></div>
+                <h3 className="text-2xl font-semibold mb-2">
+                  {isThai ? 'Starter' : 'Starter'}
+                </h3>
+                <div className="text-4xl font-bold mb-4 text-primary">
+                  ฿49,000<span className="text-lg text-text-muted">/ปี</span>
+                </div>
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-center gap-2 text-text-muted">
                     <CheckCircle2 className="w-5 h-5 text-primary" />
-                    <span>{isThai ? '1M tokens/เดือน' : '1M tokens/month'}</span>
+                    <span>
+                      {isThai ? '1M tokens/เดือน' : '1M tokens/month'}
+                    </span>
                   </li>
                   <li className="flex items-center gap-2 text-text-muted">
                     <CheckCircle2 className="w-5 h-5 text-primary" />
@@ -401,16 +455,24 @@ export default async function CerebraForgePage({ params }: { params: { locale: s
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-white text-primary rounded-full text-sm font-semibold">
                   {isThai ? 'แนะนำ' : 'Recommended'}
                 </div>
-                <h3 className="text-2xl font-semibold mb-2">{isThai ? 'Business' : 'Business'}</h3>
-                <div className="text-4xl font-bold mb-4">฿149,000<span className="text-lg opacity-80">/ปี</span></div>
+                <h3 className="text-2xl font-semibold mb-2">
+                  {isThai ? 'Business' : 'Business'}
+                </h3>
+                <div className="text-4xl font-bold mb-4">
+                  ฿149,000<span className="text-lg opacity-80">/ปี</span>
+                </div>
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-5 h-5" />
-                    <span>{isThai ? '10M tokens/เดือน' : '10M tokens/month'}</span>
+                    <span>
+                      {isThai ? '10M tokens/เดือน' : '10M tokens/month'}
+                    </span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-5 h-5" />
-                    <span>{isThai ? 'Priority Support' : 'Priority support'}</span>
+                    <span>
+                      {isThai ? 'Priority Support' : 'Priority support'}
+                    </span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-5 h-5" />
@@ -427,20 +489,30 @@ export default async function CerebraForgePage({ params }: { params: { locale: s
 
               {/* Enterprise */}
               <div className="bg-bg p-8 rounded-xl border border-surface-3">
-                <h3 className="text-2xl font-semibold mb-2">{isThai ? 'Enterprise' : 'Enterprise'}</h3>
-                <div className="text-4xl font-bold mb-4 text-primary">{isThai ? 'Custom' : 'Custom'}</div>
+                <h3 className="text-2xl font-semibold mb-2">
+                  {isThai ? 'Enterprise' : 'Enterprise'}
+                </h3>
+                <div className="text-4xl font-bold mb-4 text-primary">
+                  {isThai ? 'Custom' : 'Custom'}
+                </div>
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-center gap-2 text-text-muted">
                     <CheckCircle2 className="w-5 h-5 text-primary" />
-                    <span>{isThai ? 'Tokens ไม่จำกัด' : 'Unlimited tokens'}</span>
+                    <span>
+                      {isThai ? 'Tokens ไม่จำกัด' : 'Unlimited tokens'}
+                    </span>
                   </li>
                   <li className="flex items-center gap-2 text-text-muted">
                     <CheckCircle2 className="w-5 h-5 text-primary" />
-                    <span>{isThai ? 'Dedicated Support' : 'Dedicated support'}</span>
+                    <span>
+                      {isThai ? 'Dedicated Support' : 'Dedicated support'}
+                    </span>
                   </li>
                   <li className="flex items-center gap-2 text-text-muted">
                     <CheckCircle2 className="w-5 h-5 text-primary" />
-                    <span>{isThai ? 'Custom Deployment' : 'Custom deployment'}</span>
+                    <span>
+                      {isThai ? 'Custom Deployment' : 'Custom deployment'}
+                    </span>
                   </li>
                 </ul>
                 <Link
@@ -460,13 +532,14 @@ export default async function CerebraForgePage({ params }: { params: { locale: s
             <div className="max-w-2xl mx-auto">
               <div className="text-center mb-8">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  {isThai ? 'ขอ Demo CerebraForge' : 'Request CerebraForge Demo'}
+                  {isThai
+                    ? 'ขอ Demo CerebraForge'
+                    : 'Request CerebraForge Demo'}
                 </h2>
                 <p className="text-text-muted">
                   {isThai
                     ? 'มาดูว่า CerebraForge จะช่วยสร้าง RAG Application ให้คุณได้อย่างไร'
-                    : 'See how CerebraForge can help you build RAG applications'
-                  }
+                    : 'See how CerebraForge can help you build RAG applications'}
                 </p>
               </div>
               <ContactForm />
@@ -475,16 +548,19 @@ export default async function CerebraForgePage({ params }: { params: { locale: s
         </section>
 
         {/* CTA Section */}
-        <section className={`${SECTION_SPACING.CTA} bg-gradient-to-r from-purple-500 to-pink-500`}>
+        <section
+          className={`${SECTION_SPACING.CTA} bg-gradient-to-r from-purple-500 to-pink-500`}
+        >
           <div className="container mx-auto px-4 text-center text-white">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              {isThai ? 'พร้อมสร้าง RAG Application ของคุณ?' : 'Ready to Build Your RAG Application?'}
+              {isThai
+                ? 'พร้อมสร้าง RAG Application ของคุณ?'
+                : 'Ready to Build Your RAG Application?'}
             </h2>
             <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
               {isThai
                 ? 'เริ่มต้นใช้งาน CerebraForge วันนี้และสร้าง RAG Application ในไม่กี่สัปดาห์'
-                : 'Start using CerebraForge today and build RAG applications in weeks'
-              }
+                : 'Start using CerebraForge today and build RAG applications in weeks'}
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link

@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { AnalyticsEventSchema, AnalyticsResponseSchema } from '@/lib/schemas/analytics';
+import {
+  AnalyticsEventSchema,
+  AnalyticsResponseSchema,
+} from '@/lib/schemas/analytics';
 import { apiClient } from '@/lib/api-client';
 
 // Avoid spamming downstream requests when the analytics service is offline
@@ -12,11 +15,19 @@ export async function POST(request: NextRequest) {
 
     // Send to analytics endpoint
     const analyticsUrl = process.env.ANALYTICS_ENDPOINT;
-    const isAnalyticsEnabled = String(process.env.ANALYTICS_ENABLED ?? 'false').toLowerCase();
-    const analyticsDisabled = isAnalyticsEnabled === 'false' || isAnalyticsEnabled === '0';
+    const isAnalyticsEnabled = String(
+      process.env.ANALYTICS_ENABLED ?? 'false'
+    ).toLowerCase();
+    const analyticsDisabled =
+      isAnalyticsEnabled === 'false' || isAnalyticsEnabled === '0';
 
     // Always disable analytics in development mode
-    if (process.env.NODE_ENV === 'development' || !analyticsUrl || analyticsDisabled || analyticsUnavailable) {
+    if (
+      process.env.NODE_ENV === 'development' ||
+      !analyticsUrl ||
+      analyticsDisabled ||
+      analyticsUnavailable
+    ) {
       return NextResponse.json(
         { success: true, message: 'Analytics disabled in development mode' },
         { status: 200 }
@@ -42,7 +53,7 @@ export async function POST(request: NextRequest) {
     }
   } catch (error) {
     console.error('Analytics error:', error);
-    
+
     if (error instanceof Error) {
       return NextResponse.json(
         { success: false, message: error.message },
