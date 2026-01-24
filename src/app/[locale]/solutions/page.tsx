@@ -133,7 +133,7 @@ export default function SolutionsPage({ params }: SolutionsPageProps) {
               {/* Main Ecosystem Diagram */}
               <div className="overflow-hidden rounded-3xl border border-white/10 bg-surface/60 p-4 backdrop-blur">
                 <Image
-                  src="/Cerebra Ecosystem pitch.png"
+                  src="/cerebra-ecosystem-pitch.png"
                   alt={t('Cerebra Ecosystem Overview - แพลตฟอร์ม AI และ IoT', 'Cerebra Ecosystem Overview - AI & IoT Platform')}
                   width={1200}
                   height={675}
@@ -149,7 +149,7 @@ export default function SolutionsPage({ params }: SolutionsPageProps) {
               <div className="grid gap-6 md:grid-cols-2">
                 <div className="overflow-hidden rounded-3xl border border-white/10 bg-surface/60 p-4 backdrop-blur">
                   <Image
-                    src="/Cerebra Ecosystem training_2.png"
+                    src="/cerebra-ecosystem-training-2.png"
                     alt={t('Core Value Propositions และ Success Metrics', 'Core Value Propositions and Success Metrics')}
                     width={800}
                     height={600}
@@ -162,7 +162,7 @@ export default function SolutionsPage({ params }: SolutionsPageProps) {
 
                 <div className="overflow-hidden rounded-3xl border border-white/10 bg-surface/60 p-4 backdrop-blur">
                   <Image
-                    src="/Cerebra Ecosystem training.png"
+                    src="/cerebra-ecosystem-training.png"
                     alt={t('Platform Overview และ Solution Packages', 'Platform Overview and Solution Packages')}
                     width={800}
                     height={600}

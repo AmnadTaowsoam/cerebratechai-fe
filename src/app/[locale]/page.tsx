@@ -220,7 +220,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
 
           <div className="overflow-hidden rounded-2xl border border-surface-3 bg-bg p-4 shadow-xl">
             <Image
-              src="/Cerebra Ecosystem pitch.png"
+              src="/cerebra-ecosystem-pitch.png"
               alt={isThai ? 'Cerebra Ecosystem Overview - แพลตฟอร์ม AI และ IoT' : 'Cerebra Ecosystem Overview - AI & IoT Platform'}
               width={1200}
               height={675}
