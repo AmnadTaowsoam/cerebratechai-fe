@@ -80,10 +80,13 @@ jobs:
 
       - name: Start application in background
         run: |
-          # Kill any process using port 3000
-          lsof -ti:3000 | xargs kill -9 2>/dev/null || true
+          # Kill any existing Next.js processes
+          pkill -f "next start" || true
+          pkill -f "node.*next" || true
           # Start application
           yarn start &
+          # Store PID for later cleanup
+          echo $! > .next-server.pid
           # Wait for application to be ready
           npx wait-on http://localhost:3000 --timeout 60000
 
@@ -95,8 +98,14 @@ jobs:
       - name: Cleanup
         if: always()
         run: |
-          # Kill the Next.js server
-          lsof -ti:3000 | xargs kill -9 2>/dev/null || true
+          # Kill the Next.js server using stored PID
+          if [ -f .next-server.pid ]; then
+            kill $(cat .next-server.pid) 2>/dev/null || true
+            rm .next-server.pid
+          fi
+          # Fallback: kill any remaining processes
+          pkill -f "next start" || true
+          pkill -f "node.*next" || true
 
       - name: Upload test results
         if: always()
@@ -144,10 +153,13 @@ jobs:
 
       - name: Start application in background
         run: |
-          # Kill any process using port 3000
-          lsof -ti:3000 | xargs kill -9 2>/dev/null || true
+          # Kill any existing Next.js processes
+          pkill -f "next start" || true
+          pkill -f "node.*next" || true
           # Start application
           yarn start &
+          # Store PID for later cleanup
+          echo $! > .next-server.pid
           # Wait for application to be ready
           npx wait-on http://localhost:3000 --timeout 60000
 
@@ -159,8 +171,14 @@ jobs:
       - name: Cleanup
         if: always()
         run: |
-          # Kill the Next.js server
-          lsof -ti:3000 | xargs kill -9 2>/dev/null || true
+          # Kill the Next.js server using stored PID
+          if [ -f .next-server.pid ]; then
+            kill $(cat .next-server.pid) 2>/dev/null || true
+            rm .next-server.pid
+          fi
+          # Fallback: kill any remaining processes
+          pkill -f "next start" || true
+          pkill -f "node.*next" || true
 
       - name: Upload Lighthouse results
         if: always()
@@ -226,10 +244,13 @@ jobs:
 
       - name: Start application in background
         run: |
-          # Kill any process using port 3000
-          lsof -ti:3000 | xargs kill -9 2>/dev/null || true
+          # Kill any existing Next.js processes
+          pkill -f "next start" || true
+          pkill -f "node.*next" || true
           # Start application
           yarn start &
+          # Store PID for later cleanup
+          echo $! > .next-server.pid
           # Wait for application to be ready
           npx wait-on http://localhost:3000 --timeout 60000
 
@@ -241,8 +262,14 @@ jobs:
       - name: Cleanup
         if: always()
         run: |
-          # Kill the Next.js server
-          lsof -ti:3000 | xargs kill -9 2>/dev/null || true
+          # Kill the Next.js server using stored PID
+          if [ -f .next-server.pid ]; then
+            kill $(cat .next-server.pid) 2>/dev/null || true
+            rm .next-server.pid
+          fi
+          # Fallback: kill any remaining processes
+          pkill -f "next start" || true
+          pkill -f "node.*next" || true
 
       - name: Upload test results
         if: always()
