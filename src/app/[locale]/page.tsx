@@ -1,7 +1,8 @@
 import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { Brain, Cpu, Layers, BarChart, Sparkles, Heart, Leaf, ExternalLink } from 'lucide-react';
+import Image from 'next/image';
+import { Brain, Cpu, Layers, BarChart, Sparkles, Heart, Leaf, ExternalLink, ArrowRight } from 'lucide-react';
 import { SeoHead, OrganizationJsonLd, WebsiteJsonLd, ServiceJsonLd, LocalBusinessJsonLd } from '@/components/seo';
 import { WebVitalsClient } from '@/components/metrics/web-vitals-client';
 import { StatsSection } from '@/components/landing/stats-section';
@@ -199,8 +200,49 @@ export default async function HomePage({ params }: { params: { locale: string } 
         </div>
       </section>
 
-      {/* 3. FEATURED SOLUTIONS (2 cards - Highlight) */}
+      {/* 3. ECOSYSTEM OVERVIEW */}
       <section className={`${SECTION_SPACING.FEATURES} bg-surface`}>
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <span className="inline-block mb-4 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold">
+              {isThai ? 'ภาพรวม Ecosystem' : 'Ecosystem Overview'}
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              {isThai ? 'Cerebra: แพลตฟอร์ม AI และ IoT แบบ Private-First' : 'Cerebra: The Private-First AI & IoT Platform'}
+            </h2>
+            <p className="text-lg text-text-muted max-w-3xl mx-auto">
+              {isThai
+                ? 'ระบบที่ออกแบบมาเพื่อความเป็นส่วนตัว ยืดหยุ่น และพร้อมใช้งานจริง'
+                : 'A system designed for privacy, flexibility, and production-ready deployment'
+              }
+            </p>
+          </div>
+
+          <div className="overflow-hidden rounded-2xl border border-surface-3 bg-bg p-4 shadow-xl">
+            <Image
+              src="/Cerebra Ecosystem pitch.png"
+              alt={isThai ? 'Cerebra Ecosystem Overview - แพลตฟอร์ม AI และ IoT' : 'Cerebra Ecosystem Overview - AI & IoT Platform'}
+              width={1200}
+              height={675}
+              className="w-full rounded-xl"
+              priority
+            />
+          </div>
+
+          <div className="text-center mt-8">
+            <Link
+              href={`/${params.locale}/solutions` as any}
+              className="inline-flex items-center gap-2 text-primary font-semibold hover:underline"
+            >
+              {isThai ? 'ดูรายละเอียด Solutions เพิ่มเติม' : 'Explore Solutions in Detail'}
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. FEATURED SOLUTIONS (2 cards - Highlight) */}
+      <section className={`${SECTION_SPACING.FEATURES} bg-bg`}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <span className="inline-block mb-4 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold">
@@ -242,8 +284,8 @@ export default async function HomePage({ params }: { params: { locale: string } 
         </div>
       </section>
 
-      {/* 4. VERTICAL PLATFORMS (External - Proof of Work) */}
-      <section className={`${SECTION_SPACING.FEATURES} bg-bg`}>
+      {/* 5. VERTICAL PLATFORMS (External - Proof of Work) */}
+      <section className={`${SECTION_SPACING.FEATURES} bg-surface`}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -283,13 +325,13 @@ export default async function HomePage({ params }: { params: { locale: string } 
         </div>
       </section>
 
-      {/* 5. TRUST SIGNALS */}
-      <section className={`${SECTION_SPACING.FEATURES} bg-surface`}>
+      {/* 6. TRUST SIGNALS */}
+      <section className={`${SECTION_SPACING.FEATURES} bg-bg`}>
         <StatsSection />
         <SocialProofSection />
       </section>
 
-      {/* 6. CTA SECTION */}
+      {/* 7. CTA SECTION */}
       <section className={`${SECTION_SPACING.CTA} bg-gradient-to-r from-primary to-secondary`}>
         <div className="container mx-auto px-4 text-center text-white">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">

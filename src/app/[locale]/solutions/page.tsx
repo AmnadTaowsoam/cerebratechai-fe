@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 
 import { MagicHero, Particles, ShimmerButton } from '@/components/magicui';
@@ -105,6 +106,72 @@ export default function SolutionsPage({ params }: SolutionsPageProps) {
                   {t('ขอใบเสนอราคา', 'Request a quote')}
                   <ArrowRight className="h-3 w-3" />
                 </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Ecosystem Overview Section */}
+        <section className="py-16">
+          <div className="container mx-auto px-6">
+            <div className="mb-12 text-center">
+              <span className="inline-flex items-center rounded-full bg-surface-2 px-4 py-1 text-sm font-medium text-primary">
+                {t('ภาพรวม Ecosystem', 'Ecosystem Overview')}
+              </span>
+              <h2 className="mt-4 text-3xl font-bold text-text md:text-4xl">
+                {t('Cerebra: แพลตฟอร์ม AI และ IoT แบบ Private-First', 'Cerebra: The Private-First AI & IoT Platform')}
+              </h2>
+              <p className="mt-3 mx-auto max-w-3xl text-text-muted">
+                {t(
+                  'ระบบที่ออกแบบมาเพื่อความเป็นส่วนตัว ยืดหยุ่น และพร้อมใช้งานจริง',
+                  'A system designed for privacy, flexibility, and production-ready deployment'
+                )}
+              </p>
+            </div>
+
+            <div className="grid gap-8 lg:grid-cols-1">
+              {/* Main Ecosystem Diagram */}
+              <div className="overflow-hidden rounded-3xl border border-white/10 bg-surface/60 p-4 backdrop-blur">
+                <Image
+                  src="/Cerebra Ecosystem pitch.png"
+                  alt={t('Cerebra Ecosystem Overview - แพลตฟอร์ม AI และ IoT', 'Cerebra Ecosystem Overview - AI & IoT Platform')}
+                  width={1200}
+                  height={675}
+                  className="w-full rounded-2xl"
+                  priority
+                />
+                <p className="mt-4 text-center text-sm text-text-muted">
+                  {t('CerebraLoLM, CerebraForge & Agent, CerebraCV & IoT และ Solution Packages', 'CerebraLoLM, CerebraForge & Agent, CerebraCV & IoT and Solution Packages')}
+                </p>
+              </div>
+
+              {/* Value Propositions & Metrics */}
+              <div className="grid gap-6 md:grid-cols-2">
+                <div className="overflow-hidden rounded-3xl border border-white/10 bg-surface/60 p-4 backdrop-blur">
+                  <Image
+                    src="/Cerebra Ecosystem training_2.png"
+                    alt={t('Core Value Propositions และ Success Metrics', 'Core Value Propositions and Success Metrics')}
+                    width={800}
+                    height={600}
+                    className="w-full rounded-2xl"
+                  />
+                  <p className="mt-4 text-center text-sm text-text-muted">
+                    {t('Core Value Propositions: Private-First, Modular Design, Local LLM', 'Core Value Propositions: Private-First, Modular Design, Local LLM')}
+                  </p>
+                </div>
+
+                <div className="overflow-hidden rounded-3xl border border-white/10 bg-surface/60 p-4 backdrop-blur">
+                  <Image
+                    src="/Cerebra Ecosystem training.png"
+                    alt={t('Platform Overview และ Solution Packages', 'Platform Overview and Solution Packages')}
+                    width={800}
+                    height={600}
+                    className="w-full rounded-2xl"
+                  />
+                  <p className="mt-4 text-center text-sm text-text-muted">
+                    {t('Solution Packages: Smart Document, Smart Factory, Smart Farm', 'Solution Packages: Smart Document, Smart Factory, Smart Farm')}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
