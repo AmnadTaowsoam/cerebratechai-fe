@@ -26,6 +26,60 @@ export const RESOURCE_ICON: Record<ResourceType, any> = {
 
 export const RESOURCES: ResourceItem[] = [
   {
+    slug: 'ai-for-manufacturing',
+    type: 'whitepaper',
+    title: {
+      en: 'AI in Manufacturing: Zero Defect Production Guide',
+      th: 'AI ในโรงงานอุตสาหกรรม: คู่มือสู่การผลิตแบบ Zero Defect',
+    },
+    description: {
+      en: 'How to implement Computer Vision and IoT for 100% quality control and predictive maintenance.',
+      th: 'แนวทางการใช้ Computer Vision และ IoT เพื่อควบคุมคุณภาพ 100% และการทำ Predictive Maintenance',
+    },
+    category: { en: 'Manufacturing', th: 'การผลิต' },
+    downloadUrl: '/resources/ai-manufacturing-guide.pdf',
+    format: 'PDF',
+    size: '12 KB',
+    pages: '15 pages',
+    date: '2025-02-15',
+  },
+  {
+    slug: 'ai-for-healthcare',
+    type: 'whitepaper',
+    title: {
+      en: 'AI in Healthcare: Enhancing Diagnostic Precision',
+      th: 'AI ทางการแพทย์: ยกระดับความแม่นยำในการวินิจฉัย',
+    },
+    description: {
+      en: 'Case studies on using AI for medical imaging analysis and patient data triaging.',
+      th: 'กรณีศึกษาการใช้ AI วิเคราะห์ภาพถ่ายทางการแพทย์และการคัดกรองผู้ป่วย',
+    },
+    category: { en: 'Healthcare', th: 'การแพทย์' },
+    downloadUrl: '/resources/ai-healthcare-guide.pdf',
+    format: 'PDF',
+    size: '9 KB',
+    pages: '12 pages',
+    date: '2025-02-12',
+  },
+  {
+    slug: 'gen-ai-retail',
+    type: 'ebook',
+    title: {
+      en: 'Generative AI for Retail: Hyper-Personalization',
+      th: 'Generative AI สำหรับค้าปลีก: การสร้างประสบการณ์เฉพาะบุคคล',
+    },
+    description: {
+      en: 'Strategies to use GenAI for personalized marketing, virtual assistants, and inventory planning.',
+      th: 'กลยุทธ์การใช้ GenAI ทำการตลาดเฉพาะบุคคล, ผู้ช่วยเสมือน และวางแผนสต็อกสินค้า',
+    },
+    category: { en: 'Retail', th: 'ค้าปลีก' },
+    downloadUrl: '/resources/gen-ai-retail.pdf',
+    format: 'PDF',
+    size: '15 KB',
+    pages: '20 pages',
+    date: '2025-02-10',
+  },
+  {
     slug: 'ai-implementation-roadmap',
     type: 'whitepaper',
     title: {

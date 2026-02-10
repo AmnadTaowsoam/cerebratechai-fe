@@ -3,58 +3,15 @@ version: '3.8'
 services:
   # Frontend Web Application
   web:
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-https://cerebratechai.com}
-        NEXT_PUBLIC_API_BASE_URL: ${NEXT_PUBLIC_API_BASE_URL:-https://api.cerebratechai.com}
-        NEXT_PUBLIC_CONTENT_API_URL: ${NEXT_PUBLIC_CONTENT_API_URL:-https://api.cerebratechai.com/content}
-        NEXT_PUBLIC_GA_ID: ${NEXT_PUBLIC_GA_ID}
-        NEXT_PUBLIC_GTM_ID: ${NEXT_PUBLIC_GTM_ID}
-        NEXT_PUBLIC_FB_PIXEL_ID: ${NEXT_PUBLIC_FB_PIXEL_ID}
+    image: alpine:3.18
+    command: ["sh", "-c", "echo 'cerebratechai web prod disabled (placeholder)'; sleep infinity"]
     container_name: cerebratechai-web-prod
     ports:
-      - '3000:3000'
-    environment:
-      - NODE_ENV=production
-      - NEXT_TELEMETRY_DISABLED=1
-      - NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL:-https://cerebratechai.com}
-      - NEXT_PUBLIC_API_BASE_URL=${NEXT_PUBLIC_API_BASE_URL:-https://api.cerebratechai.com}
-      - NEXT_PUBLIC_CONTENT_API_URL=${NEXT_PUBLIC_CONTENT_API_URL:-https://api.cerebratechai.com/content}
-      - NEXT_PUBLIC_GA_ID=${NEXT_PUBLIC_GA_ID}
-      - NEXT_PUBLIC_GTM_ID=${NEXT_PUBLIC_GTM_ID}
-      - NEXT_PUBLIC_FB_PIXEL_ID=${NEXT_PUBLIC_FB_PIXEL_ID}
+      - '3220:3000'
     restart: unless-stopped
     networks:
       - cerebratechai-network
-    healthcheck:
-      test:
-        [
-          'CMD',
-          'wget',
-          '--no-verbose',
-          '--tries=1',
-          '--spider',
-          'http://localhost:3000/api/health',
-        ]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 60s
-    deploy:
-      resources:
-        limits:
-          cpus: '2'
-          memory: 2G
-        reservations:
-          cpus: '1'
-          memory: 1G
-    labels:
-      - 'com.cerebratechai.service=web'
-      - 'com.cerebratechai.environment=production'
 
 networks:
   cerebratechai-network:
-    external: true
-    name: cerebratechai-network
+    driver: bridge

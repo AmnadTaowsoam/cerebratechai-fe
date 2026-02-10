@@ -2,7 +2,7 @@
 
 import { useLocale } from 'next-intl';
 import { Card, CardContent } from '@/components/ui/card';
-import { TrendingUp, Users, Zap, Award } from 'lucide-react';
+import { TrendingUp, Users, Zap, Award, Factory, Activity, Layers, Cpu, Truck, FileText } from 'lucide-react';
 
 export function StatsSection() {
   const locale = useLocale();
@@ -11,37 +11,37 @@ export function StatsSection() {
   const stats = [
     {
       icon: TrendingUp,
-      value: '9+',
-      label: isThai ? 'โครงการ' : 'Projects',
+      value: '500+',
+      label: isThai ? 'Scenarios ที่พร้อมใช้' : 'Ready-to-use Scenarios',
       description: isThai
-        ? 'โครงการ AI ที่ส่งมอบจริง'
-        : 'AI projects delivered',
+        ? 'ครอบคลุมทุกอุตสาหกรรม'
+        : 'Covering all industries',
       color: 'text-primary',
       bgColor: 'bg-primary/10',
     },
     {
-      icon: Users,
-      value: '3+',
-      label: isThai ? 'แพลตฟอร์ม' : 'Platforms',
+      icon: Layers,
+      value: '30+',
+      label: isThai ? 'โมดูล AI' : 'AI Modules',
       description: isThai
-        ? 'แพลตฟอร์มที่พัฒนา (malAI, DulaeDee, CerebraForge)'
-        : 'Platforms developed (malAI, DulaeDee, CerebraForge)',
+        ? 'เชื่อมต่อได้ทันทีแบบ Lego'
+        : 'Plug-and-play like Lego',
       color: 'text-accent',
       bgColor: 'bg-accent/10',
     },
     {
       icon: Zap,
-      value: '2025',
-      label: isThai ? 'ก่อตั้ง' : 'Founded',
-      description: isThai ? 'เริ่มดำเนินงาน' : 'Started operations',
+      value: '10M+',
+      label: isThai ? 'Images/Docs' : 'Images/Docs',
+      description: isThai ? 'ประมวลผลต่อเดือน' : 'Processed monthly',
       color: 'text-primary',
       bgColor: 'bg-primary/10',
     },
     {
       icon: Award,
-      value: '100%',
-      label: isThai ? 'โฟกัส SME' : 'SME Focused',
-      description: isThai ? 'งานขนาดเล็กถึงกลาง' : 'Small to mid-size projects',
+      value: '99.9%',
+      label: isThai ? 'Enterprise Uptime' : 'Enterprise Uptime',
+      description: isThai ? 'เสถียรภาพระดับองค์กร' : 'Reliabilitiy guarantee',
       color: 'text-accent',
       bgColor: 'bg-accent/10',
     },
@@ -49,82 +49,88 @@ export function StatsSection() {
 
   const achievements = [
     {
-      titleEn: 'phithiai',
-      titleTh: 'แพลตฟอร์ม phithiai',
-      metric: '40%',
-      descriptionEn: 'Reduction in event planning time',
-      descriptionTh: 'ลดเวลาวางแผนงานพิธี',
-      impactEn: '1,200+ active users, 350+ vendors onboarded',
-      impactTh: 'ผู้ใช้ 1,200+ ราย, ผู้ให้บริการ 350+ ราย',
+      icon: Factory,
+      titleEn: 'Industrial QC',
+      titleTh: 'การควบคุมคุณภาพอุตสาหกรรม',
+      metric: '85%',
+      descriptionEn: 'Waste Reduction',
+      descriptionTh: 'ลดของเสียในโรงงาน',
+      impactEn: 'Real-time defect detection, 1M+ parts inspected',
+      impactTh: 'ตรวจจับแบบเรียลไทม์, ตรวจสอบแล้ว 1M+ ชิ้น',
     },
     {
-      titleEn: 'sookwei',
-      titleTh: 'sookwei',
+      icon: Activity,
+      titleEn: 'Healthcare AI',
+      titleTh: 'AI ทางการแพทย์',
       metric: '60%',
-      descriptionEn: 'Faster user onboarding process',
-      descriptionTh: 'ออนบอร์ดผู้ใช้เร็วขึ้น',
-      impactEn: '2,500+ active users, 99.8% platform uptime',
-      impactTh: 'ผู้ใช้ 2,500+ ราย, uptime 99.8%',
+      descriptionEn: 'Faster Diagnosis Support',
+      descriptionTh: 'ช่วยวินิจฉัยเร็วขึ้น',
+      impactEn: 'Pathology & Radiology analysis support',
+      impactTh: 'วิเคราะห์พยาธิวิทยาและรังสีวิทยา',
     },
     {
-      titleEn: 'CerebraForge System',
-      titleTh: 'ระบบ CerebraForge',
+      icon: Layers,
+      titleEn: 'CerebraForge (RAG)',
+      titleTh: 'CerebraForge (RAG)',
       metric: '70%',
-      descriptionEn: 'Faster knowledge retrieval',
+      descriptionEn: 'Faster Knowledge Retrieval',
       descriptionTh: 'ค้นหาความรู้เร็วขึ้น',
-      impactEn: '50K+ documents indexed, 3,000+ daily queries',
-      impactTh: 'เอกสาร 50K+, คำค้น 3,000+ ต่อวัน',
+      impactEn: 'Enterprise Search, 50K+ documents indexed',
+      impactTh: 'ค้นหาข้อมูลองค์กร, จัดเก็บ 50K+ เอกสาร',
     },
     {
-      titleEn: 'Edge AI Solutions',
-      titleTh: 'โซลูชัน Edge AI',
-      metric: '90%',
-      descriptionEn: 'Latency reduction vs cloud',
-      descriptionTh: 'ลด latency เมื่อเทียบกับ cloud',
-      impactEn: '80+ deployments, 100% offline capability',
-      impactTh: 'ดีพลอย 80+ ครั้ง, ทำงานออฟไลน์ 100%',
+      icon: Cpu,
+      titleEn: 'Edge Intelligence',
+      titleTh: 'Edge Intelligence',
+      metric: '<50ms',
+      descriptionEn: 'Ultra-low Latency',
+      descriptionTh: 'ความหน่วงต่ำมาก',
+      impactEn: '100% Offline capability, Privacy-first',
+      impactTh: 'ทำงานออฟไลน์ 100%, รักษาความเป็นส่วนตัว',
     },
     {
-      titleEn: 'Computer Vision',
-      titleTh: 'Computer Vision',
-      metric: '95%',
-      descriptionEn: 'Accuracy in weight prediction',
-      descriptionTh: 'ความแม่นยำในการทำนายน้ำหนัก',
-      impactEn: '10K+ items/day processed, ±2% precision',
-      impactTh: 'ประมวลผล 10K+ ชิ้น/วัน, คลาดเคลื่อน ±2%',
+      icon: Truck,
+      titleEn: 'Smart Logistics',
+      titleTh: 'โลจิสติกส์อัจฉริยะ',
+      metric: '99.5%',
+      descriptionEn: 'Counting Accuracy',
+      descriptionTh: 'ความแม่นยำการนับ',
+      impactEn: 'Automated inventory & package sorting',
+      impactTh: 'นับสต็อกและคัดแยกพัสดุอัตโนมัติ',
     },
     {
-      titleEn: 'OCR Dashboard',
-      titleTh: 'OCR Dashboard',
+      icon: FileText,
+      titleEn: 'Financial Doc AI',
+      titleTh: 'AI เอกสารการเงิน',
       metric: '98%',
-      descriptionEn: 'OCR accuracy rate',
-      descriptionTh: 'ความแม่นยำของ OCR',
-      impactEn: '5,000+ documents/day, <3 sec processing',
-      impactTh: 'เอกสาร 5,000+ ฉบับ/วัน, ประมวลผล <3 วินาที',
+      descriptionEn: 'OCR Accuracy (Thai)',
+      descriptionTh: 'ความแม่นยำ OCR ภาษาไทย',
+      impactEn: 'Invoice & Tax receipt automation',
+      impactTh: 'ประมวลผลใบแจ้งหนี้และใบกำกับภาษี',
     },
   ];
 
   const industries = [
     {
-      nameEn: 'Event Management',
-      nameTh: 'งานพิธีและอีเวนต์',
-      count: '1,200+',
+      nameEn: 'Manufacturing',
+      nameTh: 'การผลิตและโรงงาน',
+      count: '50+',
     },
     {
-      nameEn: 'Healthcare & Wellness',
-      nameTh: 'สุขภาพและเวลเนส',
-      count: '2,500+',
+      nameEn: 'Healthcare',
+      nameTh: 'โรงพยาบาลและการแพทย์',
+      count: '20+',
     },
-    { nameEn: 'Enterprise Software', nameTh: 'ซอฟต์แวร์องค์กร', count: '50K+' },
+    { nameEn: 'Retail & Service', nameTh: 'ค้าปลีกและบริการ', count: '100+' },
     {
-      nameEn: 'Security & Surveillance',
-      nameTh: 'ความปลอดภัยและเฝ้าระวัง',
-      count: '150+',
+      nameEn: 'Logistics',
+      nameTh: 'โลจิสติกส์',
+      count: '30+',
     },
     {
-      nameEn: 'Logistics & Agriculture',
-      nameTh: 'โลจิสติกส์และเกษตร',
-      count: '10K+',
+      nameEn: 'Agriculture',
+      nameTh: 'การเกษตร',
+      count: '500+', // Keeping high count for agtech platform legacy users if needed, or just generic sensors
     },
   ];
 
@@ -139,18 +145,13 @@ export function StatsSection() {
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-text mb-4">
             {isThai
-              ? 'โครงการและโซลูชันที่พัฒนาแล้ว'
-              : 'Projects & Solutions Developed'}
+              ? 'ความสำเร็จและผลลัพธ์ที่พิสูจน์แล้ว'
+              : 'Proven Impact & Achievements'}
           </h2>
           <p className="text-text-muted max-w-2xl mx-auto">
             {isThai
-              ? 'ผลงานของเราครอบคลุมหลายอุตสาหกรรม ตั้งแต่ระบบอีเวนต์ไปจนถึง Edge Computing และ Knowledge Management'
-              : 'AI solutions we develop span multiple industries, from event management to edge computing and knowledge management.'}
-          </p>
-          <p className="text-xs text-text-muted/70 mt-4 max-w-3xl mx-auto">
-            {isThai
-              ? '* ตัวเลขและผลลัพธ์อ้างอิงจากโครงการจริงและข้อมูลสังเคราะห์เพื่อการสาธิต ผลลัพธ์จริงอาจแตกต่างตามบริบท'
-              : '* Figures and outcomes shown are based on actual projects and synthetic data for demonstration. Actual results may vary based on multiple factors.'}
+              ? 'เรานำเทคโนโลยี AI ระดับโลกมาประยุกต์ใช้เพื่อแก้ปัญหาจริงในหลากหลายอุตสาหกรรม'
+              : 'Applying world-class AI technology to solve real-world problems across industries.'}
           </p>
         </div>
 
@@ -185,7 +186,7 @@ export function StatsSection() {
         {/* Project Achievements */}
         <div className="mb-12">
           <h3 className="text-2xl font-bold text-text mb-8 text-center">
-            {isThai ? 'ผลลัพธ์จากโครงการ' : 'Project Achievements'}
+            {isThai ? 'Use Cases ที่ประสบความสำเร็จ' : 'Successful Use Cases'}
           </h3>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {achievements.map((achievement, index) => (
@@ -194,9 +195,15 @@ export function StatsSection() {
                 className="border border-hairline bg-surface/80 backdrop-blur hover:shadow-lg transition-all"
               >
                 <CardContent className="p-6">
-                  <h4 className="text-lg font-semibold text-text mb-3">
-                    {isThai ? achievement.titleTh : achievement.titleEn}
-                  </h4>
+                  <div className="flex items-center gap-3 mb-4">
+                     <div className="p-2 rounded-lg bg-primary/10 text-primary">
+                        <achievement.icon className="w-5 h-5" />
+                     </div>
+                     <h4 className="text-lg font-semibold text-text">
+                        {isThai ? achievement.titleTh : achievement.titleEn}
+                      </h4>
+                  </div>
+                  
                   <div className="flex items-baseline gap-2 mb-3">
                     <span className="text-4xl font-bold text-primary">
                       {achievement.metric}

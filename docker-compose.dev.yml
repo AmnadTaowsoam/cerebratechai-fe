@@ -13,57 +13,27 @@ services:
   # ==================== WEB APPLICATION ====================
 
   web:
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-http://localhost:3000}
-        NEXT_PUBLIC_CONTENT_API_URL: ${NEXT_PUBLIC_CONTENT_API_URL:-http://localhost:7010}
-    image: cerebratechai/web:dev
+    image: alpine:3.18
     container_name: cerebratechai-web-dev
     ports:
-      - '3000:3000'
-    environment:
-      - NODE_ENV=development
-      - NEXT_TELEMETRY_DISABLED=1
-      - NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL:-http://localhost:3000}
-      - NEXT_PUBLIC_CONTENT_API_URL=${NEXT_PUBLIC_CONTENT_API_URL:-http://localhost:7010}
-      # Contact Service
-      - CONTACT_SERVICE_URL=http://contact-service:7002
-      - CONTACT_API_KEY=${CONTACT_API_KEY:-cerebratechai-contact-api-key-2024}
-    volumes:
-      - ./src:/app/src:ro
-      - ./public:/app/public:ro
+      - '3218:3000'
+    command: ["sh", "-c", "echo 'cerebratechai web disabled (placeholder)'; sleep infinity"]
     networks:
       - cerebratechai-dev
     depends_on:
       - contact-service
     restart: unless-stopped
-    healthcheck:
-      test:
-        [
-          'CMD',
-          'wget',
-          '--no-verbose',
-          '--tries=1',
-          '--spider',
-          'http://localhost:3000/api/health',
-        ]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 60s
 
   # ==================== CONTACT SERVICE ====================
 
   contact-service:
     build:
-      context: ../../services/contact-service
+      context: ../cerebratechai-be/contact-service
       dockerfile: Dockerfile
     image: cerebratechai/contact-service:dev
     container_name: cerebratechai-contact-service-dev
     ports:
-      - '7002:7002'
+      - '3219:7002'
     environment:
       - NODE_ENV=development
       - PORT=7002
@@ -80,8 +50,8 @@ services:
       - EMAIL_FROM=${EMAIL_FROM:-noreply@cerebratechai.com}
       - EMAIL_TO=${EMAIL_TO:-team@cerebratechai.com}
     volumes:
-      - ../../services/contact-service/src:/app/src:ro
-      - ../../services/contact-service/prisma:/app/prisma:ro
+      - ../cerebratechai-be/contact-service/src:/app/src:ro
+      - ../cerebratechai-be/contact-service/prisma:/app/prisma:ro
     networks:
       - cerebratechai-dev
     restart: unless-stopped

@@ -9,6 +9,7 @@ interface ParticlesProps {
   quantity?: number;
   staticity?: number;
   ease?: number;
+  color?: string;
   refresh?: boolean;
 }
 
@@ -25,11 +26,27 @@ interface Particle {
   magnetism: number;
 }
 
+const hexToRgb = (hex: string): string => {
+  hex = hex.replace('#', '');
+  if (hex.length === 3) {
+    hex = hex
+      .split('')
+      .map((char) => char + char)
+      .join('');
+  }
+  const bigint = parseInt(hex, 16);
+  const r = (bigint >> 16) & 255;
+  const g = (bigint >> 8) & 255;
+  const b = bigint & 255;
+  return `${r}, ${g}, ${b}`;
+};
+
 const Particles = ({
   className,
   quantity = 36,
   staticity = 45,
   ease = 45,
+  color = '#94a3b8',
   refresh = false,
 }: ParticlesProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -37,6 +54,11 @@ const Particles = ({
   const context = useRef<CanvasRenderingContext2D | null>(null);
   const circles = useRef<Particle[]>([]);
   const [canvasSize, setCanvasSize] = useState({ w: 0, h: 0 });
+  const rgb = useRef(hexToRgb(color));
+
+  useEffect(() => {
+    rgb.current = hexToRgb(color);
+  }, [color]);
 
   useEffect(() => {
     if (canvasRef.current) {
@@ -105,7 +127,7 @@ const Particles = ({
     context.current.translate(translateX, translateY);
     context.current.beginPath();
     context.current.arc(x, y, size, 0, 2 * Math.PI);
-    context.current.fillStyle = `rgba(148, 163, 184, ${alpha})`;
+    context.current.fillStyle = `rgba(${rgb.current}, ${alpha})`;
     context.current.fill();
     context.current.setTransform(1, 0, 0, 1, 0, 0);
 

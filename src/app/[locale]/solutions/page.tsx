@@ -5,6 +5,8 @@ import { ArrowRight } from 'lucide-react';
 
 import { MagicHero, Particles, ShimmerButton } from '@/components/magicui';
 import { ServicesGrid } from '@/components/services/services-grid';
+import { SolutionShowcase } from '@/components/solutions/SolutionShowcase';
+import { EcosystemVisualization } from '@/components/landing/ecosystem-visualization';
 import { SeoHead, ServiceSchema } from '@/components/seo';
 
 type SolutionsPageProps = {
@@ -174,69 +176,15 @@ export default function SolutionsPage({ params }: SolutionsPageProps) {
 
             <div className="grid gap-8 lg:grid-cols-1">
               {/* Main Ecosystem Diagram */}
-              <div className="overflow-hidden rounded-3xl border border-white/10 bg-surface/60 p-4 backdrop-blur">
-                <Image
-                  src="/cerebra-ecosystem-pitch.png"
-                  alt={t(
-                    'Cerebra Ecosystem Overview - แพลตฟอร์ม AI และ IoT',
-                    'Cerebra Ecosystem Overview - AI & IoT Platform'
-                  )}
-                  width={1200}
-                  height={675}
-                  className="w-full rounded-2xl"
-                  priority
-                />
-                <p className="mt-4 text-center text-sm text-text-muted">
-                  {t(
-                    'CerebraLoLM, CerebraForge & Agent, CerebraCV & IoT และ Solution Packages',
-                    'CerebraLoLM, CerebraForge & Agent, CerebraCV & IoT and Solution Packages'
-                  )}
-                </p>
-              </div>
+              {/* Main Ecosystem Diagram */}
+              <EcosystemVisualization />
 
-              {/* Value Propositions & Metrics */}
-              <div className="grid gap-6 md:grid-cols-2">
-                <div className="overflow-hidden rounded-3xl border border-white/10 bg-surface/60 p-4 backdrop-blur">
-                  <Image
-                    src="/cerebra-ecosystem-training-2.png"
-                    alt={t(
-                      'Core Value Propositions และ Success Metrics',
-                      'Core Value Propositions and Success Metrics'
-                    )}
-                    width={800}
-                    height={600}
-                    className="w-full rounded-2xl"
-                  />
-                  <p className="mt-4 text-center text-sm text-text-muted">
-                    {t(
-                      'Core Value Propositions: Private-First, Modular Design, Local LLM',
-                      'Core Value Propositions: Private-First, Modular Design, Local LLM'
-                    )}
-                  </p>
-                </div>
 
-                <div className="overflow-hidden rounded-3xl border border-white/10 bg-surface/60 p-4 backdrop-blur">
-                  <Image
-                    src="/cerebra-ecosystem-training.png"
-                    alt={t(
-                      'Platform Overview และ Solution Packages',
-                      'Platform Overview and Solution Packages'
-                    )}
-                    width={800}
-                    height={600}
-                    className="w-full rounded-2xl"
-                  />
-                  <p className="mt-4 text-center text-sm text-text-muted">
-                    {t(
-                      'Solution Packages: Smart Document, Smart Factory, Smart Farm',
-                      'Solution Packages: Smart Document, Smart Factory, Smart Farm'
-                    )}
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
         </section>
+
+        <SolutionShowcase />
 
         <ServicesGrid showTypeSections />
 

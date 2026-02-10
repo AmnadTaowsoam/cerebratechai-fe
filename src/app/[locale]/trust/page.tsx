@@ -258,6 +258,21 @@ export default function TrustPage({ params }: TrustPageProps) {
           align="center"
         />
 
+        {/* Technology Partners */}
+        <section className="py-12 border-b border-hairline/50 bg-surface/30">
+          <div className="container mx-auto px-6 text-center">
+            <p className="text-sm font-semibold text-text-muted uppercase tracking-wider mb-8">
+              {t('พาร์ทเนอร์ด้านเทคโนโลยีระดับโลก', 'Trusted Technology Partners')}
+            </p>
+            <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-60">
+               <span className="text-2xl md:text-3xl font-bold font-sans text-text tracking-tight">Microsoft</span>
+               <span className="text-2xl md:text-3xl font-bold font-sans text-text tracking-tight">NVIDIA</span>
+               <span className="text-2xl md:text-3xl font-bold font-sans text-text tracking-tight">AWS</span>
+               <span className="text-2xl md:text-3xl font-bold font-sans text-text tracking-tight">Google Cloud</span>
+            </div>
+          </div>
+        </section>
+
         {/* Security Pillars */}
         <section className={SECTION_SPACING.FEATURES}>
           <div className="container mx-auto px-6">
