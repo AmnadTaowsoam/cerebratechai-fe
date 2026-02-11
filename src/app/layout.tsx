@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import { QueryProvider } from '@/components/providers/query-provider';
 import { NonceProvider } from '@/components/providers/nonce-provider';
 import { Analytics } from '@/components/analytics/Analytics';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Toaster } from '@/components/ui/toaster';
 import {
   PerformanceOptimizations,
@@ -205,6 +206,7 @@ export default async function RootLayout({
 
             <Toaster />
             <Analytics />
+            <SpeedInsights />
           </QueryProvider>
         </NonceProvider>
       </body>
